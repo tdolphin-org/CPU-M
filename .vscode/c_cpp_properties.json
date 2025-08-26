@@ -1,0 +1,27 @@
+{
+    "configurations": [
+        {
+            "name": "cross_morphos",
+            "includePath": [
+                "/home/armo/TDolphin/AmigaOS.cpp.wrapper/wrappers/src/",
+                "/home/armo/TDolphin/AmigaOS.MUI.cpp.wrapper/wrappers/src/",
+                "/home/armo/TDolphin/AmigaOS.MUI.cpp.wrapper/components/src/",
+                "/home/armo/TDolphin/CPU-M/**",
+                "/gg/include/",
+                "/gg/os-include/",
+                "/gg/includestd/"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/ppc-morphos-g++",
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "compilerPathInCppPropertiesJson": "/usr/bin/ppc-morphos-g++",
+            "mergeConfigurations": false,
+            "recursiveIncludes": {},
+            "browse": {
+                "limitSymbolsToIncludedHeaders": true
+            }
+        }
+    ],
+    "version": 4
+}
