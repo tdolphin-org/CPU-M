@@ -2,6 +2,7 @@ src/Version.cpp: FORCE
 	rm -f $@
 	echo "#include \"Version.hpp\"" >> $@
 	echo "#include \"ProgDefines.hpp\"" >> $@
+	echo "#include <iostream>" >> $@
 	echo "#pragma GCC diagnostic push" >> $@
 	echo "#pragma GCC diagnostic ignored \"-Wunused-variable\"" >> $@
 	echo "static const char *VERSION = AMIGAOS_VER_PREFIX CMD_NAME \" \" APP_VERSION \" \" APP_DATE \" [\" APP_BUILD_COMMIT_HASH \"]\\\r\\\n\";" >> $@
