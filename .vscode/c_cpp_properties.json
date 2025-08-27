@@ -3,10 +3,10 @@
         {
             "name": "cross_morphos",
             "includePath": [
-                "/home/armo/TDolphin/AmigaOS.cpp.wrapper/wrappers/src/",
-                "/home/armo/TDolphin/AmigaOS.MUI.cpp.wrapper/wrappers/src/",
-                "/home/armo/TDolphin/AmigaOS.MUI.cpp.wrapper/components/src/",
-                "/home/armo/TDolphin/CPU-M/**",
+                "../AmigaOS.cpp.wrapper/wrappers/src/",
+                "../AmigaOS.MUI.cpp.wrapper/wrappers/src/",
+                "../AmigaOS.MUI.cpp.wrapper/components/src/",
+                "${workspaceFolder}/app/src/**",
                 "/gg/include/",
                 "/gg/os-include/",
                 "/gg/includestd/"
