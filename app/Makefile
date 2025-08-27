@@ -23,7 +23,7 @@ morphos_ppc: out/morphos/ppc
 	MUICPP_PATH=../../AmigaOS.MUI.cpp.wrapper \
 	CPPC=g++ CC=gcc STRIP=strip OBJDUMP=objdump \
 	MORE_CPP_FLAGS=-std=c++17,-Os,-noixemul \
-	MORE_LFLAGS=-lamiga,-noixemul \
+	MORE_LFLAGS=-noixemul \
 	all
 
 cross_morphos_ppc: out/morphos/ppc
