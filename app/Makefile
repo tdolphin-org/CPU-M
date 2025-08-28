@@ -22,8 +22,8 @@ morphos_ppc: out/morphos/ppc
 	AOSCPP_PATH=../../AmigaOS.cpp.wrapper \
 	MUICPP_PATH=../../AmigaOS.MUI.cpp.wrapper \
 	CPPC=g++ CC=gcc STRIP=strip OBJDUMP=objdump \
-	MORE_CPP_FLAGS=-std=c++17,-Os,-noixemul \
-	MORE_LFLAGS=-noixemul \
+	MORE_CPP_FLAGS="-std=c++17 -Os -noixemul" \
+	MORE_LFLAGS="-noixemul" \
 	all
 
 cross_morphos_ppc: out/morphos/ppc
@@ -32,8 +32,8 @@ cross_morphos_ppc: out/morphos/ppc
 	AOSCPP_PATH=../../AmigaOS.cpp.wrapper \
 	MUICPP_PATH=../../AmigaOS.MUI.cpp.wrapper \
 	CPPC=ppc-morphos-g++ CC=ppc-morphos-gcc STRIP=ppc-morphos-strip OBJDUMP=ppc-morphos-objdump \
-	MORE_CPP_FLAGS=-std=c++17,-Os,-noixemul \
-	MORE_LFLAGS=-noixemul \
+	MORE_CPP_FLAGS="-std=c++17 -Os -noixemul" \
+	MORE_LFLAGS="-noixemul" \
 	all
 
 out/morphos/ppc:
