@@ -16,22 +16,26 @@ all:
 	@echo "make morphos_ppc"
 	@echo "make cross_morphos_ppc"
 
-morphos_ppc: out/morphos/ppc
-	@echo "# Build App for MorphOS PPC ######################################################################"
-	$(MAKE) -f makefile.generic.gcc.mk SUB_BUILD_PATH=morphos/ppc \
-	AOSCPP_PATH=../../AmigaOS.cpp.wrapper \
-	MUICPP_PATH=../../AmigaOS.MUI.cpp.wrapper \
-	CPPC=g++ CC=gcc STRIP=strip OBJDUMP=objdump \
-	MORE_CPP_FLAGS="-std=c++17 -Os -noixemul" \
-	MORE_LFLAGS="-noixemul" \
-	all
+morphos_ppc: TARGET="MorphOS PPC"
+morphos_ppc: CPPC=g++
+morphos_ppc: CC=gcc
+morphos_ppc: STRIP=strip
+morphos_ppc: OBJDUMP=objdump
+morphos_ppc: build
 
-cross_morphos_ppc: out/morphos/ppc
-	@echo "# Cross Build for MorphOS PowerPC ################################################################"
+cross_morphos_ppc: TARGET="cross MorphOS PPC"
+cross_morphos_ppc: CPPC=ppc-morphos-g++
+cross_morphos_ppc: CC=ppc-morphos-gcc
+cross_morphos_ppc: STRIP=ppc-morphos-strip
+cross_morphos_ppc: OBJDUMP=ppc-morphos-objdump
+cross_morphos_ppc: build
+
+build: out/morphos/ppc
+	@echo "# Build for $(TARGET) ..."
 	$(MAKE) -f makefile.generic.gcc.mk SUB_BUILD_PATH=morphos/ppc \
 	AOSCPP_PATH=../../AmigaOS.cpp.wrapper \
 	MUICPP_PATH=../../AmigaOS.MUI.cpp.wrapper \
-	CPPC=ppc-morphos-g++ CC=ppc-morphos-gcc STRIP=ppc-morphos-strip OBJDUMP=ppc-morphos-objdump \
+	CPPC=$(CPPC) CC=$(CC) STRIP=$(STRIP) OBJDUMP=$(OBJDUMP) \
 	MORE_CPP_FLAGS="-std=c++17 -Os -noixemul" \
 	MORE_LFLAGS="-noixemul" \
 	all
