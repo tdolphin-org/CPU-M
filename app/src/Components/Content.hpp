@@ -7,11 +7,14 @@
 #pragma once
 
 #include "Components/Tabs/TabsContainer.hpp"
+#include "Tabs/AboutTab.hpp"
 
 namespace Components
 {
     class Content : public Root<MUI::Group>
     {
+        AboutTab mAboutTab;
+
         TabsContainer mComponent;
 
       public:

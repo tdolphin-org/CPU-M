@@ -6,10 +6,14 @@
 
 #include "Content.hpp"
 
+#include "TextResources/Labels.hpp"
+
 namespace Components
 {
     Content::Content()
-      : mComponent({})
+      : mComponent({
+            { Label::AboutTab, mAboutTab },
+        })
     {
     }
 }
