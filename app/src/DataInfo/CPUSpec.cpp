@@ -9,6 +9,8 @@
 // micro sign: \xB5
 // use u instead
 
+// https://web.archive.org/web/20051210132546/http://www.geek.com/procspec/apple/g4.htm
+
 namespace DataInfo
 {
     const std::map<std::string, CPUSpec> cpuPPC2spec {
@@ -20,6 +22,7 @@ namespace DataInfo
         { "604", { "Motorola/IBM", "604", " 3.3 V", "0.5 um", "April 1994", "~14-17 W" } },
         { "604E", { "Motorola/IBM", "604e", " 2.5 V", "0.35 um", "1996", "~16-18 W" } },
         { "620", { "Motorola", "620", "3.3 V", "0.35-0.5 um", "1997", "~30 W" } },
+        { "7400", { "Freescale/IBM", "7400", "1.8 V", "0.18 um", "1999/2000", "~10-13 W" } },
         { "7448", { "Freescale", "7448", "1.0-1.3 V", "90 nm", "2005", "~15-21 W" } },
         { "970FX", { "IBM", "970FX", "1.2 V", "90 nm", "2005", "~50 W" } },
     };

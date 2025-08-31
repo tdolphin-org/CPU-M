@@ -8,11 +8,13 @@
 
 #include "Components/Tabs/TabsContainer.hpp"
 #include "Tabs/AboutTab.hpp"
+#include "Tabs/CPUTab.hpp"
 
 namespace Components
 {
     class Content : public Root<MUI::Group>
     {
+        CPUTab mCPUTab;
         AboutTab mAboutTab;
 
         TabsContainer mComponent;

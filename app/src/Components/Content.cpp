@@ -12,6 +12,7 @@ namespace Components
 {
     Content::Content()
       : mComponent({
+            { Label::CPUTab, mCPUTab },
             { Label::AboutTab, mAboutTab },
         })
     {
