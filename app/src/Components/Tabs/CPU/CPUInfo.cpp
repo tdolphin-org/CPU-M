@@ -13,9 +13,10 @@
 #include <numeric>
 
 std::map<std::string, std::string> ppc_cpu2image = {
-    { "Unknown", CPUImageFile::unknown }, { "602", CPUImageFile::ppc602 },   { "603", CPUImageFile::ppc603 },
-    { "603E", CPUImageFile::ppc603e },    { "603P", CPUImageFile::ppc603p }, { "604", CPUImageFile::ppc604 },
-    { "604E", CPUImageFile::ppc604e },    { "620", CPUImageFile::ppc620 },   { "7400", CPUImageFile::ppc },
+    { "Unknown", CPUImageFile::ppc },  { "602", CPUImageFile::ppc602 },   { "603", CPUImageFile::ppc603 },
+    { "603E", CPUImageFile::ppc603e }, { "603P", CPUImageFile::ppc603p }, { "604", CPUImageFile::ppc604 },
+    { "604E", CPUImageFile::ppc604e }, { "620", CPUImageFile::ppc620 },   { "7400", CPUImageFile::ppc },
+    { "7447A", CPUImageFile::ppc },
 };
 
 namespace Components
@@ -39,9 +40,9 @@ namespace Components
       , mAdditionalUnits(ValueText("Additional Units like FPU, MMU"))
       , mCPUImage(MUI::ImageBuilder()
                       .tagSpecPicture(ppc_cpu2image.find(cpuInfo.name) != ppc_cpu2image.end() ? ppc_cpu2image.at(cpuInfo.name)
-                                                                                              : CPUImageFile::unknown)
-                      .tagFixWidth(64)
-                      .tagFixHeight(64)
+                                                                                              : CPUImageFile::ppc)
+                      .tagFixWidth(80)
+                      .tagFixHeight(80)
                       .tagFreeHoriz(true)
                       .tagFreeVert(true)
                       .object())
