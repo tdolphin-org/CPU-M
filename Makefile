@@ -4,6 +4,10 @@
 #  (c) 2025 TDolphin
 #
 
+#
+# note: for cross compilation requires 'jlha-utils' under linux
+#
+
 SUB_PROJECTS = app
 APP_DRAWER_NAME = CPU-M
 
@@ -48,11 +52,13 @@ build_out:
 	cp docs/aminet/header.readme $(OUT_APP_PATH)/CPU-M.readme
 	sed -i "s/%VERSION%/$(APP_VERSION)/g" $(OUT_APP_PATH)/CPU-M.readme
 	fold -w78 -s docs/CPU-M.readme >> $(OUT_APP_PATH)/CPU-M.readme
-	cp data/icons/CPU-M.drawer.info $(OUT_PATH)/CPU-M.info
-	cp data/icons/CPU-M.info $(OUT_APP_PATH)
-	cp data/icons/CPU-M.readme.info $(OUT_APP_PATH)
+#	cp data/icons/CPU-M.drawer.info $(OUT_PATH)/CPU-M.info
+#	cp data/icons/CPU-M.info $(OUT_APP_PATH)
+#	cp data/icons/CPU-M.readme.info $(OUT_APP_PATH)
 	cp LICENSE $(OUT_APP_PATH)
-	cp data/icons/LICENSE.info $(OUT_APP_PATH)
+#	cp data/icons/LICENSE.info $(OUT_APP_PATH)
+	rm -f $(OUT_APP_PATH)/$(APP_DRAWER_NAME)_*
+	cd $(OUT_PATH); lha a $(APP_DRAWER_NAME).lha $(APP_DRAWER_NAME) $(APP_DRAWER_NAME).info
 
 clean.obj:
 	@for dir in $(SUB_PROJECTS); do \
@@ -70,3 +76,5 @@ rebuild_cross_mos_ppc: clean cross_mos_ppc build_out
 
 check:
 	cppcheck --enable=all --inconclusive .
+
+.NOTPARALLEL: build_out
