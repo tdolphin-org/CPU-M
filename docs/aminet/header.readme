@@ -1,0 +1,9 @@
+Short:        System Information Tool
+Uploader:     rafal.zabdyr@tdolphin.org (Rafal Zabdyr)
+Author:       Rafal Zabdyr
+Type:         util/moni
+Version:      %VERSION%
+Architecture: ppc-morphos
+Distribution: Aminet
+URL:          http://www.tdolphin.org/projects.php#cpu-m
+
