@@ -54,5 +54,8 @@ namespace Components
         {
             return const_cast<MUI::Group &>(mComponent);
         }
+
+        static std::string FromClockSpeed(unsigned long long clockSpeed);
+        static std::string CalculateMultiplier(unsigned long long cpuClock, unsigned long long busClock);
     };
 }

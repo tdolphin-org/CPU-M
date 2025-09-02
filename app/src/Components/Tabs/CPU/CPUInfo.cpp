@@ -46,9 +46,9 @@ namespace Components
                       .tagFreeHoriz(true)
                       .tagFreeVert(true)
                       .object())
-      , mCPUClockText(ValueText("CPU clock", std::to_string(cpuInfo.clock)))
-      , mCPUMultipler(ValueText("Multiplier", "--"))
-      , mCPUBusSpeed(ValueText("Bus Speed", cpuInfo.busClock > 0 ? std::to_string(cpuInfo.busClock) : "--"))
+      , mCPUClockText(ValueText("CPU clock", CPUInfo::FromClockSpeed(cpuInfo.clock)))
+      , mCPUMultipler(ValueText("Multiplier", CPUInfo::CalculateMultiplier(cpuInfo.clock, cpuInfo.busClock)))
+      , mCPUBusSpeed(ValueText("Bus Speed", cpuInfo.busClock > 0 ? CPUInfo::FromClockSpeed(cpuInfo.busClock) : "--"))
       , mCPUL1InstructionCache(ValueText("Level 1 Instructions Cache size",
                                          cpuInfo.l1InstructionCache > 0 ? ToString::FromBytesValue(cpuInfo.l1InstructionCache) : "--"))
       , mCPUL1DataCache(
@@ -146,5 +146,20 @@ namespace Components
         mAdditionalUnits.setContents(
             std::accumulate(additionalUnits.begin(), additionalUnits.end(), std::string(""),
                             [](const std::string &a, const std::string &b) { return a + (a.empty() ? "" : ", ") + b; }));
+    }
+
+    std::string CPUInfo::FromClockSpeed(unsigned long long clockSpeed)
+    {
+        return std::to_string(clockSpeed / 1000000ull) + " MHz";
+    }
+
+    std::string CPUInfo::CalculateMultiplier(unsigned long long cpuClock, unsigned long long busClock)
+    {
+        if (busClock == 0)
+            return "--";
+
+        unsigned long long multiplier = cpuClock / busClock;
+        unsigned long long remainder = (cpuClock % busClock) / 10;
+        return "x " + std::to_string(multiplier) + "." + std::to_string(remainder);
     }
 }
