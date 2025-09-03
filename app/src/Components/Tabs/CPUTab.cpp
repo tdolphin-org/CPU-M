@@ -22,22 +22,17 @@ namespace Components
       : mCPUInfos(AOS::Exec::Library::GetAllCPUs())
       , mCPUInfo(mCPUInfos.at(0))
       , mCPUInfoGroup(MUI::GroupBuilder().tagPageMode().tagChild(mCPUInfo).object())
-      , mSelectionCycle(MCC::ActionCycleBuilder().tagEntries(mSocket).object(*this))
-      , mCPUCores(ValueText("Total number of Cores"))
-      , mCPUThreads(ValueText("Total number of Threads"))
+      , mSelectionCycle(MCC::ActionCycleBuilder().tagEntries(mSocket).tagWeight(0).object(*this))
       , mComponent(MUI::GroupBuilder()
                        .vertical()
                        .tagChild(mCPUInfoGroup)
                        .tagChild(MUI::GroupBuilder()
                                      .horizontal()
+                                     .tagColumns(3)
                                      .tagFrame(MUI::Frame::Group)
-                                     .tagBackground(MUI::ImageOrBackground::WindowBack)
                                      .tagChild(LabelText(MUIX_R "Slot/CPU"))
                                      .tagChild(mSelectionCycle)
-                                     .tagChild(LabelText(MUIX_R "Cores"))
-                                     .tagChild(mCPUCores)
-                                     .tagChild(LabelText(MUIX_R "Threads"))
-                                     .tagChild(mCPUThreads)
+                                     .tagChild(MUI::MakeObject::HVSpace())
                                      .object())
                        .object())
     {
@@ -51,9 +46,6 @@ namespace Components
 
         // todo
         // auto &cpuSpec = DataInfo::cpuPPC2spec.at(cpuInfo.model.ppc);
-
-        // mCPUCores.setContents(cpuInfo.totalCores > 0 ? std::to_string(cpuSpec.totalCores) : "--");
-        // mCPUThreads.setContents(cpuSpec.totalThreads > 0 ? std::to_string(cpuSpec.totalThreads) : "--");
     }
 
     unsigned long CPUTab::OnCycle()

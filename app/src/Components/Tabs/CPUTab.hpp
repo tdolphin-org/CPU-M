@@ -26,8 +26,6 @@ namespace Components
         CPUInfo mCPUInfo;
         MUI::Group mCPUInfoGroup;
         MUI::Cycle mSelectionCycle;
-        MUI::Text mCPUCores;
-        MUI::Text mCPUThreads;
 
         MUI::Group mComponent;
 

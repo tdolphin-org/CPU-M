@@ -8,10 +8,13 @@
 
 #include "AOS/Expansion/ValueTypes/ManufacturerID.hpp"
 #include "AppContext.hpp"
-#include "FileResources/CPUImages.hpp"
 #include "Core/ToString.hpp"
+#include "FileResources/CPUImages.hpp"
 
+#include <cmath>
+#include <iomanip>
 #include <numeric>
+#include <ostream>
 
 std::map<std::string, std::string> ppc_cpu2image = {
     { "Unknown", CPUImageFile::ppc },  { "602", CPUImageFile::ppc602 },   { "603", CPUImageFile::ppc603 },
@@ -66,7 +69,6 @@ namespace Components
                        .vertical()
                        .tagChild(MUI::GroupBuilder()
                                      .tagFrame(MUI::Frame::Group)
-                                     .tagBackground(MUI::ImageOrBackground::WindowBack)
                                      .tagFrameTitle("Processor")
                                      .tagChild(MUI::GroupBuilder()
                                                    .horizontal()
@@ -99,7 +101,6 @@ namespace Components
                                      .object())
                        .tagChild(MUI::GroupBuilder()
                                      .tagFrame(MUI::Frame::Group)
-                                     .tagBackground(MUI::ImageOrBackground::WindowBack)
                                      .tagFrameTitle("Additional/Integrated Units")
                                      .tagChild(mAdditionalUnits)
                                      .object())
@@ -107,7 +108,6 @@ namespace Components
                                      .horizontal()
                                      .tagChild(MUI::GroupBuilder()
                                                    .tagFrame(MUI::Frame::Group)
-                                                   .tagBackground(MUI::ImageOrBackground::WindowBack)
                                                    .tagFrameTitle("Clocks (Core #0)")
                                                    .tagColumns(4)
                                                    .tagChild(LabelText(MUIX_R "Core Speed"))
@@ -119,7 +119,6 @@ namespace Components
                                                    .object())
                                      .tagChild(MUI::GroupBuilder()
                                                    .tagFrame(MUI::Frame::Group)
-                                                   .tagBackground(MUI::ImageOrBackground::WindowBack)
                                                    .tagFrameTitle("Cache")
                                                    .tagColumns(4)
                                                    .tagChild(LabelText(MUIX_R "L1 Inst."))
@@ -143,6 +142,10 @@ namespace Components
             additionalUnits.push_back("FPU");
         if (cpuInfo.hasAltivec)
             additionalUnits.push_back("Altivec");
+        if (cpuInfo.hasPerformanceMeasurement)
+            additionalUnits.push_back("Performance Measurement");
+        if (cpuInfo.hasDataStream)
+            additionalUnits.push_back("Data Stream");
 
         mAdditionalUnits.setContents(
             std::accumulate(additionalUnits.begin(), additionalUnits.end(), std::string(""),
@@ -154,8 +157,25 @@ namespace Components
         if (busClock == 0)
             return "--";
 
-        unsigned long long multiplier = cpuClock / busClock;
-        unsigned long long remainder = (cpuClock % busClock) / 10;
-        return "x " + std::to_string(multiplier) + "." + std::to_string(remainder);
+        double multiplier = static_cast<double>(cpuClock) / static_cast<double>(busClock);
+
+        double rounded = std::round(multiplier * 100.0) / 100.0;
+
+        double fractionalPart = rounded - std::floor(rounded);
+        if (fractionalPart >= 0.99)
+            rounded = std::ceil(rounded);
+
+        std::ostringstream stream;
+        stream << "x " << std::fixed << std::setprecision(2) << rounded;
+
+        std::string result = stream.str();
+        if (result.find('.') != std::string::npos)
+        {
+            result = result.substr(0, result.find_last_not_of('0') + 1);
+            if (result.back() == '.')
+                result.pop_back();
+        }
+
+        return result;
     }
 }

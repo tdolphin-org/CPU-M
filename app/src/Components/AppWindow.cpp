@@ -36,7 +36,6 @@ namespace Components
                                                                       .tagContents(MUIX_PH MUIX_B APP_NAME MUIX_N MUIX_PT
                                                                                    " ver. " APP_VERSION " " APP_DATE)
                                                                       .object())
-                                                        .tagChild(MUI::MakeObject::VBar(0))
                                                         .tagChild(MUI::MakeObject::HVSpace())
                                                         .tagChild(mExitButton)
                                                         .object())
