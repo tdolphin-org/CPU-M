@@ -9,6 +9,7 @@
 #include "AOS/Expansion/ValueTypes/ManufacturerID.hpp"
 #include "AppContext.hpp"
 #include "FileResources/CPUImages.hpp"
+#include "Core/ToString.hpp"
 
 #include <numeric>
 
@@ -46,9 +47,9 @@ namespace Components
                       .tagFreeHoriz(true)
                       .tagFreeVert(true)
                       .object())
-      , mCPUClockText(ValueText("CPU clock", CPUInfo::FromClockSpeed(cpuInfo.clock)))
+      , mCPUClockText(ValueText("CPU clock", ToString::FromClockHertzValue(cpuInfo.clock, true)))
       , mCPUMultipler(ValueText("Multiplier", CPUInfo::CalculateMultiplier(cpuInfo.clock, cpuInfo.busClock)))
-      , mCPUBusSpeed(ValueText("Bus Speed", cpuInfo.busClock > 0 ? CPUInfo::FromClockSpeed(cpuInfo.busClock) : "--"))
+      , mCPUBusSpeed(ValueText("Bus Speed", cpuInfo.busClock > 0 ? ToString::FromClockHertzValue(cpuInfo.busClock, true) : "--"))
       , mCPUL1InstructionCache(ValueText("Level 1 Instructions Cache size",
                                          cpuInfo.l1InstructionCache > 0 ? ToString::FromBytesValue(cpuInfo.l1InstructionCache) : "--"))
       , mCPUL1DataCache(
@@ -146,11 +147,6 @@ namespace Components
         mAdditionalUnits.setContents(
             std::accumulate(additionalUnits.begin(), additionalUnits.end(), std::string(""),
                             [](const std::string &a, const std::string &b) { return a + (a.empty() ? "" : ", ") + b; }));
-    }
-
-    std::string CPUInfo::FromClockSpeed(unsigned long long clockSpeed)
-    {
-        return std::to_string(clockSpeed / 1000000ull) + " MHz";
     }
 
     std::string CPUInfo::CalculateMultiplier(unsigned long long cpuClock, unsigned long long busClock)
