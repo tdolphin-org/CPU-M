@@ -7,3 +7,9 @@ It serves as a comprehensive example of using [MUI C++ wrapper classes](https://
 ## Requirements to run on MorphOS
 
 -   MorphOS 3.0+
+
+## Interface
+
+v0.1.0 (wip)
+
+![CPU-M v0.1.0](/docs/assets/CPU-M.wip.0.1.0.png)
