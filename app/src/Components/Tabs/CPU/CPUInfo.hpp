@@ -35,14 +35,14 @@ namespace Components
         MUI::Text mAdditionalUnits; // like FPU, Altivec
         MUI::Image mCPUImage;
         MUI::Text mCPUClockText;
-        MUI::Text mCPUMultipler;
-        MUI::Text mCPUBusSpeed;
-        MUI::Text mCPUL1InstructionCache;
-        MUI::Text mCPUL1DataCache;
-        MUI::Text mCPUL2InstructionCache;
-        MUI::Text mCPUL2DataCache;
-        MUI::Text mCPUL3InstructionCache;
-        MUI::Text mCPUL3DataCache;
+        MUI::Text mCPUMultiplerText;
+        MUI::Text mCPUBusSpeedText;
+        MUI::Text mCPUL1InstructionCacheText;
+        MUI::Text mCPUL1DataCacheText;
+        MUI::Text mCPUL2InstructionCacheText;
+        MUI::Text mCPUL2DataCacheText;
+        MUI::Text mCPUL3InstructionCacheText;
+        MUI::Text mCPUL3DataCacheText;
 
         MUI::Group mComponent;
 

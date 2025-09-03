@@ -51,19 +51,19 @@ namespace Components
                       .tagFreeVert(true)
                       .object())
       , mCPUClockText(ValueText("CPU clock", ToString::FromClockHertzValue(cpuInfo.clock, true)))
-      , mCPUMultipler(ValueText("Multiplier", CPUInfo::CalculateMultiplier(cpuInfo.clock, cpuInfo.busClock)))
-      , mCPUBusSpeed(ValueText("Bus Speed", cpuInfo.busClock > 0 ? ToString::FromClockHertzValue(cpuInfo.busClock, true) : "--"))
-      , mCPUL1InstructionCache(ValueText("Level 1 Instructions Cache size",
-                                         cpuInfo.l1InstructionCache > 0 ? ToString::FromBytesValue(cpuInfo.l1InstructionCache) : "--"))
-      , mCPUL1DataCache(
+      , mCPUMultiplerText(ValueText("Multiplier", CPUInfo::CalculateMultiplier(cpuInfo.clock, cpuInfo.busClock)))
+      , mCPUBusSpeedText(ValueText("Bus Speed", cpuInfo.busClock > 0 ? ToString::FromClockHertzValue(cpuInfo.busClock, true) : "--"))
+      , mCPUL1InstructionCacheText(ValueText("Level 1 Instructions Cache size",
+                                             cpuInfo.l1InstructionCache > 0 ? ToString::FromBytesValue(cpuInfo.l1InstructionCache) : "--"))
+      , mCPUL1DataCacheText(
             ValueText("Level 1 Data Cache size", cpuInfo.l1DataCache > 0 ? ToString::FromBytesValue(cpuInfo.l1DataCache) : "--"))
-      , mCPUL2InstructionCache(ValueText("Level 2 Instruction Cache size",
-                                         cpuInfo.l2InstructionCache > 0 ? ToString::FromBytesValue(cpuInfo.l2InstructionCache) : "--"))
-      , mCPUL2DataCache(
+      , mCPUL2InstructionCacheText(ValueText("Level 2 Instruction Cache size",
+                                             cpuInfo.l2InstructionCache > 0 ? ToString::FromBytesValue(cpuInfo.l2InstructionCache) : "--"))
+      , mCPUL2DataCacheText(
             ValueText("Level 2 Data Cache size", cpuInfo.l2DataCache > 0 ? ToString::FromBytesValue(cpuInfo.l2DataCache) : "--"))
-      , mCPUL3InstructionCache(ValueText("Level 3 Instructions Cache size",
-                                         cpuInfo.l3InstructionCache > 0 ? ToString::FromBytesValue(cpuInfo.l3InstructionCache) : "--"))
-      , mCPUL3DataCache(
+      , mCPUL3InstructionCacheText(ValueText("Level 3 Instructions Cache size",
+                                             cpuInfo.l3InstructionCache > 0 ? ToString::FromBytesValue(cpuInfo.l3InstructionCache) : "--"))
+      , mCPUL3DataCacheText(
             ValueText("Level 3 Data Cache size", cpuInfo.l3DataCache > 0 ? ToString::FromBytesValue(cpuInfo.l3DataCache) : "--"))
       , mComponent(MUI::GroupBuilder()
                        .vertical()
@@ -108,31 +108,31 @@ namespace Components
                                      .horizontal()
                                      .tagChild(MUI::GroupBuilder()
                                                    .tagFrame(MUI::Frame::Group)
-                                                   .tagFrameTitle("Clocks (Core #0)")
+                                                   .tagFrameTitle("Clocks (CPU #" + std::to_string(cpuInfo.index) + ")")
                                                    .tagColumns(4)
                                                    .tagChild(LabelText(MUIX_R "Core Speed"))
                                                    .tagChild(mCPUClockText)
                                                    .tagChild(LabelText(MUIX_R "Multiplier"))
-                                                   .tagChild(mCPUMultipler)
+                                                   .tagChild(mCPUMultiplerText)
                                                    .tagChild(LabelText(MUIX_R "Bus Speed"))
-                                                   .tagChild(mCPUBusSpeed)
+                                                   .tagChild(mCPUBusSpeedText)
                                                    .object())
                                      .tagChild(MUI::GroupBuilder()
                                                    .tagFrame(MUI::Frame::Group)
                                                    .tagFrameTitle("Cache")
                                                    .tagColumns(4)
                                                    .tagChild(LabelText(MUIX_R "L1 Inst."))
-                                                   .tagChild(mCPUL1InstructionCache)
+                                                   .tagChild(mCPUL1InstructionCacheText)
                                                    .tagChild(LabelText(MUIX_R "L1 Data"))
-                                                   .tagChild(mCPUL1DataCache)
+                                                   .tagChild(mCPUL1DataCacheText)
                                                    .tagChild(LabelText(MUIX_R "L2 Inst."))
-                                                   .tagChild(mCPUL2InstructionCache)
+                                                   .tagChild(mCPUL2InstructionCacheText)
                                                    .tagChild(LabelText(MUIX_R "L2 Data"))
-                                                   .tagChild(mCPUL2DataCache)
+                                                   .tagChild(mCPUL2DataCacheText)
                                                    .tagChild(LabelText(MUIX_R "L3 Inst."))
-                                                   .tagChild(mCPUL3InstructionCache)
+                                                   .tagChild(mCPUL3InstructionCacheText)
                                                    .tagChild(LabelText(MUIX_R "L3 Data"))
-                                                   .tagChild(mCPUL3DataCache)
+                                                   .tagChild(mCPUL3DataCacheText)
                                                    .object())
                                      .object())
                        .object())
