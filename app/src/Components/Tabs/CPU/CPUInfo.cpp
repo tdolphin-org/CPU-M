@@ -158,15 +158,10 @@ namespace Components
             return "--";
 
         double multiplier = static_cast<double>(cpuClock) / static_cast<double>(busClock);
-
-        double rounded = std::round(multiplier * 100.0) / 100.0;
-
-        double fractionalPart = rounded - std::floor(rounded);
-        if (fractionalPart >= 0.99)
-            rounded = std::ceil(rounded);
+        double rounded = std::round(multiplier * 2) / 2;
 
         std::ostringstream stream;
-        stream << "x " << std::fixed << std::setprecision(2) << rounded;
+        stream << std::fixed << std::setprecision(1) << rounded;
 
         std::string result = stream.str();
         if (result.find('.') != std::string::npos)
@@ -176,6 +171,6 @@ namespace Components
                 result.pop_back();
         }
 
-        return result;
+        return result + " x";
     }
 }
