@@ -13,16 +13,25 @@
 #include "MUI/Image.hpp"
 
 #include <numeric>
+#include <stdexcept>
 
 namespace Components
 {
-    const char *CPUTab::mSocket[] = { "CPU #1", "CPU #2", nullptr };
-
     CPUTab::CPUTab()
       : mCPUInfos(AOS::Exec::Library::GetAllCPUs())
       , mCPUInfo(mCPUInfos.at(0))
       , mCPUInfoGroup(MUI::GroupBuilder().tagPageMode().tagChild(mCPUInfo).object())
-      , mSelectionCycle(MCC::ActionCycleBuilder().tagEntries(mSocket).tagWeight(0).object(*this))
+      , mSelectionCycle(MCC::ActionCycleBuilder()
+                            .tagEntries([&] -> std::vector<std::string> {
+                                std::vector<std::string> entries;
+                                for (size_t i = 0; i < mCPUInfos.size(); i++)
+                                    entries.push_back("CPU #" + std::to_string(i + 1));
+                                if (!entries.empty())
+                                    return entries;
+                                throw std::runtime_error("No CPUs found!");
+                            }())
+                            .tagWeight(0)
+                            .object(*this))
       , mComponent(MUI::GroupBuilder()
                        .vertical()
                        .tagChild(mCPUInfoGroup)

@@ -19,8 +19,6 @@ namespace Components
 {
     class CPUTab : public Root<MUI::Group>, public TabBase, public MCC::ActionCycleDispatcher
     {
-        static const char *mSocket[];
-
         std::vector<AOS::Exec::CPUInfo> mCPUInfos;
 
         CPUInfo mCPUInfo;
