@@ -16,7 +16,7 @@ README
 
  It serves as a comprehensive example of using MUI C++ wrapper classes (https://github.com/tdolphin-org/AmigaOS.MUI.cpp.wrapper) and AmigaOS C++ wrapper classes (https://github.com/tdolphin-org/AmigaOS.cpp.wrapper).
 
- The source code for CPU-A is available on GitHub (https://github.com/tdolphin-org/CPU-M).
+ The source code for CPU-M is available on GitHub (https://github.com/tdolphin-org/CPU-M).
 
 
 REQUIREMENTS

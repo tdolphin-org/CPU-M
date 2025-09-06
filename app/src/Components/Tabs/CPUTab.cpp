@@ -34,6 +34,7 @@ namespace Components
                             .object(*this))
       , mComponent(MUI::GroupBuilder()
                        .vertical()
+                       .tagChild(MUI::MakeObject::HVSpace())
                        .tagChild(mCPUInfoGroup)
                        .tagChild(MUI::GroupBuilder()
                                      .horizontal()
@@ -43,6 +44,7 @@ namespace Components
                                      .tagChild(mSelectionCycle)
                                      .tagChild(MUI::MakeObject::HVSpace())
                                      .object())
+                       .tagChild(MUI::MakeObject::HVSpace())
                        .object())
     {
         ShowInfo();
