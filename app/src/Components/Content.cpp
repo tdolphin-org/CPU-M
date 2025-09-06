@@ -13,6 +13,7 @@ namespace Components
     Content::Content()
       : mComponent({
             { Label::CPUTab, mCPUTab },
+            { Label::OperatingSystemTab, mOSTab },
             { Label::AboutTab, mAboutTab },
         })
     {
