@@ -15,6 +15,7 @@ namespace DataInfo
     {
         std::string vendor;
         std::string modelName;
+        std::string codeName;
         std::string coreVoltage;
         std::string technology;
         std::string premiere;
