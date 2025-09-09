@@ -16,12 +16,26 @@
 #include <numeric>
 #include <ostream>
 
-std::map<std::string, std::string> ppc_cpu2image = {
+static std::map<std::string, std::string> ppc_cpu2image = {
     { "Unknown", CPUImageFile::ppc },  { "602", CPUImageFile::ppc602 },   { "603", CPUImageFile::ppc603 },
     { "603E", CPUImageFile::ppc603e }, { "603P", CPUImageFile::ppc603p }, { "604", CPUImageFile::ppc604 },
-    { "604E", CPUImageFile::ppc604e }, { "620", CPUImageFile::ppc620 },   { "7400", CPUImageFile::ppc },
-    { "7447A", CPUImageFile::ppc },
+    { "604E", CPUImageFile::ppc604e }, { "620", CPUImageFile::ppc620 },
 };
+
+static std::map<std::string, std::string> ppc_family2image = {
+    { "G3", CPUImageFile::ppcG3 },
+    { "G4", CPUImageFile::ppcG4 },
+    { "G5", CPUImageFile::ppcG5 },
+};
+
+static std::string GetImageForCPU(const std::string &cpuName, const std::string &cpuFamily)
+{
+    if (ppc_cpu2image.find(cpuName) != ppc_cpu2image.end())
+        return ppc_cpu2image.at(cpuName);
+    if (ppc_family2image.find(cpuFamily) != ppc_family2image.end())
+        return ppc_family2image.at(cpuFamily);
+    return CPUImageFile::ppc;
+}
 
 namespace Components
 {
@@ -43,8 +57,7 @@ namespace Components
       , mCPUPremiereYearText(ValueText("Year of Premiere", mCPUSpec.premiere))
       , mAdditionalUnits(ValueText("Additional Units like FPU, MMU"))
       , mCPUImage(MUI::ImageBuilder()
-                      .tagSpecPicture(ppc_cpu2image.find(cpuInfo.name) != ppc_cpu2image.end() ? ppc_cpu2image.at(cpuInfo.name)
-                                                                                              : CPUImageFile::ppc)
+                      .tagSpecPicture(GetImageForCPU(cpuInfo.name, cpuInfo.family))
                       .tagFixWidth(80)
                       .tagFixHeight(80)
                       .tagFreeHoriz(true)

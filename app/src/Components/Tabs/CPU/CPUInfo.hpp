@@ -19,8 +19,6 @@ namespace Components
 {
     class CPUInfo : public Root<MUI::Group>, public TabBase
     {
-        static const char *mCPUs[];
-
         DataInfo::CPUSpec mCPUSpec;
 
         MUI::Text mCPUVendorText;
