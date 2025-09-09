@@ -14,6 +14,6 @@ namespace Components
     {
       public:
         MUI::Text LabelText(const std::string &label);
-        MUI::Text ValueText(const std::string &help, const std::string &defaultValue = "--");
+        MUI::Text ValueText(const std::string &help, const std::string &defaultValue = "--", bool shorten = false);
     };
 }
