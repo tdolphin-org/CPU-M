@@ -9,6 +9,9 @@
 namespace CPUImageFile
 {
     const char *ppc = "PROGDIR:images/cpu/ppc.80x80.png";
+    const char *ppcG3 = "PROGDIR:images/cpu/ppcG3.80x80.png";
+    const char *ppcG4 = "PROGDIR:images/cpu/ppcG4.80x80.png";
+    const char *ppcG5 = "PROGDIR:images/cpu/ppcG5.80x80.png";
     const char *ppc602 = "PROGDIR:images/cpu/ppc602.80x80.png";
     const char *ppc603 = "PROGDIR:images/cpu/ppc603.80x80.png";
     const char *ppc603e = "PROGDIR:images/cpu/ppc603e.80x80.png";

@@ -9,6 +9,9 @@
 namespace CPUImageFile
 {
     extern const char *ppc;
+    extern const char *ppcG3;
+    extern const char *ppcG4;
+    extern const char *ppcG5;
     extern const char *ppc602;
     extern const char *ppc603;
     extern const char *ppc603e;
