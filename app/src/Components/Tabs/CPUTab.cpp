@@ -22,7 +22,7 @@ namespace Components
       , mCPUInfo(mCPUInfos.at(0))
       , mCPUInfoGroup(MUI::GroupBuilder().tagPageMode().tagChild(mCPUInfo).object())
       , mSelectionCycle(MCC::ActionCycleBuilder()
-                            .tagEntries([&] -> std::vector<std::string> {
+                            .tagEntries([&] {
                                 std::vector<std::string> entries;
                                 for (size_t i = 0; i < mCPUInfos.size(); i++)
                                     entries.push_back("CPU #" + std::to_string(i + 1));

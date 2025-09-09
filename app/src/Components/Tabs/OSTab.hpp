@@ -10,17 +10,18 @@
 #include "TabBase.hpp"
 
 #include "MUI/Group.hpp"
-#include "MUI/Text.hpp"
 #include "MUI/List.hpp"
+#include "MUI/Text.hpp"
 
 namespace Components
 {
     class OSTab : public Root<MUI::Group>, public TabBase
     {
-        MUI::Text mOSNumberText;
-        MUI::Text mOSVersionText;
+        MUI::Text mFullOSNameText;
+        MUI::Text mKickstartVersionText;
         MUI::Text mExecVersionText;
-        MUI::Text mWBVersionText;
+        MUI::Text mAmbientVersionText;
+        MUI::Text mWorkbenchVersionText;
 
         MUI::List mLoadedLibrariesList;
 
