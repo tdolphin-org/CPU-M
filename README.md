@@ -10,6 +10,10 @@ It serves as a comprehensive example of using [MUI C++ wrapper classes](https://
 
 ## Interface
 
+v0.1.2 (wip)
+
+![CPU-M v0.1.2](/docs/assets/CPU-M.wip.0.1.2.png)
+
 v0.1.0 (wip)
 
 ![CPU-M v0.1.0](/docs/assets/CPU-M.wip.0.1.0.png)
