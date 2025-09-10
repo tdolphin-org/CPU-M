@@ -19,6 +19,10 @@ namespace Components
       , mExecVersionText(ValueText("Exec Version"))
       , mAmbientVersionText(ValueText("Ambient Version"))
       , mWorkbenchVersionText(ValueText("Workbench Version"))
+      , mUserText(ValueText("Current user name"))
+      , mTimeZoneText(ValueText("Current time zone"))
+      , mCodePageText(ValueText("Current code page"))
+      , mLocaleText(ValueText("Current locale"))
       , mLoadedLibrariesList(MUI::ListBuilder().tagConstructHookString().tagDestructHookString().object())
       , mComponent(MUI::GroupBuilder()
                        .vertical()
@@ -37,6 +41,14 @@ namespace Components
                                                    .tagChild(mAmbientVersionText)
                                                    .tagChild(LabelText(MUIX_R "Workbench"))
                                                    .tagChild(mWorkbenchVersionText)
+                                                   .tagChild(LabelText(MUIX_R "User"))
+                                                   .tagChild(mUserText)
+                                                   .tagChild(LabelText(MUIX_R "Time Zone"))
+                                                   .tagChild(mTimeZoneText)
+                                                   .tagChild(LabelText(MUIX_R "Locale"))
+                                                   .tagChild(mLocaleText)
+                                                   .tagChild(LabelText(MUIX_R "Code Page"))
+                                                   .tagChild(mCodePageText)
                                                    .object())
                                      .object())
                        .tagChild(MUI::ListviewBuilder()
@@ -62,6 +74,15 @@ namespace Components
 
         auto workbench = AOS::Dos::Library::libGetVar("Workbench");
         mWorkbenchVersionText.setContents(workbench.has_value() ? "v" + StringUtils::Split(workbench.value()).back() : "??");
+
+        auto user = AOS::Dos::Library::libGetVar("USER");
+        mUserText.setContents(user.has_value() ? user.value() : "??");
+        auto timezone = AOS::Dos::Library::libGetVar("TZ");
+        mTimeZoneText.setContents(timezone.has_value() ? timezone.value() : "??");
+        auto codepage = AOS::Dos::Library::libGetVar("CODEPAGE");
+        mCodePageText.setContents(codepage.has_value() ? codepage.value() : "??");
+        auto locale = AOS::Dos::Library::libGetVar("Language");
+        mLocaleText.setContents(locale.has_value() ? locale.value() : "??");
 
         mExecVersionText.setContents("v" + AOS::Exec::Library::GetVersion());
 

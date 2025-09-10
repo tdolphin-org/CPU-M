@@ -22,6 +22,10 @@ namespace Components
         MUI::Text mExecVersionText;
         MUI::Text mAmbientVersionText;
         MUI::Text mWorkbenchVersionText;
+        MUI::Text mUserText;
+        MUI::Text mTimeZoneText;
+        MUI::Text mCodePageText;
+        MUI::Text mLocaleText;
 
         MUI::List mLoadedLibrariesList;
 
