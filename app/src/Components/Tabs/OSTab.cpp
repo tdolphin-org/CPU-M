@@ -19,7 +19,7 @@ namespace Components
       , mExecVersionText(ValueText("Exec Version"))
       , mAmbientVersionText(ValueText("Ambient Version"))
       , mWorkbenchVersionText(ValueText("Workbench Version"))
-      , mLoadedLibrariesList(MUI::ListBuilder().tagConstructHookString().tagDestructHookString().tagWeight(10).object())
+      , mLoadedLibrariesList(MUI::ListBuilder().tagConstructHookString().tagDestructHookString().object())
       , mComponent(MUI::GroupBuilder()
                        .vertical()
                        .tagChild(MUI::GroupBuilder()

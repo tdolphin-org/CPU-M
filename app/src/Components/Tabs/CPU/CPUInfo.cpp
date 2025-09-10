@@ -158,7 +158,7 @@ namespace Components
         if (cpuInfo.hasPerformanceMeasurement)
             additionalUnits.push_back("Performance Measurement");
         if (cpuInfo.hasDataStream)
-            additionalUnits.push_back("Data Stream");
+            additionalUnits.push_back("DataStream");
 
         mAdditionalUnits.setContents(
             std::accumulate(additionalUnits.begin(), additionalUnits.end(), std::string(""),
