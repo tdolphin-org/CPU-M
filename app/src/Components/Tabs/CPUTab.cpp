@@ -19,9 +19,8 @@ namespace Components
 {
     CPUTab::CPUTab()
       : mCPUInfos(AOS::Exec::Library::GetAllCPUs())
-      , mCPUInfo(mCPUInfos.at(0))
-      , mCPUInfoGroup(MUI::GroupBuilder().tagPageMode().tagChild(mCPUInfo).object())
-      , mSelectionCycle(MCC::ActionCycleBuilder()
+      , mCPUInfoGroup(MUI::GroupBuilder().tagPageMode().object())
+      , mCPUOrCoreCycle(MCC::ActionCycleBuilder()
                             .tagEntries([&] {
                                 std::vector<std::string> entries;
                                 for (size_t i = 0; i < mCPUInfos.size(); i++)
@@ -40,29 +39,21 @@ namespace Components
                                      .horizontal()
                                      .tagColumns(3)
                                      .tagFrame(MUI::Frame::Group)
-                                     .tagChild(LabelText(MUIX_R "Slot/CPU"))
-                                     .tagChild(mSelectionCycle)
+                                     .tagChild(LabelText(MUIX_R "CPU/Core"))
+                                     .tagChild(mCPUOrCoreCycle)
                                      .tagChild(MUI::MakeObject::HVSpace())
                                      .object())
                        .tagChild(MUI::MakeObject::HVSpace())
                        .object())
     {
-        ShowInfo();
-    }
-
-    void CPUTab::ShowInfo(const long cpuIndex)
-    {
-        auto selection = mSelectionCycle.getActive();
-        auto &cpuInfo = mCPUInfos.at(cpuIndex);
-
-        // todo
-        // auto &cpuSpec = DataInfo::cpuPPC2spec.at(cpuInfo.model.ppc);
+        for (auto &cpuInfo : mCPUInfos)
+            mCPUInfoGroup.AddTail(CPUInfo(cpuInfo));
+        mCPUInfoGroup.setActivePage(MUI::Group_ActivePage::First);
     }
 
     unsigned long CPUTab::OnCycle()
     {
-        auto selection = mSelectionCycle.getActive();
-        ShowInfo(selection);
+        auto selection = mCPUOrCoreCycle.getActive();
         mCPUInfoGroup.setActivePage(selection);
         return 0;
     }

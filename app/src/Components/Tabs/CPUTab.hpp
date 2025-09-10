@@ -21,16 +21,13 @@ namespace Components
     {
         std::vector<AOS::Exec::CPUInfo> mCPUInfos;
 
-        CPUInfo mCPUInfo;
         MUI::Group mCPUInfoGroup;
-        MUI::Cycle mSelectionCycle;
+        MUI::Cycle mCPUOrCoreCycle;
 
         MUI::Group mComponent;
 
       public:
         CPUTab();
-
-        void ShowInfo(const long cpuIndex = 0);
 
       protected:
         // implements pure virtual MCC::ActionCycleDispatcher
