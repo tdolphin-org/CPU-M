@@ -9,6 +9,7 @@
 #include "Components/Tabs/TabsContainer.hpp"
 #include "Tabs/AboutTab.hpp"
 #include "Tabs/CPUTab.hpp"
+#include "Tabs/MainboardTab.hpp"
 #include "Tabs/OSTab.hpp"
 
 namespace Components
@@ -16,6 +17,7 @@ namespace Components
     class Content : public Root<MUI::Group>
     {
         CPUTab mCPUTab;
+        MainboardTab mMainboardTab;
         OSTab mOSTab;
         AboutTab mAboutTab;
 
