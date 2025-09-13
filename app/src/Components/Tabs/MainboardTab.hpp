@@ -19,6 +19,7 @@ namespace Components
         MUI::Text mVendorText;
         MUI::Text mSystemText;
         MUI::Text mFullNameText; // marketing name
+        MUI::Text mModelNumberText; // optional
         MUI::Text mIntroductionYearText;
         MUI::Text mDiscontinuedYearText;
         MUI::Text mProcessorSocketText;

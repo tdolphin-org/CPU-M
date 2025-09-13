@@ -16,6 +16,7 @@ namespace Components
       : mVendorText(ValueText("Vendor"))
       , mSystemText(ValueText("System Name"))
       , mFullNameText(ValueText("Full/Marketing Name"))
+      , mModelNumberText(ValueText("Model Number"))
       , mIntroductionYearText(ValueText("Introduction Year"))
       , mDiscontinuedYearText(ValueText("Discontinued Year"))
       , mProcessorSocketText(ValueText("Processor Socket"))
@@ -30,15 +31,15 @@ namespace Components
                     MUI::GroupBuilder()
                         .tagFrame(MUI::Frame::Group)
                         .tagFrameTitle("System Information")
-                        .tagChild(MUI::GroupBuilder()
-                                      .tagColumns(4)
-                                      .tagChild(LabelText(MUIX_R "Vendor"))
-                                      .tagChild(mVendorText)
-                                      .tagChild(LabelText(MUIX_R "Name"))
-                                      .tagChild(mSystemText)
-                                      .object())
+                        .tagColumns(4)
+                        .tagChild(LabelText(MUIX_R "Vendor"))
+                        .tagChild(mVendorText)
+                        .tagChild(LabelText(MUIX_R "Name"))
+                        .tagChild(mSystemText)
                         .tagChild(
                             MUI::GroupBuilder().tagColumns(2).tagChild(LabelText(MUIX_R "Full Name")).tagChild(mFullNameText).object())
+                        .tagChild(LabelText(MUIX_R "Model Number"))
+                        .tagChild(mModelNumberText)
                         .object())
                 .tagChild(MUI::GroupBuilder()
                               .tagFrame(MUI::Frame::Group)
@@ -74,6 +75,8 @@ namespace Components
 
         const auto &spec = hardwareSpec->second;
         mFullNameText.setContents(spec.marketingName);
+        if (spec.modelNumber.has_value())
+            mModelNumberText.setContents(spec.modelNumber.value());
         mIntroductionYearText.setContents(std::to_string(spec.introductionYear));
         mDiscontinuedYearText.setContents(std::to_string(spec.discontinuedYear));
         mProcessorSocketText.setContents(spec.cpuSocket);
