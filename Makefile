@@ -53,10 +53,10 @@ build_out:
 	sed -i "s/%VERSION%/$(APP_VERSION)/g" $(OUT_APP_PATH)/CPU-M.readme
 	fold -w78 -s docs/CPU-M.readme >> $(OUT_APP_PATH)/CPU-M.readme
 	cp data/icons/CPU-M.drawer.info $(OUT_PATH)/CPU-M.info
-#	cp data/icons/CPU-M.info $(OUT_APP_PATH)
-#	cp data/icons/CPU-M.readme.info $(OUT_APP_PATH)
+	cp data/icons/CPU-M.info $(OUT_APP_PATH)
+	cp data/icons/CPU-M.readme.info $(OUT_APP_PATH)
 	cp LICENSE $(OUT_APP_PATH)
-#	cp data/icons/LICENSE.info $(OUT_APP_PATH)
+	cp data/icons/LICENSE.info $(OUT_APP_PATH)
 	rm -f $(OUT_APP_PATH)/$(APP_DRAWER_NAME)_*
 	cd $(OUT_PATH); lha a $(APP_DRAWER_NAME).lha $(APP_DRAWER_NAME) $(APP_DRAWER_NAME).info
 
