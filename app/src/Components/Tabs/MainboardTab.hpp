@@ -20,12 +20,12 @@ namespace Components
         MUI::Text mSystemText;
         MUI::Text mFullNameText; // marketing name
         MUI::Text mModelNumberText; // optional
-        MUI::Text mIntroductionYearText;
-        MUI::Text mDiscontinuedYearText;
+        MUI::Text mTimelineText; // years range (from intoduction to discontinued)
         MUI::Text mProcessorSocketText;
+        MUI::Text mFirmwareTypeText;
         MUI::Text mStorageDimensionsText;
         MUI::Text mStorageInterfaceText;
-        MUI::Text mFirmwareTypeText;
+        MUI::Group mPortsGroup;
 
         MUI::Group mComponent;
 

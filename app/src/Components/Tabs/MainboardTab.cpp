@@ -17,54 +17,46 @@ namespace Components
       , mSystemText(ValueText("System Name"))
       , mFullNameText(ValueText("Full/Marketing Name"))
       , mModelNumberText(ValueText("Model Number"))
-      , mIntroductionYearText(ValueText("Introduction Year"))
-      , mDiscontinuedYearText(ValueText("Discontinued Year"))
+      , mTimelineText(ValueText("Timeline, years range, e.g. 2006-2009"))
       , mProcessorSocketText(ValueText("Processor Socket"))
+      , mFirmwareTypeText(ValueText("Firmware Type"))
       , mStorageDimensionsText(ValueText("Storage Dimensions"))
       , mStorageInterfaceText(ValueText("Storage Interface"))
-      , mFirmwareTypeText(ValueText("Firmware Type"))
-      , mComponent(
-            MUI::GroupBuilder()
-                .vertical()
-                .tagChild(MUI::MakeObject::HVSpace())
-                .tagChild(
-                    MUI::GroupBuilder()
-                        .tagFrame(MUI::Frame::Group)
-                        .tagFrameTitle("System Information")
-                        .tagColumns(4)
-                        .tagChild(LabelText(MUIX_R "Vendor"))
-                        .tagChild(mVendorText)
-                        .tagChild(LabelText(MUIX_R "Name"))
-                        .tagChild(mSystemText)
-                        .tagChild(
-                            MUI::GroupBuilder().tagColumns(2).tagChild(LabelText(MUIX_R "Full Name")).tagChild(mFullNameText).object())
-                        .tagChild(LabelText(MUIX_R "Model Number"))
-                        .tagChild(mModelNumberText)
-                        .object())
-                .tagChild(MUI::GroupBuilder()
-                              .tagFrame(MUI::Frame::Group)
-                              .tagFrameTitle("Timeline")
-                              .tagColumns(4)
-                              .tagChild(LabelText(MUIX_R "Introduction Year"))
-                              .tagChild(mIntroductionYearText)
-                              .tagChild(LabelText(MUIX_R "Discontinued Year"))
-                              .tagChild(mDiscontinuedYearText)
-                              .object())
-                .tagChild(MUI::GroupBuilder()
-                              .tagFrame(MUI::Frame::Group)
-                              .tagFrameTitle("Hardware Specifications")
-                              .tagColumns(4)
-                              .tagChild(LabelText(MUIX_R "Processor Socket"))
-                              .tagChild(mProcessorSocketText)
-                              .tagChild(LabelText(MUIX_R "Firmware Type"))
-                              .tagChild(mFirmwareTypeText)
-                              .tagChild(LabelText(MUIX_R "Storage Dimensions"))
-                              .tagChild(mStorageDimensionsText)
-                              .tagChild(LabelText(MUIX_R "Storage Interface"))
-                              .tagChild(mStorageInterfaceText)
-                              .object())
-                .tagChild(MUI::MakeObject::HVSpace())
-                .object())
+      , mPortsGroup(MUI::GroupBuilder().tagFrame(MUI::Frame::Group).tagFrameTitle("Ports").tagColumns(6).object())
+      , mComponent(MUI::GroupBuilder()
+                       .vertical()
+                       .tagChild(MUI::MakeObject::HVSpace())
+                       .tagChild(MUI::GroupBuilder()
+                                     .tagFrame(MUI::Frame::Group)
+                                     .tagFrameTitle("System Information")
+                                     .tagColumns(4)
+                                     .tagChild(LabelText(MUIX_R "Vendor"))
+                                     .tagChild(mVendorText)
+                                     .tagChild(LabelText(MUIX_R "Name"))
+                                     .tagChild(mSystemText)
+                                     .tagChild(LabelText(MUIX_R "Full Name"))
+                                     .tagChild(mFullNameText)
+                                     .tagChild(LabelText(MUIX_R "Model Number"))
+                                     .tagChild(mModelNumberText)
+                                     .tagChild(LabelText(MUIX_R "Timeline"))
+                                     .tagChild(mTimelineText)
+                                     .object())
+                       .tagChild(MUI::GroupBuilder()
+                                     .tagFrame(MUI::Frame::Group)
+                                     .tagFrameTitle("Hardware Specifications")
+                                     .tagColumns(4)
+                                     .tagChild(LabelText(MUIX_R "Processor Socket"))
+                                     .tagChild(mProcessorSocketText)
+                                     .tagChild(LabelText(MUIX_R "Firmware Type"))
+                                     .tagChild(mFirmwareTypeText)
+                                     .tagChild(LabelText(MUIX_R "Storage Dimensions"))
+                                     .tagChild(mStorageDimensionsText)
+                                     .tagChild(LabelText(MUIX_R "Storage Interface"))
+                                     .tagChild(mStorageInterfaceText)
+                                     .object())
+                       .tagChild(mPortsGroup)
+                       .tagChild(MUI::MakeObject::HVSpace())
+                       .object())
     {
         mVendorText.setContents(AOS::Exec::Library::libNewGetSystemAttrsAsString(AOS::Exec::SYSTEMINFOTYPE::VENDOR));
         mSystemText.setContents(AOS::Exec::Library::libNewGetSystemAttrsAsString(AOS::Exec::SYSTEMINFOTYPE::SYSTEM));
@@ -77,11 +69,15 @@ namespace Components
         mFullNameText.setContents(spec.marketingName);
         if (spec.modelNumber.has_value())
             mModelNumberText.setContents(spec.modelNumber.value());
-        mIntroductionYearText.setContents(std::to_string(spec.introductionYear));
-        mDiscontinuedYearText.setContents(std::to_string(spec.discontinuedYear));
+        mTimelineText.setContents(std::to_string(spec.introductionYear) + " - " + std::to_string(spec.discontinuedYear));
         mProcessorSocketText.setContents(spec.cpuSocket);
         mStorageDimensionsText.setContents(spec.storageDimensions);
         mStorageInterfaceText.setContents(spec.storageInterface);
         mFirmwareTypeText.setContents(spec.firmwareType);
+        for (const auto &port : spec.ports)
+        {
+            mPortsGroup.AddTail(LabelText(std::string(MUIX_R) + port.type));
+            mPortsGroup.AddTail(ValueText(port.type).setContents(" x" + std::to_string(port.count)));
+        }
     }
 }
