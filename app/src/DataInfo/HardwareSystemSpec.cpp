@@ -11,11 +11,27 @@
 // https://everymac.com
 // https://en.wikipedia.org/wiki/Mac_Mini
 // https://en.wikipedia.org/wiki/IBook#iBook_G4
-//
+// https://en.wikipedia.org/wiki/Power_Mac_G4
 
 namespace DataInfo
 {
     const std::map<std::string, HardwareSystemSpec> hardwareSystem2spec {
+        {
+            "PowerMac3,1",
+            {
+                "M5183",
+                "Apple Power Mac G4",
+                1999,
+                2000,
+                "custom 300-pin daughtercard",
+                "2.5\"",
+                "Ultra ATA/100",
+                "Open Firmware",
+                { "PC100 SDRAM", "333 MHz", 2048, 4 },
+                { { "USB 1.1", 2 }, { "FireWire 400", 3 } },
+                std::nullopt,
+            },
+        },
         {
             "PowerMac10,1",
             {
