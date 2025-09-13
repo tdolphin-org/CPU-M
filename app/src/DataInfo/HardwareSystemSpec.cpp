@@ -31,6 +31,8 @@ namespace DataInfo
                 { { "USB 1.1", 2 }, { "S/PDIF", 1 }, { "Ethernet 10/100 Mbps", 1 }, { "Audio In/Out", 1 }, { "RS-232", 1 } },
                 "Memory is soldered to the motherboard",
             },
+        },
+        {
             "PowerMac3,1",
             {
                 "M5183",

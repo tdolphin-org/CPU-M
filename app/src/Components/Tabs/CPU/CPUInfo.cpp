@@ -121,7 +121,7 @@ namespace Components
                                      .horizontal()
                                      .tagChild(MUI::GroupBuilder()
                                                    .tagFrame(MUI::Frame::Group)
-                                                   .tagFrameTitle("Clocks (CPU #" + std::to_string(cpuInfo.index) + ")")
+                                                   .tagFrameTitle("Clocks")
                                                    .tagColumns(4)
                                                    .tagChild(LabelText(MUIX_R "Core Speed"))
                                                    .tagChild(mCPUClockText)
