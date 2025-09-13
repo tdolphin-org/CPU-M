@@ -18,13 +18,10 @@ namespace Components
     {
         MUI::Text mVendorText;
         MUI::Text mSystemText;
-        MUI::Text mFullNameText;
-        MUI::Text mRevisionText;
-        MUI::Text mIntroductionDateText;
-        MUI::Text mDiscontinuedDateText;
-        MUI::Text mProcessorUpgradeText;
-        MUI::Text mProcessorUpgradeDetailsText;
-        MUI::Text mBatteryTypeText;
+        MUI::Text mFullNameText; // marketing name
+        MUI::Text mIntroductionYearText;
+        MUI::Text mDiscontinuedYearText;
+        MUI::Text mProcessorSocketText;
         MUI::Text mStorageDimensionsText;
         MUI::Text mStorageInterfaceText;
         MUI::Text mFirmwareTypeText;
