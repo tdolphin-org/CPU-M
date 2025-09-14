@@ -13,7 +13,7 @@
 
 namespace Label
 {
-    const char *CPUTab = "CPU/FPU";
+    const char *CPUTab = "CPU";
     const char *MainboardTab = "Mainboard";
     const char *MemoryTab = "Memory";
     const char *GraphicsTab = "Graphics";

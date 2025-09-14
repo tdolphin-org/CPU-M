@@ -69,7 +69,8 @@ namespace Components
         mFullNameText.setContents(spec.marketingName);
         if (spec.modelNumber.has_value())
             mModelNumberText.setContents(spec.modelNumber.value());
-        mTimelineText.setContents(std::to_string(spec.introductionYear) + " - " + std::to_string(spec.discontinuedYear));
+        mTimelineText.setContents(std::to_string(spec.introductionYear)
+                                  + (spec.discontinuedYear.has_value() ? " - " + std::to_string(spec.discontinuedYear.value()) : ""));
         mProcessorSocketText.setContents(spec.cpuSocket);
         mStorageDimensionsText.setContents(spec.storageDimensions);
         mStorageInterfaceText.setContents(spec.storageInterface);
