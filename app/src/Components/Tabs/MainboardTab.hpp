@@ -25,6 +25,7 @@ namespace Components
         MUI::Text mFirmwareTypeText;
         MUI::Text mStorageDimensionsText;
         MUI::Text mStorageInterfaceText;
+        MUI::Text mNoteText;
         MUI::Group mPortsGroup;
 
         MUI::Group mComponent;
