@@ -32,14 +32,15 @@ namespace DataInfo
         std::optional<std::string> modelNumber; // A1103
         std::string marketingName; // Apple Mac mini G4
         unsigned int introductionYear; // 2005
-        unsigned int discontinuedYear; // 2005
+        std::optional<unsigned int> discontinuedYear; // 2005
         std::string cpuSocket; // Soldered
         std::string storageDimensions; // 2.5"
         std::string storageInterface; // Ultra ATA/100
         std::string firmwareType; // Open Firmware
         std::vector<RAMSpec> RAM; // options for RAM, for different models
         std::vector<PortSpec> ports;
-        std::optional<std::string> notes; // any additional notes
+        std::optional<std::string> ramNotes; // any additional notes about RAM
+        std::optional<std::string> notes; // any additional notes about system
     };
 
     extern const std::map<std::string, HardwareSystemSpec> hardwareSystem2spec;
