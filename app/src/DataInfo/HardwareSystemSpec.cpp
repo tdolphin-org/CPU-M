@@ -7,17 +7,66 @@
 #include "HardwareSystemSpec.hpp"
 
 // sources:
+// Pegasos book
+// Efika book
 // https://support.apple.com
-// https://everymac.com
 // https://en.wikipedia.org/wiki/Mac_Mini
 // https://en.wikipedia.org/wiki/IBook#iBook_G4
 // https://en.wikipedia.org/wiki/Power_Mac_G4
+// https://en.wikipedia.org/wiki/Genesi_Pegasos
 
 namespace DataInfo
 {
     const std::map<std::string, HardwareSystemSpec> hardwareSystem2spec {
         {
-            "Efika5200B",
+            "bplan,Pegasos",
+            {
+                std::nullopt,
+                "Genesi Pegasos",
+                2003,
+                2003,
+                "CPU card",
+                "3.5\"",
+                "IDE ATA 100",
+                "Smart Firmware",
+                { { "PC133 SDRAM DIMM", "133 MHz", 2048, 2 } },
+                { { "USB 1.1", 3 },
+                  { "FireWire 400", 3 },
+                  { "Ethernet 10/100 Mbps", 1 },
+                  { "Audio In/Out", 1 },
+                  { "Serial/RS232", 1 },
+                  { "PS/2 keyboard", 1 },
+                  { "PS/2 mouse", 1 },
+                  { "Parallel", 1 } },
+                "Northbridge: Mai Logic Articia S",
+            },
+        },
+        {
+            "bplan,Pegasos2",
+            {
+                std::nullopt,
+                "Genesi Pegasos 2",
+                2003,
+                2006,
+                "CPU card",
+                "3.5\"",
+                "IDE ATA 100",
+                "Smart Firmware",
+                { { "PC2100 DDR SDRAM", "133 MHz", 8192, 2 } },
+                { { "USB 1.1", 3 },
+                  { "FireWire 400", 3 },
+                  { "Ethernet 10/100 Mbps", 1 },
+                  { "Ethernet 1000 Mbps", 1 },
+                  { "Audio In/Out", 1 },
+                  { "Serial/RS232", 1 },
+                  { "PS/2 keyboard", 1 },
+                  { "PS/2 mouse", 1 },
+                  { "Parallel", 1 } },
+                "Northbridge: Marvell Discovery II MV64361",
+            },
+        },
+        {
+            "bplan,EFIKA5K2",
             {
                 std::nullopt,
                 "Genesi Efika 5200B",
@@ -27,7 +76,7 @@ namespace DataInfo
                 "2.5\"",
                 "PATA",
                 "Smart Firmware",
-                { "DDR SDRAM", "266 MHz", 128, 0 },
+                { { "DDR SDRAM", "266 MHz", 128, 0 } },
                 { { "USB 1.1", 2 }, { "S/PDIF", 1 }, { "Ethernet 10/100 Mbps", 1 }, { "Audio In/Out", 1 }, { "RS-232", 1 } },
                 "Memory is soldered to the motherboard",
             },
@@ -43,7 +92,7 @@ namespace DataInfo
                 "3.5\"",
                 "Ultra ATA/66",
                 "Open Firmware",
-                { "PC100 SDRAM", "333 MHz", 2048, 4 },
+                { { "PC100 SDRAM", "333 MHz", 2048, 4 } },
                 { { "USB 1.1", 2 }, { "FireWire 400", 3 }, { "Ethernet 10/100 Mbps", 1 } },
                 std::nullopt,
             },
@@ -59,7 +108,7 @@ namespace DataInfo
                 "2.5\"",
                 "Ultra ATA/100",
                 "Open Firmware",
-                { "PC2700 DDR SDRAM", "333 MHz", 1024, 1 },
+                { { "PC2700 DDR SDRAM", "333 MHz", 1024, 1 } },
                 { { "USB 2.0", 2 }, { "FireWire 400", 1 }, { "Ethernet 10/100 Mbps", 1 } },
                 std::nullopt,
             },
@@ -75,7 +124,7 @@ namespace DataInfo
                 "2.5\"",
                 "Ultra ATA/100",
                 "Open Firmware",
-                { "PC2700 DDR SDRAM", "333 MHz", 1024, 1 },
+                { { "PC2700 DDR SDRAM", "333 MHz", 1024, 1 } },
                 { { "USB 2.0", 2 }, { "FireWire 400", 1 }, { "Ethernet 10/100 Mbps", 1 } },
                 std::nullopt,
             },
@@ -91,9 +140,57 @@ namespace DataInfo
                 "2.5\"",
                 "Ultra ATA/100",
                 "Open Firmware",
-                { "PC2700 DDR SDRAM", "333 MHz", 1536, 1 }, // 1.5 GB RAM max, 1 slot
+                { { "PC2700 DDR SDRAM", "333 MHz", 1536, 1 } }, // 1.5 GB RAM max, 1 slot
                 { { "USB 2.0", 2 }, { "FireWire 400", 1 }, { "Ethernet 10/100 Mbps", 1 } },
                 "512 MB of 333 MHz PC2700 DDR SDRAM (soldered to logic board)",
+            },
+        },
+        {
+            "PowerMac7,3",
+            {
+                "A1047",
+                "Apple Power Macintosch G5",
+                2004,
+                2005,
+                "G5 Daughtercard",
+                "3.5\"",
+                "Serial ATA",
+                "Open Firmware",
+                { { "PC3200 DDR", "400 MHz", 4096, 4 }, { "PC3200 DDR", "400 MHz", 8192, 8 } }, // 4 or 8 GB max, 4 or 8 slots
+                { { "USB 2.0", 3 }, { "FireWire 400", 2 }, { "FireWire 800", 1 }, { "Ethernet 10/100/1000 Mbps", 1 } },
+                std::nullopt,
+            },
+        },
+        {
+            "PowerMac5,1",
+            {
+                "M7886",
+                "Apple Power Macintosh G4 Cube",
+                2000,
+                2001,
+                "G4 Daughtercard",
+                "3.5\"",
+                "Ultra ATA/66",
+                "Open Firmware",
+                { { "PC100 SDRAM", "100 MHz", 1536, 3 } },
+                { { "USB 1.1", 2 }, { "FireWire 400", 2 }, { "Ethernet 10/100 Mbps", 1 } },
+                std::nullopt,
+            },
+        },
+        {
+            "PowerMac7,3",
+            {
+                "A1144 or A1145",
+                "Apple iMac G5 17\" or 20\") (iSight)",
+                2005,
+                2006,
+                "Soldered",
+                "3.5\"",
+                "Serial ATA",
+                "Open Firmware",
+                { { "PC2-4200 DDR2", "533 MHz", 4608, 1 } },
+                { { "USB 2.0", 3 }, { "FireWire 400", 2 }, { "Ethernet 10/100/1000 Mbps", 1 } },
+                "512 MB of 533 MHz DDR2 SDRAM (soldered to logic board)",
             },
         },
     };

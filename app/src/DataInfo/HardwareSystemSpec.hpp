@@ -37,7 +37,7 @@ namespace DataInfo
         std::string storageDimensions; // 2.5"
         std::string storageInterface; // Ultra ATA/100
         std::string firmwareType; // Open Firmware
-        RAMSpec RAM;
+        std::vector<RAMSpec> RAM; // options for RAM, for different models
         std::vector<PortSpec> ports;
         std::optional<std::string> notes; // any additional notes
     };
