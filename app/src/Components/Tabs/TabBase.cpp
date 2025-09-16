@@ -8,12 +8,12 @@
 
 namespace Components
 {
-    MUI::Text TabBase::LabelText(const std::string &label)
+    MUI::Text TabBase::LabelText(const std::string &label, const short weight)
     {
-        return MUI::TextBuilder().tagContents(label).tagFrame(MUI::Frame::String).tagPhantomHoriz(true).tagWeight(0).object();
+        return MUI::TextBuilder().tagContents(label).tagFrame(MUI::Frame::String).tagPhantomHoriz(true).tagWeight(weight).object();
     }
 
-    MUI::Text TabBase::ValueText(const std::string &help, const std::string &defaultValue, bool shorten)
+    MUI::Text TabBase::ValueText(const std::string &help, const std::string &defaultValue, const bool shorten, const short weight)
     {
         return MUI::TextBuilder()
             .tagFrame(MUI::Frame::String)
@@ -21,6 +21,7 @@ namespace Components
             .tagShortHelp(help)
             .tagShorten(shorten ? MUI::Text_Shorten::Cutoff : MUI::Text_Shorten::Nothing)
             .tagSetMin(!shorten)
+            .tagWeight(weight)
             .object();
     }
 }
