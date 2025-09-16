@@ -20,8 +20,8 @@ namespace Components
       , mTimelineText(ValueText("Timeline, years range, e.g. 2006-2009"))
       , mProcessorSocketText(ValueText("Processor Socket, type or description"))
       , mFirmwareTypeText(ValueText("Firmware Type, e.g. Open Firmware, U-Boot"))
-      , mStorageInterfacesText(ValueText("Storage Interfaces if applicable, e.g. SATA"))
-      , mPortsGroup(MUI::GroupBuilder().tagFrame(MUI::Frame::Group).tagFrameTitle("Ports").tagColumns(6).object())
+      , mStorageInterfacesText(ValueText("Storage Interfaces if applicable, e.g. SATA", "--", true, 250))
+      , mPortsGroup(MUI::FloattextBuilder().object())
       , mNoteText(ValueText("Additional Notes regarding this mainboard or system"))
       , mComponent(
             MUI::GroupBuilder()
@@ -42,20 +42,25 @@ namespace Components
                               .tagChild(LabelText(MUIX_R "Timeline"))
                               .tagChild(mTimelineText)
                               .object())
-                .tagChild(MUI::GroupBuilder()
-                              .tagFrame(MUI::Frame::Group)
-                              .tagFrameTitle("Hardware Specifications")
-                              .tagColumns(4)
-                              .tagChild(LabelText(MUIX_R "Processor Socket"))
-                              .tagChild(mProcessorSocketText)
-                              .tagChild(LabelText(MUIX_R "Firmware Type"))
-                              .tagChild(mFirmwareTypeText)
-                              .tagChild(LabelText(MUIX_R "Storage Interfaces"))
-                              .tagChild(mStorageInterfacesText)
-                              .tagChild(MUI::MakeObject::HVSpace())
-                              .tagChild(MUI::MakeObject::HVSpace())
-                              .object())
-                .tagChild(mPortsGroup)
+                .tagChild(
+                    MUI::GroupBuilder()
+                        .tagFrame(MUI::Frame::Group)
+                        .tagFrameTitle("Hardware Specifications")
+                        .vertical()
+                        .tagChild(MUI::GroupBuilder()
+                                      .horizontal()
+                                      .tagChild(LabelText(MUIX_R "Processor Socket", 50))
+                                      .tagChild(mProcessorSocketText)
+                                      .tagChild(LabelText(MUIX_R "Firmware Type", 50))
+                                      .tagChild(mFirmwareTypeText)
+                                      .object())
+                        .tagChild(MUI::GroupBuilder()
+                                      .horizontal()
+                                      .tagChild(LabelText(MUIX_R "Storage Interfaces", 50))
+                                      .tagChild(mStorageInterfacesText)
+                                      .object())
+                        .tagChild(MUI::GroupBuilder().tagFrame(MUI::Frame::Group).tagFrameTitle("Ports").tagChild(mPortsGroup).object())
+                        .object())
                 .tagChild(MUI::GroupBuilder().tagFrame(MUI::Frame::Group).tagFrameTitle("Additional Notes").tagChild(mNoteText).object())
                 .tagChild(MUI::MakeObject::HVSpace())
                 .object())
@@ -78,10 +83,7 @@ namespace Components
         mStorageInterfacesText.setContents(ToString::Concatenate(spec.storageInterfaces, ", "));
         mFirmwareTypeText.setContents(spec.firmwareType);
         for (const auto &port : spec.ports)
-        {
-            mPortsGroup.AddTail(LabelText(std::string(MUIX_R) + port.type));
-            mPortsGroup.AddTail(ValueText(port.type).setContents(" x" + std::to_string(port.count)));
-        }
+            mPortsGroup.Append(port.type + " (x" + std::to_string(port.count) + "); ");
         if (spec.notes.has_value())
             mNoteText.setContents(spec.notes.value());
     }

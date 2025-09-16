@@ -9,6 +9,7 @@
 #include "Components/Core/Root.hpp"
 #include "TabBase.hpp"
 
+#include "MUI/Floattext.hpp"
 #include "MUI/Group.hpp"
 #include "MUI/Text.hpp"
 
@@ -24,7 +25,7 @@ namespace Components
         MUI::Text mProcessorSocketText;
         MUI::Text mFirmwareTypeText;
         MUI::Text mStorageInterfacesText;
-        MUI::Group mPortsGroup;
+        MUI::Floattext mPortsGroup;
         MUI::Text mNoteText;
 
         MUI::Group mComponent;
