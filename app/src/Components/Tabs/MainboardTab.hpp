@@ -23,8 +23,7 @@ namespace Components
         MUI::Text mTimelineText; // years range (from intoduction to discontinued)
         MUI::Text mProcessorSocketText;
         MUI::Text mFirmwareTypeText;
-        MUI::Text mStorageDimensionsText;
-        MUI::Text mStorageInterfaceText;
+        MUI::Text mStorageInterfacesText;
         MUI::Group mPortsGroup;
         MUI::Text mNoteText;
 

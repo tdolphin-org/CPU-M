@@ -20,8 +20,7 @@ namespace Components
       , mTimelineText(ValueText("Timeline, years range, e.g. 2006-2009"))
       , mProcessorSocketText(ValueText("Processor Socket, type or description"))
       , mFirmwareTypeText(ValueText("Firmware Type, e.g. Open Firmware, U-Boot"))
-      , mStorageDimensionsText(ValueText("Storage Dimensions if applicable, e.g. 2.5\""))
-      , mStorageInterfaceText(ValueText("Storage Interface if applicable, e.g. SATA"))
+      , mStorageInterfacesText(ValueText("Storage Interfaces if applicable, e.g. SATA"))
       , mPortsGroup(MUI::GroupBuilder().tagFrame(MUI::Frame::Group).tagFrameTitle("Ports").tagColumns(6).object())
       , mNoteText(ValueText("Additional Notes regarding this mainboard or system"))
       , mComponent(
@@ -51,10 +50,10 @@ namespace Components
                               .tagChild(mProcessorSocketText)
                               .tagChild(LabelText(MUIX_R "Firmware Type"))
                               .tagChild(mFirmwareTypeText)
-                              .tagChild(LabelText(MUIX_R "Storage Dimensions"))
-                              .tagChild(mStorageDimensionsText)
-                              .tagChild(LabelText(MUIX_R "Storage Interface"))
-                              .tagChild(mStorageInterfaceText)
+                              .tagChild(LabelText(MUIX_R "Storage Interfaces"))
+                              .tagChild(mStorageInterfacesText)
+                              .tagChild(MUI::MakeObject::HVSpace())
+                              .tagChild(MUI::MakeObject::HVSpace())
                               .object())
                 .tagChild(mPortsGroup)
                 .tagChild(MUI::GroupBuilder().tagFrame(MUI::Frame::Group).tagFrameTitle("Additional Notes").tagChild(mNoteText).object())
@@ -75,8 +74,8 @@ namespace Components
         mTimelineText.setContents(std::to_string(spec.introductionYear)
                                   + (spec.discontinuedYear.has_value() ? " - " + std::to_string(spec.discontinuedYear.value()) : ""));
         mProcessorSocketText.setContents(spec.cpuSocket);
-        mStorageDimensionsText.setContents(spec.storageDimensions);
-        mStorageInterfaceText.setContents(spec.storageInterface);
+
+        mStorageInterfacesText.setContents(ToString::Concatenate(spec.storageInterfaces, ", "));
         mFirmwareTypeText.setContents(spec.firmwareType);
         for (const auto &port : spec.ports)
         {
