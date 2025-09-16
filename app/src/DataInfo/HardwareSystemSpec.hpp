@@ -34,8 +34,7 @@ namespace DataInfo
         unsigned int introductionYear; // 2005
         std::optional<unsigned int> discontinuedYear; // 2005
         std::string cpuSocket; // Soldered
-        std::string storageDimensions; // 2.5"
-        std::string storageInterface; // Ultra ATA/100
+        std::vector<std::string> storageInterfaces; // Ultra ATA/100 2.5", SATA 3.0, SD Card, MicroSD
         std::string firmwareType; // Open Firmware
         std::vector<RAMSpec> RAM; // options for RAM, for different models
         std::vector<PortSpec> ports;
