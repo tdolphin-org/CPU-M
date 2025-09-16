@@ -65,7 +65,7 @@ namespace Components
                       .object())
       , mCPUClockText(ValueText("CPU clock", ToString::FromClockHertzValue(cpuInfo.clock, true)))
       , mCPUMultiplerText(ValueText("Multiplier", CPUInfo::CalculateMultiplier(cpuInfo.clock, cpuInfo.busClock)))
-      , mCPUBusSpeedText(ValueText("Bus Speed", cpuInfo.busClock > 0 ? ToString::FromClockHertzValue(cpuInfo.busClock, true) : "--"))
+      , mCPUBusSpeedText(ValueText("Bus Speed", cpuInfo.busClock > 0 ? ToString::FromClockHertzValue(cpuInfo.busClock, true, true) : "--"))
       , mCPUL1InstructionCacheText(ValueText("Level 1 Instructions Cache size",
                                              cpuInfo.l1InstructionCache > 0 ? ToString::FromBytesValue(cpuInfo.l1InstructionCache) : "--"))
       , mCPUL1DataCacheText(
