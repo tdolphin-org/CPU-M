@@ -17,7 +17,7 @@ namespace Label
     const char *MainboardTab = "Mainboard";
     const char *MemoryTab = "Memory";
     const char *GraphicsTab = "Graphics";
-    const char *ExpansionsTab = "Expansions";
+    const char *BoardsTab = "Boards";
     const char *OperatingSystemTab = "OS";
     const char *BenchTab = "Bench";
     const char *AboutTab = "About";

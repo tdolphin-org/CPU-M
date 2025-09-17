@@ -127,7 +127,7 @@ namespace DataInfo
             "Mirari",
             {
                 std::nullopt,
-                "Harald (Geennaam) Mirari",
+                "Harald's Mirari",
                 2017,
                 2021,
                 "Soldered",
