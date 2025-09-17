@@ -14,6 +14,7 @@ namespace Components
       : mComponent({
             { Label::CPUTab, mCPUTab },
             { Label::MainboardTab, mMainboardTab },
+            { Label::MemoryTab, mMemoryTab },
             { Label::OperatingSystemTab, mOSTab },
             { Label::AboutTab, mAboutTab },
         })
