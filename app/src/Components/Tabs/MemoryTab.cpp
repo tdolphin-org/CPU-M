@@ -10,13 +10,20 @@
 #include "Core/ToString.hpp"
 #include "DataInfo/HardwareSystemSpec.hpp"
 #include "MUI/Core/MakeObject.hpp"
+#include "Memory/MemorySlotsInfo.hpp"
 
 namespace Components
 {
     MemoryTab::MemoryTab()
       : mTotalSystemMemoryText(ValueText("Total System Memory"))
-      , mRAMSpecText(ValueText("Mainboard RAM specification, can be multiple types if mainboard has multiple models"))
-      , mRAMNoteText(ValueText("Additional Notes regarding Mainboard RAM"))
+      , mRAMSpecGroup(MUI::GroupBuilder()
+                          .vertical()
+                          .tagFrame(MUI::Frame::Group)
+                          .tagFrameTitle("Mainboard RAM")
+                          .tagChild(MUI::MakeObject::CLabel(
+                              "Mainboard RAM specification. Can be multiple types if system/mainboard has multiple models."))
+                          .tagChild(MUI::MakeObject::HBar(0))
+                          .object())
       , mComponent(MUI::GroupBuilder()
                        .vertical()
                        .tagChild(MUI::MakeObject::HVSpace())
@@ -27,15 +34,7 @@ namespace Components
                                      .tagChild(LabelText(MUIX_R "Total Size"))
                                      .tagChild(mTotalSystemMemoryText)
                                      .object())
-                       .tagChild(MUI::GroupBuilder()
-                                     .tagFrame(MUI::Frame::Group)
-                                     .tagFrameTitle("Mainboard RAM")
-                                     .tagColumns(2)
-                                     .tagChild(LabelText(MUIX_R "Specification"))
-                                     .tagChild(mRAMSpecText)
-                                     .tagChild(LabelText(MUIX_R "Additional Notes"))
-                                     .tagChild(mRAMNoteText)
-                                     .object())
+                       .tagChild(mRAMSpecGroup)
                        .tagChild(MUI::MakeObject::HVSpace())
                        .object())
     {
@@ -47,22 +46,30 @@ namespace Components
         if (hardwareSpec == DataInfo::hardwareSystem2spec.end())
             return;
         const auto &spec = hardwareSpec->second;
-        if (!spec.RAM.empty())
+        bool first = true;
+        for (const auto &ramType : spec.RAM)
         {
-            auto content = ToString::Concatenate(
-                [&]() -> std::vector<std::string> {
-                    std::vector<std::string> lines;
-                    for (const auto &ramType : spec.RAM)
-                        lines.push_back(ramType.type + " " + ramType.speed + ", up to " + std::to_string(ramType.max) + " MB in "
-                                        + std::to_string(ramType.slots) + " slot(s)");
-                    return lines;
-                }(),
-                "\nor\n");
-
-            mRAMSpecText.setContents(content);
+            if (!first)
+                mRAMSpecGroup.AddTail(MUI::MakeObject::FreeCLabel1("or"));
+            mRAMSpecGroup.AddTail(MemorySlotsInfo(ramType).muiObject());
+            first = false;
         }
 
-        if (spec.ramNotes.has_value())
-            mRAMNoteText.setContents(spec.ramNotes.value());
+        if (spec.maxRAMSize.has_value())
+        {
+            mRAMSpecGroup.AddTail(MUI::MakeObject::HBar(0));
+            mRAMSpecGroup.AddTail(MUI::MakeObject::FreeCLabel1(std::to_string(spec.maxRAMSize.value())
+                                                               + " MB maximum RAM size supported in all slots with soldered RAM"));
+        }
+
+        if (spec.ramNotes.has_value()) // Additional Notes regarding Mainboard RAM
+        {
+            mRAMSpecGroup.AddTail(MUI::MakeObject::HBar(0));
+            mRAMSpecGroup.AddTail(MUI::TextBuilder()
+                                      .tagFrame(MUI::Frame::String)
+                                      .tagHelpNode("Add Notes regarding Mainboard RAM")
+                                      .tagContents(spec.ramNotes.value())
+                                      .object());
+        }
     }
 }

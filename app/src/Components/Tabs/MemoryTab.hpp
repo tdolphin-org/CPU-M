@@ -17,8 +17,7 @@ namespace Components
     class MemoryTab : public Root<MUI::Group>, public TabBase
     {
         MUI::Text mTotalSystemMemoryText;
-        MUI::Text mRAMSpecText;
-        MUI::Text mRAMNoteText;
+        MUI::Group mRAMSpecGroup;
 
         MUI::Group mComponent;
 
