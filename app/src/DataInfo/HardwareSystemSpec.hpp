@@ -16,8 +16,8 @@ namespace DataInfo
     struct RAMSpec
     {
         std::string type; // PC2700 DDR SDRAM
-        std::string speed; // 333 MHz
-        unsigned int max; // 1024 (MB)
+        std::string clock; // 333 MHz
+        unsigned int max; // 1024 (MB) max RAM size supported with this type in all slots
         unsigned int slots; // 1
     };
 
@@ -37,9 +37,11 @@ namespace DataInfo
         std::vector<std::string> storageInterfaces; // Ultra ATA/100 2.5", SATA 3.0, SD Card, MicroSD
         std::string firmwareType; // Open Firmware
         std::vector<RAMSpec> RAM; // options for RAM, for different models
+        std::optional<unsigned int> maxRAMSize; // maximum RAM size supported (summary in all slots and soldered, MB), set if any RAM
+                                                // soldered to mainboard and slots available
         std::vector<PortSpec> ports;
-        std::optional<std::string> ramNotes; // any additional notes about RAM
-        std::optional<std::string> notes; // any additional notes about system
+        std::optional<std::string> ramNotes; // additional notes regarding mainboard RAM
+        std::optional<std::string> notes; // additional notes about system
     };
 
     extern const std::map<std::string, HardwareSystemSpec> hardwareSystem2spec;
