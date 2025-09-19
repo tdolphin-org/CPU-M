@@ -13,12 +13,19 @@
 
 namespace DataInfo
 {
-    struct RAMSpec
+    struct SlotRAMSpec
     {
         std::string type; // PC2700 DDR SDRAM
         std::string clock; // 333 MHz
         unsigned int max; // 1024 (MB) max RAM size supported with this type in all slots
         unsigned int slots; // 1
+    };
+
+    struct SolderedRAMSpec
+    {
+        std::string type; // PC2700 DDR SDRAM
+        std::string clock; // 333 MHz
+        unsigned int size; // 256 (MB) size of soldered RAM
     };
 
     struct PortSpec
@@ -36,9 +43,8 @@ namespace DataInfo
         std::string cpuSocket; // Soldered
         std::vector<std::string> storageInterfaces; // Ultra ATA/100 2.5", SATA 3.0, SD Card, MicroSD
         std::string firmwareType; // Open Firmware
-        std::vector<RAMSpec> RAM; // options for RAM, for different models
-        std::optional<unsigned int> maxRAMSize; // maximum RAM size supported (summary in all slots and soldered, MB), set if any RAM
-                                                // soldered to mainboard and slots available
+        std::optional<SolderedRAMSpec> solderedRAM; // if any RAM soldered to mainboard
+        std::vector<SlotRAMSpec> RAM; // options for RAM, for different models
         std::vector<PortSpec> ports;
         std::optional<std::string> ramNotes; // additional notes regarding mainboard RAM
         std::optional<std::string> notes; // additional notes about system
