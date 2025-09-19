@@ -11,19 +11,13 @@
 #include "DataInfo/HardwareSystemSpec.hpp"
 #include "MUI/Core/MakeObject.hpp"
 #include "Memory/MemorySlotsInfo.hpp"
+#include "Memory/SolderedMemoryInfo.hpp"
 
 namespace Components
 {
     MemoryTab::MemoryTab()
       : mTotalSystemMemoryText(ValueText("Total System Memory"))
-      , mRAMSpecGroup(MUI::GroupBuilder()
-                          .vertical()
-                          .tagFrame(MUI::Frame::Group)
-                          .tagFrameTitle("Mainboard RAM")
-                          .tagChild(MUI::MakeObject::CLabel(
-                              "Mainboard RAM specification. Can be multiple types if system/mainboard has multiple models."))
-                          .tagChild(MUI::MakeObject::HBar(0))
-                          .object())
+      , mRAMSpecGroup(MUI::GroupBuilder().vertical().tagFrame(MUI::Frame::Group).tagFrameTitle("Mainboard RAM").object())
       , mComponent(MUI::GroupBuilder()
                        .vertical()
                        .tagChild(MUI::MakeObject::HVSpace())
@@ -46,20 +40,37 @@ namespace Components
         if (hardwareSpec == DataInfo::hardwareSystem2spec.end())
             return;
         const auto &spec = hardwareSpec->second;
+
+        if (spec.solderedRAM.has_value())
+        {
+            mRAMSpecGroup.AddTail(SolderedMemoryInfo(spec.solderedRAM.value()).muiObject());
+            mRAMSpecGroup.AddTail(MUI::MakeObject::HBar(0));
+        }
+
+        if (!spec.RAM.empty()) // any RAM slots
+        {
+            mRAMSpecGroup
+                .AddTail(MUI::MakeObject::CLabel(MUIX_B "Mainboard RAM (slots) specification.\n" MUIX_N
+                                                         "Can be multiple types if system/mainboard has multiple models."))
+                .AddTail(MUI::MakeObject::HBar(0));
+        }
+
         bool first = true;
+        std::vector<std::string> totalPossibleRAM;
         for (const auto &ramType : spec.RAM)
         {
             if (!first)
                 mRAMSpecGroup.AddTail(MUI::MakeObject::FreeCLabel1("or"));
             mRAMSpecGroup.AddTail(MemorySlotsInfo(ramType).muiObject());
+            totalPossibleRAM.push_back(std::to_string(ramType.max + (spec.solderedRAM.has_value() ? spec.solderedRAM->size : 0)));
             first = false;
         }
 
-        if (spec.maxRAMSize.has_value())
+        if (spec.solderedRAM.has_value())
         {
             mRAMSpecGroup.AddTail(MUI::MakeObject::HBar(0));
-            mRAMSpecGroup.AddTail(MUI::MakeObject::FreeCLabel1(std::to_string(spec.maxRAMSize.value())
-                                                               + " MB maximum RAM size supported in all slots with soldered RAM"));
+            mRAMSpecGroup.AddTail(MUI::MakeObject::FreeCLabel1(ToString::Concatenate(totalPossibleRAM, " or ")
+                                                               + " MB maximum RAM size supported with soldered RAM"));
         }
 
         if (spec.ramNotes.has_value()) // Additional Notes regarding Mainboard RAM
