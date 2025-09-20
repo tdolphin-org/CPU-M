@@ -8,6 +8,7 @@
 
 #include "Core/Singleton.hpp"
 #include "MUI/Window.hpp"
+#include "Windows/GfxChipSpecWindow.hpp"
 
 #include <vector>
 
@@ -16,6 +17,8 @@ class WindowManagerCore
 {
     friend class td::Singleton<WindowManagerCore>;
 
+    Components::GfxChipSpecWindow mGfxChipSpecWindow;
+
     std::vector<MUI::Window> mAllWindows;
 
     WindowManagerCore();
@@ -23,6 +26,11 @@ class WindowManagerCore
 
   public:
     const std::vector<MUI::Window> &getAllWindows() const;
+
+    Components::GfxChipSpecWindow &getGfxChipSpecWindow()
+    {
+        return mGfxChipSpecWindow;
+    }
 };
 
 /// @brief main Window Manager (singleton) object
