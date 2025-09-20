@@ -8,7 +8,7 @@
 
 #include "Core/Singleton.hpp"
 #include "MUI/Window.hpp"
-#include "Windows/GfxChipSpecWindow.hpp"
+#include "Components/Windows/GfxChipSpecWindow.hpp"
 
 #include <vector>
 
