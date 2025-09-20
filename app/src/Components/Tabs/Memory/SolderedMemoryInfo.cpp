@@ -16,7 +16,7 @@ namespace Components
       , mRAMSizeText(ValueText("Soldered RAM size"))
       , mComponent(MUI::GroupBuilder()
                        .vertical()
-                       .tagChild(MUI::MakeObject::CLabel(MUIX_B "Soldered RAM on Mainboard specification."))
+                       .tagChild(MUI::MakeObject::CLabel(MUIX_B "Soldered memory."))
                        .tagChild(MUI::GroupBuilder()
                                      .tagColumns(6)
                                      .tagChild(LabelText(MUIX_R "Type"))

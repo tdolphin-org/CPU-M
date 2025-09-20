@@ -17,7 +17,7 @@ namespace Components
 {
     MemoryTab::MemoryTab()
       : mTotalSystemMemoryText(ValueText("Total System Memory"))
-      , mRAMSpecGroup(MUI::GroupBuilder().vertical().tagFrame(MUI::Frame::Group).tagFrameTitle("Mainboard RAM").object())
+      , mRAMSpecGroup(MUI::GroupBuilder().vertical().tagFrame(MUI::Frame::Group).tagFrameTitle("Mainboard RAM specification").object())
       , mComponent(MUI::GroupBuilder()
                        .vertical()
                        .tagChild(MUI::MakeObject::HVSpace())
@@ -50,8 +50,9 @@ namespace Components
         if (!spec.RAM.empty()) // any RAM slots
         {
             mRAMSpecGroup
-                .AddTail(MUI::MakeObject::CLabel(MUIX_B "Mainboard RAM (slots) specification.\n" MUIX_N
-                                                         "Can be multiple types if system/mainboard has multiple models."))
+                .AddTail(MUI::MakeObject::CLabel(
+                    MUIX_B "Memory slots."
+                    + std::string(spec.RAM.size() > 1 ? MUIX_N "\nMay vary depending on system/mainboard model." : "")))
                 .AddTail(MUI::MakeObject::HBar(0));
         }
 
@@ -69,8 +70,8 @@ namespace Components
         if (spec.solderedRAM.has_value())
         {
             mRAMSpecGroup.AddTail(MUI::MakeObject::HBar(0));
-            mRAMSpecGroup.AddTail(MUI::MakeObject::FreeCLabel1(ToString::Concatenate(totalPossibleRAM, " or ")
-                                                               + " MB maximum RAM size supported with soldered RAM"));
+            mRAMSpecGroup.AddTail(MUI::MakeObject::FreeCLabel1("Up to " + ToString::Concatenate(totalPossibleRAM, " or ")
+                                                               + " MB RAM supported (soldered and slots combined)"));
         }
 
         if (spec.ramNotes.has_value()) // Additional Notes regarding Mainboard RAM
