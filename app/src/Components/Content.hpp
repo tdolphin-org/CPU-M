@@ -9,6 +9,7 @@
 #include "Components/Tabs/TabsContainer.hpp"
 #include "Tabs/AboutTab.hpp"
 #include "Tabs/CPUTab.hpp"
+#include "Tabs/GraphicsTab.hpp"
 #include "Tabs/MainboardTab.hpp"
 #include "Tabs/MemoryTab.hpp"
 #include "Tabs/OSTab.hpp"
@@ -20,6 +21,7 @@ namespace Components
         CPUTab mCPUTab;
         MainboardTab mMainboardTab;
         MemoryTab mMemoryTab;
+        GraphicsTab mGraphicsTab;
         OSTab mOSTab;
         AboutTab mAboutTab;
 
