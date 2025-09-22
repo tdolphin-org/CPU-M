@@ -14,12 +14,10 @@ namespace Components
 {
     GraphicsTab::GraphicsTab()
       : mGfxSystemText(ValueText("Graphic OS"))
-      , mMountedMonitors(MUI::GroupBuilder()
-                             .tagFrame(MUI::Frame::Group)
-                             .tagFrameTitle("Mounted Devs Monitor(s)")
-                             .object())
+      , mMountedMonitors(MUI::GroupBuilder().tagFrame(MUI::Frame::Group).tagFrameTitle("Mounted Devs Monitor(s)").object())
       , mComponent(MUI::GroupBuilder()
                        .vertical()
+                       .tagChild(MUI::MakeObject::HVSpace())
                        .tagChild(MUI::GroupBuilder()
                                      .tagFrame(MUI::Frame::Group)
                                      .tagFrameTitle("Graphic System")
@@ -28,6 +26,7 @@ namespace Components
                                      .tagChild(mGfxSystemText)
                                      .object())
                        .tagChild(mMountedMonitors)
+                       .tagChild(MUI::MakeObject::HVSpace())
                        .object())
     {
         mGfxSystemText.setContents("CyberGraphX");
@@ -43,7 +42,5 @@ namespace Components
         }
     }
 
-    GraphicsTab::~GraphicsTab()
-    {
-    }
+    GraphicsTab::~GraphicsTab() { }
 }
