@@ -7,7 +7,6 @@
 #include "GraphicsTab.hpp"
 
 #include "AOS/Graphics/Library.hpp"
-#include "Graphics/CGXBoards.hpp"
 #include "MUI/Core/MakeObject.hpp"
 #include "MUI/Core/NullObject.hpp"
 
