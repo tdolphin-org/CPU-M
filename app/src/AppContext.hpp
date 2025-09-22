@@ -8,6 +8,7 @@
 
 #include "AOS/Cybergraphics/CybergraphicsBaseScope.hpp"
 #include "AOS/OpenURL/OpenURLBaseScope.hpp"
+#include "AOS/Rexxsyslib/RexxsyslibBaseScope.hpp"
 #include "Core/Singleton.hpp"
 
 #include <set>
@@ -22,6 +23,7 @@ class AppContextCore
   public:
     OpenURLBaseScope &getOpenURLBase() const;
     CybergraphicsBaseScope &getCybergraphicsBase() const;
+    RexxsyslibBaseScope &getRexxsyslibBase() const;
 };
 
 /// @brief main AppContext (singleton) object

@@ -35,3 +35,8 @@ CybergraphicsBaseScope &AppContextCore::getCybergraphicsBase() const
 {
     return App::instance().cybergraphicsBaseScope;
 }
+
+RexxsyslibBaseScope &AppContextCore::getRexxsyslibBase() const
+{
+    return App::instance().rexxsyslibBaseScope;
+}

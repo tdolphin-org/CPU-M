@@ -9,6 +9,7 @@
 #include "AOS/Cybergraphics/CybergraphicsBaseScope.hpp"
 #include "AOS/Graphics/GraphicsBaseScope.hpp"
 #include "AOS/OpenURL/OpenURLBaseScope.hpp"
+#include "AOS/Rexxsyslib/RexxsyslibBaseScope.hpp"
 #include "Core/Singleton.hpp"
 #include "MUI/Core/MuiMasterBaseScope.hpp"
 
@@ -24,6 +25,7 @@ class AppCore
     OpenURLBaseScope openUrlBaseScope;
     CybergraphicsBaseScope cybergraphicsBaseScope;
     GraphicsBaseScope graphicsBaseScope;
+    RexxsyslibBaseScope rexxsyslibBaseScope;
 
     AppCore();
 

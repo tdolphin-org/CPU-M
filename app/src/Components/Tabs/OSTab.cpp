@@ -8,8 +8,13 @@
 
 #include "AOS/Dos/Library.hpp"
 #include "AOS/Exec/Library.hpp"
+#include "AOS/Rexxsyslib/ArgstringScope.hpp"
+#include "AOS/Rexxsyslib/Library.hpp"
+#include "AOS/Rexxsyslib/RexxMsgScope.hpp"
+#include "AppContext.hpp"
 #include "Core/StringUtils.hpp"
 #include "MUI/Listview.hpp"
+#include "ProgDefines.hpp"
 
 namespace Components
 {
@@ -17,7 +22,7 @@ namespace Components
       : mFullOSNameText(ValueText("Full name of Operating System and version, copyrights etc", "??", true))
       , mKickstartVersionText(ValueText("Kickstart Version"))
       , mExecVersionText(ValueText("Exec Version"))
-      , mAmbientVersionText(ValueText("Ambient Version"))
+      , mAmbientVersionText(ValueText("Ambient Version", "??"))
       , mWorkbenchVersionText(ValueText("Workbench Version"))
       , mUserText(ValueText("Current user name"))
       , mTimeZoneText(ValueText("Current time zone"))
@@ -69,8 +74,39 @@ namespace Components
         auto kickstart = AOS::Dos::Library::libGetVar("Kickstart");
         mKickstartVersionText.setContents(kickstart.has_value() ? "v" + StringUtils::Split(kickstart.value()).back() : "??");
 
-        auto ambient = AOS::Dos::Library::libGetVar("Ambient");
-        mAmbientVersionText.setContents(ambient.has_value() ? "v" + StringUtils::Split(ambient.value()).back() : "??");
+        if (AppContext::instance().getRexxsyslibBase().isOpen())
+        {
+            try
+            {
+                AOS::Rexxsyslib::RexxMsgScope replayRexxMsgScope;
+                AOS::Rexxsyslib::ArgstringScope argstringScope("version");
+
+                // TODO refactor to oop style
+                auto rxmsg = replayRexxMsgScope.rexxMsg();
+                rxmsg->rm_Action = RXCOMM | RXFF_RESULT;
+                rxmsg->rm_Args[0] = argstringScope.argstring();
+                if (AOS::Rexxsyslib::Library::libFillRexxMsg(*rxmsg, 1, 0))
+                {
+                    if (auto ambientArexxPort = AOS::Exec::Library::libFindPort("AMBIENT"))
+                    {
+                        AOS::Exec::Library::libPutMsg(*ambientArexxPort, *((struct Message *)rxmsg));
+                        AOS::Exec::Library::libWaitPort(*replayRexxMsgScope.msgPort());
+                        auto result = (struct RexxMsg *)AOS::Exec::Library::libGetMsg(*replayRexxMsgScope.msgPort());
+                        if (result->rm_Result1 == 0 && result->rm_Result2)
+                        {
+                            mAmbientVersionText.setContents((const char *)result->rm_Result2);
+                            AOS::Rexxsyslib::Library::libDeleteArgstring((unsigned char *)result->rm_Result2);
+                        }
+                    }
+
+                    AOS::Rexxsyslib::Library::libClearRexxMsg(*rxmsg, 1);
+                }
+            }
+            catch (const std::exception &e)
+            {
+                // ignore
+            }
+        }
 
         auto workbench = AOS::Dos::Library::libGetVar("Workbench");
         mWorkbenchVersionText.setContents(workbench.has_value() ? "v" + StringUtils::Split(workbench.value()).back() : "??");
