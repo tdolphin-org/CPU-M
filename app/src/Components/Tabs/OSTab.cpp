@@ -13,6 +13,7 @@
 #include "AOS/Rexxsyslib/RexxMsgScope.hpp"
 #include "AppContext.hpp"
 #include "Core/StringUtils.hpp"
+#include "MUI/Core/MakeObject.hpp"
 #include "MUI/Listview.hpp"
 #include "ProgDefines.hpp"
 
@@ -28,7 +29,18 @@ namespace Components
       , mTimeZoneText(ValueText("Current time zone"))
       , mCodePageText(ValueText("Current code page"))
       , mLocaleText(ValueText("Current locale"))
-      , mLoadedLibrariesList(MUI::ListBuilder().tagConstructHookString().tagDestructHookString().object())
+      , mLoadedLibrariesList(MUI::ListBuilder().tagFrame(MUI::Frame::ReadList).tagConstructHookString().tagDestructHookString().object())
+      , mLoadedDevicesList(MUI::ListBuilder().tagFrame(MUI::Frame::ReadList).tagConstructHookString().tagDestructHookString().object())
+      , mLoadedDatatypesList(MUI::ListBuilder().tagFrame(MUI::Frame::ReadList).tagConstructHookString().tagDestructHookString().object())
+      , mLoadedMUIList(MUI::ListBuilder().tagFrame(MUI::Frame::ReadList).tagConstructHookString().tagDestructHookString().object())
+      , mLoadedOtherList(MUI::ListBuilder().tagFrame(MUI::Frame::ReadList).tagConstructHookString().tagDestructHookString().object())
+      , mExecNodesTabs({
+            { "Libraries", mLoadedLibrariesList },
+            { "Devices", mLoadedDevicesList },
+            { "Datatypes", mLoadedDatatypesList },
+            { "MUI", mLoadedMUIList },
+            { "Other", mLoadedOtherList },
+        })
       , mComponent(MUI::GroupBuilder()
                        .vertical()
                        .tagChild(MUI::GroupBuilder()
@@ -56,11 +68,8 @@ namespace Components
                                                    .tagChild(mCodePageText)
                                                    .object())
                                      .object())
-                       .tagChild(MUI::ListviewBuilder()
-                                     .tagFrame(MUI::Frame::Group)
-                                     .tagFrameTitle("Loaded Libraries, Datatypes, ...")
-                                     .tagList(mLoadedLibrariesList)
-                                     .object())
+                       .tagChild(MUI::MakeObject::CLabel("Loaded Exec Nodes"))
+                       .tagChild(mExecNodesTabs)
                        .object())
     {
         auto os = AOS::Exec::Library::libFindResident("MorphOS");
@@ -122,10 +131,40 @@ namespace Components
 
         mExecVersionText.setContents("v" + AOS::Exec::Library::GetVersion());
 
-        mLoadedLibrariesList.InsertSorted([&]() -> std::vector<std::string> {
+        auto isLibrary = [](const AOS::Exec::NodeInfo &node) -> bool { return StringUtils::hasSuffix(node.name, ".library"); };
+        auto isDatatype = [](const AOS::Exec::NodeInfo &node) -> bool {
+            return StringUtils::hasSuffix(node.name, { ".datatype", ".decoder", ".encoder" });
+        };
+        auto isMUI = [](const AOS::Exec::NodeInfo &node) -> bool { return StringUtils::hasSuffix(node.name, { ".mui", ".mcc" }); };
+
+        mLoadedLibrariesList.setQuiet(true);
+        mLoadedDatatypesList.setQuiet(true);
+        mLoadedMUIList.setQuiet(true);
+        mLoadedOtherList.setQuiet(true);
+
+        auto allLibraries = AOS::Exec::Library::GetAllLibraryNodeNames();
+        for (const auto &entry : allLibraries)
+        {
+            if (isLibrary(entry))
+                mLoadedLibrariesList.InsertSingleBottom(entry.name + " (v" + entry.version + ")");
+            else if (isDatatype(entry))
+                mLoadedDatatypesList.InsertSingleBottom(entry.name + " (v" + entry.version + ")");
+            else if (isMUI(entry))
+                mLoadedMUIList.InsertSingleBottom(entry.name + " (v" + entry.version + ")");
+            else
+                mLoadedOtherList.InsertSingleBottom(entry.name + " (v" + entry.version + ")");
+        }
+
+        mLoadedLibrariesList.setQuiet(false);
+        mLoadedDatatypesList.setQuiet(false);
+        mLoadedMUIList.setQuiet(false);
+        mLoadedOtherList.setQuiet(false);
+
+        auto allDevices = AOS::Exec::Library::GetAllDeviceNodeNames();
+        mLoadedDevicesList.InsertSorted([&]() -> std::vector<std::string> {
             std::vector<std::string> result;
-            for (const auto &entry : AOS::Exec::Library::GetAllLibraryNames())
-                result.push_back(entry.libName + " (v" + entry.version + ")");
+            for (const auto &entry : allDevices)
+                result.push_back(entry.name + " (v" + entry.version + ")");
             return result;
         }());
     }

@@ -7,6 +7,7 @@
 #pragma once
 
 #include "Components/Core/Root.hpp"
+#include "Components/Tabs/TabsContainer.hpp"
 #include "TabBase.hpp"
 
 #include "MUI/Group.hpp"
@@ -28,6 +29,11 @@ namespace Components
         MUI::Text mLocaleText;
 
         MUI::List mLoadedLibrariesList;
+        MUI::List mLoadedDevicesList;
+        MUI::List mLoadedDatatypesList;
+        MUI::List mLoadedMUIList;
+        MUI::List mLoadedOtherList;
+        TabsContainer mExecNodesTabs;
 
         MUI::Group mComponent;
 
