@@ -33,9 +33,6 @@ namespace Components
         // implements pure virtual MCC::ActionCycleDispatcher
         unsigned long OnCycle();
 
-      private:
-        void Clear();
-
       protected:
         MUI::Group &muiRoot() const
         {

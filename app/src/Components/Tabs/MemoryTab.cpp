@@ -49,11 +49,10 @@ namespace Components
 
         if (!spec.RAM.empty()) // any RAM slots
         {
-            mRAMSpecGroup
-                .AddTail(MUI::MakeObject::CLabel(
-                    MUIX_B "Memory slots."
-                    + std::string(spec.RAM.size() > 1 ? MUIX_N "\nMay vary depending on system/mainboard model." : "")))
-                .AddTail(MUI::MakeObject::HBar(0));
+            mRAMSpecGroup.AddTail(MUI::MakeObject::CLabel(
+                MUIX_B "Memory slots." + std::string(spec.RAM.size() > 1 ? MUIX_N "\nMay vary depending on system/mainboard model." : "")));
+            if (spec.RAM.size() > 1)
+                mRAMSpecGroup.AddTail(MUI::MakeObject::HBar(0));
         }
 
         bool first = true;

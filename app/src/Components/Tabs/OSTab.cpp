@@ -100,8 +100,8 @@ namespace Components
                     {
                         AOS::Exec::Library::libPutMsg(*ambientArexxPort, *((struct Message *)rxmsg));
                         AOS::Exec::Library::libWaitPort(*replayRexxMsgScope.msgPort());
-                        auto result = (struct RexxMsg *)AOS::Exec::Library::libGetMsg(*replayRexxMsgScope.msgPort());
-                        if (result->rm_Result1 == 0 && result->rm_Result2)
+                        auto result = AOS::Rexxsyslib::Library::GetRexxMsg(replayRexxMsgScope);
+                        if (result && result->rm_Result1 == 0 && result->rm_Result2)
                         {
                             mAmbientVersionText.setContents((const char *)result->rm_Result2);
                             AOS::Rexxsyslib::Library::libDeleteArgstring((unsigned char *)result->rm_Result2);
