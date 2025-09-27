@@ -40,3 +40,8 @@ RexxsyslibBaseScope &AppContextCore::getRexxsyslibBase() const
 {
     return App::instance().rexxsyslibBaseScope;
 }
+
+PCIXBaseScope &AppContextCore::getPCIXBase() const
+{
+    return App::instance().pcixBaseScope;
+}
