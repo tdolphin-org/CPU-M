@@ -49,5 +49,6 @@ namespace DataInfo
         { "P5040", { "Freescale/NXP", "QorIQ P5040", "", "1.1-1.2 V", "45 nm", "2012", "~27-33 W" } }, // amigaone x5000
         { "T1022", { "Freescale/NXP", "T1022", "", "1.0-1.1 V", "28 nm", "2012", "~5-8 W" } }, // mirari
         { "T1042", { "Freescale/NXP", "T1042", "", "1.0-1.1 V", "28 nm", "2012", "~7-10 W" } }, // mirari
+        { "T2080", { "NXP", "T2080", "", "1.0-1.1 V", "28 nm", "2015", "??" } }, // mirari
     };
 }
