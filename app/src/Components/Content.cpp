@@ -16,6 +16,7 @@ namespace Components
             { Label::MainboardTab, mMainboardTab },
             { Label::MemoryTab, mMemoryTab },
             { Label::GraphicsTab, mGraphicsTab },
+            { Label::BoardsTab, mBoardsTab },            
             { Label::OperatingSystemTab, mOSTab },
             { Label::AboutTab, mAboutTab },
         })

@@ -1,0 +1,26 @@
+//
+//  CPU-M
+//
+//  (c) 2025 TDolphin
+//
+
+#include "BoardsTab.hpp"
+
+#include "AOS/PCIX/Library.hpp"
+#include "MUI/Core/MakeObject.hpp"
+#include "MUI/Core/NullObject.hpp"
+
+namespace Components
+{
+    BoardsTab::BoardsTab()
+      : mBoardsList({}) 
+      , mComponent(MUI::GroupBuilder()
+                       .vertical()
+                       .tagChild(mBoardsList)
+                       .object())
+    {
+        AOS::PCIX::Library::GetBoards();
+    }
+
+    BoardsTab::~BoardsTab() { }
+}
