@@ -32,7 +32,7 @@ BINPATH = out/$(SUB_BUILD_PATH)
 include makefile.gen.version.mk
 
 AOS_WRAPPER_PATH = ${AOSCPP_PATH}/wrappers
-AOS_WRAPPER_MODULES = AOS/Exec AOS/Exec AOS/AmigaLib AOS/OpenURL AOS/Graphics AOS/Cybergraphics AOS/Dos AOS/Devices/Timer AOS/Icon Core AOS/Rexxsyslib
+AOS_WRAPPER_MODULES = AOS/Exec AOS/Exec AOS/AmigaLib AOS/OpenURL AOS/Graphics AOS/Cybergraphics AOS/Dos AOS/Devices/Timer AOS/Icon Core AOS/Rexxsyslib AOS/PCIX AOS/PCIIDS
 AOS_WRAPPER_SRC_DIRS = $(addprefix $(AOS_WRAPPER_PATH)/src/,$(AOS_WRAPPER_MODULES))
 AOS_WRAPPER_SRCS = $(foreach sdir,$(AOS_WRAPPER_SRC_DIRS),$(wildcard $(sdir)/*.cpp))
 AOS_WRAPPER_CPP_FLAGS_LIGHT = $(CPP_FLAGS)
@@ -43,7 +43,7 @@ MUI_COMPONENTS_SRC_DIRS = $(addprefix $(MUI_COMPONENTS_PATH)/src/,$(MUI_COMPONEN
 MUI_COMPONENTS_SRCS = $(foreach sdir,$(MUI_COMPONENTS_SRC_DIRS),$(wildcard $(sdir)/*.cpp))
 
 MODULES_COMPONENTS = Components Components/Buttons Components/Core Components/Tabs Components/Tabs/CPU Components/Tabs/Memory Components/Tabs/Expansions \
-	Components/Tabs/Graphics Components/Tabs/Benchmark Components/MCC Components/Windows Benchmark
+	Components/Tabs/Graphics Components/Tabs/Boards Components/MCC Components/Windows Benchmark
 MODULES = $(MODULES_COMPONENTS) FileResources TextResources DataInfo
 
 SRC_DIRS = src $(addprefix src/,$(MODULES))

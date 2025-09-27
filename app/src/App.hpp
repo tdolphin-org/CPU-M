@@ -10,6 +10,7 @@
 #include "AOS/Graphics/GraphicsBaseScope.hpp"
 #include "AOS/OpenURL/OpenURLBaseScope.hpp"
 #include "AOS/Rexxsyslib/RexxsyslibBaseScope.hpp"
+#include "AOS/PCIIDS/PCIIDSBaseScope.hpp"
 #include "AOS/PCIX/PCIXBaseScope.hpp"
 #include "Core/Singleton.hpp"
 #include "MUI/Core/MuiMasterBaseScope.hpp"
@@ -28,6 +29,7 @@ class AppCore
     GraphicsBaseScope graphicsBaseScope;
     RexxsyslibBaseScope rexxsyslibBaseScope;
     PCIXBaseScope pcixBaseScope;
+    PCIIDSBaseScope pciidsBaseScope;
 
     AppCore();
 

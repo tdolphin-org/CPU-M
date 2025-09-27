@@ -45,3 +45,8 @@ PCIXBaseScope &AppContextCore::getPCIXBase() const
 {
     return App::instance().pcixBaseScope;
 }
+
+PCIIDSBaseScope &AppContextCore::getPCIIDSBase() const
+{
+    return App::instance().pciidsBaseScope;
+}
