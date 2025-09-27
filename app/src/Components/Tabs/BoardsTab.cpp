@@ -13,7 +13,7 @@
 namespace Components
 {
     BoardsTab::BoardsTab()
-      : mBoardsList({}) 
+      : mBoardsList(AOS::PCIX::Library::GetBoards()) 
       , mComponent(MUI::GroupBuilder()
                        .vertical()
                        .tagChild(mBoardsList)
