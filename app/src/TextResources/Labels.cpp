@@ -13,16 +13,16 @@
 
 namespace Label
 {
-    const char *CPUTab = "CPU";
-    const char *MainboardTab = "Mainboard";
-    const char *MemoryTab = "Memory";
-    const char *GraphicsTab = "Graphics";
-    const char *BoardsTab = "Boards";
-    const char *OperatingSystemTab = "OS";
-    const char *BenchTab = "Bench";
-    const char *AboutTab = "About";
+    const std::string &CPUTab = "CPU";
+    const std::string &MainboardTab = "Mainboard";
+    const std::string &MemoryTab = "Memory";
+    const std::string &GraphicsTab = "Graphics";
+    const std::string &BoardsTab = "Boards";
+    const std::string &OperatingSystemTab = "OS";
+    const std::string &BenchTab = "Bench";
+    const std::string &AboutTab = "About";
 
-    const char *AboutContent
+    const std::string &AboutContent
         = MUIX_C MUIX_N APP_DESCRIPTION "\n\n"
                                         "Version " APP_VERSION " " APP_DATE "\n" APP_TDOLPHIN_COPYRIGHTS "\nAuthor: " AUTHORS "\n";
 }

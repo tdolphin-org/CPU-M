@@ -6,23 +6,18 @@
 
 #pragma once
 
-//
-// using 'const char *' instead of const std::string &
-// for better performance (open and close of application)
-// no memory allock/free on start/close
-// important for low hardware (AmigaOS 68k)
-//
+#include <string>
 
 namespace Label
 {
-    extern const char *CPUTab;
-    extern const char *MainboardTab;
-    extern const char *MemoryTab;
-    extern const char *GraphicsTab;
-    extern const char *BoardsTab;
-    extern const char *OperatingSystemTab;
-    extern const char *BenchTab;
-    extern const char *AboutTab;
+    extern const std::string &CPUTab;
+    extern const std::string &MainboardTab;
+    extern const std::string &MemoryTab;
+    extern const std::string &GraphicsTab;
+    extern const std::string &BoardsTab;
+    extern const std::string &OperatingSystemTab;
+    extern const std::string &BenchTab;
+    extern const std::string &AboutTab;
 
-    extern const char *AboutContent;
+    extern const std::string &AboutContent;
 }
