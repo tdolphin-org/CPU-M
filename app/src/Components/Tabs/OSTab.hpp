@@ -32,6 +32,7 @@ namespace Components
         MUI::List mLoadedDevicesList;
         MUI::List mLoadedDatatypesList;
         MUI::List mLoadedMUIList;
+        MUI::List mLoadedResourcesList;
         MUI::List mLoadedOtherList;
         TabsContainer mExecNodesTabs;
 

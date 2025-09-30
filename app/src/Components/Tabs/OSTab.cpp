@@ -34,11 +34,13 @@ namespace Components
       , mLoadedDatatypesList(MUI::ListBuilder().tagFrame(MUI::Frame::ReadList).tagConstructHookString().tagDestructHookString().object())
       , mLoadedMUIList(MUI::ListBuilder().tagFrame(MUI::Frame::ReadList).tagConstructHookString().tagDestructHookString().object())
       , mLoadedOtherList(MUI::ListBuilder().tagFrame(MUI::Frame::ReadList).tagConstructHookString().tagDestructHookString().object())
+      , mLoadedResourcesList(MUI::ListBuilder().tagFrame(MUI::Frame::ReadList).tagConstructHookString().tagDestructHookString().object())
       , mExecNodesTabs({
             { "Libraries", mLoadedLibrariesList },
             { "Devices", mLoadedDevicesList },
             { "Datatypes", mLoadedDatatypesList },
             { "MUI", mLoadedMUIList },
+            { "Resources", mLoadedResourcesList },
             { "Other", mLoadedOtherList },
         })
       , mComponent(MUI::GroupBuilder()
@@ -146,13 +148,13 @@ namespace Components
         for (const auto &entry : allLibraries)
         {
             if (isLibrary(entry))
-                mLoadedLibrariesList.InsertSingleBottom(entry.name + " (v" + entry.version + ")");
+                mLoadedLibrariesList.InsertSingleBottom(entry.name + " (v" + entry.version.value_or("??") + ")");
             else if (isDatatype(entry))
-                mLoadedDatatypesList.InsertSingleBottom(entry.name + " (v" + entry.version + ")");
+                mLoadedDatatypesList.InsertSingleBottom(entry.name + " (v" + entry.version.value_or("??") + ")");
             else if (isMUI(entry))
-                mLoadedMUIList.InsertSingleBottom(entry.name + " (v" + entry.version + ")");
+                mLoadedMUIList.InsertSingleBottom(entry.name + " (v" + entry.version.value_or("??") + ")");
             else
-                mLoadedOtherList.InsertSingleBottom(entry.name + " (v" + entry.version + ")");
+                mLoadedOtherList.InsertSingleBottom(entry.name + " (v" + entry.version.value_or("??") + ")");
         }
 
         mLoadedLibrariesList.setQuiet(false);
@@ -164,7 +166,15 @@ namespace Components
         mLoadedDevicesList.InsertSorted([&]() -> std::vector<std::string> {
             std::vector<std::string> result;
             for (const auto &entry : allDevices)
-                result.push_back(entry.name + " (v" + entry.version + ")");
+                result.push_back(entry.name + " (v" + entry.version.value_or("??") + ")");
+            return result;
+        }());
+
+        auto allResources = AOS::Exec::Library::GetAllResourceNodeNames();
+        mLoadedResourcesList.InsertSorted([&]() -> std::vector<std::string> {
+            std::vector<std::string> result;
+            for (const auto &entry : allResources)
+                result.push_back(entry.name);
             return result;
         }());
     }
