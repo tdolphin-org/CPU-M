@@ -1,7 +1,7 @@
 //
 //  CPU-M
 //
-//  (c) 2024-2025 TDolphin
+//  (c) 2025 TDolphin
 //
 
 #pragma once
@@ -20,7 +20,7 @@ namespace Components
 
       public:
         BoardsList(const std::vector<AOS::PCIX::Board> &boards);
- 
+
       protected:
         MUI::List &muiRoot() const
         {
