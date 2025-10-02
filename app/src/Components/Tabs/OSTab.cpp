@@ -29,12 +29,12 @@ namespace Components
       , mTimeZoneText(ValueText("Current time zone"))
       , mCodePageText(ValueText("Current code page"))
       , mLocaleText(ValueText("Current locale"))
-      , mLoadedLibrariesList(MUI::ListBuilder().tagFrame(MUI::Frame::ReadList).tagConstructHookString().tagDestructHookString().object())
-      , mLoadedDevicesList(MUI::ListBuilder().tagFrame(MUI::Frame::ReadList).tagConstructHookString().tagDestructHookString().object())
-      , mLoadedDatatypesList(MUI::ListBuilder().tagFrame(MUI::Frame::ReadList).tagConstructHookString().tagDestructHookString().object())
-      , mLoadedMUIList(MUI::ListBuilder().tagFrame(MUI::Frame::ReadList).tagConstructHookString().tagDestructHookString().object())
-      , mLoadedOtherList(MUI::ListBuilder().tagFrame(MUI::Frame::ReadList).tagConstructHookString().tagDestructHookString().object())
-      , mLoadedResourcesList(MUI::ListBuilder().tagFrame(MUI::Frame::ReadList).tagConstructHookString().tagDestructHookString().object())
+      , mLoadedLibrariesList(MUI::ListBuilder().tagFrame(MUI::Frame::ReadList).stringHooks().object())
+      , mLoadedDevicesList(MUI::ListBuilder().tagFrame(MUI::Frame::ReadList).stringHooks().object())
+      , mLoadedDatatypesList(MUI::ListBuilder().tagFrame(MUI::Frame::ReadList).stringHooks().object())
+      , mLoadedMUIList(MUI::ListBuilder().tagFrame(MUI::Frame::ReadList).stringHooks().object())
+      , mLoadedResourcesList(MUI::ListBuilder().tagFrame(MUI::Frame::ReadList).stringHooks().object())
+      , mLoadedOtherList(MUI::ListBuilder().tagFrame(MUI::Frame::ReadList).stringHooks().object())
       , mExecNodesTabs({
             { "Libraries", mLoadedLibrariesList },
             { "Devices", mLoadedDevicesList },
