@@ -23,6 +23,7 @@ namespace Components
 
         MUI::Group mCPUInfoGroup;
         MUI::Cycle mCPUOrCoreCycle;
+        MUI::Text mCPUCountText;
 
         MUI::Group mComponent;
 
