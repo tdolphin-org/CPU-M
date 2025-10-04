@@ -279,6 +279,23 @@ namespace DataInfo
             },
         },
         {
+            "PowerMac11,2",
+            {
+                "A1117 or A1177",
+                "Apple Power Macintosh G5 Dual or Quad Core",
+                2005,
+                2006,
+                "G5 Daughtercard",
+                { "SATA" },
+                "Open Firmware",
+                std::nullopt,
+                { { "PC4200 DDR2", "533 MHz", 16384, 8 } },
+                { { "USB 2.0", 4 }, { "FireWire 400", 2 }, { "FireWire 800", 1 }, { "Ethernet 10/100/1000 Mbps", 2 } },
+                std::nullopt,
+                std::nullopt,
+            },
+        },
+        {
             "PowerMac12,1",
             {
                 "A1144 or A1145",
