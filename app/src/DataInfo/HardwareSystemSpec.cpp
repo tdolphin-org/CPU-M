@@ -204,7 +204,10 @@ namespace DataInfo
                     { "Ethernet 10/100/1000 Mbps", 1 },
                     { "Type I/II PC Card", 1 },
                     { "Modem 56k", 1 },
-                    { "Audio In/Out", 1 },
+                    { "Audio In", 1 },
+                    { "Audio Out (3.5mm Headphone Jack)", 1 },
+                    { "DVI", 1 },
+                    { "S-Video", 1 },
                 },
                 std::nullopt,
                 std::nullopt,
@@ -222,7 +225,14 @@ namespace DataInfo
                 "Open Firmware",
                 { { "PC2700 DDR SDRAM", "333 MHz", 512 } }, // 512 MB soldered
                 { { "PC2700 DDR SDRAM", "333 MHz", 1024, 1 } }, // 1 GB RAM max, 1 slot
-                { { "USB 2.0", 2 }, { "FireWire 400", 1 }, { "Ethernet 10/100 Mbps", 1 }, { "Modem 56k", 1 } },
+                {
+                    { "USB 2.0", 2 },
+                    { "FireWire 400", 1 },
+                    { "Ethernet 10/100 Mbps", 1 },
+                    { "Modem 56k", 1 },
+                    { "Mini VGA", 1 },
+                    { "Audio Out (3.5mm Headphone Jack)", 1 },
+                },
                 std::nullopt,
                 std::nullopt,
             },

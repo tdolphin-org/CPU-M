@@ -18,7 +18,7 @@ namespace Components
     BoardsList::BoardsList(const std::vector<AOS::PCIX::Board> &boards)
       : mComponent(MUI::ListBuilder()
                        .stringArrayHooks(3)
-                       .tagFormat("BAR,BAR,")
+                       .tagFormat("BAR MINWIDTH=100,BAR MINWIDTH=100,")
                        .tagTitleArray(titles)
                        .tagTitle(true)
                        .tagFrame(MUI::Frame::Group)
