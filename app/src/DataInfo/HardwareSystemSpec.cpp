@@ -214,6 +214,34 @@ namespace DataInfo
             },
         },
         {
+            "PowerBook5,7",
+            {
+                "A1107",
+                "Apple PowerBook G4 (17\")",
+                2005,
+                2005,
+                "Soldered",
+                { "Ultra ATA/100 (2.5\")" },
+                "Open Firmware",
+                std::nullopt,
+                { { "PC2700 DDR SDRAM", "333 MHz", 2048, 2 } }, // 2 GB RAM max, 1 slot
+                {
+                    { "USB 2.0", 2 },
+                    { "FireWire 400", 1 },
+                    { "FireWire 800", 1 },
+                    { "Ethernet 10/100/1000 Mbps", 1 },
+                    { "Type I/II PC Card", 1 },
+                    { "Modem 56k", 1 },
+                    { "Audio In", 1 },
+                    { "Audio Out (3.5mm Headphone Jack)", 1 },
+                    { "DVI", 1 },
+                    { "S-Video", 1 },
+                },
+                std::nullopt,
+                std::nullopt,
+            },
+        },
+        {
             "PowerBook6,7",
             {
                 "A1133 (12\") or A1134 (14\")",
