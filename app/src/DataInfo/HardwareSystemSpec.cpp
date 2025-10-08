@@ -123,7 +123,7 @@ namespace DataInfo
                 { "SATA 2.0" },
                 "Smart Firmware",
                 std::nullopt,
-                { { "DDR3 SDRAM", "1333/1600 MHz", 16384, 2 } },
+                { { "PC3-10600/12800 DDR3 SDRAM", "1333/1600 MHz", 16384, 2 } },
                 { { "USB 2.0", 8 }, { "Ethernet 10/100/1000 Mbps", 1 }, { "Serial RS232", 1 } },
                 std::nullopt,
                 std::nullopt,
@@ -140,7 +140,7 @@ namespace DataInfo
                 { "SATA", "NVMe", "MicroSD" },
                 "U-Boot",
                 std::nullopt,
-                { { "PC3 12800 DDR3 SDRAM 1.35V", "1600 MHz", 8192, 1 } },
+                { { "PC3-12800 DDR3 SDRAM 1.35V", "1600 MHz", 8192, 1 } },
                 { { "USB 2.0", 6 },
                   { "USB 3.2", 3 },
                   { "Ethernet 10/100/1000 Mbps", 1 },
@@ -196,7 +196,7 @@ namespace DataInfo
                 { "Ultra ATA/100 (2.5\")" },
                 "Open Firmware",
                 std::nullopt,
-                { { "PC2700 DDR SDRAM", "333 MHz", 2048, 2 } }, // 2 GB RAM max, 1 slot
+                { { "PC-2700 DDR SDRAM", "333 MHz", 2048, 2 } }, // 2 GB RAM max, 1 slot
                 {
                     { "USB 2.0", 2 },
                     { "FireWire 400", 1 },
@@ -224,7 +224,7 @@ namespace DataInfo
                 { "Ultra ATA/100 (2.5\")" },
                 "Open Firmware",
                 std::nullopt,
-                { { "PC2700 DDR SDRAM", "333 MHz", 2048, 2 } }, // 2 GB RAM max, 2 slots
+                { { "PC-2700 DDR SDRAM", "333 MHz", 2048, 2 } }, // 2 GB RAM max, 2 slots
                 {
                     { "USB 2.0", 2 },
                     { "FireWire 400", 1 },
@@ -307,8 +307,8 @@ namespace DataInfo
                 "Soldered",
                 { "Ultra ATA/100 (2.5\")" },
                 "Open Firmware",
-                { { "PC2700 DDR SDRAM", "333 MHz", 512 } }, // 512 MB soldered
-                { { "PC2700 DDR SDRAM", "333 MHz", 1024, 1 } }, // 1 GB RAM max, 1 slot
+                { { "DDR SDRAM", "333 MHz", 512 } }, // 512 MB soldered
+                { { "PC-2700 DDR SDRAM", "333 MHz", 1024, 1 } }, // 1 GB RAM max, 1 slot
                 {
                     { "USB 2.0", 2 },
                     { "FireWire 400", 1 },
@@ -332,7 +332,7 @@ namespace DataInfo
                 { "SATA" },
                 "Open Firmware",
                 std::nullopt,
-                { { "PC3200 DDR", "400 MHz", 4096, 4 }, { "PC3200 DDR", "400 MHz", 8192, 8 } }, // 4 or 8 GB max, 4 or 8 slots
+                { { "PC-3200 DDR", "400 MHz", 4096, 4 }, { "PC-3200 DDR", "400 MHz", 8192, 8 } }, // 4 or 8 GB max, 4 or 8 slots
                 { { "USB 2.0", 3 }, { "FireWire 400", 2 }, { "FireWire 800", 1 }, { "Ethernet 10/100/1000 Mbps", 1 } },
                 std::nullopt,
                 std::nullopt,
@@ -349,7 +349,7 @@ namespace DataInfo
                 { "Ultra ATA/100 (2.5\")" },
                 "Open Firmware",
                 std::nullopt,
-                { { "PC2700 DDR SDRAM", "333 MHz", 1024, 1 } },
+                { { "PC-2700 DDR SDRAM", "333 MHz", 1024, 1 } },
                 { { "USB 2.0", 2 }, { "FireWire 400", 1 }, { "Ethernet 10/100 Mbps", 1 } },
                 std::nullopt,
                 std::nullopt,
@@ -366,7 +366,7 @@ namespace DataInfo
                 { "Ultra ATA/100 (2.5\")" },
                 "Open Firmware",
                 std::nullopt,
-                { { "PC2700 DDR SDRAM", "333 MHz", 1024, 1 } },
+                { { "PC-2700 DDR SDRAM", "333 MHz", 1024, 1 } },
                 { { "USB 2.0", 2 }, { "FireWire 400", 1 }, { "Ethernet 10/100 Mbps", 1 } },
                 std::nullopt,
                 std::nullopt,
