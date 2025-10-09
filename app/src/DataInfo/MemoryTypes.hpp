@@ -10,10 +10,10 @@
 
 enum class MemoryGeneration
 {
-    SDRAM, // SDR
-    DDR,
-    DDR2,
-    DDR3
+    SDR, // Single Data Rate SDRAM
+    DDR, // Double Data Rate SDRAM
+    DDR2, // Double Data Rate 2 SDRAM
+    DDR3 // Double Data Rate 3 SDRAM
 };
 
 enum class ModuleForm

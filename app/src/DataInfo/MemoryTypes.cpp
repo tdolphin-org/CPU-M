@@ -12,14 +12,14 @@ namespace std
     {
         switch (generation)
         {
-            case MemoryGeneration::SDRAM:
-                return "SDRAM";
+            case MemoryGeneration::SDR:
+                return "SDR SDRAM";
             case MemoryGeneration::DDR:
-                return "DDR";
+                return "DDR SDRAM";
             case MemoryGeneration::DDR2:
-                return "DDR2";
+                return "DDR2 SDRAM";
             case MemoryGeneration::DDR3:
-                return "DDR3";
+                return "DDR3 SDRAM";
             default:
                 return "Unknown";
         }

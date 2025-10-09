@@ -19,6 +19,7 @@ namespace DataInfo
         uint16_t voltage_mV; // voltage in mV
         uint16_t dataRateMTs; // effective clock speed
         uint32_t bandwidthMBs; // bandwidth
+        uint32_t effectiveMTs; // effective  MT/s
         ModuleForm form; // module type
         uint16_t pins; // number of pins
         uint16_t length_mm; // module length
