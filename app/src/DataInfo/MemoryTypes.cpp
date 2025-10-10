@@ -40,6 +40,37 @@ namespace std
         }
     }
 
+    std::string to_string(const MemoryGenerationAndForm generationAndForm)
+    {
+        switch (generationAndForm)
+        {
+            case MemoryGenerationAndForm::SDR_DIMM:
+                return "SDR DIMM";
+            case MemoryGenerationAndForm::SDR_SO_DIMM:
+                return "SDR SO-DIMM";
+            case MemoryGenerationAndForm::SDR_MicroDIMM:
+                return "SDR MicroDIMM";
+            case MemoryGenerationAndForm::DDR_DIMM:
+                return "DDR DIMM";
+            case MemoryGenerationAndForm::DDR_SO_DIMM:
+                return "DDR SO-DIMM";
+            case MemoryGenerationAndForm::DDR_MicroDIMM:
+                return "DDR MicroDIMM";
+            case MemoryGenerationAndForm::DDR2_DIMM:
+                return "DDR2 DIMM";
+            case MemoryGenerationAndForm::DDR2_SO_DIMM:
+                return "DDR2 SO-DIMM";
+            case MemoryGenerationAndForm::DDR3_DIMM:
+                return "DDR3 DIMM";
+            case MemoryGenerationAndForm::DDR3_SO_DIMM:
+                return "DDR3 SO-DIMM";
+            case MemoryGenerationAndForm::DDR3_MicroDIMM:
+                return "DDR3 MicroDIMM";
+            default:
+                return "Unknown";
+        }
+    }
+
     std::string to_string(const MemoryType type)
     {
         switch (type)

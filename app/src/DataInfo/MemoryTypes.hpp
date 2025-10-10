@@ -23,6 +23,21 @@ enum class ModuleForm
     MicroDIMM // rare mobile form
 };
 
+enum class MemoryGenerationAndForm
+{
+    SDR_DIMM, // Single Data Rate SDRAM, desktop form
+    SDR_SO_DIMM, // Single Data Rate SDRAM, laptop form
+    SDR_MicroDIMM, // Single Data Rate SDRAM, mobile form
+    DDR_DIMM, // Double Data Rate SDRAM, desktop form
+    DDR_SO_DIMM, // Double Data Rate SDRAM, laptop form
+    DDR_MicroDIMM, // Double Data Rate SDRAM, mobile form
+    DDR2_DIMM, // Double Data Rate 2 SDRAM, desktop form
+    DDR2_SO_DIMM, // Double Data Rate 2 SDRAM, laptop form
+    DDR3_DIMM, // Double Data Rate 3 SDRAM, desktop form
+    DDR3_SO_DIMM, // Double Data Rate 3 SDRAM, laptop form
+    DDR3_MicroDIMM // Double Data Rate 3 SDRAM, mobile form
+};
+
 // memory types (PC-xxxx, PC2-xxxx, PC3-xxxx)
 // xxxL - low voltage
 enum class MemoryType
@@ -76,5 +91,6 @@ namespace std
 {
     std::string to_string(const MemoryGeneration generation);
     std::string to_string(const ModuleForm form);
+    std::string to_string(const MemoryGenerationAndForm generationAndForm);
     std::string to_string(const MemoryType type);
 }
