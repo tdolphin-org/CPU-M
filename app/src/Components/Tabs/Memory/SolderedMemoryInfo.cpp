@@ -21,26 +21,27 @@ namespace Components
                        .tagChild(MUI::MakeObject::CLabel(MUIX_B "Soldered memory."))
                        .tagChild(MUI::GroupBuilder()
                                      .tagColumns(8)
-                                     .tagChild(LabelText(MUIX_R "Type"))
+                                     .tagChild(LabelText(MUIX_R "Type:"))
                                      .tagChild(mRAMTypeText)
-                                     .tagChild(LabelText(MUIX_R "Clock"))
+                                     .tagChild(LabelText(MUIX_R "Clock:"))
                                      .tagChild(mRAMClockText)
-                                     .tagChild(LabelText(MUIX_R "Transfer Rate"))
+                                     .tagChild(LabelText(MUIX_R "Transfer Rate:"))
                                      .tagChild(mRAMTransferRateText)
-                                     .tagChild(LabelText(MUIX_R "Size"))
+                                     .tagChild(LabelText(MUIX_R "Size:"))
                                      .tagChild(mRAMSizeText)
                                      .object())
                        .object())
     {
-        mRAMTypeText.setContents(std::to_string(ramSpec.type));
         auto memorySpec = DataInfo::memorySpecs.find(ramSpec.type);
         if (memorySpec != DataInfo::memorySpecs.end())
         {
+            mRAMTypeText.setContents(std::to_string(ramSpec.type) + " " + std::to_string(memorySpec->second.generation));
             mRAMClockText.setContents(std::to_string(memorySpec->second.clockMHz) + " MHz");
             mRAMTransferRateText.setContents(std::to_string(memorySpec->second.effectiveMTs) + " MT/s");
         }
         else
         {
+            mRAMTypeText.setContents(std::to_string(ramSpec.type));
             mRAMClockText.setContents("--");
             mRAMTransferRateText.setContents("--");
         }

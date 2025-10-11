@@ -32,7 +32,7 @@ namespace std
             case ModuleForm::DIMM:
                 return "DIMM";
             case ModuleForm::SO_DIMM:
-                return "SO_DIMM";
+                return "SO-DIMM";
             case ModuleForm::MicroDIMM:
                 return "MicroDIMM";
             default:

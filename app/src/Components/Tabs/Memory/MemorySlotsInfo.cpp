@@ -18,27 +18,29 @@ namespace Components
       , mRAMMaxSizeText(ValueText("Maximum supported RAM size (summary in all slots)"))
       , mComponent(MUI::GroupBuilder()
                        .tagColumns(10)
-                       .tagChild(LabelText(MUIX_R "Type"))
+                       .tagChild(LabelText(MUIX_R "Type:"))
                        .tagChild(mRAMTypeText)
-                       .tagChild(LabelText(MUIX_R "Clock"))
+                       .tagChild(LabelText(MUIX_R "Clock:"))
                        .tagChild(mRAMClockText)
-                       .tagChild(LabelText(MUIX_R "Transfer Rate"))
+                       .tagChild(LabelText(MUIX_R "Transfer Rate:"))
                        .tagChild(mRAMTransferRateText)
-                       .tagChild(LabelText(MUIX_R "Slots"))
+                       .tagChild(LabelText(MUIX_R "Slots:"))
                        .tagChild(mSlotsCountText)
-                       .tagChild(LabelText(MUIX_R "Max Size"))
+                       .tagChild(LabelText(MUIX_R "Max Size:"))
                        .tagChild(mRAMMaxSizeText)
                        .object())
     {
-        mRAMTypeText.setContents(std::to_string(ramSpec.type));
         auto memorySpec = DataInfo::memorySpecs.find(ramSpec.type);
         if (memorySpec != DataInfo::memorySpecs.end())
         {
+            mRAMTypeText.setContents(std::to_string(ramSpec.type) + " " + std::to_string(memorySpec->second.generation) + " "
+                                     + std::to_string(ramSpec.form));
             mRAMClockText.setContents(std::to_string(memorySpec->second.clockMHz) + " MHz");
             mRAMTransferRateText.setContents(std::to_string(memorySpec->second.effectiveMTs) + " MT/s");
         }
         else
         {
+            mRAMTypeText.setContents(std::to_string(ramSpec.type) + " " + std::to_string(ramSpec.form));
             mRAMClockText.setContents("--");
             mRAMTransferRateText.setContents("--");
         }
