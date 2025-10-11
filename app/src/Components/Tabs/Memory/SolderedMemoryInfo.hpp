@@ -19,6 +19,7 @@ namespace Components
     {
         MUI::Text mRAMTypeText;
         MUI::Text mRAMClockText;
+        MUI::Text mRAMTransferRateText;
         MUI::Text mRAMSizeText;
 
         MUI::Group mComponent;
