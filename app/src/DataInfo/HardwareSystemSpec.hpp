@@ -6,25 +6,25 @@
 
 #pragma once
 
-#include <map>
+#include "MemoryTypes.hpp"
+
 #include <optional>
-#include <string>
+#include <unordered_map>
 #include <vector>
 
 namespace DataInfo
 {
     struct SlotRAMSpec
     {
-        std::string type; // PC2700 DDR SDRAM
-        std::string clock; // 333 MHz
+        MemoryType type; // PC2700 DDR SDRAM
+        ModuleForm form; // DIMM, SO_DIMM, MicroDIMM
         unsigned int max; // 1024 (MB) max RAM size supported with this type in all slots
         unsigned int slots; // 1
     };
 
     struct SolderedRAMSpec
     {
-        std::string type; // PC2700 DDR SDRAM
-        std::string clock; // 333 MHz
+        MemoryType type; // PC2700 DDR SDRAM
         unsigned int size; // 256 (MB) size of soldered RAM
     };
 
@@ -50,5 +50,5 @@ namespace DataInfo
         std::optional<std::string> notes; // additional notes about system
     };
 
-    extern const std::map<std::string, HardwareSystemSpec> hardwareSystem2spec;
+    extern const std::unordered_map<std::string, HardwareSystemSpec> hardwareSystem2spec;
 }
