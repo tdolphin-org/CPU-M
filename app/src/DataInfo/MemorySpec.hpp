@@ -19,6 +19,7 @@ namespace DataInfo
         uint16_t voltage_mV; // voltage in mV
         uint16_t dataRateMTs; // effective clock speed
         uint32_t bandwidthMBs; // bandwidth
+        uint32_t clockMHz; // real clock speed
         uint32_t effectiveMTs; // effective  MT/s
         std::string notes; // notes / comments
 
