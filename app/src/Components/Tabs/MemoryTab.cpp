@@ -25,7 +25,7 @@ namespace Components
                                      .tagFrame(MUI::Frame::Group)
                                      .tagFrameTitle("System Memory")
                                      .tagColumns(2)
-                                     .tagChild(LabelText(MUIX_R "Total Size"))
+                                     .tagChild(LabelText(MUIX_R "Total Size:"))
                                      .tagChild(mTotalSystemMemoryText)
                                      .object())
                        .tagChild(mRAMSpecGroup)

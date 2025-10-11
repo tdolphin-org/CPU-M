@@ -22,7 +22,7 @@ namespace Components
                                      .tagFrame(MUI::Frame::Group)
                                      .tagFrameTitle("Graphic System")
                                      .tagColumns(2)
-                                     .tagChild(LabelText(MUIX_R "Name"))
+                                     .tagChild(LabelText(MUIX_R "Name:"))
                                      .tagChild(mGfxSystemText)
                                      .object())
                        .tagChild(mMountedMonitors)
