@@ -19,6 +19,7 @@ namespace Components
         GoUrlButton mGoHomePageButton;
         GoUrlButton mMailToButton;
         GoUrlButton mGoGitRepositoryButton;
+        GoUrlButton mGoYouTubeChannelButton;
 
         MUI::Group mComponent;
 

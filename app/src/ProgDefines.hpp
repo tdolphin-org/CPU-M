@@ -18,3 +18,4 @@
 #define TDOLPHIN_WEBPAGE "http://www.tdolphin.org"
 #define TDOLPHIN_EMAIL "info@tdolphin.org"
 #define GIT_REPOSITORY_URL "https://github.com/tdolphin-org/CPU-M"
+#define YOUTUBE_CHANNEL_URL "https://www.youtube.com/@tdolphin_org"
