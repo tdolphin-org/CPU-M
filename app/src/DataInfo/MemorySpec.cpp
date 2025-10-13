@@ -6,6 +6,9 @@
 
 #include "MemorySpec.hpp"
 
+#include <iomanip>
+#include <numeric>
+
 namespace DataInfo
 {
     std::string MemoryInfo::name()
@@ -76,4 +79,16 @@ namespace DataInfo
         { MemoryGenerationAndForm::DDR3_SO_DIMM, { MemoryGeneration::DDR3, ModuleForm::SO_DIMM, 204, 67, 2008 } },
         { MemoryGenerationAndForm::DDR3_MicroDIMM, { MemoryGeneration::DDR3, ModuleForm::MicroDIMM, 214, 30, 2010 } },
     };
+
+    std::string mVToVoltage(uint16_t mv)
+    {
+        if (mv % 1000 == 0)
+            return std::to_string(mv / 1000) + " V";
+        else
+        {
+            std::ostringstream stream;
+            stream << std::fixed << std::setprecision(1) << mv / 1000.0;
+            return stream.str() + " V";
+        }
+    }
 }

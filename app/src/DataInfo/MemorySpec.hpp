@@ -37,4 +37,6 @@ namespace DataInfo
 
     extern const std::unordered_map<MemoryType, MemoryInfo> memorySpecs;
     extern const std::unordered_map<MemoryGenerationAndForm, ModuleInfo> moduleSpecs; // key is name()
+
+    std::string mVToVoltage(uint16_t mv);
 }

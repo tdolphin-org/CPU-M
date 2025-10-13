@@ -40,7 +40,7 @@ namespace Components
                                      + std::to_string(ramSpec.form));
             mRAMClockText.setContents(std::to_string(memorySpec->second.clockMHz) + " MHz");
             mRAMTransferRateText.setContents(std::to_string(memorySpec->second.dataRateMTs) + " MT/s");
-            mRAMVoltageText.setContents(std::to_string(memorySpec->second.voltage_mV) + " mV");
+            mRAMVoltageText.setContents(DataInfo::mVToVoltage(memorySpec->second.voltage_mV));
         }
         else
         {
