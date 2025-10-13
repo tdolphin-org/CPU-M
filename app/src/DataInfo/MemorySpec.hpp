@@ -17,10 +17,9 @@ namespace DataInfo
         MemoryType type; // memory type
         MemoryGeneration generation; // SDRAM / DDR / DDR2 / DDR3
         uint16_t voltage_mV; // voltage in mV
-        uint16_t dataRateMTs; // effective clock speed
+        uint16_t dataRateMTs; // effective data rate MT/s
         uint32_t bandwidthMBs; // bandwidth
         uint32_t clockMHz; // real clock speed
-        uint32_t effectiveMTs; // effective  MT/s
         std::string notes; // notes / comments
 
         std::string name(); // e.g. "PC3-12800"

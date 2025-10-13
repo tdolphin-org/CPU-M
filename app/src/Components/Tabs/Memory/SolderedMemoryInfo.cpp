@@ -37,7 +37,7 @@ namespace Components
         {
             mRAMTypeText.setContents(std::to_string(ramSpec.type) + " " + std::to_string(memorySpec->second.generation));
             mRAMClockText.setContents(std::to_string(memorySpec->second.clockMHz) + " MHz");
-            mRAMTransferRateText.setContents(std::to_string(memorySpec->second.effectiveMTs) + " MT/s");
+            mRAMTransferRateText.setContents(std::to_string(memorySpec->second.dataRateMTs) + " MT/s");
         }
         else
         {
