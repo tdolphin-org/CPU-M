@@ -14,7 +14,6 @@
 #include <cmath>
 #include <iomanip>
 #include <numeric>
-#include <ostream>
 
 static std::map<std::string, std::string> ppc_cpu2image = {
     { "Unknown", CPUImageFile::ppc },  { "602", CPUImageFile::ppc602 },   { "603", CPUImageFile::ppc603 },
@@ -65,7 +64,7 @@ namespace Components
                       .object())
       , mCPUClockText(ValueText("CPU clock", ToString::FromClockHertzValue(cpuInfo.clock, true)))
       , mCPUMultiplerText(ValueText("Multiplier", CPUInfo::CalculateMultiplier(cpuInfo.clock, cpuInfo.busClock)))
-      , mCPUBusSpeedText(ValueText("Bus Speed", cpuInfo.busClock > 0 ? ToString::FromClockHertzValue(cpuInfo.busClock, true, true) : "--"))
+      , mCPUBusSpeedText(ValueText("Bus Speed", cpuInfo.busClock > 0 ? ToString::FromClockHertzValue(cpuInfo.busClock, true) : "--"))
       , mCPUL1InstructionCacheText(ValueText("Level 1 Instructions Cache size",
                                              cpuInfo.l1InstructionCache > 0 ? ToString::FromBytesValue(cpuInfo.l1InstructionCache) : "--"))
       , mCPUL1DataCacheText(
@@ -171,19 +170,11 @@ namespace Components
             return "--";
 
         double multiplier = static_cast<double>(cpuClock) / static_cast<double>(busClock);
-        double rounded = std::round(multiplier * 2) / 2;
+        double rounded = std::round(multiplier * 2.0) / 2.0;
 
         std::ostringstream stream;
-        stream << std::fixed << std::setprecision(1) << rounded;
+        stream << std::fixed << std::setprecision(rounded == std::floor(rounded) ? 0 : 1) << rounded;
 
-        std::string result = stream.str();
-        if (result.find('.') != std::string::npos)
-        {
-            result = result.substr(0, result.find_last_not_of('0') + 1);
-            if (result.back() == '.')
-                result.pop_back();
-        }
-
-        return result + " x";
+        return stream.str() + " x";
     }
 }
