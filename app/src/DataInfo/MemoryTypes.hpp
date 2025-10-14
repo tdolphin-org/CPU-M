@@ -52,12 +52,6 @@ enum class MemoryType
     PC2100,
     PC2700,
     PC3200,
-    PC3500,
-    PC3700,
-    PC4000,
-    PC4200,
-    PC4400,
-    PC4800,
 
     // --- DDR2 ---
     PC2_3200,

@@ -30,12 +30,6 @@ namespace DataInfo
         { MemoryType::PC2100, { MemoryType::PC2100, MemoryGeneration::DDR, 2500, 266, 2100, 133, "Standard voltage" } },
         { MemoryType::PC2700, { MemoryType::PC2700, MemoryGeneration::DDR, 2500, 333, 2700, 166, "Standard voltage" } },
         { MemoryType::PC3200, { MemoryType::PC3200, MemoryGeneration::DDR, 2500, 400, 3200, 200, "Standard voltage" } },
-        { MemoryType::PC3500, { MemoryType::PC3500, MemoryGeneration::DDR, 2500, 433, 3500, 216, "Standard voltage" } },
-        { MemoryType::PC3700, { MemoryType::PC3700, MemoryGeneration::DDR, 2500, 466, 3700, 233, "Standard voltage" } },
-        { MemoryType::PC4000, { MemoryType::PC4000, MemoryGeneration::DDR, 2500, 500, 4000, 250, "Standard voltage" } },
-        { MemoryType::PC4200, { MemoryType::PC4200, MemoryGeneration::DDR, 2500, 533, 4200, 266, "Standard voltage" } },
-        { MemoryType::PC4400, { MemoryType::PC4400, MemoryGeneration::DDR, 2500, 566, 4400, 283, "Standard voltage" } },
-        { MemoryType::PC4800, { MemoryType::PC4800, MemoryGeneration::DDR, 2500, 600, 4800, 300, "Standard voltage" } },
 
         { MemoryType::PC2_3200, { MemoryType::PC2_3200, MemoryGeneration::DDR2, 1800, 400, 3200, 200, "Standard voltage" } },
         { MemoryType::PC2_4200, { MemoryType::PC2_4200, MemoryGeneration::DDR2, 1800, 533, 4200, 266, "Standard voltage" } },

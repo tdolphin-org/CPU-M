@@ -89,18 +89,6 @@ namespace std
                 return "PC2700";
             case MemoryType::PC3200:
                 return "PC3200";
-            case MemoryType::PC3500:
-                return "PC3500";
-            case MemoryType::PC3700:
-                return "PC3700";
-            case MemoryType::PC4000:
-                return "PC4000";
-            case MemoryType::PC4200:
-                return "PC4200";
-            case MemoryType::PC4400:
-                return "PC4400";
-            case MemoryType::PC4800:
-                return "PC4800";
             case MemoryType::PC2_3200:
                 return "PC2-3200";
             case MemoryType::PC2_4200:
