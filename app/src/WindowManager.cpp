@@ -11,7 +11,7 @@
 #endif
 
 WindowManagerCore::WindowManagerCore()
-  : mAllWindows({ mGfxChipSpecWindow })
+  : mAllWindows({ mGfxChipSpecWindow, mMemoryModuleSpecWindow })
 {
 #ifdef TRACE_MANAGERS
     std::cout << __PRETTY_FUNCTION__ << std::endl;

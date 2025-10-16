@@ -6,9 +6,10 @@
 
 #pragma once
 
+#include "Components/Windows/GfxChipSpecWindow.hpp"
+#include "Components/Windows/MemoryModuleSpecWindow.hpp"
 #include "Core/Singleton.hpp"
 #include "MUI/Window.hpp"
-#include "Components/Windows/GfxChipSpecWindow.hpp"
 
 #include <vector>
 
@@ -18,6 +19,7 @@ class WindowManagerCore
     friend class td::Singleton<WindowManagerCore>;
 
     Components::GfxChipSpecWindow mGfxChipSpecWindow;
+    Components::MemoryModuleSpecWindow mMemoryModuleSpecWindow;
 
     std::vector<MUI::Window> mAllWindows;
 
@@ -30,6 +32,11 @@ class WindowManagerCore
     Components::GfxChipSpecWindow &getGfxChipSpecWindow()
     {
         return mGfxChipSpecWindow;
+    }
+
+    Components::MemoryModuleSpecWindow &getMemoryModuleSpecWindow()
+    {
+        return mMemoryModuleSpecWindow;
     }
 };
 

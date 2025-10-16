@@ -12,4 +12,5 @@ namespace WindowID
 {
     extern const AOS::Identifier AppWindow;
     extern const AOS::Identifier GfxChipSpecWindow;
+    extern const AOS::Identifier MemoryModuleSpecWindow;
 }
