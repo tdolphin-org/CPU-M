@@ -14,8 +14,12 @@
 
 namespace Components
 {
+    class MemorySlotsInfo; // forward declaration
+
     class MemoryTab : public Root<MUI::Group>, public TabBase
     {
+        std::vector<MemorySlotsInfo *> mMemorySlotsInfos;
+
         MUI::Text mTotalSystemMemoryText;
         MUI::Group mRAMSpecGroup;
 
@@ -23,6 +27,7 @@ namespace Components
 
       public:
         MemoryTab();
+        virtual ~MemoryTab();
 
       protected:
         MUI::Group &muiRoot() const

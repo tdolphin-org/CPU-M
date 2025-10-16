@@ -61,7 +61,8 @@ namespace Components
         {
             if (!first)
                 mRAMSpecGroup.AddTail(MUI::MakeObject::FreeCLabel1("or"));
-            mRAMSpecGroup.AddTail(MemorySlotsInfo(ramType).muiObject());
+            mMemorySlotsInfos.push_back(new MemorySlotsInfo(ramType));
+            mRAMSpecGroup.AddTail(mMemorySlotsInfos.back()->muiObject());
             totalPossibleRAM.push_back(std::to_string(ramType.max + (spec.solderedRAM.has_value() ? spec.solderedRAM->size : 0)));
             first = false;
         }
@@ -82,5 +83,11 @@ namespace Components
                                       .tagContents(spec.ramNotes.value())
                                       .object());
         }
+    }
+
+    MemoryTab::~MemoryTab()
+    {
+        for (auto *pButton : mMemorySlotsInfos)
+            delete pButton;
     }
 }
