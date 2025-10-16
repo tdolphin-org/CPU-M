@@ -11,12 +11,12 @@
 
 namespace DataInfo
 {
-    std::string MemoryInfo::name()
+    std::string MemoryInfo::name() const
     {
         return std::to_string(generation) + " " + std::to_string(type);
     }
 
-    std::string MemoryInfo::alias()
+    std::string MemoryInfo::alias() const
     {
         return std::to_string(generation) + "-" + std::to_string(bandwidthMBs);
     }

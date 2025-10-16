@@ -22,8 +22,8 @@ namespace DataInfo
         uint32_t clockMHz; // real clock speed
         std::string notes; // notes / comments
 
-        std::string name(); // e.g. "PC3-12800"
-        std::string alias(); // e.g. "DDR3-1600"
+        std::string name() const; // e.g. "PC3-12800"
+        std::string alias() const; // e.g. "DDR3-1600"
     };
 
     struct ModuleInfo
