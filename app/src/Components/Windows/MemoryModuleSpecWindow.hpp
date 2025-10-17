@@ -8,6 +8,7 @@
 
 #include "DataInfo/MemorySpec.hpp"
 #include "MUI/Group.hpp"
+#include "MUI/Image.hpp"
 #include "MUI/Text.hpp"
 #include "MUI/Window.hpp"
 
@@ -15,6 +16,7 @@ namespace Components
 {
     class MemoryModuleSpecWindow : public Root<MUI::Window>
     {
+        MUI::Image mModuleImage;
         MUI::Text mTypeText;
         MUI::Text mModuleFormText;
         MUI::Text mGenerationText;

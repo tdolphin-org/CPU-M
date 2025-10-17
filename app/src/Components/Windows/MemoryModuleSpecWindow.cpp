@@ -7,14 +7,33 @@
 #include "MemoryModuleSpecWindow.hpp"
 
 #include "Components/IDs.hpp"
+#include "FileResources/MemoryModuleImages.hpp"
 #include "MUI/Notifier/Notifier.hpp"
 #include "ProgDefines.hpp"
 #include "Version.hpp"
 
+static std::map<std::pair<MemoryGeneration, ModuleForm>, std::string> memoryModule2image = {
+    { { MemoryGeneration::SDR, ModuleForm::DIMM }, MemoryModuleImageFile::ddr_dimm }, // FIXME
+    { { MemoryGeneration::SDR, ModuleForm::SO_DIMM }, MemoryModuleImageFile::ddr_dimm },
+    { { MemoryGeneration::DDR, ModuleForm::DIMM }, MemoryModuleImageFile::ddr_dimm },
+    { { MemoryGeneration::DDR, ModuleForm::SO_DIMM }, MemoryModuleImageFile::ddr_dimm },
+    { { MemoryGeneration::DDR2, ModuleForm::DIMM }, MemoryModuleImageFile::ddr_dimm },
+    { { MemoryGeneration::DDR2, ModuleForm::SO_DIMM }, MemoryModuleImageFile::ddr_dimm },
+    { { MemoryGeneration::DDR3, ModuleForm::DIMM }, MemoryModuleImageFile::ddr_dimm },
+    { { MemoryGeneration::DDR3, ModuleForm::SO_DIMM }, MemoryModuleImageFile::ddr_dimm },
+};
+
 namespace Components
 {
     MemoryModuleSpecWindow::MemoryModuleSpecWindow()
-      : mTypeText(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
+      : mModuleImage(MUI::ImageBuilder()
+                         .tagSpecPicture(MemoryModuleImageFile::ddr_dimm)
+                         .tagFixWidth(800)
+                         .tagFixHeight(256)
+                         .tagFreeHoriz(true)
+                         .tagFreeVert(true)
+                         .object())
+      , mTypeText(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
       , mModuleFormText(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
       , mGenerationText(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
       , mVoltageText(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
@@ -22,34 +41,36 @@ namespace Components
       , mBandwidthMBsText(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
       , mClockText(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
       , mNotesText(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
-      , mModuleSpecGroup(MUI::GroupBuilder()
-                             .vertical()
-                             .tagChild(MUI::GroupBuilder()
-                                           .tagColumns(3)
-                                           .tagChild(MUI::TextBuilder().tagFont(MUI::Font::Tiny).tagContents("Type:").object())
-                                           .tagChild(MUI::TextBuilder().tagFont(MUI::Font::Tiny).tagContents("Module Form:").object())
-                                           .tagChild(MUI::TextBuilder().tagFont(MUI::Font::Tiny).tagContents("Generation:").object())
-                                           .tagChild(mTypeText)
-                                           .tagChild(mModuleFormText)
-                                           .tagChild(mGenerationText)
-                                           .object())
-                             .tagChild(MUI::GroupBuilder()
-                                           .tagColumns(4)
-                                           .tagChild(MUI::TextBuilder().tagFont(MUI::Font::Tiny).tagContents("Data Transfer Rate:").object())
-                                           .tagChild(MUI::TextBuilder().tagFont(MUI::Font::Tiny).tagContents("Bandwidth:").object())
-                                           .tagChild(MUI::TextBuilder().tagFont(MUI::Font::Tiny).tagContents("Clock:").object())
-                                           .tagChild(MUI::TextBuilder().tagFont(MUI::Font::Tiny).tagContents("Voltage:").object())
-                                           .tagChild(mDataTransferMTsText)
-                                           .tagChild(mBandwidthMBsText)
-                                           .tagChild(mClockText)
-                                           .tagChild(mVoltageText)
-                                           .object())
-                             .tagChild(MUI::GroupBuilder()
-                                           .tagColumns(1)
-                                           .tagChild(MUI::TextBuilder().tagFont(MUI::Font::Tiny).tagContents("Notes:").object())
-                                           .tagChild(mNotesText)
-                                           .object())
-                             .object())
+      , mModuleSpecGroup(
+            MUI::GroupBuilder()
+                .vertical()
+                .tagChild(mModuleImage)
+                .tagChild(MUI::GroupBuilder()
+                              .tagColumns(3)
+                              .tagChild(MUI::TextBuilder().tagFont(MUI::Font::Tiny).tagContents("Type:").object())
+                              .tagChild(MUI::TextBuilder().tagFont(MUI::Font::Tiny).tagContents("Module Form:").object())
+                              .tagChild(MUI::TextBuilder().tagFont(MUI::Font::Tiny).tagContents("Generation:").object())
+                              .tagChild(mTypeText)
+                              .tagChild(mModuleFormText)
+                              .tagChild(mGenerationText)
+                              .object())
+                .tagChild(MUI::GroupBuilder()
+                              .tagColumns(4)
+                              .tagChild(MUI::TextBuilder().tagFont(MUI::Font::Tiny).tagContents("Data Transfer Rate:").object())
+                              .tagChild(MUI::TextBuilder().tagFont(MUI::Font::Tiny).tagContents("Bandwidth:").object())
+                              .tagChild(MUI::TextBuilder().tagFont(MUI::Font::Tiny).tagContents("Clock:").object())
+                              .tagChild(MUI::TextBuilder().tagFont(MUI::Font::Tiny).tagContents("Voltage:").object())
+                              .tagChild(mDataTransferMTsText)
+                              .tagChild(mBandwidthMBsText)
+                              .tagChild(mClockText)
+                              .tagChild(mVoltageText)
+                              .object())
+                .tagChild(MUI::GroupBuilder()
+                              .tagColumns(1)
+                              .tagChild(MUI::TextBuilder().tagFont(MUI::Font::Tiny).tagContents("Notes:").object())
+                              .tagChild(mNotesText)
+                              .object())
+                .object())
       , mComponent(MUI::WindowBuilder()
                        .tagTitle("Memory Module Specification")
                        .tagScreenTitle(SCREEN_TITLE)
