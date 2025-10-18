@@ -8,32 +8,26 @@
 
 #include "Components/IDs.hpp"
 #include "FileResources/MemoryModuleImages.hpp"
+#include "MUI/Core/MakeObject.hpp"
 #include "MUI/Notifier/Notifier.hpp"
 #include "ProgDefines.hpp"
 #include "Version.hpp"
 
 static std::map<std::pair<MemoryGeneration, ModuleForm>, std::string> memoryModule2image = {
-    { { MemoryGeneration::SDR, ModuleForm::DIMM }, MemoryModuleImageFile::ddr_dimm }, // FIXME
-    { { MemoryGeneration::SDR, ModuleForm::SO_DIMM }, MemoryModuleImageFile::ddr_dimm },
+    { { MemoryGeneration::SDR, ModuleForm::DIMM }, MemoryModuleImageFile::sdr_dimm },
+    { { MemoryGeneration::SDR, ModuleForm::SO_DIMM }, MemoryModuleImageFile::sdr_so_dimm },
     { { MemoryGeneration::DDR, ModuleForm::DIMM }, MemoryModuleImageFile::ddr_dimm },
-    { { MemoryGeneration::DDR, ModuleForm::SO_DIMM }, MemoryModuleImageFile::ddr_dimm },
-    { { MemoryGeneration::DDR2, ModuleForm::DIMM }, MemoryModuleImageFile::ddr_dimm },
-    { { MemoryGeneration::DDR2, ModuleForm::SO_DIMM }, MemoryModuleImageFile::ddr_dimm },
-    { { MemoryGeneration::DDR3, ModuleForm::DIMM }, MemoryModuleImageFile::ddr_dimm },
-    { { MemoryGeneration::DDR3, ModuleForm::SO_DIMM }, MemoryModuleImageFile::ddr_dimm },
+    { { MemoryGeneration::DDR, ModuleForm::SO_DIMM }, MemoryModuleImageFile::ddr_so_dimm },
+    { { MemoryGeneration::DDR2, ModuleForm::DIMM }, MemoryModuleImageFile::ddr2_dimm },
+    { { MemoryGeneration::DDR2, ModuleForm::SO_DIMM }, MemoryModuleImageFile::ddr2_so_dimm },
+    { { MemoryGeneration::DDR3, ModuleForm::DIMM }, MemoryModuleImageFile::ddr3_dimm },
+    { { MemoryGeneration::DDR3, ModuleForm::SO_DIMM }, MemoryModuleImageFile::ddr3_so_dimm },
 };
 
 namespace Components
 {
     MemoryModuleSpecWindow::MemoryModuleSpecWindow()
-      : mModuleImage(MUI::ImageBuilder()
-                         .tagSpecPicture(MemoryModuleImageFile::ddr_dimm)
-                         .tagFixWidth(800)
-                         .tagFixHeight(256)
-                         .tagFreeHoriz(true)
-                         .tagFreeVert(true)
-                         .object())
-      , mTypeText(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
+      : mTypeText(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
       , mModuleFormText(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
       , mGenerationText(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
       , mVoltageText(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
@@ -44,7 +38,7 @@ namespace Components
       , mModuleSpecGroup(
             MUI::GroupBuilder()
                 .vertical()
-                .tagChild(mModuleImage)
+                .tagChild(mModuleImage = MUI::MakeObject::CLabel("image placeholder"))
                 .tagChild(MUI::GroupBuilder()
                               .tagColumns(3)
                               .tagChild(MUI::TextBuilder().tagFont(MUI::Font::Tiny).tagContents("Type:").object())
@@ -77,7 +71,7 @@ namespace Components
                        .tagID(WindowID::MemoryModuleSpecWindow)
                        .tagWidth(500)
                        .tagHeight(240)
-                       .tagAltWidth(640)
+                       .tagAltWidth(820)
                        .tagAltHeight(480)
                        .tagRootObject(mModuleSpecGroup)
                        .object())
@@ -91,6 +85,16 @@ namespace Components
         auto memorySpec = DataInfo::memorySpecs.find(memoryTypeAndForm.first);
         if (memorySpec != DataInfo::memorySpecs.end())
         {
+            auto imageIt = memoryModule2image.find({ memorySpec->second.generation, memoryTypeAndForm.second });
+            if (imageIt != memoryModule2image.end())
+            {
+                mModuleSpecGroup.InitChange();
+                if (mModuleImage)
+                    mModuleSpecGroup.Remove(mModuleImage);
+                mModuleImage = CreateImage(memorySpec->second.generation, memoryTypeAndForm.second);
+                mModuleSpecGroup.AddHead(mModuleImage ? mModuleImage : MUI::MakeObject::CLabel("image placeholder"));
+                mModuleSpecGroup.ExitChange();
+            }
             mTypeText.setContents(memorySpec->second.name() + " (" + memorySpec->second.alias() + ")");
             mModuleFormText.setContents(std::to_string(memoryTypeAndForm.second));
             mGenerationText.setContents(std::to_string(memorySpec->second.generation));
@@ -118,5 +122,37 @@ namespace Components
     void MemoryModuleSpecWindow::Close()
     {
         MUI::Window(*this).Close();
+    }
+
+    Object *MemoryModuleSpecWindow::CreateImage(const MemoryGeneration memoryGeneration, const ModuleForm memoryTypeAndForm)
+    {
+        auto imageIt = memoryModule2image.find({ memoryGeneration, memoryTypeAndForm });
+        if (imageIt != memoryModule2image.end())
+        {
+            if (memoryTypeAndForm == ModuleForm::DIMM)
+            {
+                return MUI::ImageBuilder()
+                    .tagSpecPicture(imageIt->second.c_str())
+                    .tagFixWidth(810)
+                    .tagFixHeight(190)
+                    .tagFreeHoriz(true)
+                    .tagFreeVert(true)
+                    .object()
+                    .muiObject();
+            }
+            else // SO_DIMM
+            {
+                return MUI::ImageBuilder()
+                    .tagSpecPicture(imageIt->second.c_str())
+                    .tagFixWidth(410)
+                    .tagFixHeight(190)
+                    .tagFreeHoriz(true)
+                    .tagFreeVert(true)
+                    .object()
+                    .muiObject();
+            }
+        }
+
+        return nullptr;
     }
 }

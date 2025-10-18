@@ -10,7 +10,7 @@ namespace Components
 {
     MUI::Text TabBase::LabelText(const std::string &label, const short weight)
     {
-        return MUI::TextBuilder().tagContents(label).tagFrame(MUI::Frame::String).tagPhantomHoriz(true).tagWeight(weight).object();
+        return MUI::TextBuilder().tagContents(label).tagFrame(MUI::Frame::String).tagFramePhantomHoriz(true).tagWeight(weight).object();
     }
 
     MUI::Text TabBase::ValueText(const std::string &help, const std::string &defaultValue, const bool shorten, const short weight)

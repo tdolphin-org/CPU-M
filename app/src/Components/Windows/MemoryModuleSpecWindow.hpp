@@ -16,7 +16,8 @@ namespace Components
 {
     class MemoryModuleSpecWindow : public Root<MUI::Window>
     {
-        MUI::Image mModuleImage;
+        Object *mModuleImage { nullptr };
+
         MUI::Text mTypeText;
         MUI::Text mModuleFormText;
         MUI::Text mGenerationText;
@@ -41,5 +42,8 @@ namespace Components
         {
             return const_cast<MUI::Window &>(mComponent);
         }
+
+      private:
+        Object *CreateImage(const MemoryGeneration memoryGeneration, const ModuleForm memoryTypeAndForm);
     };
 }
