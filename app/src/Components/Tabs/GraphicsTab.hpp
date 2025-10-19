@@ -17,6 +17,7 @@ namespace Components
     {
         MUI::Text mGfxSystemText;
         MUI::Group mMountedMonitors;
+        MUI::Group mGraphicsCards;
 
         MUI::Group mComponent;
 
