@@ -9,7 +9,6 @@
 namespace MemoryModuleImageFile
 {
     const char *default_dimm = "PROGDIR:images/memory/default.dimm.810x190.png";
-    const char *default_so_dimm = "PROGDIR:images/memory/default.so_dimm.410x190.png";
     const char *sdr_dimm = "PROGDIR:images/memory/sdr.dimm.810x190.png";
     const char *sdr_so_dimm = "PROGDIR:images/memory/sdr.so_dimm.410x190.png";
     const char *ddr_dimm = "PROGDIR:images/memory/ddr.dimm.810x190.png";
