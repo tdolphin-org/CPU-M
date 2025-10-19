@@ -19,7 +19,6 @@ namespace Components
                        .tagChild(mBoardsList)
                        .object())
     {
-        AOS::PCIX::Library::GetBoards();
     }
 
     BoardsTab::~BoardsTab() { }
