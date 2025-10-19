@@ -30,34 +30,46 @@ namespace Components
       : mTypeText(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
       , mModuleFormText(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
       , mGenerationText(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
-      , mVoltageText(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
+      , mIntroductionYearText(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
       , mDataTransferMTsText(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
       , mBandwidthMBsText(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
       , mClockText(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
+      , mWidthText(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
+      , mPinsCountText(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
+      , mVoltageText(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
       , mNotesText(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
       , mModuleSpecGroup(
             MUI::GroupBuilder()
                 .vertical()
                 .tagChild(mModuleImage = MUI::MakeObject::CLabel("image placeholder"))
                 .tagChild(MUI::GroupBuilder()
-                              .tagColumns(3)
+                              .tagColumns(4)
                               .tagChild(MUI::TextBuilder().tagFont(MUI::Font::Tiny).tagContents("Type:").object())
                               .tagChild(MUI::TextBuilder().tagFont(MUI::Font::Tiny).tagContents("Module Form:").object())
                               .tagChild(MUI::TextBuilder().tagFont(MUI::Font::Tiny).tagContents("Generation:").object())
+                              .tagChild(MUI::TextBuilder().tagFont(MUI::Font::Tiny).tagContents("Introduction Year:").object())
                               .tagChild(mTypeText)
                               .tagChild(mModuleFormText)
                               .tagChild(mGenerationText)
+                              .tagChild(mIntroductionYearText)
                               .object())
                 .tagChild(MUI::GroupBuilder()
-                              .tagColumns(4)
+                              .tagColumns(3)
+                              .tagChild(MUI::TextBuilder().tagFont(MUI::Font::Tiny).tagContents("Width:").object())
+                              .tagChild(MUI::TextBuilder().tagFont(MUI::Font::Tiny).tagContents("Number of Pins:").object())
+                              .tagChild(MUI::TextBuilder().tagFont(MUI::Font::Tiny).tagContents("Voltage:").object())
+                              .tagChild(mWidthText)
+                              .tagChild(mPinsCountText)
+                              .tagChild(mVoltageText)
+                              .object())
+                .tagChild(MUI::GroupBuilder()
+                              .tagColumns(3)
                               .tagChild(MUI::TextBuilder().tagFont(MUI::Font::Tiny).tagContents("Data Transfer Rate:").object())
                               .tagChild(MUI::TextBuilder().tagFont(MUI::Font::Tiny).tagContents("Bandwidth:").object())
                               .tagChild(MUI::TextBuilder().tagFont(MUI::Font::Tiny).tagContents("Clock:").object())
-                              .tagChild(MUI::TextBuilder().tagFont(MUI::Font::Tiny).tagContents("Voltage:").object())
                               .tagChild(mDataTransferMTsText)
                               .tagChild(mBandwidthMBsText)
                               .tagChild(mClockText)
-                              .tagChild(mVoltageText)
                               .object())
                 .tagChild(MUI::GroupBuilder()
                               .tagColumns(1)
@@ -92,10 +104,11 @@ namespace Components
                 if (mModuleImage)
                     mModuleSpecGroup.Remove(mModuleImage);
                 mModuleImage = CreateImage(memorySpec->second.generation, memoryTypeAndForm.second);
-                mModuleSpecGroup.AddHead(mModuleImage ? mModuleImage : MUI::MakeObject::CLabel("image placeholder"));
+                mModuleSpecGroup.AddHead(mModuleImage ? MUI::MakeObject::HCenter(mModuleImage)
+                                                      : MUI::MakeObject::CLabel("image placeholder"));
                 mModuleSpecGroup.ExitChange();
             }
-            mTypeText.setContents(memorySpec->second.name() + " (" + memorySpec->second.alias() + ")");
+            mTypeText.setContents(memorySpec->second.name());
             mModuleFormText.setContents(std::to_string(memoryTypeAndForm.second));
             mGenerationText.setContents(std::to_string(memorySpec->second.generation));
             mVoltageText.setContents(DataInfo::mVToVoltage(memorySpec->second.voltage_mV));
@@ -114,6 +127,20 @@ namespace Components
             mBandwidthMBsText.setContents("--");
             mClockText.setContents("--");
             mNotesText.setContents("No additional information available.");
+        }
+
+        auto moduleSpec = DataInfo::moduleSpecs.find({ memorySpec->second.generation, memoryTypeAndForm.second });
+        if (moduleSpec != DataInfo::moduleSpecs.end())
+        {
+            mWidthText.setContents(std::to_string(moduleSpec->second.length_mm) + " mm");
+            mPinsCountText.setContents(std::to_string(moduleSpec->second.pins) + " pins");
+            mIntroductionYearText.setContents(std::to_string(moduleSpec->second.introductionYear));
+        }
+        else
+        {
+            mWidthText.setContents("--");
+            mPinsCountText.setContents("--");
+            mIntroductionYearText.setContents("--");
         }
 
         MUI::Window(*this).Open();

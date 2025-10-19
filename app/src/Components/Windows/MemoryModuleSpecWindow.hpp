@@ -21,10 +21,13 @@ namespace Components
         MUI::Text mTypeText;
         MUI::Text mModuleFormText;
         MUI::Text mGenerationText;
-        MUI::Text mVoltageText;
+        MUI::Text mIntroductionYearText;
         MUI::Text mDataTransferMTsText;
         MUI::Text mBandwidthMBsText;
         MUI::Text mClockText;
+        MUI::Text mWidthText; // in millimeters
+        MUI::Text mPinsCountText; // number of pins
+        MUI::Text mVoltageText;
         MUI::Text mNotesText;
 
         MUI::Group mModuleSpecGroup;
