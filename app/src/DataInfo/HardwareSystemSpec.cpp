@@ -332,7 +332,8 @@ namespace DataInfo
                 { "SATA" },
                 "Open Firmware",
                 std::nullopt,
-                { { MemoryType::PC3200, ModuleForm::DIMM, 4096, 4 }, { MemoryType::PC3200, ModuleForm::DIMM, 8192, 8 } }, // 4 or 8 GB max, 4 or 8 slots
+                { { MemoryType::PC3200, ModuleForm::DIMM, 4096, 4 },
+                  { MemoryType::PC3200, ModuleForm::DIMM, 8192, 8 } }, // 4 or 8 GB max, 4 or 8 slots
                 { { "USB 2.0", 3 }, { "FireWire 400", 2 }, { "FireWire 800", 1 }, { "Ethernet 10/100/1000 Mbps", 1 } },
                 std::nullopt,
                 std::nullopt,
@@ -350,7 +351,7 @@ namespace DataInfo
                 "Open Firmware",
                 std::nullopt,
                 { { MemoryType::PC2700, ModuleForm::SO_DIMM, 1024, 1 } },
-                { { "USB 2.0", 2 }, { "FireWire 400", 1 }, { "Ethernet 10/100 Mbps", 1 } },
+                { { "USB 2.0", 2 }, { "FireWire 400", 1 }, { "Ethernet 10/100 Mbps", 1 }, { "Audio Out (3.5mm Headphone Jack)", 1 } },
                 std::nullopt,
                 std::nullopt,
             },
@@ -367,7 +368,7 @@ namespace DataInfo
                 "Open Firmware",
                 std::nullopt,
                 { { MemoryType::PC2700, ModuleForm::SO_DIMM, 1024, 1 } },
-                { { "USB 2.0", 2 }, { "FireWire 400", 1 }, { "Ethernet 10/100 Mbps", 1 } },
+                { { "USB 2.0", 2 }, { "FireWire 400", 1 }, { "Ethernet 10/100 Mbps", 1 }, { "Audio Out (3.5mm Headphone Jack)", 1 } },
                 std::nullopt,
                 std::nullopt,
             },
