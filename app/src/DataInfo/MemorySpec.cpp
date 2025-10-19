@@ -7,6 +7,7 @@
 #include "MemorySpec.hpp"
 
 #include <iomanip>
+#include <map>
 #include <numeric>
 
 namespace DataInfo
@@ -57,21 +58,21 @@ namespace DataInfo
         { MemoryType::PC3U_19200, { MemoryType::PC3U_19200, MemoryGeneration::DDR3, 1250, 2400, 19200, 1200, "Ultra low voltage" } },
     };
 
-    const std::unordered_map<MemoryGenerationAndForm, ModuleInfo> moduleSpecs = {
-        { MemoryGenerationAndForm::SDR_DIMM, { MemoryGeneration::SDR, ModuleForm::DIMM, 168, 133, 1997 } },
-        { MemoryGenerationAndForm::SDR_SO_DIMM, { MemoryGeneration::SDR, ModuleForm::SO_DIMM, 144, 67, 1997 } },
-        { MemoryGenerationAndForm::SDR_MicroDIMM, { MemoryGeneration::SDR, ModuleForm::MicroDIMM, 172, 45, 1999 } },
+    const std::map<std::pair<MemoryGeneration, ModuleForm>, ModuleInfo> moduleSpecs = {
+        { { MemoryGeneration::SDR, ModuleForm::DIMM }, { MemoryGeneration::SDR, ModuleForm::DIMM, 168, 133, 1997 } },
+        { { MemoryGeneration::SDR, ModuleForm::SO_DIMM }, { MemoryGeneration::SDR, ModuleForm::SO_DIMM, 144, 67, 1997 } },
+        { { MemoryGeneration::SDR, ModuleForm::MicroDIMM }, { MemoryGeneration::SDR, ModuleForm::MicroDIMM, 172, 45, 1999 } },
 
-        { MemoryGenerationAndForm::DDR_DIMM, { MemoryGeneration::DDR, ModuleForm::DIMM, 184, 133, 2000 } },
-        { MemoryGenerationAndForm::DDR_SO_DIMM, { MemoryGeneration::DDR, ModuleForm::SO_DIMM, 200, 67, 2001 } },
-        { MemoryGenerationAndForm::DDR_MicroDIMM, { MemoryGeneration::DDR, ModuleForm::MicroDIMM, 172, 45, 2002 } },
+        { { MemoryGeneration::DDR, ModuleForm::DIMM }, { MemoryGeneration::DDR, ModuleForm::DIMM, 184, 133, 2000 } },
+        { { MemoryGeneration::DDR, ModuleForm::SO_DIMM }, { MemoryGeneration::DDR, ModuleForm::SO_DIMM, 200, 67, 2001 } },
+        { { MemoryGeneration::DDR, ModuleForm::MicroDIMM }, { MemoryGeneration::DDR, ModuleForm::MicroDIMM, 172, 45, 2002 } },
 
-        { MemoryGenerationAndForm::DDR2_DIMM, { MemoryGeneration::DDR2, ModuleForm::DIMM, 240, 133, 2003 } },
-        { MemoryGenerationAndForm::DDR2_SO_DIMM, { MemoryGeneration::DDR2, ModuleForm::SO_DIMM, 200, 67, 2004 } },
+        { { MemoryGeneration::DDR2, ModuleForm::DIMM }, { MemoryGeneration::DDR2, ModuleForm::DIMM, 240, 133, 2003 } },
+        { { MemoryGeneration::DDR2, ModuleForm::SO_DIMM }, { MemoryGeneration::DDR2, ModuleForm::SO_DIMM, 200, 67, 2004 } },
 
-        { MemoryGenerationAndForm::DDR3_DIMM, { MemoryGeneration::DDR3, ModuleForm::DIMM, 240, 133, 2007 } },
-        { MemoryGenerationAndForm::DDR3_SO_DIMM, { MemoryGeneration::DDR3, ModuleForm::SO_DIMM, 204, 67, 2008 } },
-        { MemoryGenerationAndForm::DDR3_MicroDIMM, { MemoryGeneration::DDR3, ModuleForm::MicroDIMM, 214, 30, 2010 } },
+        { { MemoryGeneration::DDR3, ModuleForm::DIMM }, { MemoryGeneration::DDR3, ModuleForm::DIMM, 240, 133, 2007 } },
+        { { MemoryGeneration::DDR3, ModuleForm::SO_DIMM }, { MemoryGeneration::DDR3, ModuleForm::SO_DIMM, 204, 67, 2008 } },
+        { { MemoryGeneration::DDR3, ModuleForm::MicroDIMM }, { MemoryGeneration::DDR3, ModuleForm::MicroDIMM, 214, 30, 2010 } },
     };
 
     std::string mVToVoltage(uint16_t mv)
