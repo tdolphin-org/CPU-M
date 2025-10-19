@@ -148,13 +148,13 @@ namespace Components
         for (const auto &entry : allLibraries)
         {
             if (isLibrary(entry))
-                mLoadedLibrariesList.InsertSingleBottom(entry.name + " (v" + entry.version.value_or("??") + ")");
+                mLoadedLibrariesList.InsertSingleSorted(entry.name + " (v" + entry.version.value_or("??") + ")");
             else if (isDatatype(entry))
-                mLoadedDatatypesList.InsertSingleBottom(entry.name + " (v" + entry.version.value_or("??") + ")");
+                mLoadedDatatypesList.InsertSingleSorted(entry.name + " (v" + entry.version.value_or("??") + ")");
             else if (isMUI(entry))
-                mLoadedMUIList.InsertSingleBottom(entry.name + " (v" + entry.version.value_or("??") + ")");
+                mLoadedMUIList.InsertSingleSorted(entry.name + " (v" + entry.version.value_or("??") + ")");
             else
-                mLoadedOtherList.InsertSingleBottom(entry.name + " (v" + entry.version.value_or("??") + ")");
+                mLoadedOtherList.InsertSingleSorted(entry.name + " (v" + entry.version.value_or("??") + ")");
         }
 
         mLoadedLibrariesList.setQuiet(false);
