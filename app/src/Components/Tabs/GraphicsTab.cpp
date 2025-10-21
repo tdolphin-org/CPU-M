@@ -45,7 +45,7 @@ namespace Components
                 mMountedMonitors.AddMember(MUI::TextBuilder().tagFrame(MUI::Frame::String).tagContents(monitorName).object());
         }
 
-        auto displayBoards = AOS::PCIX::Library::GetDisplayBoards();
+        auto displayBoards = AOS::PCIX::Library::GetBoards({ AOS::PCIX::BaseClass::Display });
         if (displayBoards.empty())
             mGraphicsCards.AddMember(MUI::MakeObject::HCenter(MUI::MakeObject::FreeLabel("none")));
         else
