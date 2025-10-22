@@ -4,7 +4,7 @@
 //  (c) 2025 TDolphin
 //
 
-#include "GfxChipSpecWindow.hpp"
+#include "GPUSpecWindow.hpp"
 
 #include "Components/IDs.hpp"
 #include "MUI/Notifier/Notifier.hpp"
@@ -13,14 +13,13 @@
 
 namespace Components
 {
-    GfxChipSpecWindow::GfxChipSpecWindow()
+    GPUSpecWindow::GPUSpecWindow()
       : mManufacturer(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
       , mModelName(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
       , mPremiere(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
       , mInterface(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
       , mTechnology(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
       , mCoreClock(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
-      , mVideoAcceleration(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
       , mMemory(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
       , mChipSpecGroup(MUI::GroupBuilder()
                            .vertical()
@@ -44,16 +43,14 @@ namespace Components
                                          .object())
                            .tagChild(MUI::GroupBuilder()
                                          .tagColumns(2)
-                                         .tagChild(MUI::TextBuilder().tagFont(MUI::Font::Tiny).tagContents("Video Acceleration").object())
                                          .tagChild(MUI::TextBuilder().tagFont(MUI::Font::Tiny).tagContents("Memory").object())
-                                         .tagChild(mVideoAcceleration)
                                          .tagChild(mMemory)
                                          .object())
                            .object())
       , mComponent(MUI::WindowBuilder()
-                       .tagTitle("Gfx Chip Specification")
+                       .tagTitle("GPU Specification")
                        .tagScreenTitle(SCREEN_TITLE)
-                       .tagID(WindowID::GfxChipSpecWindow)
+                       .tagID(WindowID::GPUSpecWindow)
                        .tagWidth(500)
                        .tagHeight(240)
                        .tagAltWidth(1024)
@@ -65,11 +62,11 @@ namespace Components
         MUI::Notifier::from(mComponent).onCloseRequest(true).notifySelf().setOpen(false);
     }
 
-    void GfxChipSpecWindow::Open(const std::vector<DataInfo::GfxChipID> &chips)
+    void GPUSpecWindow::Open(const std::vector<DataInfo::GPUID> &chips)
     {
         if (chips.empty())
             return;
-        auto chipSpec = DataInfo::gfxChip2spec.at(chips.at(0));
+        auto chipSpec = DataInfo::gpu2spec.at(chips.at(0));
 
         mManufacturer.setContents(chipSpec.manufacturer);
         mModelName.setContents(chipSpec.modelName);
@@ -77,13 +74,12 @@ namespace Components
         mInterface.setContents(chipSpec.interface);
         mTechnology.setContents(chipSpec.technology);
         mCoreClock.setContents(chipSpec.coreClock > 0 ? std::to_string(chipSpec.coreClock) + " MHz" : "??");
-        mVideoAcceleration.setContents(chipSpec.videoAcceleration);
         mMemory.setContents(chipSpec.memory);
 
         MUI::Window(*this).Open();
     }
 
-    void GfxChipSpecWindow::Close()
+    void GPUSpecWindow::Close()
     {
         MUI::Window(*this).Close();
     }

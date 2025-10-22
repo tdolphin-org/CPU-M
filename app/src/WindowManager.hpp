@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include "Components/Windows/GfxChipSpecWindow.hpp"
+#include "Components/Windows/GPUSpecWindow.hpp"
 #include "Components/Windows/MemoryModuleSpecWindow.hpp"
 #include "Core/Singleton.hpp"
 #include "MUI/Window.hpp"
@@ -18,7 +18,7 @@ class WindowManagerCore
 {
     friend class td::Singleton<WindowManagerCore>;
 
-    Components::GfxChipSpecWindow mGfxChipSpecWindow;
+    Components::GPUSpecWindow mGPUSpecWindow;
     Components::MemoryModuleSpecWindow mMemoryModuleSpecWindow;
 
     std::vector<MUI::Window> mAllWindows;
@@ -29,9 +29,9 @@ class WindowManagerCore
   public:
     const std::vector<MUI::Window> &getAllWindows() const;
 
-    Components::GfxChipSpecWindow &getGfxChipSpecWindow()
+    Components::GPUSpecWindow &getGPUSpecWindow()
     {
-        return mGfxChipSpecWindow;
+        return mGPUSpecWindow;
     }
 
     Components::MemoryModuleSpecWindow &getMemoryModuleSpecWindow()

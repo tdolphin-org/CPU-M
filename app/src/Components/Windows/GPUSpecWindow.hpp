@@ -6,14 +6,14 @@
 
 #include "Components/Core/Root.hpp"
 
-#include "DataInfo/GfxChipSpec.hpp"
+#include "DataInfo/GPUSpec.hpp"
 #include "MUI/Group.hpp"
 #include "MUI/Text.hpp"
 #include "MUI/Window.hpp"
 
 namespace Components
 {
-    class GfxChipSpecWindow : public Root<MUI::Window>
+    class GPUSpecWindow : public Root<MUI::Window>
     {
         MUI::Text mManufacturer;
         MUI::Text mModelName;
@@ -21,16 +21,15 @@ namespace Components
         MUI::Text mInterface;
         MUI::Text mTechnology;
         MUI::Text mCoreClock;
-        MUI::Text mVideoAcceleration;
         MUI::Text mMemory;
         MUI::Group mChipSpecGroup;
 
         MUI::Window mComponent;
 
       public:
-        GfxChipSpecWindow();
+        GPUSpecWindow();
 
-        void Open(const std::vector<DataInfo::GfxChipID> &chips);
+        void Open(const std::vector<DataInfo::GPUID> &chips);
         void Close();
 
       protected:
