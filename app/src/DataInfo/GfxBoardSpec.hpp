@@ -176,13 +176,23 @@ namespace DataInfo
         AMD_FirePro_V4800,
     };
 
+    enum class GfxBoardInterface
+    {
+        PCI,
+        AGP_1x,
+        AGP_2x,
+        AGP_4x,
+        PCIe_x16,
+    };
+
     struct GfxBoardSpec
     {
         std::string modelName;
-        std::string manufacturer;
+        ManufacturerID manufacturer;
         std::vector<GPUID> chips; // possible or
         unsigned int premiere; // year
-        std::string interface;
+        GfxBoardInterface interface;
+        std::optional<unsigned int> TDP; // thermal design power in watts
     };
 
     extern const std::map<GfxBoardID, GfxBoardSpec> gfxBoard2spec;
