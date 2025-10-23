@@ -47,8 +47,10 @@ namespace DataInfo
     {
         // ATI/AMD Rage series
         ATI_Rage_128_Pro, // Rage 128 Pro
+        ATI_RV200, // RV200
+        ATI_RV280, // RV280
+        ATI_M10, // Mobility M10
         ATI_M12, // Mobility M12
-        ATI_RV280,
     };
 
     struct GPUSpec

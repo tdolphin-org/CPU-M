@@ -64,6 +64,7 @@ namespace DataInfo
         ATI_Radeon_9200_Pro,
         ATI_Radeon_9250,
         ATI_Radeon_9550_Mobile,
+        ATI_Radeon_9600_Mobile,
         ATI_Radeon_9600_Pro,
         ATI_Radeon_9650,
         ATI_Radeon_9600_XT,
