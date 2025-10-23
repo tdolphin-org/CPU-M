@@ -182,17 +182,26 @@ namespace DataInfo
         AGP_1x,
         AGP_2x,
         AGP_4x,
+        AGP_8x,
         PCIe_x16,
+    };
+
+    struct Theoretical3DPerformance
+    {
+        unsigned long pixelRate; // in kPixels/s
+        unsigned long vertexRate; // in kVertices/s
+        unsigned long textureRate; // in kTexels/s
     };
 
     struct GfxBoardSpec
     {
-        std::string modelName;
+        std::string name;
         ManufacturerID manufacturer;
-        std::vector<GPUID> chips; // possible or
+        std::vector<GPUID> gpus; // possible or
         unsigned int premiere; // year
-        GfxBoardInterface interface;
+        GfxBoardInterface interface; // board interface like PCI, AGP, PCIe
         std::optional<unsigned int> TDP; // thermal design power in watts
+        std::optional<Theoretical3DPerformance> theoretical3DPerformance;
     };
 
     extern const std::map<GfxBoardID, GfxBoardSpec> gfxBoard2spec;

@@ -12,6 +12,9 @@
 namespace DataInfo
 {
     const std::map<GPUID, GPUSpec> gpu2spec {
-        { GPUID::ATI_Rage_128_Pro, { ManufacturerID::ATI, "Rage 128 Pro", 1999, "Rage 4", "250nm", 2, 0, 2, 2 } },
+        { GPUID::ATI_Rage_128_Pro,
+          { ManufacturerID::ATI, "Rage 128 Pro", 1999, ArchitectureID::ATI_RAGE_4, "250nm", { 2, 0, 2, 2 }, std::nullopt } },
+        { GPUID::ATI_M12, { ManufacturerID::ATI, "M12", 2004, ArchitectureID::ATI_R300, "130nm", { 4, 2, 4, 4 }, std::nullopt } },
+        { GPUID::ATI_RV280, { ManufacturerID::ATI, "RV280", 2003, ArchitectureID::ATI_RAGE_7, "150nm", { 4, 1, 4, 4 }, 28 } },
     };
 }
