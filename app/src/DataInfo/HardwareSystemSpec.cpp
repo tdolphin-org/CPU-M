@@ -7,7 +7,7 @@
 #include "HardwareSystemSpec.hpp"
 
 // sources:
-// Pegasos book, Efika book, wikipedia, https://support.apple.com
+// Pegasos book, Efika book, wikipedia, https://support.apple.com, https://morphos.pl/morphos-i-sprzet/
 
 namespace DataInfo
 {
@@ -181,6 +181,118 @@ namespace DataInfo
                 std::nullopt,
                 { { MemoryType::PC100, ModuleForm::DIMM, 1536, 3 } },
                 { { "USB 1.1", 2 }, { "FireWire 400", 2 }, { "Ethernet 10/100 Mbps", 1 } },
+                std::nullopt,
+                std::nullopt,
+            },
+        },
+        {
+            "PowerBook5,2",
+            {
+                "A1046",
+                "Apple PowerBook G4 (15\")",
+                2003,
+                2004,
+                "Soldered",
+                { "Ultra ATA/100 (2.5\")" },
+                "Open Firmware",
+                std::nullopt,
+                { { MemoryType::PC2700, ModuleForm::SO_DIMM, 2048, 2 } }, // 2 GB RAM max, 2 slots
+                {
+                    { "USB 2.0", 2 },
+                    { "FireWire 400", 1 },
+                    { "FireWire 800", 1 },
+                    { "Ethernet 10/100/100 Mbps", 1 },
+                    { "Type I/II PC Card", 1 },
+                    { "Modem 56k", 1 },
+                    { "Audio In", 1 },
+                    { "Audio Out (3.5mm Headphone Jack)", 1 },
+                    { "DVI", 1 },
+                    { "S-Video", 1 },
+                },
+                std::nullopt,
+                std::nullopt,
+            },
+        },
+        {
+            "PowerBook5,3",
+            {
+                "A1052",
+                "Apple PowerBook G4 (17\")",
+                2003,
+                2004,
+                "Soldered",
+                { "Ultra ATA/100 (2.5\")" },
+                "Open Firmware",
+                std::nullopt,
+                { { MemoryType::PC2700, ModuleForm::SO_DIMM, 2048, 2 } }, // 2 GB RAM max, 2 slots
+                {
+                    { "USB 2.0", 2 },
+                    { "FireWire 400", 1 },
+                    { "FireWire 800", 1 },
+                    { "Ethernet 10/100/100 Mbps", 1 },
+                    { "Type I/II PC Card", 1 },
+                    { "Modem 56k", 1 },
+                    { "Audio In", 1 },
+                    { "Audio Out (3.5mm Headphone Jack)", 1 },
+                    { "DVI", 1 },
+                    { "S-Video", 1 },
+                },
+                std::nullopt,
+                std::nullopt,
+            },
+        },
+        {
+            "PowerBook5,4",
+            {
+                "A1095",
+                "Apple PowerBook G4 (15\")",
+                2004,
+                2005,
+                "Soldered",
+                { "Ultra ATA/100 (2.5\")" },
+                "Open Firmware",
+                std::nullopt,
+                { { MemoryType::PC2700, ModuleForm::SO_DIMM, 2048, 2 } }, // 2 GB RAM max, 2 slots
+                {
+                    { "USB 2.0", 2 },
+                    { "FireWire 400", 1 },
+                    { "FireWire 800", 1 },
+                    { "Ethernet 10/100/100 Mbps", 1 },
+                    { "Type I/II PC Card", 1 },
+                    { "Modem 56k", 1 },
+                    { "Audio In", 1 },
+                    { "Audio Out (3.5mm Headphone Jack)", 1 },
+                    { "DVI", 1 },
+                    { "S-Video", 1 },
+                },
+                std::nullopt,
+                std::nullopt,
+            },
+        },
+        {
+            "PowerBook5,5",
+            {
+                "A1085",
+                "Apple PowerBook G4 (17\")",
+                2004,
+                2005,
+                "Soldered",
+                { "Ultra ATA/100 (2.5\")" },
+                "Open Firmware",
+                std::nullopt,
+                { { MemoryType::PC2700, ModuleForm::SO_DIMM, 2048, 2 } }, // 2 GB RAM max, 2 slots
+                {
+                    { "USB 2.0", 2 },
+                    { "FireWire 400", 1 },
+                    { "FireWire 800", 1 },
+                    { "Ethernet 10/100/100 Mbps", 1 },
+                    { "Type I/II PC Card", 1 },
+                    { "Modem 56k", 1 },
+                    { "Audio In", 1 },
+                    { "Audio Out (3.5mm Headphone Jack)", 1 },
+                    { "DVI", 1 },
+                    { "S-Video", 1 },
+                },
                 std::nullopt,
                 std::nullopt,
             },
