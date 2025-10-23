@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include "Components/Buttons/GfxChipSpecButton.hpp"
+#include "Components/Buttons/GPUSpecButton.hpp"
 
 #include "MUI/Group.hpp"
 
@@ -14,7 +14,7 @@ namespace Components
 {
     class CGXBoards : public Root<MUI::Group>
     {
-        std::vector<GfxChipSpecButton *> mGfxChipSpecButtons;
+        std::vector<GPUSpecButton *> mGPUSpecButtons;
 
         MUI::Group mComponent;
 

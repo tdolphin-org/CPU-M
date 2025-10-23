@@ -68,13 +68,7 @@ namespace Components
             return;
         auto chipSpec = DataInfo::gpu2spec.at(chips.at(0));
 
-        mManufacturer.setContents(chipSpec.manufacturer);
-        mModelName.setContents(chipSpec.modelName);
-        mPremiere.setContents(chipSpec.premiere);
-        mInterface.setContents(chipSpec.interface);
-        mTechnology.setContents(chipSpec.technology);
-        mCoreClock.setContents(chipSpec.coreClock > 0 ? std::to_string(chipSpec.coreClock) + " MHz" : "??");
-        mMemory.setContents(chipSpec.memory);
+        // TODO
 
         MUI::Window(*this).Open();
     }
