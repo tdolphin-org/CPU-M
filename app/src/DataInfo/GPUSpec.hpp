@@ -50,6 +50,7 @@ namespace DataInfo
         ATI_RV200, // RV200
         ATI_RV280, // RV280
         ATI_M10, // Mobility M10
+        ATI_M11, // Mobility M11
         ATI_M12, // Mobility M12
     };
 

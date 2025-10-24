@@ -72,5 +72,15 @@ namespace DataInfo
               std::nullopt,
               { { 1'200'000, 150'000, 1'200'000 } } },
         },
+        {
+            GfxBoardID::ATI_Radeon_9700_Mobile,
+            { "ATI Mobility Radeon 9700",
+              ManufacturerID::ATI,
+              { GPUID::ATI_M11 },
+              2004,
+              GfxBoardInterface::AGP_8x,
+              std::nullopt,
+              { { 1'800'000, 225'000, 1'800'000 } } },
+        },
     };
 }
