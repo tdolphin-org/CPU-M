@@ -9,6 +9,7 @@
 #include "AOS/Cybergraphics/Library.hpp"
 #include "AOS/PCIIDS/Library.hpp"
 #include "AOS/PCIX/Library.hpp"
+#include "Components/Tabs/Graphics/Theoretical3DPerformance.hpp"
 #include "DataInfo/GfxBoardSpec.hpp"
 #include "DataInfo/PCI2IDSpec.hpp"
 #include "MUI/Core/MakeObject.hpp"
@@ -35,18 +36,20 @@ namespace Components
                         gfxBoardSpec = gfxBoard2spec->second;
                 }
 
+                MUI::Group boardGroup = MUI::GroupBuilder().horizontal().object();
+
                 if (gfxBoardSpec.has_value())
                 {
-                    mComponent.AddMember(
+                    mComponent.AddMember(MUI::MakeObject::HCenter(MUI::MakeObject::FreeCLabel2(gfxBoardSpec->name)));
+
+                    boardGroup.AddMember(
                         MUI::GroupBuilder()
-                            .tagColumns(6)
+                            .tagColumns(4)
                             .tagChild(LabelText(MUIX_R "Vendor:"))
                             .tagChild(MUI::TextBuilder()
                                           .tagFrame(MUI::Frame::String)
                                           .tagContents(std::to_string(gfxBoardSpec->manufacturer))
                                           .object())
-                            .tagChild(LabelText(MUIX_R "Name:"))
-                            .tagChild(MUI::TextBuilder().tagFrame(MUI::Frame::String).tagContents(gfxBoardSpec->name).object())
                             .tagChild(LabelText("Premiere:"))
                             .tagChild(MUI::TextBuilder()
                                           .tagFrame(MUI::Frame::String)
@@ -63,22 +66,27 @@ namespace Components
                                           .tagContents(gfxBoardSpec->TDP ? std::to_string(gfxBoardSpec->TDP.value()) : "N/A")
                                           .object())
                             .object());
+
+                    boardGroup.AddMember(Theoretical3DPerformance(gfxBoardSpec->theoretical3DPerformance));
+
+                    mComponent.AddMember(boardGroup);
                 }
                 else
-                    mComponent.AddMember(
-                        MUI::GroupBuilder()
-                            .tagColumns(4)
-                            .tagChild(LabelText(MUIX_R "Vendor:"))
-                            .tagChild(MUI::TextBuilder()
-                                          .tagFrame(MUI::Frame::String)
-                                          .tagContents(AOS::PCIIDS::Library::libGetVendorName(board.vendorId))
-                                          .object())
-                            .tagChild(LabelText(MUIX_R "Name:"))
-                            .tagChild(MUI::TextBuilder()
-                                          .tagFrame(MUI::Frame::String)
-                                          .tagContents(AOS::PCIIDS::Library::libGetDeviceName(board.vendorId, board.deviceId))
-                                          .object())
-                            .object());
+                {
+                    mComponent.AddMember(MUI::MakeObject::HCenter(
+                        MUI::MakeObject::FreeCLabel2(AOS::PCIIDS::Library::libGetDeviceName(board.vendorId, board.deviceId))));
+
+                    mComponent.AddMember(MUI::GroupBuilder()
+                                             .tagColumns(2)
+                                             .tagChild(LabelText(MUIX_R "Vendor:"))
+                                             .tagChild(MUI::TextBuilder()
+                                                           .tagFrame(MUI::Frame::String)
+                                                           .tagContents(AOS::PCIIDS::Library::libGetVendorName(board.vendorId))
+                                                           .object())
+                                             .object());
+                }
+
+                mComponent.AddMember(MUI::MakeObject::HBar(0));
             }
         }
     }
