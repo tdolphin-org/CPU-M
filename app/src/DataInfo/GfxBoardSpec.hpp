@@ -198,7 +198,7 @@ namespace DataInfo
     struct GfxBoardSpec
     {
         std::string name;
-        ManufacturerID manufacturer;
+        ManufacturerID manufacturer; // manufacturer/vendor id
         std::vector<GPUID> gpus; // possible or
         unsigned int premiere; // year
         GfxBoardInterface interface; // board interface like PCI, AGP, PCIe
@@ -206,5 +206,11 @@ namespace DataInfo
         std::optional<Theoretical3DPerformance> theoretical3DPerformance;
     };
 
-    extern const std::map<GfxBoardID, GfxBoardSpec> gfxBoard2spec;
+        extern const std::map<GfxBoardID, GfxBoardSpec> gfxBoard2spec;
+}
+
+namespace std
+{
+    std::string to_string(const DataInfo::ManufacturerID &manufacturer);
+    std::string to_string(const DataInfo::GfxBoardInterface &interface);
 }

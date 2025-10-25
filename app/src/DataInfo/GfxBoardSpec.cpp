@@ -84,3 +84,50 @@ namespace DataInfo
         },
     };
 }
+
+namespace std
+{
+    std::string to_string(const DataInfo::GfxBoardInterface &interface)
+    {
+        switch (interface)
+        {
+            case DataInfo::GfxBoardInterface::PCI:
+                return "PCI";
+            case DataInfo::GfxBoardInterface::AGP_1x:
+                return "AGP 1x";
+            case DataInfo::GfxBoardInterface::AGP_2x:
+                return "AGP 2x";
+            case DataInfo::GfxBoardInterface::AGP_4x:
+                return "AGP 4x";
+            case DataInfo::GfxBoardInterface::AGP_8x:
+                return "AGP 8x";
+            case DataInfo::GfxBoardInterface::PCIe_x16:
+                return "PCIe x16";
+            default:
+                return "Unknown Interface";
+        }
+    }
+
+    std::string to_string(const DataInfo::ManufacturerID &manufacturer)
+    {
+        switch (manufacturer)
+        {
+            case DataInfo::ManufacturerID::ATI:
+                return "ATI (ATI Technologies Inc.)";
+            case DataInfo::ManufacturerID::AMD:
+                return "AMD (Advanced Micro Devices)";
+            case DataInfo::ManufacturerID::NVIDIA:
+                return "NVIDIA (NVIDIA Corporation)";
+            case DataInfo::ManufacturerID::INTEL:
+                return "Intel (Intel Corporation)";
+            case DataInfo::ManufacturerID::SIS:
+                return "SiS (Silicon Integrated Systems)";
+            case DataInfo::ManufacturerID::XGI:
+                return "XGI (XGI Technology)";
+            case DataInfo::ManufacturerID::THREE_D_LABS:
+                return "3D Labs (3D Labs, Inc.)";
+            default:
+                return "Unknown Manufacturer";
+        }
+    }
+}
