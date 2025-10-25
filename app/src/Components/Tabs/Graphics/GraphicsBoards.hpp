@@ -7,20 +7,21 @@
 #pragma once
 
 #include "Components/Buttons/GPUSpecButton.hpp"
+#include "Components/Tabs/TabBase.hpp"
 
 #include "MUI/Group.hpp"
 
 namespace Components
 {
-    class CGXBoards : public Root<MUI::Group>
+    class GraphicsBoards : public Root<MUI::Group>, public TabBase
     {
         std::vector<GPUSpecButton *> mGPUSpecButtons;
 
         MUI::Group mComponent;
 
       public:
-        CGXBoards();
-        ~CGXBoards();
+        GraphicsBoards();
+        ~GraphicsBoards();
 
       protected:
         MUI::Group &muiRoot() const

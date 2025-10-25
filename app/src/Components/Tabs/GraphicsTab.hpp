@@ -7,6 +7,7 @@
 #pragma once
 
 #include "Components/Core/Root.hpp"
+#include "Components/Tabs/Graphics/GraphicsBoards.hpp"
 #include "TabBase.hpp"
 
 #include "MUI/Group.hpp"
@@ -17,7 +18,7 @@ namespace Components
     {
         MUI::Text mGfxSystemText;
         MUI::Group mMountedMonitors;
-        MUI::Group mGraphicsCards;
+        GraphicsBoards mGraphicsBoards;
 
         MUI::Group mComponent;
 

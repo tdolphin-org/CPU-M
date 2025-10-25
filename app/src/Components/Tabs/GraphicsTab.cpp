@@ -7,8 +7,6 @@
 #include "GraphicsTab.hpp"
 
 #include "AOS/Graphics/Library.hpp"
-#include "AOS/PCIIDS/Library.hpp"
-#include "AOS/PCIX/Library.hpp"
 #include "MUI/Core/MakeObject.hpp"
 #include "MUI/Core/NullObject.hpp"
 
@@ -17,7 +15,7 @@ namespace Components
     GraphicsTab::GraphicsTab()
       : mGfxSystemText(ValueText("Graphic OS"))
       , mMountedMonitors(MUI::GroupBuilder().tagFrame(MUI::Frame::Group).tagFrameTitle("Mounted Devs Monitor(s)").object())
-      , mGraphicsCards(MUI::GroupBuilder().tagFrame(MUI::Frame::Group).tagFrameTitle("Graphics Card(s)").object())
+      , mGraphicsBoards()
       , mComponent(MUI::GroupBuilder()
                        .vertical()
                        .tagChild(MUI::MakeObject::HVSpace())
@@ -29,7 +27,7 @@ namespace Components
                                      .tagChild(mGfxSystemText)
                                      .object())
                        .tagChild(mMountedMonitors)
-                       .tagChild(mGraphicsCards)
+                       .tagChild(mGraphicsBoards)
                        .tagChild(MUI::MakeObject::HVSpace())
                        .object())
     {
@@ -43,31 +41,6 @@ namespace Components
             mMountedMonitors.setColumns(mountedMonitors.size() < 4 ? mountedMonitors.size() : 4);
             for (const auto &monitorName : mountedMonitors)
                 mMountedMonitors.AddMember(MUI::TextBuilder().tagFrame(MUI::Frame::String).tagContents(monitorName).object());
-        }
-
-        auto displayBoards = AOS::PCIX::Library::GetBoards({ AOS::PCIX::BaseClass::Display });
-        if (displayBoards.empty())
-            mGraphicsCards.AddMember(MUI::MakeObject::HCenter(MUI::MakeObject::FreeLabel("none")));
-        else
-        {
-            mGraphicsCards.setColumns(displayBoards.size() < 4 ? displayBoards.size() : 4);
-            for (const auto &board : displayBoards)
-            {
-                mGraphicsCards.AddMember(
-                    MUI::GroupBuilder()
-                        .tagColumns(4)
-                        .tagChild(LabelText(MUIX_R "Name:"))
-                        .tagChild(MUI::TextBuilder()
-                                      .tagFrame(MUI::Frame::String)
-                                      .tagContents(AOS::PCIIDS::Library::libGetDeviceName(board.vendorId, board.deviceId))
-                                      .object())
-                        .tagChild(LabelText(MUIX_R "Manufacturer:"))
-                        .tagChild(MUI::TextBuilder()
-                                      .tagFrame(MUI::Frame::String)
-                                      .tagContents(AOS::PCIIDS::Library::libGetVendorName(board.vendorId))
-                                      .object())
-                        .object());
-            }
         }
     }
 
