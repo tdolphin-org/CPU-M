@@ -206,11 +206,15 @@ namespace DataInfo
         std::optional<Theoretical3DPerformance> theoretical3DPerformance;
     };
 
-        extern const std::map<GfxBoardID, GfxBoardSpec> gfxBoard2spec;
+    std::string PerformancePixelRateToString(const unsigned long rate);
+    std::string PerformanceVertexRateToString(const unsigned long rate);
+    std::string PerformanceTextureRateToString(const unsigned long rate);
+
+    extern const std::map<GfxBoardID, GfxBoardSpec> gfxBoard2spec;
 }
 
 namespace std
 {
-    std::string to_string(const DataInfo::ManufacturerID &manufacturer);
+    std::string to_string(const DataInfo::ManufacturerID &manufacturer, const bool fullName = false);
     std::string to_string(const DataInfo::GfxBoardInterface &interface);
 }

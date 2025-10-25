@@ -6,6 +6,8 @@
 
 #include "GfxBoardSpec.hpp"
 
+#include "Core/ToString.hpp"
+
 // data info resources:
 // ...
 
@@ -83,6 +85,21 @@ namespace DataInfo
               { { 1'800'000, 225'000, 1'800'000 } } },
         },
     };
+
+    std::string PerformancePixelRateToString(const unsigned long rate)
+    {
+        return ToString::FromSIValue((unsigned long long)rate * 1000, "Pixels/s");
+    }
+
+    std::string PerformanceVertexRateToString(const unsigned long rate)
+    {
+        return ToString::FromSIValue((unsigned long long)rate * 1000, "Vertices/s");
+    }
+
+    std::string PerformanceTextureRateToString(const unsigned long rate)
+    {
+        return ToString::FromSIValue((unsigned long long)rate * 1000, "Texels/s");
+    }
 }
 
 namespace std
@@ -108,24 +125,24 @@ namespace std
         }
     }
 
-    std::string to_string(const DataInfo::ManufacturerID &manufacturer)
+    std::string to_string(const DataInfo::ManufacturerID &manufacturer, const bool fullName)
     {
         switch (manufacturer)
         {
             case DataInfo::ManufacturerID::ATI:
-                return "ATI (ATI Technologies Inc.)";
+                return std::string("ATI") + (fullName ? " (ATI Technologies Inc.)" : "");
             case DataInfo::ManufacturerID::AMD:
-                return "AMD (Advanced Micro Devices)";
+                return std::string("AMD") + (fullName ? " (Advanced Micro Devices)" : "");
             case DataInfo::ManufacturerID::NVIDIA:
-                return "NVIDIA (NVIDIA Corporation)";
+                return std::string("NVIDIA") + (fullName ? " (NVIDIA Corporation)" : "");
             case DataInfo::ManufacturerID::INTEL:
-                return "Intel (Intel Corporation)";
+                return std::string("Intel") + (fullName ? " (Intel Corporation)" : "");
             case DataInfo::ManufacturerID::SIS:
-                return "SiS (Silicon Integrated Systems)";
+                return std::string("SiS") + (fullName ? " (Silicon Integrated Systems)" : "");
             case DataInfo::ManufacturerID::XGI:
-                return "XGI (XGI Technology)";
+                return std::string("XGI") + (fullName ? " (XGI Technology)" : "");
             case DataInfo::ManufacturerID::THREE_D_LABS:
-                return "3D Labs (3D Labs, Inc.)";
+                return std::string("3D Labs") + (fullName ? " (3D Labs, Inc.)" : "");
             default:
                 return "Unknown Manufacturer";
         }
