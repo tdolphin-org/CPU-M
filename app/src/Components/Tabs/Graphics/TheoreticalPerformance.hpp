@@ -16,12 +16,12 @@
 
 namespace Components
 {
-    class Theoretical3DPerformance : public Root<MUI::Group>, public TabBase
+    class TheoreticalPerformance : public Root<MUI::Group>, public TabBase
     {
         MUI::Group mComponent;
 
       public:
-        Theoretical3DPerformance(const std::optional<DataInfo::Theoretical3DPerformance> &theoretical3DPerformance);
+        TheoreticalPerformance(const std::optional<DataInfo::TheoreticalPerformance> &theoreticalPerformance);
 
       protected:
         MUI::Group &muiRoot() const

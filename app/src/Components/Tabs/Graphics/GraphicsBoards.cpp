@@ -9,7 +9,7 @@
 #include "AOS/Cybergraphics/Library.hpp"
 #include "AOS/PCIIDS/Library.hpp"
 #include "AOS/PCIX/Library.hpp"
-#include "Components/Tabs/Graphics/Theoretical3DPerformance.hpp"
+#include "Components/Tabs/Graphics/TheoreticalPerformance.hpp"
 #include "DataInfo/GfxBoardSpec.hpp"
 #include "DataInfo/PCI2IDSpec.hpp"
 #include "MUI/Core/MakeObject.hpp"
@@ -17,14 +17,13 @@
 namespace Components
 {
     GraphicsBoards::GraphicsBoards()
-      : mComponent(MUI::GroupBuilder().tagFrame(MUI::Frame::Group).tagFrameTitle("Graphics Boards(s)").object())
+      : mComponent(MUI::GroupBuilder().vertical().tagFrame(MUI::Frame::Group).tagFrameTitle("Graphics Boards(s)").object())
     {
         auto displayBoards = AOS::PCIX::Library::GetBoards({ AOS::PCIX::BaseClass::Display });
         if (displayBoards.empty())
             mComponent.AddMember(MUI::MakeObject::HCenter(MUI::MakeObject::FreeLabel("none")));
         else
         {
-            mComponent.setColumns(displayBoards.size() < 4 ? displayBoards.size() : 4);
             for (const auto &board : displayBoards)
             {
                 auto boardId = DataInfo::vendorAndDevice2gfxBoardId.find({ board.vendorId, board.deviceId });
@@ -36,12 +35,11 @@ namespace Components
                         gfxBoardSpec = gfxBoard2spec->second;
                 }
 
-                MUI::Group boardGroup = MUI::GroupBuilder().horizontal().object();
-
                 if (gfxBoardSpec.has_value())
                 {
                     mComponent.AddMember(MUI::MakeObject::HCenter(MUI::MakeObject::FreeCLabel2(gfxBoardSpec->name)));
 
+                    MUI::Group boardGroup = MUI::GroupBuilder().horizontal().object();
                     boardGroup.AddMember(
                         MUI::GroupBuilder()
                             .tagColumns(4)
@@ -50,24 +48,31 @@ namespace Components
                                           .tagFrame(MUI::Frame::String)
                                           .tagContents(std::to_string(gfxBoardSpec->manufacturer))
                                           .object())
-                            .tagChild(LabelText("Premiere:"))
+                            .tagChild(LabelText(MUIX_R "Premiere:"))
                             .tagChild(MUI::TextBuilder()
                                           .tagFrame(MUI::Frame::String)
                                           .tagContents(std::to_string(gfxBoardSpec->premiere))
                                           .object())
-                            .tagChild(LabelText("Interface:"))
+                            .tagChild(LabelText(MUIX_R "Interface:"))
                             .tagChild(MUI::TextBuilder()
                                           .tagFrame(MUI::Frame::String)
-                                          .tagContents(std::to_string(gfxBoardSpec->interface))
+                                          .tagContents(ToString::Concatenate(
+                                              [&]() -> std::vector<std::string> {
+                                                  std::vector<std::string> interfaceStrings;
+                                                  for (const auto &interface : gfxBoardSpec->interfaces)
+                                                      interfaceStrings.push_back(std::to_string(interface));
+                                                  return interfaceStrings;
+                                              }(),
+                                              ", "))
                                           .object())
-                            .tagChild(LabelText("TDP:"))
+                            .tagChild(LabelText(MUIX_R "TDP:"))
                             .tagChild(MUI::TextBuilder()
                                           .tagFrame(MUI::Frame::String)
                                           .tagContents(gfxBoardSpec->TDP ? std::to_string(gfxBoardSpec->TDP.value()) : "N/A")
                                           .object())
                             .object());
 
-                    boardGroup.AddMember(Theoretical3DPerformance(gfxBoardSpec->theoretical3DPerformance));
+                    boardGroup.AddMember(TheoreticalPerformance(gfxBoardSpec->theoreticalPerformance));
 
                     mComponent.AddMember(boardGroup);
                 }
