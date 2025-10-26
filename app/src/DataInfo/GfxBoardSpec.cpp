@@ -85,6 +85,16 @@ namespace DataInfo
               { { 1'200'000, 150'000, 1'200'000 } } },
         },
         {
+            GfxBoardID::ATI_Radeon_9600_XT,
+            { "ATI Radeon 9600 XT",
+              ManufacturerID::ATI,
+              { GPUID::ATI_RV360 },
+              2003,
+              { GfxBoardInterface::AGP_8x },
+              22,
+              { { 2'000'000, 250'000, 2'000'000 } } },
+        },
+        {
             GfxBoardID::ATI_Radeon_9700_Mobile,
             { "ATI Mobility Radeon 9700",
               ManufacturerID::ATI,
@@ -113,6 +123,16 @@ namespace DataInfo
               { GfxBoardInterface::PCIe_x16 },
               25,
               { { 2'000'000, 250'000, 2'000'000 } } },
+        },
+        {
+            GfxBoardID::ATI_Radeon_X1050,
+            { "ATI Radeon X1050",
+              ManufacturerID::ATI,
+              { GPUID::ATI_RV360 },
+              2007,
+              { GfxBoardInterface::AGP_8x },
+              24,
+              { { 1'000'000, 125'000, 1'000'000 } } },
         },
         {
             GfxBoardID::ATI_Radeon_X1950_Pro,

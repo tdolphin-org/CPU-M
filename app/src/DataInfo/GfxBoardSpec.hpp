@@ -76,6 +76,7 @@ namespace DataInfo
         // ATI/AMD Radeon R300-R500 series (X series)
         ATI_Radeon_X600_XT,
         ATI_Radeon_X800_XT,
+        ATI_Radeon_X1050,
         ATI_Radeon_X1300,
         ATI_Radeon_X1300_Pro,
         ATI_Radeon_X1550,

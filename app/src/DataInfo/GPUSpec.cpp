@@ -20,6 +20,7 @@ namespace DataInfo
         { GPUID::ATI_RV280, { ManufacturerID::ATI, "RV280", 2003, ArchitectureID::ATI_RAGE_7, "150nm", { std::nullopt, 4, 1, 4, 4 }, 28 } },
         { GPUID::ATI_R350, { ManufacturerID::ATI, "RV350", 2003, ArchitectureID::ATI_R300, "150nm", { std::nullopt, 8, 4, 8, 8 }, 94 } },
         { GPUID::ATI_RV350, { ManufacturerID::ATI, "RV350", 2003, ArchitectureID::ATI_R300, "130nm", { std::nullopt, 4, 2, 4, 4 }, 24 } },
+        { GPUID::ATI_RV360, { ManufacturerID::ATI, "RV360", 2003, ArchitectureID::ATI_R300, "130nm", { std::nullopt, 4, 2, 4, 4 }, 24 } },
         { GPUID::ATI_RV380_XT,
           { ManufacturerID::ATI, "RV380 XT", 2004, ArchitectureID::ATI_R300, "130nm", { std::nullopt, 4, 2, 4, 4 }, 46 } },
         { GPUID::ATI_RV570,

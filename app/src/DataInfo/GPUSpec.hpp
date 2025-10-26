@@ -51,6 +51,7 @@ namespace DataInfo
         ATI_RV280, // RV280
         ATI_RV350, // RV350
         ATI_R350, // R350
+        ATI_RV360, // RV360
         ATI_RV380_XT, // RV380 XT
         ATI_RV570, // RV570
         ATI_RV670_Pro, // RV670 Pro
