@@ -41,17 +41,34 @@ namespace DataInfo
         // ... add more architectures as needed
     };
 
-    /// @brief Graphics Chip Identifiers
-    /// source: https://www.morphos-team.net/hardware
+    /// @brief Graphics Chip Identifiers (or Variants) supported by CPU-M and MorphOS
     enum class GPUID
     {
         // ATI/AMD Rage series
         ATI_Rage_128_Pro, // Rage 128 Pro
         ATI_RV200, // RV200
+        ATI_RV200_500,
         ATI_RV280, // RV280
+        ATI_RV350, // RV350
+        ATI_RV570, // RV570
+        ATI_RV670_Pro, // RV670 Pro
         ATI_M10, // Mobility M10
         ATI_M11, // Mobility M11
         ATI_M12, // Mobility M12
+    };
+
+    enum class GPUVariantID
+    {
+    };
+
+    struct RenderConfig
+    {
+        std::optional<unsigned int> shadingUnits = std::nullopt; // number of shading units
+        std::optional<unsigned int> pixelShaders = std::nullopt; // number of pixel shaders
+        std::optional<unsigned int> vertexShaders = std::nullopt; // number of vertex shaders
+        unsigned int MTUs; // number of TMUs
+        unsigned int ROPs; // number of ROPs
+        std::optional<unsigned int> computeUnits = std::nullopt; // number of compute units
     };
 
     struct GPUSpec
@@ -61,13 +78,7 @@ namespace DataInfo
         unsigned int premiere; // year
         std::optional<ArchitectureID> architecture; // architecture/generation
         std::string technology;
-        struct
-        {
-            unsigned int pixelShaders; // number of pixel shaders
-            unsigned int vertexShaders; // number of vertex shaders
-            unsigned int MTUs; // number of TMUs
-            unsigned int ROPs; // number of ROPs
-        } renderConfig;
+        RenderConfig renderConfig;
         std::optional<unsigned int> maxTDP; // in watts
     };
 

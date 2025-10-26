@@ -85,7 +85,8 @@ namespace DataInfo
         ATI_Radeon_X1900_GT,
         ATI_Radeon_X1900_XT,
         ATI_Radeon_X1900_Pro,
-        ATI_Radeon_X1950,
+        ATI_Radeon_X1950_XT,
+        ATI_Radeon_X1950_Pro,
         ATI_FireGL_X3,
 
         // AMD Radeon HD 2xxx series
@@ -188,11 +189,13 @@ namespace DataInfo
         PCIe_x16,
     };
 
-    struct Theoretical3DPerformance
+    struct TheoreticalPerformance
     {
-        unsigned long pixelRate; // in kPixels/s
-        unsigned long vertexRate; // in kVertices/s
-        unsigned long textureRate; // in kTexels/s
+        unsigned long long pixelRate; // in kPixels/s
+        std::optional<unsigned long long> vertexRate = std::nullopt; // in kVertices/s
+        unsigned long long textureRate; // in kTexels/s
+        std::optional<unsigned long long> FP32 = std::nullopt; // FP32 (float) in kFLOPS
+        std::optional<unsigned long long> FP64 = std::nullopt; // FP64 (double) in kFLOPS
     };
 
     struct GfxBoardSpec
@@ -201,14 +204,16 @@ namespace DataInfo
         ManufacturerID manufacturer; // manufacturer/vendor id
         std::vector<GPUID> gpus; // possible or
         unsigned int premiere; // year
-        GfxBoardInterface interface; // board interface like PCI, AGP, PCIe
+        std::vector<GfxBoardInterface> interfaces; // board interface like PCI, AGP, PCIe
         std::optional<unsigned int> TDP; // thermal design power in watts
-        std::optional<Theoretical3DPerformance> theoretical3DPerformance;
+        std::optional<TheoreticalPerformance> theoreticalPerformance;
     };
 
-    std::string PerformancePixelRateToString(const unsigned long rate);
-    std::string PerformanceVertexRateToString(const unsigned long rate);
-    std::string PerformanceTextureRateToString(const unsigned long rate);
+    std::string PerformancePixelRateToString(const unsigned long long rate);
+    std::string PerformanceVertexRateToString(const unsigned long long rate);
+    std::string PerformanceTextureRateToString(const unsigned long long rate);
+    std::string PerformanceFP32RateToString(const unsigned long long rate);
+    std::string PerformanceFP64RateToString(const unsigned long long rate);
 
     extern const std::map<GfxBoardID, GfxBoardSpec> gfxBoard2spec;
 }
