@@ -21,6 +21,12 @@
 // https://www.nxp.com/docs/en/data-sheet/MPC7450RXQXPNS.pdf
 // https://www.nxp.com/docs/en/data-sheet/MPC7455EC.pdf
 
+// older version,  but with lower watts (page 3) (600MHz@5.3W-7.9W, 867MHz@7.3W-10.3W, 1GHz@8.3W-11.5W)
+// https://www.mouser.com/datasheet/2/302/MPC7457ECS01AD-1386054.pdf
+
+// newer version but higher watts (page 16) (867MHz@14.8W-21.0W, 1GHz@15.8W-22W, 1267MHz@18.3W-25.6W)
+// https://www.nxp.com/docs/en/data-sheet/MPC7457EC.pdf
+
 namespace DataInfo
 {
     const std::map<std::string, CPUSpec> cpuPPC2spec {
@@ -37,7 +43,10 @@ namespace DataInfo
         { "7410", { "Motorola/Freescale", "MPC7410", "", "2 V", "0.18 um", "2001", "~6-14 W" } }, // apple G4
         { "7450", { "Motorola/Freescale", "MPC7450", "", "1.9 V", "0.18 um", "2001", "~22-39 W" } }, // apple G4
         { "7455", { "Motorola/Freescale", "MPC7455", "", "1.3 V", "0.18 um", "2002", "~11-22 W" } }, // apple G4
-        { "7447", { "Motorola/Freescale", "MPC7447", "Apollo 7", "1.1-1.3 V", "130 nm", "2005", "~8-20 W" } }, // pegasos II
+        { "7447",
+          { "Motorola/Freescale", "MPC7447", "Apollo 7", "1.1-1.3 V", "130 nm", "2005", "~8-20 W" } }, // pegasos II, apple powerbook g4
+        { "7447/7457",
+          { "Motorola/Freescale", "MPC7447/7457", "", "1.1-1.3/1.1-1.6 V", "130 nm", "2005", "~8-20/~15-26 W" } }, // apple powerbook g4
         { "7447A", { "Motorola/Freescale", "MPC7447A", "", "1.1-1.3 V", "130 nm", "2005", "~8-20 W" } }, // apple G4
         { "7448", { "Motorola/Freescale", "MPC7448", "", "1.0-1.3 V", "90 nm", "2005", "~15-21 W" } }, // apple G4
         { "970FX", { "IBM", "970FX", "", "1.2 V", "90 nm", "2005", "~50 W" } }, // apple G5
