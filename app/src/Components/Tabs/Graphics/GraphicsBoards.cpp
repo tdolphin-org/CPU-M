@@ -30,7 +30,7 @@ namespace Components
                 std::optional<DataInfo::GfxBoardSpec> gfxBoardSpec;
                 if (boardId != DataInfo::vendorAndDevice2gfxBoardId.end())
                 {
-                    auto gfxBoard2spec = DataInfo::gfxBoard2spec.find(boardId->second);
+                    auto gfxBoard2spec = DataInfo::gfxBoard2spec.find(boardId->second.front()); // TODO handle multiple IDs
                     if (gfxBoard2spec != DataInfo::gfxBoard2spec.end())
                         gfxBoardSpec = gfxBoard2spec->second;
                 }
