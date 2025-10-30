@@ -9,7 +9,7 @@
 #include "App.hpp"
 
 #ifdef TRACE
-#include <iostream.hpp>
+#include <iostream>
 #endif
 
 AppContextCore::AppContextCore()
