@@ -87,3 +87,9 @@ namespace DataInfo
 
     extern const std::map<GPUID, GPUSpec> gpu2spec;
 }
+
+namespace std
+{
+    std::string to_string(const DataInfo::ManufacturerID &manufacturer, const bool fullName = false);
+    std::string to_string(const DataInfo::GPUID &gpuID);
+}

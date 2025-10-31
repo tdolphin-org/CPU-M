@@ -18,7 +18,7 @@ namespace DataInfo
             GfxBoardID::ATI_Rage_128_Pro,
             { "Rage 128 Pro",
               ManufacturerID::ATI,
-              { GPUID::ATI_Rage_128_Pro },
+              GPUID::ATI_Rage_128_Pro,
               1999,
               { GfxBoardInterface::AGP_4x },
               std::nullopt,
@@ -28,7 +28,7 @@ namespace DataInfo
             GfxBoardID::ATI_Radeon_7500,
             { "Radeon 7500",
               ManufacturerID::ATI,
-              { GPUID::ATI_RV200_500 },
+              GPUID::ATI_RV200_500,
               2001,
               { GfxBoardInterface::AGP_4x },
               28,
@@ -38,7 +38,7 @@ namespace DataInfo
             GfxBoardID::ATI_Radeon_9550_Mobile,
             { "ATI Mobility Radeon 9550",
               ManufacturerID::ATI,
-              { GPUID::ATI_M12 },
+              GPUID::ATI_M12,
               2004,
               { GfxBoardInterface::PCIe_x16 },
               std::nullopt,
@@ -48,7 +48,7 @@ namespace DataInfo
             GfxBoardID::ATI_Radeon_9200,
             { "Radeon 9200",
               ManufacturerID::ATI,
-              { GPUID::ATI_RV280 },
+              GPUID::ATI_RV280,
               2003,
               { GfxBoardInterface::AGP_8x },
               28,
@@ -58,7 +58,7 @@ namespace DataInfo
             GfxBoardID::ATI_Radeon_9250,
             { "Radeon 9250",
               ManufacturerID::ATI,
-              { GPUID::ATI_RV280 },
+              GPUID::ATI_RV280,
               2004,
               { GfxBoardInterface::AGP_8x },
               28,
@@ -68,7 +68,7 @@ namespace DataInfo
             GfxBoardID::ATI_Radeon_9600_Pro,
             { "ATI Radeon 9600 Pro",
               ManufacturerID::ATI,
-              { GPUID::ATI_RV350 },
+              GPUID::ATI_RV350,
               2003,
               { GfxBoardInterface::AGP_8x },
               18,
@@ -78,7 +78,7 @@ namespace DataInfo
             GfxBoardID::ATI_Radeon_9600_Mobile,
             { "ATI Mobility Radeon 9600",
               ManufacturerID::ATI,
-              { GPUID::ATI_M10 },
+              GPUID::ATI_M10,
               2004,
               { GfxBoardInterface::AGP_8x },
               std::nullopt,
@@ -88,7 +88,7 @@ namespace DataInfo
             GfxBoardID::ATI_Radeon_9600_XT,
             { "ATI Radeon 9600 XT",
               ManufacturerID::ATI,
-              { GPUID::ATI_RV360 },
+              GPUID::ATI_RV360,
               2003,
               { GfxBoardInterface::AGP_8x },
               22,
@@ -98,7 +98,7 @@ namespace DataInfo
             GfxBoardID::ATI_Radeon_9700_Mobile,
             { "ATI Mobility Radeon 9700",
               ManufacturerID::ATI,
-              { GPUID::ATI_M11 },
+              GPUID::ATI_M11,
               2004,
               { GfxBoardInterface::AGP_8x },
               std::nullopt,
@@ -108,7 +108,7 @@ namespace DataInfo
             GfxBoardID::ATI_Radeon_9800,
             { "Radeon 9800",
               ManufacturerID::ATI,
-              { GPUID::ATI_R350 },
+              GPUID::ATI_R350,
               2003,
               { GfxBoardInterface::AGP_8x },
               37,
@@ -118,7 +118,7 @@ namespace DataInfo
             GfxBoardID::ATI_Radeon_X600_XT,
             { "Radeon X600 XT",
               ManufacturerID::ATI,
-              { GPUID::ATI_RV380_XT },
+              GPUID::ATI_RV380_XT,
               2004,
               { GfxBoardInterface::PCIe_x16 },
               25,
@@ -128,7 +128,7 @@ namespace DataInfo
             GfxBoardID::ATI_Radeon_X1050,
             { "ATI Radeon X1050",
               ManufacturerID::ATI,
-              { GPUID::ATI_RV360 },
+              GPUID::ATI_RV360,
               2007,
               { GfxBoardInterface::AGP_8x },
               24,
@@ -138,7 +138,7 @@ namespace DataInfo
             GfxBoardID::ATI_Radeon_X1950_Pro,
             { "Radeon X1950 Pro",
               ManufacturerID::ATI,
-              { GPUID::ATI_RV570 },
+              GPUID::ATI_RV570,
               2006,
               { GfxBoardInterface::AGP_8x, GfxBoardInterface::PCIe_x16 },
               66,
@@ -148,7 +148,7 @@ namespace DataInfo
             GfxBoardID::AMD_Radeon_HD_3850,
             { "Radeon HD 3850",
               ManufacturerID::AMD,
-              { GPUID::ATI_RV670_Pro },
+              GPUID::ATI_RV670_Pro,
               2008,
               { GfxBoardInterface::AGP_8x, GfxBoardInterface::PCIe_x16 },
               75,
@@ -202,29 +202,6 @@ namespace std
                 return "PCIe x16";
             default:
                 return "Unknown Interface";
-        }
-    }
-
-    std::string to_string(const DataInfo::ManufacturerID &manufacturer, const bool fullName)
-    {
-        switch (manufacturer)
-        {
-            case DataInfo::ManufacturerID::ATI:
-                return std::string("ATI") + (fullName ? " (ATI Technologies Inc.)" : "");
-            case DataInfo::ManufacturerID::AMD:
-                return std::string("AMD") + (fullName ? " (Advanced Micro Devices)" : "");
-            case DataInfo::ManufacturerID::NVIDIA:
-                return std::string("NVIDIA") + (fullName ? " (NVIDIA Corporation)" : "");
-            case DataInfo::ManufacturerID::INTEL:
-                return std::string("Intel") + (fullName ? " (Intel Corporation)" : "");
-            case DataInfo::ManufacturerID::SIS:
-                return std::string("SiS") + (fullName ? " (Silicon Integrated Systems)" : "");
-            case DataInfo::ManufacturerID::XGI:
-                return std::string("XGI") + (fullName ? " (XGI Technology)" : "");
-            case DataInfo::ManufacturerID::THREE_D_LABS:
-                return std::string("3D Labs") + (fullName ? " (3D Labs, Inc.)" : "");
-            default:
-                return "Unknown Manufacturer";
         }
     }
 }

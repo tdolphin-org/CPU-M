@@ -41,3 +41,68 @@ namespace DataInfo
           { ManufacturerID::ATI, "M12", 2004, ArchitectureID::ATI_R300, "130nm", { std::nullopt, 4, 2, 4, 4 }, std::nullopt } },
     };
 }
+
+namespace std
+{
+    std::string to_string(const DataInfo::ManufacturerID &manufacturer, const bool fullName)
+    {
+        using namespace DataInfo;
+
+        switch (manufacturer)
+        {
+            case ManufacturerID::ATI:
+                return std::string("ATI") + (fullName ? " (ATI Technologies Inc.)" : "");
+            case ManufacturerID::AMD:
+                return std::string("AMD") + (fullName ? " (Advanced Micro Devices)" : "");
+            case ManufacturerID::NVIDIA:
+                return std::string("NVIDIA") + (fullName ? " (NVIDIA Corporation)" : "");
+            case ManufacturerID::INTEL:
+                return std::string("Intel") + (fullName ? " (Intel Corporation)" : "");
+            case ManufacturerID::SIS:
+                return std::string("SiS") + (fullName ? " (Silicon Integrated Systems)" : "");
+            case ManufacturerID::XGI:
+                return std::string("XGI") + (fullName ? " (XGI Technology)" : "");
+            case ManufacturerID::THREE_D_LABS:
+                return std::string("3D Labs") + (fullName ? " (3D Labs, Inc.)" : "");
+            default:
+                return "Unknown Manufacturer";
+        }
+    }
+
+    std::string to_string(const DataInfo::GPUID &gpuID)
+    {
+        using namespace DataInfo;
+
+        switch (gpuID)
+        {
+            case GPUID::ATI_Rage_128_Pro:
+                return "ATI Rage 128 Pro";
+            case GPUID::ATI_RV200:
+                return "ATI RV200";
+            case GPUID::ATI_RV200_500:
+                return "ATI RV200 500";
+            case GPUID::ATI_RV280:
+                return "ATI RV280";
+            case GPUID::ATI_R350:
+                return "ATI R350";
+            case GPUID::ATI_RV350:
+                return "ATI RV350";
+            case GPUID::ATI_RV360:
+                return "ATI RV360";
+            case GPUID::ATI_RV380_XT:
+                return "ATI RV380 XT";
+            case GPUID::ATI_RV570:
+                return "ATI RV570";
+            case GPUID::ATI_RV670_Pro:
+                return "ATI RV670 Pro";
+            case GPUID::ATI_M10:
+                return "ATI M10";
+            case GPUID::ATI_M11:
+                return "ATI M11";
+            case GPUID::ATI_M12:
+                return "ATI M12";
+            default:
+                return "Unknown GPU ID";
+        }
+    }
+}

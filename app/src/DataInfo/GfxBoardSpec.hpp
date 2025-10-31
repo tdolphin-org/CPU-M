@@ -203,7 +203,7 @@ namespace DataInfo
     {
         std::string name;
         ManufacturerID manufacturer; // manufacturer/vendor id
-        std::vector<GPUID> gpus; // possible or
+        GPUID gpu; // GPU id
         unsigned int premiere; // year
         std::vector<GfxBoardInterface> interfaces; // board interface like PCI, AGP, PCIe
         std::optional<unsigned int> TDP; // thermal design power in watts
@@ -221,6 +221,5 @@ namespace DataInfo
 
 namespace std
 {
-    std::string to_string(const DataInfo::ManufacturerID &manufacturer, const bool fullName = false);
     std::string to_string(const DataInfo::GfxBoardInterface &interface);
 }
