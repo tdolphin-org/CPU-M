@@ -14,6 +14,9 @@
 #include "DataInfo/PCI2IDSpec.hpp"
 #include "MUI/Core/MakeObject.hpp"
 
+#include <iomanip>
+#include <sstream>
+
 namespace Components
 {
     GraphicsBoards::GraphicsBoards()
@@ -26,60 +29,15 @@ namespace Components
         {
             for (const auto &board : displayBoards)
             {
-                auto boardId = DataInfo::vendorAndDevice2gfxBoardId.find({ board.vendorId, board.deviceId });
-                std::optional<DataInfo::GfxBoardSpec> gfxBoardSpec;
-                if (boardId != DataInfo::vendorAndDevice2gfxBoardId.end())
+                // first show basic info taken directly from PCI IDs
                 {
-                    auto gfxBoard2spec = DataInfo::gfxBoard2spec.find(boardId->second.front()); // TODO handle multiple IDs
-                    if (gfxBoard2spec != DataInfo::gfxBoard2spec.end())
-                        gfxBoardSpec = gfxBoard2spec->second;
-                }
+                    std::stringstream fullIdStream;
+                    fullIdStream << "0x" << std::setfill('0') << std::setw(4) << std::hex << board.vendorId << ":" << std::setfill('0')
+                                 << std::setw(4) << std::hex << board.classId;
 
-                if (gfxBoardSpec.has_value())
-                {
-                    mComponent.AddMember(MUI::MakeObject::HCenter(MUI::MakeObject::FreeCLabel2(gfxBoardSpec->name)));
-
-                    MUI::Group boardGroup = MUI::GroupBuilder().horizontal().object();
-                    boardGroup.AddMember(
-                        MUI::GroupBuilder()
-                            .tagColumns(4)
-                            .tagChild(LabelText(MUIX_R "Vendor:"))
-                            .tagChild(MUI::TextBuilder()
-                                          .tagFrame(MUI::Frame::String)
-                                          .tagContents(std::to_string(gfxBoardSpec->manufacturer))
-                                          .object())
-                            .tagChild(LabelText(MUIX_R "Premiere:"))
-                            .tagChild(MUI::TextBuilder()
-                                          .tagFrame(MUI::Frame::String)
-                                          .tagContents(std::to_string(gfxBoardSpec->premiere))
-                                          .object())
-                            .tagChild(LabelText(MUIX_R "Interface:"))
-                            .tagChild(MUI::TextBuilder()
-                                          .tagFrame(MUI::Frame::String)
-                                          .tagContents(ToString::Concatenate(
-                                              [&]() -> std::vector<std::string> {
-                                                  std::vector<std::string> interfaceStrings;
-                                                  for (const auto &interface : gfxBoardSpec->interfaces)
-                                                      interfaceStrings.push_back(std::to_string(interface));
-                                                  return interfaceStrings;
-                                              }(),
-                                              ", "))
-                                          .object())
-                            .tagChild(LabelText(MUIX_R "TDP:"))
-                            .tagChild(MUI::TextBuilder()
-                                          .tagFrame(MUI::Frame::String)
-                                          .tagContents(gfxBoardSpec->TDP ? std::to_string(gfxBoardSpec->TDP.value()) : "N/A")
-                                          .object())
-                            .object());
-
-                    boardGroup.AddMember(TheoreticalPerformance(gfxBoardSpec->theoreticalPerformance));
-
-                    mComponent.AddMember(boardGroup);
-                }
-                else
-                {
                     mComponent.AddMember(MUI::MakeObject::HCenter(
-                        MUI::MakeObject::FreeCLabel2(AOS::PCIIDS::Library::libGetDeviceName(board.vendorId, board.deviceId))));
+                        MUI::MakeObject::FreeCLabel2(MUIX_B + AOS::PCIIDS::Library::libGetDeviceName(board.vendorId, board.deviceId)
+                                                     + MUIX_N " [" + fullIdStream.str() + "]")));
 
                     mComponent.AddMember(MUI::GroupBuilder()
                                              .tagColumns(2)
@@ -89,6 +47,64 @@ namespace Components
                                                            .tagContents(AOS::PCIIDS::Library::libGetVendorName(board.vendorId))
                                                            .object())
                                              .object());
+                }
+
+                // try to find full spec
+                auto boardId = DataInfo::vendorAndDevice2gfxBoardId.find({ board.vendorId, board.deviceId });
+                if (boardId != DataInfo::vendorAndDevice2gfxBoardId.end())
+                {
+                    if (boardId->second.size() > 1)
+                    {
+                        mComponent.AddMember(MUI::MakeObject::HCenter(MUI::MakeObject::FreeCLabel2(
+                            "This PCI ID corresponds to multiple possible graphics cards. The specifications shown below refer to one of "
+                            "these possible models, as CPU-M was unable to determine the exact card variant.")));
+                    }
+                    for (auto gfxBoardId : boardId->second)
+                    {
+                        auto gfxBoard2spec = DataInfo::gfxBoard2spec.find(gfxBoardId);
+                        if (gfxBoard2spec != DataInfo::gfxBoard2spec.end())
+                        {
+                            mComponent.AddMember(MUI::MakeObject::HCenter(MUI::MakeObject::FreeCLabel2(gfxBoard2spec->second.name)));
+
+                            MUI::Group boardGroup = MUI::GroupBuilder().horizontal().object();
+                            boardGroup.AddMember(
+                                MUI::GroupBuilder()
+                                    .tagColumns(4)
+                                    .tagChild(LabelText(MUIX_R "Vendor:"))
+                                    .tagChild(MUI::TextBuilder()
+                                                  .tagFrame(MUI::Frame::String)
+                                                  .tagContents(std::to_string(gfxBoard2spec->second.manufacturer))
+                                                  .object())
+                                    .tagChild(LabelText(MUIX_R "Premiere:"))
+                                    .tagChild(MUI::TextBuilder()
+                                                  .tagFrame(MUI::Frame::String)
+                                                  .tagContents(std::to_string(gfxBoard2spec->second.premiere))
+                                                  .object())
+                                    .tagChild(LabelText(MUIX_R "Interface:"))
+                                    .tagChild(MUI::TextBuilder()
+                                                  .tagFrame(MUI::Frame::String)
+                                                  .tagContents(ToString::Concatenate(
+                                                      [&]() -> std::vector<std::string> {
+                                                          std::vector<std::string> interfaceStrings;
+                                                          for (const auto &interface : gfxBoard2spec->second.interfaces)
+                                                              interfaceStrings.push_back(std::to_string(interface));
+                                                          return interfaceStrings;
+                                                      }(),
+                                                      ", "))
+                                                  .object())
+                                    .tagChild(LabelText(MUIX_R "TDP:"))
+                                    .tagChild(MUI::TextBuilder()
+                                                  .tagFrame(MUI::Frame::String)
+                                                  .tagContents(gfxBoard2spec->second.TDP ? std::to_string(gfxBoard2spec->second.TDP.value())
+                                                                                         : "N/A")
+                                                  .object())
+                                    .object());
+
+                            boardGroup.AddMember(TheoreticalPerformance(gfxBoard2spec->second.theoreticalPerformance));
+
+                            mComponent.AddMember(boardGroup);
+                        }
+                    }
                 }
 
                 mComponent.AddMember(MUI::MakeObject::HBar(0));
