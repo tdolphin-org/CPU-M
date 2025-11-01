@@ -192,9 +192,9 @@ namespace DataInfo
 
     struct TheoreticalPerformance
     {
-        unsigned long long pixelRate; // in kPixels/s
-        std::optional<unsigned long long> vertexRate = std::nullopt; // in kVertices/s
-        unsigned long long textureRate; // in kTexels/s
+        unsigned long long pixelRate; // fillrate in kPixels/s
+        std::optional<unsigned long long> vertexRate = std::nullopt; // fillrate in kVertices/s
+        unsigned long long textureRate; // fillrate in kTexels/s
         std::optional<unsigned long long> FP32 = std::nullopt; // FP32 (float) in kFLOPS
         std::optional<unsigned long long> FP64 = std::nullopt; // FP64 (double) in kFLOPS
     };

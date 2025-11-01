@@ -36,7 +36,7 @@ namespace DataInfo
         },
         {
             GfxBoardID::ATI_Radeon_9550_Mobile,
-            { "ATI Mobility Radeon 9550",
+            { "Mobility Radeon 9550",
               ManufacturerID::ATI,
               GPUID::ATI_M12,
               2004,
@@ -66,7 +66,7 @@ namespace DataInfo
         },
         {
             GfxBoardID::ATI_Radeon_9600_Pro,
-            { "ATI Radeon 9600 Pro",
+            { "Radeon 9600 Pro",
               ManufacturerID::ATI,
               GPUID::ATI_RV350,
               2003,
@@ -76,7 +76,7 @@ namespace DataInfo
         },
         {
             GfxBoardID::ATI_Radeon_9600_Mobile,
-            { "ATI Mobility Radeon 9600",
+            { "Mobility Radeon 9600",
               ManufacturerID::ATI,
               GPUID::ATI_M10,
               2004,
@@ -86,7 +86,7 @@ namespace DataInfo
         },
         {
             GfxBoardID::ATI_Radeon_9600_XT,
-            { "ATI Radeon 9600 XT",
+            { "Radeon 9600 XT",
               ManufacturerID::ATI,
               GPUID::ATI_RV360,
               2003,
@@ -96,7 +96,7 @@ namespace DataInfo
         },
         {
             GfxBoardID::ATI_Radeon_9700_Mobile,
-            { "ATI Mobility Radeon 9700",
+            { "Mobility Radeon 9700",
               ManufacturerID::ATI,
               GPUID::ATI_M11,
               2004,
@@ -126,7 +126,7 @@ namespace DataInfo
         },
         {
             GfxBoardID::ATI_Radeon_X1050,
-            { "ATI Radeon X1050",
+            { "Radeon X1050",
               ManufacturerID::ATI,
               GPUID::ATI_RV360,
               2007,

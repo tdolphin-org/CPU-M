@@ -69,6 +69,39 @@ namespace std
         }
     }
 
+    std::string to_string(const DataInfo::ArchitectureID &architecture)
+    {
+        switch(architecture)
+        {
+            case DataInfo::ArchitectureID::ATI_RAGE_4:
+                return "Rage 4";
+            case DataInfo::ArchitectureID::ATI_RAGE_5:
+                return "Rage 5";
+            case DataInfo::ArchitectureID::ATI_RAGE_6:
+                return "Rage 6";
+            case DataInfo::ArchitectureID::ATI_RAGE_7:
+                return "Rage 7";
+            case DataInfo::ArchitectureID::ATI_R300:
+                return "R300";
+            case DataInfo::ArchitectureID::ATI_R400:
+                return "R400";
+            case DataInfo::ArchitectureID::ATI_Ultra_Threaded_SE:
+                return "Ultra Threaded SE";
+            case DataInfo::ArchitectureID::ATI_TeraScale:
+                return "TeraScale";
+            case DataInfo::ArchitectureID::ATI_TeraScale_2:
+                return "TeraScale 2";
+            case DataInfo::ArchitectureID::AMD_RDNA_1:
+                return "RDNA 1";
+            case DataInfo::ArchitectureID::AMD_RDNA_2:
+                return "RDNA 2";
+            case DataInfo::ArchitectureID::AMD_RDNA_3:
+                return "RDNA 3";
+            default:
+                return "Unknown Architecture";
+        }
+    }
+
     std::string to_string(const DataInfo::GPUID &gpuID)
     {
         using namespace DataInfo;
@@ -76,31 +109,31 @@ namespace std
         switch (gpuID)
         {
             case GPUID::ATI_Rage_128_Pro:
-                return "ATI Rage 128 Pro";
+                return "Rage 128 Pro";
             case GPUID::ATI_RV200:
-                return "ATI RV200";
+                return "RV200";
             case GPUID::ATI_RV200_500:
-                return "ATI RV200 500";
+                return "RV200 500";
             case GPUID::ATI_RV280:
-                return "ATI RV280";
+                return "RV280";
             case GPUID::ATI_R350:
-                return "ATI R350";
+                return "R350";
             case GPUID::ATI_RV350:
-                return "ATI RV350";
+                return "RV350";
             case GPUID::ATI_RV360:
-                return "ATI RV360";
+                return "RV360";
             case GPUID::ATI_RV380_XT:
-                return "ATI RV380 XT";
+                return "RV380 XT";
             case GPUID::ATI_RV570:
-                return "ATI RV570";
+                return "RV570";
             case GPUID::ATI_RV670_Pro:
-                return "ATI RV670 Pro";
+                return "RV670 Pro";
             case GPUID::ATI_M10:
-                return "ATI M10";
+                return "M10";
             case GPUID::ATI_M11:
-                return "ATI M11";
+                return "M11";
             case GPUID::ATI_M12:
-                return "ATI M12";
+                return "M12";
             default:
                 return "Unknown GPU ID";
         }
