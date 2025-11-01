@@ -18,10 +18,9 @@ namespace Components
         MUI::Text mManufacturer;
         MUI::Text mModelName;
         MUI::Text mPremiere;
-        MUI::Text mInterface;
+        MUI::Text mArchitecture;
         MUI::Text mTechnology;
-        MUI::Text mCoreClock;
-        MUI::Text mMemory;
+        MUI::Text mMaxTDP;
         MUI::Group mChipSpecGroup;
 
         MUI::Window mComponent;
@@ -29,7 +28,7 @@ namespace Components
       public:
         GPUSpecWindow();
 
-        void Open(const std::vector<DataInfo::GPUID> &chips);
+        void Open(const DataInfo::GPUID gpuId);
         void Close();
 
       protected:

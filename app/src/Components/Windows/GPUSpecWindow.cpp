@@ -7,6 +7,7 @@
 #include "GPUSpecWindow.hpp"
 
 #include "Components/IDs.hpp"
+#include "Components/Tabs/Graphics/RenderConfig.hpp"
 #include "MUI/Notifier/Notifier.hpp"
 #include "ProgDefines.hpp"
 #include "Version.hpp"
@@ -17,12 +18,11 @@ namespace Components
       : mManufacturer(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
       , mModelName(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
       , mPremiere(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
-      , mInterface(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
+      , mArchitecture(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
       , mTechnology(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
-      , mCoreClock(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
-      , mMemory(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
+      , mMaxTDP(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
       , mChipSpecGroup(MUI::GroupBuilder()
-                           .vertical()
+                           .horizontal()
                            .tagChild(MUI::GroupBuilder()
                                          .tagColumns(3)
                                          .tagChild(MUI::TextBuilder().tagFont(MUI::Font::Tiny).tagContents("Manufacturer").object())
@@ -34,17 +34,12 @@ namespace Components
                                          .object())
                            .tagChild(MUI::GroupBuilder()
                                          .tagColumns(3)
-                                         .tagChild(MUI::TextBuilder().tagFont(MUI::Font::Tiny).tagContents("Interface").object())
+                                         .tagChild(MUI::TextBuilder().tagFont(MUI::Font::Tiny).tagContents("Architecture").object())
                                          .tagChild(MUI::TextBuilder().tagFont(MUI::Font::Tiny).tagContents("Technology").object())
-                                         .tagChild(MUI::TextBuilder().tagFont(MUI::Font::Tiny).tagContents("Core Clock").object())
-                                         .tagChild(mInterface)
+                                         .tagChild(MUI::TextBuilder().tagFont(MUI::Font::Tiny).tagContents("Max TDP").object())
+                                         .tagChild(mArchitecture)
                                          .tagChild(mTechnology)
-                                         .tagChild(mCoreClock)
-                                         .object())
-                           .tagChild(MUI::GroupBuilder()
-                                         .tagColumns(2)
-                                         .tagChild(MUI::TextBuilder().tagFont(MUI::Font::Tiny).tagContents("Memory").object())
-                                         .tagChild(mMemory)
+                                         .tagChild(mMaxTDP)
                                          .object())
                            .object())
       , mComponent(MUI::WindowBuilder()
@@ -62,13 +57,20 @@ namespace Components
         MUI::Notifier::from(mComponent).onCloseRequest(true).notifySelf().setOpen(false);
     }
 
-    void GPUSpecWindow::Open(const std::vector<DataInfo::GPUID> &chips)
+    void GPUSpecWindow::Open(const DataInfo::GPUID gpuId)
     {
-        if (chips.empty())
-            return;
-        auto chipSpec = DataInfo::gpu2spec.at(chips.at(0));
+        auto gpuSpec = DataInfo::gpu2spec.find(gpuId);
+        if (gpuSpec != DataInfo::gpu2spec.end())
+        {
+            mManufacturer.setContents(std::to_string(gpuSpec->second.manufacturer));
+            mModelName.setContents(gpuSpec->second.name);
+            mPremiere.setContents(std::to_string(gpuSpec->second.premiere));
+            mArchitecture.setContents(gpuSpec->second.architecture ? std::to_string(gpuSpec->second.architecture.value()) : "N/A");
+            mTechnology.setContents(gpuSpec->second.technology);
+            mMaxTDP.setContents(gpuSpec->second.maxTDP ? std::to_string(gpuSpec->second.maxTDP.value()) + " W" : "N/A");
 
-        // TODO
+            mChipSpecGroup.AddMember(RenderConfig(gpuSpec->second.renderConfig));
+        }
 
         MUI::Window(*this).Open();
     }

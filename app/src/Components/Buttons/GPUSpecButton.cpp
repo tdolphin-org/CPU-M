@@ -10,15 +10,15 @@
 
 namespace Components
 {
-    GPUSpecButton::GPUSpecButton(const std::vector<DataInfo::GPUID> &chips)
-      : BasicButton("?", "Show more info about this GPU(s)", 0)
-      , mChips(chips)
+    GPUSpecButton::GPUSpecButton(const DataInfo::GPUID gpuId)
+      : BasicImageButton(MUI::ImageOrBackground::PopUp, "Show more info about this GPU(s)", 0)
+      , mGpuId(gpuId)
     {
     }
 
     unsigned long GPUSpecButton::OnClick()
     {
-        WindowManager::instance().getGPUSpecWindow().Open(mChips);
+        WindowManager::instance().getGPUSpecWindow().Open(mGpuId);
         return 0;
     }
 }

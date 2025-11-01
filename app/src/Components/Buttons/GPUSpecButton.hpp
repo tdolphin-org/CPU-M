@@ -6,17 +6,17 @@
 
 #pragma once
 
-#include "Components/Buttons/BasicButton.hpp"
+#include "Components/Buttons/BasicImageButton.hpp"
 #include "DataInfo/GPUSpec.hpp"
 
 namespace Components
 {
-    class GPUSpecButton : public BasicButton
+    class GPUSpecButton : public BasicImageButton
     {
-        std::vector<DataInfo::GPUID> mChips;
+        DataInfo::GPUID mGpuId;
 
       public:
-        GPUSpecButton(const std::vector<DataInfo::GPUID> &chips);
+        GPUSpecButton(const DataInfo::GPUID gpuId);
         virtual ~GPUSpecButton() = default;
 
       protected:
