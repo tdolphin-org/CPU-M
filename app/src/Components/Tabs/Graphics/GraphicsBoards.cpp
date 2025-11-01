@@ -32,21 +32,12 @@ namespace Components
                 // first show basic info taken directly from PCI IDs
                 {
                     std::stringstream fullIdStream;
-                    fullIdStream << "0x" << std::setfill('0') << std::setw(4) << std::hex << board.vendorId << ":" << std::setfill('0')
+                    fullIdStream << std::setfill('0') << std::setw(4) << std::hex << board.vendorId << ":" << std::setfill('0')
                                  << std::setw(4) << std::hex << board.classId;
 
-                    mComponent.AddMember(MUI::MakeObject::HCenter(
-                        MUI::MakeObject::FreeCLabel2(MUIX_B + AOS::PCIIDS::Library::libGetDeviceName(board.vendorId, board.deviceId)
-                                                     + MUIX_N " [" + fullIdStream.str() + "]")));
-
-                    mComponent.AddMember(MUI::GroupBuilder()
-                                             .tagColumns(2)
-                                             .tagChild(LabelText(MUIX_R "Vendor:"))
-                                             .tagChild(MUI::TextBuilder()
-                                                           .tagFrame(MUI::Frame::String)
-                                                           .tagContents(AOS::PCIIDS::Library::libGetVendorName(board.vendorId))
-                                                           .object())
-                                             .object());
+                    mComponent.AddMember(MUI::MakeObject::HCenter(MUI::MakeObject::FreeCLabel2(
+                        "[" + fullIdStream.str() + "] " + AOS::PCIIDS::Library::libGetVendorName(board.vendorId) + ", " + MUIX_B
+                        + AOS::PCIIDS::Library::libGetDeviceName(board.vendorId, board.deviceId))));
                 }
 
                 // try to find full spec
@@ -55,9 +46,14 @@ namespace Components
                 {
                     if (boardId->second.size() > 1)
                     {
-                        mComponent.AddMember(MUI::MakeObject::HCenter(MUI::MakeObject::FreeCLabel2(
-                            "This PCI ID corresponds to multiple possible graphics cards. The specifications shown below refer to one of "
-                            "these possible models, as CPU-M was unable to determine the exact card variant.")));
+                        mComponent.AddMember(MUI::MakeObject::HCenter(
+                            MUI::TextBuilder()
+                                .tagFrameTitle("Note")
+                                .tagFrame(MUI::Frame::Group)
+                                .tagContents(MUIX_B "This PCI ID corresponds to multiple possible graphics cards.\n"
+                                                    "The specifications shown below refer to one of these possible "
+                                                    "models, as CPU-M was unable to determine the exact card variant.")
+                                .object()));
                     }
                     for (auto gfxBoardId : boardId->second)
                     {

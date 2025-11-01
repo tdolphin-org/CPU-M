@@ -32,9 +32,9 @@ namespace Components
             classIdStream << "0x" << std::setfill('0') << std::setw(2) << std::hex << board.classId;
 
             if (board.subsystemId.has_value())
-                subsystem << "0x" << std::setfill('0') << std::setw(4) << std::hex << board.subsystemVendorId.value();
+                subsystem << std::setfill('0') << std::setw(4) << std::hex << board.subsystemVendorId.value();
             if (board.subsystemVendorId.has_value())
-                subsystem << ":0x" << std::setfill('0') << std::setw(4) << std::hex << board.subsystemId.value();
+                subsystem << ":" << std::setfill('0') << std::setw(4) << std::hex << board.subsystemId.value();
             if (board.subclassId.has_value())
             {
                 std::string clazz { AOS::PCIIDS::Library::libGetClassName(board.subclassId.value()) };
