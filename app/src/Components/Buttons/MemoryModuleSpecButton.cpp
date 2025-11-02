@@ -13,7 +13,7 @@
 namespace Components
 {
     MemoryModuleSpecButton::MemoryModuleSpecButton(const std::pair<MemoryType, ModuleForm> &memoryTypeAndForm)
-      : BasicImageButton(MUI::ImageOrBackground::PopUp, "Show more info about this memory module", 50)
+      : BasicImageButton(MUI::ImageOrBackground::PopUp, "")
       , mMemoryTypeAndForm(memoryTypeAndForm)
     {
     }

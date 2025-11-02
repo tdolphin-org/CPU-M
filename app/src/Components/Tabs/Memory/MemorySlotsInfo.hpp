@@ -18,11 +18,11 @@ namespace Components
 {
     class MemorySlotsInfo : public Root<MUI::Group>, public TabBase
     {
-        MemoryModuleSpecButton mMemoryModuleSpecButton;
-
         MUI::Text mRAMTypeText;
+        MemoryModuleSpecButton mMemoryModuleSpecButton;
         MUI::Text mSlotsCountText;
         MUI::Text mRAMMaxSizeText; // in all slots
+
         MUI::Group mComponent;
 
       public:
