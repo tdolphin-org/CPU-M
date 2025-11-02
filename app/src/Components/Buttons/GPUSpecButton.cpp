@@ -11,7 +11,7 @@
 namespace Components
 {
     GPUSpecButton::GPUSpecButton(const DataInfo::GPUID gpuId)
-      : BasicImageButton(MUI::ImageOrBackground::PopUp, "Show more info about this GPU(s)", 0)
+      : BasicImageButton(MUI::ImageOrBackground::PopUp, "")
       , mGpuId(gpuId)
     {
     }

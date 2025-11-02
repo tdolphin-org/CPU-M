@@ -99,6 +99,8 @@ namespace Components
                                                   .object())
                                     .object());
 
+                            mGPUNameComponents.push_back(new GPUName(gfxBoard2spec->second.gpu));
+
                             mainSpecGroup.AddMember(
                                 MUI::GroupBuilder()
                                     .vertical()
@@ -106,7 +108,7 @@ namespace Components
                                     .tagChild(LabelText(MUIX_R "Premiere:"))
                                     .tagChild(ValueText("Graphics card premiere", std::to_string(gfxBoard2spec->second.premiere), true))
                                     .tagChild(LabelText(MUIX_R "GPU:"))
-                                    .tagChild(ValueText("Graphics Processing Unit name", std::to_string(gfxBoard2spec->second.gpu), true))
+                                    .tagChild(*mGPUNameComponents.back())
                                     .object());
 
                             boardGroup.AddMember(mainSpecGroup);
@@ -130,7 +132,7 @@ namespace Components
 
     GraphicsBoards::~GraphicsBoards()
     {
-        for (const auto *pButton : mGPUSpecButtons)
-            delete pButton;
+        for (const auto *pComponent : mGPUNameComponents)
+            delete pComponent;
     }
 }
