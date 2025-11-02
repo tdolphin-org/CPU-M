@@ -8,9 +8,21 @@
 
 #include "Components/IDs.hpp"
 #include "Components/Tabs/Graphics/RenderConfig.hpp"
+#include "FileResources/VendorImages.hpp"
+#include "MUI/Core/MakeObject.hpp"
+#include "MUI/Image.hpp"
 #include "MUI/Notifier/Notifier.hpp"
 #include "ProgDefines.hpp"
 #include "Version.hpp"
+
+static std::map<DataInfo::ManufacturerID, std::pair<std::string, std::pair<unsigned int, unsigned int>>> manufacturer2image = {
+    { DataInfo::ManufacturerID::THREE_DFX, { VendorImageFile::three_dfx_logo, { 132, 104 } } },
+    { DataInfo::ManufacturerID::THREE_D_LABS, { VendorImageFile::three_dlabs_logo, { 128, 49 } } },
+    { DataInfo::ManufacturerID::AMD, { VendorImageFile::amd_logo, { 135, 35 } } },
+    { DataInfo::ManufacturerID::ATI, { VendorImageFile::ati_logo, { 128, 90 } } },
+    { DataInfo::ManufacturerID::SIS, { VendorImageFile::sis_logo, { 128, 78 } } },
+    { DataInfo::ManufacturerID::XGI, { VendorImageFile::xgi_logo, { 128, 89 } } },
+};
 
 namespace Components
 {
@@ -23,6 +35,7 @@ namespace Components
       , mMaxTDP(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
       , mChipSpecGroup(MUI::GroupBuilder()
                            .horizontal()
+                           .tagChild(mLogoImage = MUI::MakeObject::CLabel("logo placeholder"))
                            .tagChild(MUI::GroupBuilder()
                                          .tagColumns(3)
                                          .tagChild(MUI::TextBuilder().tagFont(MUI::Font::Tiny).tagContents("Manufacturer:").object())
@@ -59,6 +72,17 @@ namespace Components
         auto gpuSpec = DataInfo::gpu2spec.find(gpuId);
         if (gpuSpec != DataInfo::gpu2spec.end())
         {
+            auto imageIt = manufacturer2image.find(gpuSpec->second.manufacturer);
+            if (imageIt != manufacturer2image.end())
+            {
+                mChipSpecGroup.InitChange();
+                if (mLogoImage)
+                    mChipSpecGroup.Remove(mLogoImage);
+                mLogoImage = CreateImage(gpuSpec->second.manufacturer);
+                mChipSpecGroup.AddHead(mLogoImage ? MUI::MakeObject::HCenter(mLogoImage) : MUI::MakeObject::CLabel("logo placeholder"));
+                mChipSpecGroup.ExitChange();
+            }
+
             mManufacturer.setContents(std::to_string(gpuSpec->second.manufacturer));
             mModelName.setContents(gpuSpec->second.name);
             mPremiere.setContents(std::to_string(gpuSpec->second.premiere));
@@ -75,5 +99,22 @@ namespace Components
     void GPUSpecWindow::Close()
     {
         MUI::Window(*this).Close();
+    }
+
+    Object *GPUSpecWindow::CreateImage(const DataInfo::ManufacturerID manufacturerId)
+    {
+        auto imageIt = manufacturer2image.find(manufacturerId);
+        if (imageIt != manufacturer2image.end())
+        {
+            return MUI::ImageBuilder()
+                .tagSpecPicture(imageIt->second.first.c_str())
+                .tagFixWidth(imageIt->second.second.first)
+                .tagFixHeight(imageIt->second.second.second)
+                .tagFreeHoriz(true)
+                .tagFreeVert(true)
+                .object();
+        }
+
+        return nullptr;
     }
 }

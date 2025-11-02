@@ -15,6 +15,8 @@ namespace Components
 {
     class GPUSpecWindow : public Root<MUI::Window>
     {
+        Object *mLogoImage { nullptr };
+
         MUI::Text mManufacturer;
         MUI::Text mModelName;
         MUI::Text mPremiere;
@@ -36,5 +38,8 @@ namespace Components
         {
             return const_cast<MUI::Window &>(mComponent);
         }
+
+      private:
+        Object *CreateImage(const DataInfo::ManufacturerID manufacturerId);
     };
 }
