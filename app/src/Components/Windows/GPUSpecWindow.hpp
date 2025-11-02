@@ -16,6 +16,7 @@ namespace Components
     class GPUSpecWindow : public Root<MUI::Window>
     {
         Object *mLogoImage { nullptr };
+        Object *mRenderConfig { nullptr };
 
         MUI::Text mManufacturer;
         MUI::Text mModelName;

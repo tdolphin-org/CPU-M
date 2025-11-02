@@ -95,6 +95,9 @@ namespace Components
 
     void MemoryModuleSpecWindow::Open(const std::pair<MemoryType, ModuleForm> &memoryTypeAndForm)
     {
+        if (MUI::Window(*this).isOpen())
+            return;
+
         auto memorySpec = DataInfo::memorySpecs.find(memoryTypeAndForm.first);
         if (memorySpec != DataInfo::memorySpecs.end())
         {
@@ -104,9 +107,13 @@ namespace Components
                 mModuleSpecGroup.InitChange();
                 if (mModuleImage)
                     mModuleSpecGroup.Remove(mModuleImage);
-                mModuleImage = CreateImage(memorySpec->second.generation, memoryTypeAndForm.second);
-                mModuleSpecGroup.AddHead(mModuleImage ? MUI::MakeObject::HCenter(mModuleImage)
-                                                      : MUI::MakeObject::CLabel("image placeholder"));
+                auto moduleImage = CreateImage(memorySpec->second.generation, memoryTypeAndForm.second);
+                if (moduleImage)
+                    mModuleImage = moduleImage;
+                else
+                    mModuleImage = MUI::MakeObject::CLabel("image placeholder");
+                mModuleSpecGroup.AddHead(moduleImage);
+
                 mModuleSpecGroup.ExitChange();
             }
             mTypeText.setContents(memorySpec->second.name());

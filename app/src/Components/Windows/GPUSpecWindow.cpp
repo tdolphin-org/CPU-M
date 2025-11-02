@@ -51,6 +51,7 @@ namespace Components
                                          .tagChild(mTechnology)
                                          .tagChild(mMaxTDP)
                                          .object())
+                           .tagChild(mRenderConfig = MUI::MakeObject::CLabel("render config placeholder"))
                            .object())
       , mComponent(MUI::WindowBuilder()
                        .tagTitle("GPU Specification")
@@ -69,6 +70,9 @@ namespace Components
 
     void GPUSpecWindow::Open(const DataInfo::GPUID gpuId)
     {
+        if (MUI::Window(*this).isOpen())
+            return;
+
         auto gpuSpec = DataInfo::gpu2spec.find(gpuId);
         if (gpuSpec != DataInfo::gpu2spec.end())
         {
@@ -79,7 +83,7 @@ namespace Components
                 if (mLogoImage)
                     mChipSpecGroup.Remove(mLogoImage);
                 mLogoImage = CreateImage(gpuSpec->second.manufacturer);
-                mChipSpecGroup.AddHead(mLogoImage ? MUI::MakeObject::HCenter(mLogoImage) : MUI::MakeObject::CLabel("logo placeholder"));
+                mChipSpecGroup.AddHead(mLogoImage ? mLogoImage : MUI::MakeObject::CLabel("logo placeholder"));
                 mChipSpecGroup.ExitChange();
             }
 
@@ -90,7 +94,8 @@ namespace Components
             mTechnology.setContents(gpuSpec->second.technology);
             mMaxTDP.setContents(gpuSpec->second.maxTDP ? std::to_string(gpuSpec->second.maxTDP.value()) + " W" : "N/A");
 
-            mChipSpecGroup.AddMember(RenderConfig(gpuSpec->second.renderConfig));
+            mChipSpecGroup.Remove(mRenderConfig);
+            mChipSpecGroup.AddTail(mRenderConfig = RenderConfig(gpuSpec->second.renderConfig).muiObject());
         }
 
         MUI::Window(*this).Open();
