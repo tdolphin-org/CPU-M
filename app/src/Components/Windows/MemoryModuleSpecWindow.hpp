@@ -8,7 +8,6 @@
 
 #include "DataInfo/MemorySpec.hpp"
 #include "MUI/Group.hpp"
-#include "MUI/Image.hpp"
 #include "MUI/Text.hpp"
 #include "MUI/Window.hpp"
 

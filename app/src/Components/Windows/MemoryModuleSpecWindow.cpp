@@ -9,6 +9,7 @@
 #include "Components/IDs.hpp"
 #include "FileResources/MemoryModuleImages.hpp"
 #include "MUI/Core/MakeObject.hpp"
+#include "MUI/Image.hpp"
 #include "MUI/Notifier/Notifier.hpp"
 #include "ProgDefines.hpp"
 #include "Version.hpp"
