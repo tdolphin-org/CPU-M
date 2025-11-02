@@ -20,7 +20,9 @@ namespace DataInfo
         INTEL,
         SIS,
         XGI,
-        THREE_D_LABS,
+        THREE_D_LABS, // 3D Labs
+        THREE_DFX,   // 3Dfx
+        MATROX,     // Matrox
     };
 
     enum class ArchitectureID
@@ -76,7 +78,7 @@ namespace DataInfo
 
     struct GPUSpec
     {
-        ManufacturerID manufacturer;
+        ManufacturerID manufacturer; // manufacturer/vendor
         std::string name; // gpu name
         unsigned int premiere; // year
         std::optional<ArchitectureID> architecture; // architecture/generation
