@@ -31,7 +31,7 @@ namespace Components
                 ValueText("Number of vertex shaders supported by the GPU.", std::to_string(renderConfig.vertexShaders.value()), false, 0));
         }
         mComponent.AddTail(LabelText(MUIX_R "Texture Mapping Units:"));
-        mComponent.AddTail(ValueText("Number of texture mapping units (TMUs) supported by the GPU.", std::to_string(renderConfig.MTUs), false, 0));
+        mComponent.AddTail(ValueText("Number of texture mapping units (TMUs) supported by the GPU.", std::to_string(renderConfig.TMUs), false, 0));
         mComponent.AddTail(LabelText(MUIX_R "Render Output Units:"));
         mComponent.AddTail(ValueText("Number of render output units (ROPs) supported by the GPU.", std::to_string(renderConfig.ROPs), false, 0));
         if (renderConfig.computeUnits.has_value())

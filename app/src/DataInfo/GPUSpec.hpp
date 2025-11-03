@@ -20,8 +20,8 @@ namespace DataInfo
         INTEL,
         SIS,
         XGI,
-        THREE_D_LABS, // 3D Labs
-        THREE_DFX,   // 3Dfx
+        _3DLABS, // 3Dlabs
+        _3DFX,   // 3dfx
         MATROX,     // Matrox
     };
 
@@ -46,6 +46,10 @@ namespace DataInfo
     /// @brief Graphics Chip Identifiers (or Variants) supported by CPU-M and MorphOS
     enum class GPUID
     {
+        // 3dfx Voodoo series
+        _3dfx_Avenger,
+        _3dfx_VSA_100,
+
         // ATI/AMD Rage series
         ATI_Rage_128_Pro, // Rage 128 Pro
         ATI_RV200, // RV200
@@ -71,7 +75,7 @@ namespace DataInfo
         std::optional<unsigned int> shadingUnits = std::nullopt; // number of shading units
         std::optional<unsigned int> pixelShaders = std::nullopt; // number of pixel shaders
         std::optional<unsigned int> vertexShaders = std::nullopt; // number of vertex shaders
-        unsigned int MTUs; // number of TMUs
+        unsigned int TMUs; // number of TMUs
         unsigned int ROPs; // number of ROPs
         std::optional<unsigned int> computeUnits = std::nullopt; // number of compute units
     };

@@ -12,6 +12,8 @@
 namespace DataInfo
 {
     const std::map<GPUID, GPUSpec> gpu2spec {
+        { GPUID::_3dfx_Avenger, { ManufacturerID::_3DFX, "Avenger", 1999, std::nullopt, "250nm", { std::nullopt, 1, 0, 2, 1 }, 15 } },
+        { GPUID::_3dfx_VSA_100, { ManufacturerID::_3DFX, "VSA-100", 2000, std::nullopt, "250nm", { std::nullopt, 2, 0, 2, 2 }, 60 } },
         { GPUID::ATI_Rage_128_Pro,
           { ManufacturerID::ATI, "Rage 128 Pro", 1999, ArchitectureID::ATI_RAGE_4, "250nm", { std::nullopt, 2, 0, 2, 2 }, std::nullopt } },
         { GPUID::ATI_RV200, { ManufacturerID::ATI, "RV200", 2001, ArchitectureID::ATI_RAGE_7, "150nm", { std::nullopt, 2, 1, 6, 2 }, 23 } },
@@ -62,8 +64,12 @@ namespace std
                 return std::string("SiS") + (fullName ? " (Silicon Integrated Systems)" : "");
             case ManufacturerID::XGI:
                 return std::string("XGI") + (fullName ? " (XGI Technology)" : "");
-            case ManufacturerID::THREE_D_LABS:
+            case ManufacturerID::_3DLABS:
                 return std::string("3D Labs") + (fullName ? " (3D Labs, Inc.)" : "");
+            case ManufacturerID::_3DFX:
+                return std::string("3Dfx") + (fullName ? " (3Dfx Interactive, Inc.)" : "");
+            case ManufacturerID::MATROX:
+                return std::string("Matrox") + (fullName ? " (Matrox Graphics Inc.)" : "");
             default:
                 return "Unknown Manufacturer";
         }
@@ -71,7 +77,7 @@ namespace std
 
     std::string to_string(const DataInfo::ArchitectureID &architecture)
     {
-        switch(architecture)
+        switch (architecture)
         {
             case DataInfo::ArchitectureID::ATI_RAGE_4:
                 return "Rage 4";
@@ -108,6 +114,8 @@ namespace std
 
         switch (gpuID)
         {
+            case GPUID::_3dfx_Avenger:
+                return "Avenger";
             case GPUID::ATI_Rage_128_Pro:
                 return "Rage 128 Pro";
             case GPUID::ATI_RV200:

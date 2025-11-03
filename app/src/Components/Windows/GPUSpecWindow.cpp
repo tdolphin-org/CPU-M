@@ -16,8 +16,8 @@
 #include "Version.hpp"
 
 static std::map<DataInfo::ManufacturerID, std::pair<std::string, std::pair<unsigned int, unsigned int>>> manufacturer2image = {
-    { DataInfo::ManufacturerID::THREE_DFX, { VendorImageFile::three_dfx_logo, { 132, 104 } } },
-    { DataInfo::ManufacturerID::THREE_D_LABS, { VendorImageFile::three_dlabs_logo, { 128, 49 } } },
+    { DataInfo::ManufacturerID::_3DFX, { VendorImageFile::three_dfx_logo, { 132, 104 } } },
+    { DataInfo::ManufacturerID::_3DLABS, { VendorImageFile::three_dlabs_logo, { 128, 49 } } },
     { DataInfo::ManufacturerID::AMD, { VendorImageFile::amd_logo, { 135, 35 } } },
     { DataInfo::ManufacturerID::ATI, { VendorImageFile::ati_logo, { 128, 90 } } },
     { DataInfo::ManufacturerID::SIS, { VendorImageFile::sis_logo, { 128, 78 } } },
@@ -70,9 +70,6 @@ namespace Components
 
     void GPUSpecWindow::Open(const DataInfo::GPUID gpuId)
     {
-        if (MUI::Window(*this).isOpen())
-            return;
-
         auto gpuSpec = DataInfo::gpu2spec.find(gpuId);
         if (gpuSpec != DataInfo::gpu2spec.end())
         {

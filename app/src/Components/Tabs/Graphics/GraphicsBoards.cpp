@@ -92,10 +92,11 @@ namespace Components
                                                                           ", "),
                                                                       true))
                                                   .tagChild(LabelText(MUIX_R "TDP:"))
-                                                  .tagChild(ValueText(
-                                                      "Thermal Design Power in watts",
-                                                      gfxBoard2spec->second.TDP ? std::to_string(gfxBoard2spec->second.TDP.value()) : "N/A",
-                                                      true))
+                                                  .tagChild(ValueText("Thermal Design Power in watts",
+                                                                      gfxBoard2spec->second.TDP
+                                                                          ? std::to_string(gfxBoard2spec->second.TDP.value()) + " W"
+                                                                          : "N/A",
+                                                                      true))
                                                   .object())
                                     .object());
 
@@ -115,6 +116,12 @@ namespace Components
                             boardGroup.AddMember(TheoreticalPerformance(gfxBoard2spec->second.theoreticalPerformance));
 
                             mComponent.AddMember(boardGroup);
+                        }
+                        else
+                        {
+                            mComponent.AddMember(MUI::MakeObject::HCenter(
+                                MUI::MakeObject::FreeLabel("No detailed specification found for this graphics board (GfxBoardID: "
+                                                           + std::to_string((unsigned long)gfxBoardId) + ")")));
                         }
 
                         boardIdIndex++;
