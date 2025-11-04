@@ -30,16 +30,15 @@ namespace DataInfo
         Permedia_2,
         Permedia_2V,
 
-        // SiS (limited support)
+        // SiS series
         SiS_6326,
         SiS_300,
         SiS_305,
         SiS_315,
 
         // XGI Volari series
-        XGI_Volari_V3_XT,
+        XGI_Volari_V3XT,
         XGI_Volari_V5,
-        XGI_Volari_V5_XT,
         XGI_Volari_V8,
         XGI_Volari_V8_Ultra,
 
