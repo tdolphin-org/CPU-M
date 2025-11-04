@@ -29,13 +29,12 @@ namespace DataInfo
         // 3D Labs Permedia series
         Permedia_2,
         Permedia_2V,
-        Permedia_3,
 
         // SiS (limited support)
+        SiS_6326,
         SiS_300,
         SiS_305,
         SiS_315,
-        SiS_6326,
 
         // XGI Volari series
         XGI_Volari_V3_XT,
