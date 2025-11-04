@@ -31,6 +31,9 @@ namespace DataInfo
         SiS_1st_Gen,
         SiS_2nd_Gen,
 
+        // XGI
+        XG4,
+
         // ATI/AMD Architectures
         ATI_RAGE_4,
         ATI_RAGE_5,
@@ -65,11 +68,9 @@ namespace DataInfo
         SiS_Mirage_315,
 
         // XGI Volari series
-        XGI_Volari_V3_XT,
-        XGI_Volari_V5,
-        XGI_Volari_V5_XT,
-        XGI_Volari_V8,
-        XGI_Volari_V8_Ultra,
+        XGI_XG40,
+        XGI_XG41,
+        XGI_XG42,
 
         // ATI/AMD Rage series
         ATI_Rage_128_Pro, // Rage 128 Pro
