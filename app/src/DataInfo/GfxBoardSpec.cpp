@@ -9,7 +9,10 @@
 #include "Core/ToString.hpp"
 
 // data info resources:
-// ...
+// https://vgamuseum.info
+// https://www.techpowerup.com/gpu-specs/
+// wikipedia
+// product datasheets from manufacturers
 
 namespace DataInfo
 {
@@ -172,7 +175,7 @@ namespace DataInfo
               1999,
               { GfxBoardInterface::AGP_4x },
               std::nullopt,
-              std::nullopt },
+              { { 260'000, 8'000, 260'000 } } },
         },
         {
             GfxBoardID::ATI_Radeon_7500,
