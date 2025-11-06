@@ -64,15 +64,16 @@ namespace Components
                                 boardIds = { integratedGraphicsBoard.value() };
                         }
 
-                        if (boardIds.size() > 1)
-                            mComponent.AddMember(MUI::MakeObject::HCenter(
-                                MUI::TextBuilder()
-                                    .tagFrameTitle("Note")
-                                    .tagFrame(MUI::Frame::Group)
-                                    .tagContents(MUIX_B "This PCI ID corresponds to multiple possible graphics cards.\n"
-                                                        "The specifications shown below refer to one of these possible "
-                                                        "models, as CPU-M was unable to determine the exact card variant.")
-                                    .object()));
+                        mComponent.AddMember(MUI::MakeObject::HCenter(
+                            MUI::TextBuilder()
+                                .tagFrameTitle("Note")
+                                .tagFrame(MUI::Frame::Group)
+                                .tagContents(boardIds.size() > 1 ? MUIX_B "This PCI ID corresponds to multiple possible graphics cards.\n"
+                                                                          "The specifications shown below refer to one of these possible "
+                                                                          "models, as CPU-M was unable to determine the exact card variant."
+                                                                 : MUIX_B "This PCI ID corresponds to multiple possible graphics cards.\n"
+                                                                          "But CPU-M was able to determine the exact card variant.")
+                                .object()));
                     }
 
                     MUI::Virtgroup allBoardsVirtgroup = MUI::VirtgroupBuilder().vertical().object();
