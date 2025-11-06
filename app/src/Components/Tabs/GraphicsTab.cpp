@@ -18,7 +18,6 @@ namespace Components
       , mGraphicsBoards()
       , mComponent(MUI::GroupBuilder()
                        .vertical()
-                       .tagChild(MUI::MakeObject::HVSpace())
                        .tagChild(MUI::GroupBuilder()
                                      .tagFrame(MUI::Frame::Group)
                                      .tagFrameTitle("Graphic System")
@@ -28,7 +27,6 @@ namespace Components
                                      .object())
                        .tagChild(mMountedMonitors)
                        .tagChild(mGraphicsBoards)
-                       .tagChild(MUI::MakeObject::HVSpace())
                        .object())
     {
         mGfxSystemText.setContents("CyberGraphX");

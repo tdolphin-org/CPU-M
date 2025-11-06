@@ -13,6 +13,8 @@
 #include "DataInfo/GfxBoardSpec.hpp"
 #include "DataInfo/PCI2IDSpec.hpp"
 #include "MUI/Core/MakeObject.hpp"
+#include "MUI/Scrollgroup.hpp"
+#include "MUI/Virtgroup.hpp"
 
 #include <iomanip>
 #include <sstream>
@@ -57,13 +59,14 @@ namespace Components
                                 .object()));
                     }
 
+                    MUI::Virtgroup allBoardsVirtgroup = MUI::VirtgroupBuilder().vertical().object();
                     size_t boardIdIndex = 0;
                     for (auto gfxBoardId : boardId->second)
                     {
                         auto gfxBoard2spec = DataInfo::gfxBoard2spec.find(gfxBoardId);
                         if (gfxBoard2spec != DataInfo::gfxBoard2spec.end())
                         {
-                            MUI::Group boardGroup = MUI::GroupBuilder().horizontal().object();
+                            MUI::Group boardsGroup = MUI::GroupBuilder().horizontal().object();
                             MUI::Group mainSpecGroup
                                 = MUI::GroupBuilder().horizontal().tagFrame(MUI::Frame::Group).tagFrameTitle("Specification").object();
 
@@ -112,22 +115,26 @@ namespace Components
                                     .tagChild(*mGPUNameComponents.back())
                                     .object());
 
-                            boardGroup.AddMember(mainSpecGroup);
-                            boardGroup.AddMember(TheoreticalPerformance(gfxBoard2spec->second.theoreticalPerformance));
+                            boardsGroup.AddMember(mainSpecGroup);
+                            boardsGroup.AddMember(TheoreticalPerformance(gfxBoard2spec->second.theoreticalPerformance));
 
-                            mComponent.AddMember(boardGroup);
+                            allBoardsVirtgroup.AddMember(boardsGroup);
                         }
                         else
                         {
-                            mComponent.AddMember(MUI::MakeObject::HCenter(
+                            allBoardsVirtgroup.AddMember(MUI::MakeObject::HCenter(
                                 MUI::MakeObject::FreeLabel("No detailed specification found for this graphics board (GfxBoardID: "
                                                            + std::to_string((unsigned long)gfxBoardId) + ")")));
                         }
 
                         boardIdIndex++;
                         if (boardIdIndex < boardId->second.size())
-                            mComponent.AddMember(MUI::MakeObject::HBar(0));
+                            allBoardsVirtgroup.AddMember(MUI::MakeObject::HBar(10));
                     }
+
+                    allBoardsVirtgroup.AddMember(MUI::MakeObject::HVSpace());
+
+                    mComponent.AddMember(MUI::ScrollgroupBuilder().tagContents(allBoardsVirtgroup).tagAutoBars(true).object());
                 }
 
                 boardIndex++;
