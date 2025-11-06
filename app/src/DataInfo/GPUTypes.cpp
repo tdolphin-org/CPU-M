@@ -86,9 +86,9 @@ namespace std
                 return "Avenger";
             case GPUID::_3dfx_VSA_100:
                 return "VSA-100";
-            case GPUID::Permedia_2:
+            case GPUID::_3DLabs_Permedia_2:
                 return "Permedia 2";
-            case GPUID::Permedia_2V:
+            case GPUID::_3DLabs_Permedia_2V:
                 return "Permedia 2V";
             case GPUID::SiS_6326:
                 return "6326";

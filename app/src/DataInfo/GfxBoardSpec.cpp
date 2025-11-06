@@ -18,7 +18,7 @@ namespace DataInfo
 {
     const std::map<GfxBoardID, GfxBoardSpec> gfxBoard2spec {
         {
-            GfxBoardID::Voodoo3_2000,
+            GfxBoardID::_3dfx_Voodoo3_2000,
             { "Voodoo3 2000",
               ManufacturerID::_3DFX,
               GPUID::_3dfx_Avenger,
@@ -28,7 +28,7 @@ namespace DataInfo
               { { 143'000, std::nullopt, 286'000 } } },
         },
         {
-            GfxBoardID::Voodoo3_3000,
+            GfxBoardID::_3dfx_Voodoo3_3000,
             { "Voodoo3 2000",
               ManufacturerID::_3DFX,
               GPUID::_3dfx_Avenger,
@@ -38,7 +38,7 @@ namespace DataInfo
               { { 166'000, std::nullopt, 332'000 } } },
         },
         {
-            GfxBoardID::Voodoo3_3500,
+            GfxBoardID::_3dfx_Voodoo3_3500,
             { "Voodoo3 3500",
               ManufacturerID::_3DFX,
               GPUID::_3dfx_Avenger,
@@ -48,7 +48,7 @@ namespace DataInfo
               { { 183'000, std::nullopt, 366'000 } } },
         },
         {
-            GfxBoardID::Voodoo4_4500,
+            GfxBoardID::_3dfx_Voodoo4_4500,
             { "Voodoo4 4500",
               ManufacturerID::_3DFX,
               GPUID::_3dfx_VSA_100,
@@ -58,7 +58,7 @@ namespace DataInfo
               { { 332'000, std::nullopt, 332'000 } } },
         },
         {
-            GfxBoardID::Voodoo5_5500,
+            GfxBoardID::_3dfx_Voodoo5_5500,
             { "Voodoo5 5500",
               ManufacturerID::_3DFX,
               GPUID::_3dfx_VSA_100,
@@ -68,20 +68,20 @@ namespace DataInfo
               { { 332'000, std::nullopt, 332'000 } } },
         },
         {
-            GfxBoardID::Permedia_2,
+            GfxBoardID::_3DLabs_Permedia_2,
             { "Permedia 2",
               ManufacturerID::_3DLABS,
-              GPUID::Permedia_2,
+              GPUID::_3DLabs_Permedia_2,
               1997,
               { GfxBoardInterface::PCI },
               std::nullopt,
               { { 83'000, std::nullopt, 83'000 } } },
         },
         {
-            GfxBoardID::Permedia_2V,
+            GfxBoardID::_3DLabs_Permedia_2V,
             { "Permedia 2V",
               ManufacturerID::_3DLABS,
-              GPUID::Permedia_2V,
+              GPUID::_3DLabs_Permedia_2V,
               1998,
               { GfxBoardInterface::PCI, GfxBoardInterface::AGP_1x },
               std::nullopt,

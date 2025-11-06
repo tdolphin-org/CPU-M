@@ -56,8 +56,8 @@ namespace DataInfo
         _3dfx_VSA_100,
 
         // 3D Labs Permedia series
-        Permedia_2,
-        Permedia_2V,
+        _3DLabs_Permedia_2,
+        _3DLabs_Permedia_2V,
 
         // SiS series
         SiS_6326,

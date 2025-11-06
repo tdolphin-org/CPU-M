@@ -17,7 +17,7 @@ namespace DataInfo
     const std::map<GPUID, GPUSpec> gpu2spec {
         { GPUID::_3dfx_Avenger, { ManufacturerID::_3DFX, "Avenger", 1999, std::nullopt, "250nm", { std::nullopt, 1, 0, 2, 1 }, 15 } },
         { GPUID::_3dfx_VSA_100, { ManufacturerID::_3DFX, "VSA-100", 2000, std::nullopt, "250nm", { std::nullopt, 2, 0, 2, 2 }, 60 } },
-        { GPUID::Permedia_2,
+        { GPUID::_3DLabs_Permedia_2,
           { ManufacturerID::_3DLABS,
             "Permedia 2",
             1997,
@@ -25,7 +25,7 @@ namespace DataInfo
             "350n",
             { std::nullopt, std::nullopt, std::nullopt, 1, 1 },
             std::nullopt } },
-        { GPUID::Permedia_2V,
+        { GPUID::_3DLabs_Permedia_2V,
           { ManufacturerID::_3DLABS,
             "Permedia 2V",
             1998,

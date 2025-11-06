@@ -13,15 +13,15 @@ namespace DataInfo
     enum class GfxBoardID
     {
         // 3dfx Voodoo series (limited support)
-        Voodoo3_2000,
-        Voodoo3_3000,
-        Voodoo3_3500,
-        Voodoo4_4500,
-        Voodoo5_5500,
+        _3dfx_Voodoo3_2000,
+        _3dfx_Voodoo3_3000,
+        _3dfx_Voodoo3_3500,
+        _3dfx_Voodoo4_4500,
+        _3dfx_Voodoo5_5500,
 
         // 3D Labs Permedia series
-        Permedia_2,
-        Permedia_2V,
+        _3DLabs_Permedia_2,
+        _3DLabs_Permedia_2V,
 
         // SiS series
         SiS_6326,

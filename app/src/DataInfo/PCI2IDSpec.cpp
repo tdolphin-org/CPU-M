@@ -24,14 +24,14 @@ namespace DataInfo
         { { 0x1039, 0x6326 }, { GfxBoardID::SiS_6326 } },
         { { 0x1039, 0x0300 }, { GfxBoardID::SiS_300, GfxBoardID::SiS_305 } },
         { { 0x1039, 0x0315 }, { GfxBoardID::SiS_315 } },
-        { { 0x104C, 0x3D07 }, { GfxBoardID::Permedia_2 } }, // Texas Instruments -> 3D Labs Permedia 2
+        { { 0x104C, 0x3D07 }, { GfxBoardID::_3DLabs_Permedia_2 } }, // Texas Instruments -> 3D Labs Permedia 2
         { { 0x121A, 0x0005 },
-          { GfxBoardID::Voodoo3_2000, GfxBoardID::Voodoo3_3000, GfxBoardID::Voodoo3_3500 } }, // 3dfx Voodoo3 2000/3000/3500
-        { { 0x121A, 0x0009 }, { GfxBoardID::Voodoo4_4500, GfxBoardID::Voodoo5_5500 } }, // 3dfx Voodoo4 4500/ Voodoo5 5500
+          { GfxBoardID::_3dfx_Voodoo3_2000, GfxBoardID::_3dfx_Voodoo3_3000, GfxBoardID::_3dfx_Voodoo3_3500 } }, // 3dfx Voodoo3 2000/3000/3500
+        { { 0x121A, 0x0009 }, { GfxBoardID::_3dfx_Voodoo4_4500, GfxBoardID::_3dfx_Voodoo5_5500 } }, // 3dfx Voodoo4 4500/ Voodoo5 5500
         { { 0x18CA, 0x0040 },
           { GfxBoardID::XGI_Volari_V3XT, GfxBoardID::XGI_Volari_V5, GfxBoardID::XGI_Volari_V8,
             GfxBoardID::XGI_Volari_V8_Ultra } }, // XGI Volari V3XT, V5, V8, V8 Ultra
-        { { 0x3D3D, 0x0009 }, { GfxBoardID::Permedia_2 } },
-        { { 0x3D3D, 0x0100 }, { GfxBoardID::Permedia_2 } },
+        { { 0x3D3D, 0x0009 }, { GfxBoardID::_3DLabs_Permedia_2 } },
+        { { 0x3D3D, 0x0100 }, { GfxBoardID::_3DLabs_Permedia_2 } },
     };
 }
