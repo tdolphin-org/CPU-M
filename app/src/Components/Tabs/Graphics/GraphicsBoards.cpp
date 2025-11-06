@@ -7,15 +7,18 @@
 #include "GraphicsBoards.hpp"
 
 #include "AOS/Cybergraphics/Library.hpp"
+#include "AOS/Exec/Library.hpp"
 #include "AOS/PCIIDS/Library.hpp"
 #include "AOS/PCIX/Library.hpp"
 #include "Components/Tabs/Graphics/TheoreticalPerformance.hpp"
 #include "DataInfo/GfxBoardSpec.hpp"
+#include "DataInfo/HardwareSystemSpec.hpp"
 #include "DataInfo/PCI2IDSpec.hpp"
 #include "MUI/Core/MakeObject.hpp"
 #include "MUI/Scrollgroup.hpp"
 #include "MUI/Virtgroup.hpp"
 
+#include <algorithm>
 #include <iomanip>
 #include <sstream>
 
@@ -47,21 +50,34 @@ namespace Components
                 auto boardId = DataInfo::vendorAndDevice2gfxBoardId.find({ board.vendorId, board.deviceId });
                 if (boardId != DataInfo::vendorAndDevice2gfxBoardId.end())
                 {
-                    if (boardId->second.size() > 1)
+                    auto boardIds = boardId->second;
+                    if (boardIds.size() > 1)
                     {
-                        mComponent.AddMember(MUI::MakeObject::HCenter(
-                            MUI::TextBuilder()
-                                .tagFrameTitle("Note")
-                                .tagFrame(MUI::Frame::Group)
-                                .tagContents(MUIX_B "This PCI ID corresponds to multiple possible graphics cards.\n"
-                                                    "The specifications shown below refer to one of these possible "
-                                                    "models, as CPU-M was unable to determine the exact card variant.")
-                                .object()));
+                        // check if we have some info about graphics card for given hardware system
+                        auto systemName = AOS::Exec::Library::libNewGetSystemAttrsAsString(AOS::Exec::SYSTEMINFOTYPE::SYSTEM);
+                        auto hardwareSpec = DataInfo::hardwareSystem2spec.find(systemName);
+                        if (hardwareSpec != DataInfo::hardwareSystem2spec.end() && hardwareSpec->second.integratedGraphicsBoard.has_value())
+                        {
+                            auto integratedGraphicsBoard = hardwareSpec->second.integratedGraphicsBoard;
+                            // check if this board is among possible boards for given PCI ID
+                            if (std::find(boardIds.begin(), boardIds.end(), integratedGraphicsBoard.value()) != boardIds.end())
+                                boardIds = { integratedGraphicsBoard.value() };
+                        }
+
+                        if (boardIds.size() > 1)
+                            mComponent.AddMember(MUI::MakeObject::HCenter(
+                                MUI::TextBuilder()
+                                    .tagFrameTitle("Note")
+                                    .tagFrame(MUI::Frame::Group)
+                                    .tagContents(MUIX_B "This PCI ID corresponds to multiple possible graphics cards.\n"
+                                                        "The specifications shown below refer to one of these possible "
+                                                        "models, as CPU-M was unable to determine the exact card variant.")
+                                    .object()));
                     }
 
                     MUI::Virtgroup allBoardsVirtgroup = MUI::VirtgroupBuilder().vertical().object();
                     size_t boardIdIndex = 0;
-                    for (auto gfxBoardId : boardId->second)
+                    for (auto gfxBoardId : boardIds)
                     {
                         auto gfxBoard2spec = DataInfo::gfxBoard2spec.find(gfxBoardId);
                         if (gfxBoard2spec != DataInfo::gfxBoard2spec.end())
@@ -128,7 +144,7 @@ namespace Components
                         }
 
                         boardIdIndex++;
-                        if (boardIdIndex < boardId->second.size())
+                        if (boardIdIndex < boardIds.size())
                             allBoardsVirtgroup.AddMember(MUI::MakeObject::HBar(10));
                     }
 

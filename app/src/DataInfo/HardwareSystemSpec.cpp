@@ -8,6 +8,7 @@
 
 // sources:
 // Pegasos book, Efika book, wikipedia, https://support.apple.com, https://morphos.pl/morphos-i-sprzet/
+// product datasheets from manufacturers
 
 namespace DataInfo
 {
@@ -239,6 +240,7 @@ namespace DataInfo
                 },
                 std::nullopt,
                 std::nullopt,
+                { GfxBoardID::ATI_Radeon_9600_Mobile },
             },
         },
         {
@@ -267,6 +269,7 @@ namespace DataInfo
                 },
                 std::nullopt,
                 std::nullopt,
+                { GfxBoardID::ATI_Radeon_9700_Mobile },
             },
         },
         {
@@ -295,6 +298,7 @@ namespace DataInfo
                 },
                 std::nullopt,
                 std::nullopt,
+                { GfxBoardID::ATI_Radeon_9700_Mobile },
             },
         },
         {
@@ -323,6 +327,7 @@ namespace DataInfo
                 },
                 std::nullopt,
                 std::nullopt,
+                { GfxBoardID::ATI_Radeon_9700_Mobile },
             },
         },
         {
@@ -351,6 +356,7 @@ namespace DataInfo
                 },
                 std::nullopt,
                 std::nullopt,
+                { GfxBoardID::ATI_Radeon_9700_Mobile },
             },
         },
         {
@@ -379,6 +385,7 @@ namespace DataInfo
                 },
                 std::nullopt,
                 std::nullopt,
+                { GfxBoardID::ATI_Radeon_9700_Mobile },
             },
         },
         {
@@ -407,6 +414,7 @@ namespace DataInfo
                 },
                 std::nullopt,
                 std::nullopt,
+                { GfxBoardID::ATI_Radeon_9700_Mobile },
             },
         },
         {
