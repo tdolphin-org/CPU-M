@@ -29,12 +29,14 @@ namespace Components
       , mTimeZoneText(ValueText("Current time zone"))
       , mCodePageText(ValueText("Current code page"))
       , mLocaleText(ValueText("Current locale"))
-      , mLoadedLibrariesList(MUI::ListBuilder().tagFrame(MUI::Frame::ReadList).stringHooks().object())
-      , mLoadedDevicesList(MUI::ListBuilder().tagFrame(MUI::Frame::ReadList).stringHooks().object())
-      , mLoadedDatatypesList(MUI::ListBuilder().tagFrame(MUI::Frame::ReadList).stringHooks().object())
-      , mLoadedMUIList(MUI::ListBuilder().tagFrame(MUI::Frame::ReadList).stringHooks().object())
+      , mLoadedLibrariesList(
+            MUI::ListBuilder().tagFrame(MUI::Frame::ReadList).stringArrayHooks(2).tagFormat("BAR,").tagTitle(false).object())
+      , mLoadedDevicesList(MUI::ListBuilder().tagFrame(MUI::Frame::ReadList).stringArrayHooks(2).tagFormat("BAR,").object())
+      , mLoadedDatatypesList(
+            MUI::ListBuilder().tagFrame(MUI::Frame::ReadList).stringArrayHooks(2).tagFormat("BAR,").tagTitle(false).object())
+      , mLoadedMUIList(MUI::ListBuilder().tagFrame(MUI::Frame::ReadList).stringArrayHooks(2).tagFormat("BAR,").tagTitle(false).object())
       , mLoadedResourcesList(MUI::ListBuilder().tagFrame(MUI::Frame::ReadList).stringHooks().object())
-      , mLoadedOtherList(MUI::ListBuilder().tagFrame(MUI::Frame::ReadList).stringHooks().object())
+      , mLoadedOtherList(MUI::ListBuilder().tagFrame(MUI::Frame::ReadList).stringArrayHooks(2).tagFormat("BAR,").tagTitle(false).object())
       , mExecNodesTabs({
             { "Libraries", mLoadedLibrariesList },
             { "Devices", mLoadedDevicesList },
@@ -48,7 +50,6 @@ namespace Components
                        .tagChild(MUI::GroupBuilder()
                                      .tagFrame(MUI::Frame::Group)
                                      .tagFrameTitle("Operating System")
-                                     //  .tagChild(LabelText(MUIX_R "Name"))
                                      .tagChild(mFullOSNameText)
                                      .tagChild(MUI::GroupBuilder()
                                                    .tagColumns(8)
@@ -147,14 +148,16 @@ namespace Components
         auto allLibraries = AOS::Exec::Library::GetAllLibraryNodeNames();
         for (const auto &entry : allLibraries)
         {
+            std::string version = entry.version.has_value() ? entry.version.value() : "??";
+            const char *arr[] = { entry.name.c_str(), version.c_str(), nullptr };
             if (isLibrary(entry))
-                mLoadedLibrariesList.InsertSingleSorted(entry.name + " (v" + entry.version.value_or("??") + ")");
+                mLoadedLibrariesList.InsertSingleSorted(arr);
             else if (isDatatype(entry))
-                mLoadedDatatypesList.InsertSingleSorted(entry.name + " (v" + entry.version.value_or("??") + ")");
+                mLoadedDatatypesList.InsertSingleSorted(arr);
             else if (isMUI(entry))
-                mLoadedMUIList.InsertSingleSorted(entry.name + " (v" + entry.version.value_or("??") + ")");
+                mLoadedMUIList.InsertSingleSorted(arr);
             else
-                mLoadedOtherList.InsertSingleSorted(entry.name + " (v" + entry.version.value_or("??") + ")");
+                mLoadedOtherList.InsertSingleSorted(arr);
         }
 
         mLoadedLibrariesList.setQuiet(false);
@@ -162,13 +165,15 @@ namespace Components
         mLoadedMUIList.setQuiet(false);
         mLoadedOtherList.setQuiet(false);
 
+        mLoadedDevicesList.setQuiet(true);
         auto allDevices = AOS::Exec::Library::GetAllDeviceNodeNames();
-        mLoadedDevicesList.InsertSorted([&]() -> std::vector<std::string> {
-            std::vector<std::string> result;
-            for (const auto &entry : allDevices)
-                result.push_back(entry.name + " (v" + entry.version.value_or("??") + ")");
-            return result;
-        }());
+        for (const auto &entry : allDevices)
+        {
+            std::string version = entry.version.has_value() ? entry.version.value() : "??";
+            const char *arr[] = { entry.name.c_str(), version.c_str(), nullptr };
+            mLoadedDevicesList.InsertSingleSorted(arr);
+        }
+        mLoadedDevicesList.setQuiet(false);
 
         auto allResources = AOS::Exec::Library::GetAllResourceNodeNames();
         mLoadedResourcesList.InsertSorted([&]() -> std::vector<std::string> {

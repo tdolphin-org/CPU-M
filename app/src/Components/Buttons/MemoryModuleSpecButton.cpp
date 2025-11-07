@@ -8,8 +8,6 @@
 
 #include "WindowManager.hpp"
 
-#include <iostream>
-
 namespace Components
 {
     MemoryModuleSpecButton::MemoryModuleSpecButton(const std::pair<MemoryType, ModuleForm> &memoryTypeAndForm)
