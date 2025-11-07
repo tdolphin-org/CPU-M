@@ -109,14 +109,12 @@ namespace Components
                                                                                   interfaceStrings.push_back(std::to_string(interface));
                                                                               return interfaceStrings;
                                                                           }(),
-                                                                          ", "),
-                                                                      true))
+                                                                          ", ")))
                                                   .tagChild(LabelText(MUIX_R "TDP:"))
                                                   .tagChild(ValueText("Thermal Design Power in watts",
                                                                       gfxBoard2spec->second.TDP
                                                                           ? std::to_string(gfxBoard2spec->second.TDP.value()) + " W"
-                                                                          : "N/A",
-                                                                      true))
+                                                                          : "N/A"))
                                                   .object())
                                     .object());
 
@@ -127,7 +125,7 @@ namespace Components
                                     .vertical()
                                     .tagColumns(2)
                                     .tagChild(LabelText(MUIX_R "Premiere:"))
-                                    .tagChild(ValueText("Graphics card premiere", std::to_string(gfxBoard2spec->second.premiere), true))
+                                    .tagChild(ValueText("Graphics card premiere", std::to_string(gfxBoard2spec->second.premiere)))
                                     .tagChild(LabelText(MUIX_R "GPU:"))
                                     .tagChild(*mGPUNameComponents.back())
                                     .object());
