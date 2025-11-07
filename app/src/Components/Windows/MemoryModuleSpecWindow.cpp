@@ -166,25 +166,25 @@ namespace Components
         {
             if (memoryTypeAndForm == ModuleForm::DIMM)
             {
-                return MUI::ImageBuilder()
-                    .tagSpecPicture(imageIt->second.c_str())
-                    .tagFixWidth(810)
-                    .tagFixHeight(190)
-                    .tagFreeHoriz(true)
-                    .tagFreeVert(true)
-                    .object()
-                    .muiObject();
+                return MUI::MakeObject::HCenter(MUI::ImageBuilder()
+                                                    .tagSpecPicture(imageIt->second.c_str())
+                                                    .tagFixWidth(810)
+                                                    .tagFixHeight(190)
+                                                    .tagFreeHoriz(true)
+                                                    .tagFreeVert(true)
+                                                    .object()
+                                                    .muiObject());
             }
             else // SO_DIMM
             {
-                return MUI::ImageBuilder()
-                    .tagSpecPicture(imageIt->second.c_str())
-                    .tagFixWidth(410)
-                    .tagFixHeight(190)
-                    .tagFreeHoriz(true)
-                    .tagFreeVert(true)
-                    .object()
-                    .muiObject();
+                return MUI::MakeObject::HCenter(MUI::ImageBuilder()
+                                                    .tagSpecPicture(imageIt->second.c_str())
+                                                    .tagFixWidth(410)
+                                                    .tagFixHeight(190)
+                                                    .tagFreeHoriz(true)
+                                                    .tagFreeVert(true)
+                                                    .object()
+                                                    .muiObject());
             }
         }
 
