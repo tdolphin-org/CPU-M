@@ -8,7 +8,6 @@
 
 #include "AOS/PCIX/Library.hpp"
 #include "MUI/Core/MakeObject.hpp"
-#include "MUI/Core/NullObject.hpp"
 
 namespace Components
 {

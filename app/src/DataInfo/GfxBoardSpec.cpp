@@ -193,7 +193,7 @@ namespace DataInfo
               ManufacturerID::ATI,
               GPUID::ATI_M12,
               2004,
-              { GfxBoardInterface::PCIe_x16 },
+              { GfxBoardInterface::AGP_4x },
               std::nullopt,
               { { 1'000'000, 125'000, 1'000'000 } } },
         },
