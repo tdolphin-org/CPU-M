@@ -7,13 +7,12 @@
 #pragma once
 
 #include "AOS/Cybergraphics/CybergraphicsBaseScope.hpp"
+#include "AOS/Intuition/IntuitionBaseScope.hpp"
 #include "AOS/OpenURL/OpenURLBaseScope.hpp"
-#include "AOS/Rexxsyslib/RexxsyslibBaseScope.hpp"
 #include "AOS/PCIIDS/PCIIDSBaseScope.hpp"
 #include "AOS/PCIX/PCIXBaseScope.hpp"
+#include "AOS/Rexxsyslib/RexxsyslibBaseScope.hpp"
 #include "Core/Singleton.hpp"
-
-#include <set>
 
 class AppContextCore
 {
@@ -27,7 +26,8 @@ class AppContextCore
     CybergraphicsBaseScope &getCybergraphicsBase() const;
     RexxsyslibBaseScope &getRexxsyslibBase() const;
     PCIXBaseScope &getPCIXBase() const;
-    PCIIDSBaseScope &getPCIIDSBase() const;    
+    PCIIDSBaseScope &getPCIIDSBase() const;
+    IntuitionBaseScope &getIntuitionBase() const;
 };
 
 /// @brief main AppContext (singleton) object

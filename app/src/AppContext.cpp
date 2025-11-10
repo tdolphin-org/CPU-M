@@ -50,3 +50,8 @@ PCIIDSBaseScope &AppContextCore::getPCIIDSBase() const
 {
     return App::instance().pciidsBaseScope;
 }
+
+IntuitionBaseScope &AppContextCore::getIntuitionBase() const
+{
+    return App::instance().intuitionBaseScope;
+}

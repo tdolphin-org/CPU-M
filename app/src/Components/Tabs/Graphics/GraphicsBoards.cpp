@@ -6,10 +6,9 @@
 
 #include "GraphicsBoards.hpp"
 
-#include "AOS/Cybergraphics/Library.hpp"
 #include "AOS/Exec/Library.hpp"
+#include "AOS/Intuition/Library.hpp"
 #include "AOS/PCIIDS/Library.hpp"
-#include "AOS/PCIX/Library.hpp"
 #include "Components/Tabs/Graphics/TheoreticalPerformance.hpp"
 #include "DataInfo/GfxBoardSpec.hpp"
 #include "DataInfo/HardwareSystemSpec.hpp"
@@ -25,29 +24,61 @@
 namespace Components
 {
     GraphicsBoards::GraphicsBoards()
-      : mComponent(MUI::GroupBuilder().vertical().tagFrame(MUI::Frame::Group).tagFrameTitle("Graphics Boards(s)").object())
+      : mComponent(MUI::GroupBuilder()
+                       .vertical()
+                       .tagFrame(MUI::Frame::Group)
+                       .tagFrameTitle("Mounted Devs Monitor(s) / Graphics Boards(s)")
+                       .object())
     {
-        auto displayBoards = AOS::PCIX::Library::GetBoards({ AOS::PCIX::BaseClass::Display });
-        if (displayBoards.empty())
+        auto monitors = AOS::Intuition::Library::libGetMonitorList();
+        if (monitors.empty())
             mComponent.AddMember(MUI::MakeObject::HCenter(MUI::MakeObject::FreeLabel("none")));
         else
         {
             size_t boardIndex = 0;
-            for (const auto &board : displayBoards)
+            for (const auto &monitor : monitors)
             {
-                // first show basic info taken directly from PCI IDs
-                {
-                    std::stringstream fullIdStream;
-                    fullIdStream << std::setfill('0') << std::setw(4) << std::hex << board.vendorId << ":" << std::setfill('0')
-                                 << std::setw(4) << std::hex << board.classId;
+                std::stringstream fullIdStream;
+                fullIdStream << "0x" << std::setfill('0') << std::setw(4) << std::hex << monitor.manufacturerId << ":0x"
+                             << std::setfill('0') << std::setw(4) << std::hex << monitor.productId;
 
-                    mComponent.AddMember(MUI::MakeObject::HCenter(MUI::MakeObject::FreeCLabel2(
-                        "PCIID[" + fullIdStream.str() + "] " + AOS::PCIIDS::Library::libGetVendorName(board.vendorId) + " " + MUIX_B
-                        + AOS::PCIIDS::Library::libGetDeviceName(board.vendorId, board.deviceId))));
-                }
+                mComponent.AddMember(
+                    MUI::GroupBuilder()
+                        .horizontal()
+                        .tagChild(LabelText(MUIX_R "Manufacturer:"))
+                        .tagChild(ValueText("Manufacturer of this graphics board",
+                                            AOS::PCIIDS::Library::libGetVendorName(monitor.manufacturerId)))
+                        .tagChild(LabelText(MUIX_R "Product name:"))
+                        .tagChild(ValueText("Full product name",
+                                            MUIX_B + AOS::PCIIDS::Library::libGetDeviceName(monitor.manufacturerId, monitor.productId)))
+                        .object());
+
+                mComponent.AddMember(
+                    MUI::GroupBuilder()
+                        .tagColumns(6)
+                        .tagFrame(MUI::Frame::Group)
+                        .tagFrameTitle("Detailed Monitor Information")
+                        .tagChild(LabelText(MUIX_R "PCI ID:"))
+                        .tagChild(ValueText("PCI ID in format (vendorId:deviceId)", fullIdStream.str()))
+                        .tagChild(LabelText(MUIX_R "CGX Monitor:"))
+                        .tagChild(ValueText("Cybergraphics monitor name", monitor.name))
+                        .tagChild(LabelText(MUIX_R "Driver:"))
+                        .tagChild(ValueText("Cybergraphics driver name", monitor.driverName))
+                        .tagChild(LabelText(MUIX_R "Memory Size:"))
+                        .tagChild(ValueText("Amount of video memory installed",
+                                            ToString::FromBytesValue(monitor.memorySize, MemorySizeUnit::MegaBytes, true)))
+                        .tagChild(LabelText(MUIX_R "Memory Clock:"))
+                        .tagChild(ValueText(
+                            "Memory clock speed",
+                            monitor.memoryClock.has_value() ? ToString::FromClockHertzValue(monitor.memoryClock.value(), true) : "N/A"))
+                        .tagChild(LabelText(MUIX_R "GPU Clock:"))
+                        .tagChild(ValueText(
+                            "GPU clock speed",
+                            monitor.engineClock.has_value() ? ToString::FromClockHertzValue(monitor.engineClock.value(), true) : "N/A"))
+                        .object());
 
                 // try to find full spec
-                auto boardId = DataInfo::vendorAndDevice2gfxBoardId.find({ board.vendorId, board.deviceId });
+                auto boardId = DataInfo::vendorAndDevice2gfxBoardId.find({ monitor.manufacturerId, monitor.productId });
                 if (boardId != DataInfo::vendorAndDevice2gfxBoardId.end())
                 {
                     auto boardIds = boardId->second;
@@ -153,7 +184,7 @@ namespace Components
                 }
 
                 boardIndex++;
-                if (boardIndex < displayBoards.size())
+                if (boardIndex < monitors.size())
                     mComponent.AddMember(MUI::MakeObject::HBar(0));
             }
         }

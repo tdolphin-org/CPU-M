@@ -17,7 +17,6 @@ namespace Components
     class GraphicsTab : public Root<MUI::Group>, public TabBase
     {
         MUI::Text mGfxSystemText;
-        MUI::Group mMountedMonitors;
         GraphicsBoards mGraphicsBoards;
 
         MUI::Group mComponent;
