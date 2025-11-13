@@ -10,27 +10,21 @@
 #include "AppContext.hpp"
 #include "Core/ToString.hpp"
 #include "FileResources/CPUImages.hpp"
+#include "MUI/Core/MakeObject.hpp"
 
 #include <cmath>
 #include <iomanip>
 #include <numeric>
 
-static std::map<std::string, std::string> ppc_cpu2image = {
-    { "Unknown", CPUImageFile::ppc },  { "602", CPUImageFile::ppc602 },   { "603", CPUImageFile::ppc603 },
-    { "603E", CPUImageFile::ppc603e }, { "603P", CPUImageFile::ppc603p }, { "604", CPUImageFile::ppc604 },
-    { "604E", CPUImageFile::ppc604e }, { "620", CPUImageFile::ppc620 },
-};
-
 static std::map<std::string, std::string> ppc_family2image = {
+    { "G2", CPUImageFile::ppcG2 },
     { "G3", CPUImageFile::ppcG3 },
     { "G4", CPUImageFile::ppcG4 },
     { "G5", CPUImageFile::ppcG5 },
 };
 
-static std::string GetImageForCPU(const std::string &cpuName, const std::string &cpuFamily)
+static std::string GetImageForCPU(const std::string &cpuFamily)
 {
-    if (ppc_cpu2image.find(cpuName) != ppc_cpu2image.end())
-        return ppc_cpu2image.at(cpuName);
     if (ppc_family2image.find(cpuFamily) != ppc_family2image.end())
         return ppc_family2image.at(cpuFamily);
     return CPUImageFile::ppc;
@@ -54,11 +48,11 @@ namespace Components
       , mCPUCoreVoltageText(ValueText("CPU/Core Voltage", mCPUSpec.coreVoltage))
       , mCPUTechnologyText(ValueText("Production Technology", mCPUSpec.technology))
       , mCPUPremiereYearText(ValueText("Year of Premiere", mCPUSpec.premiere))
-      , mAdditionalUnits(ValueText("Additional Units like FPU, MMU"))
+      , mAdditionalUnits(ValueText("Additional/Integrated Units like FPU, Altivec, ...", "--", true))
       , mCPUImage(MUI::ImageBuilder()
-                      .tagSpecPicture(GetImageForCPU(cpuInfo.name, cpuInfo.family))
-                      .tagFixWidth(80)
-                      .tagFixHeight(80)
+                      .tagSpecPicture(GetImageForCPU(cpuInfo.family))
+                      .tagFixWidth(128)
+                      .tagFixHeight(128)
                       .tagFreeHoriz(true)
                       .tagFreeVert(true)
                       .object())
@@ -106,15 +100,15 @@ namespace Components
                                                                                .tagChild(LabelText(MUIX_R "Premiere:"))
                                                                                .tagChild(mCPUPremiereYearText)
                                                                                .object())
-
+                                                                 .tagChild(MUI::MakeObject::HBar(0))
+                                                                 .tagChild(MUI::GroupBuilder()
+                                                                               .horizontal()
+                                                                               .tagChild(LabelText(MUIX_R "Additional Units:"))
+                                                                               .tagChild(mAdditionalUnits)
+                                                                               .object())
                                                                  .object())
                                                    .tagChild(mCPUImage)
                                                    .object())
-                                     .object())
-                       .tagChild(MUI::GroupBuilder()
-                                     .tagFrame(MUI::Frame::Group)
-                                     .tagFrameTitle("Additional/Integrated Units")
-                                     .tagChild(mAdditionalUnits)
                                      .object())
                        .tagChild(MUI::GroupBuilder()
                                      .horizontal()
