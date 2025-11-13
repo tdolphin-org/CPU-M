@@ -13,7 +13,7 @@
 namespace Components
 {
     MainboardTab::MainboardTab()
-      : mVendorText(ValueText("Vendor"))
+      : mVendorText(ValueText("Vendor of Hardware System or Mainboard"))
       , mSystemText(ValueText("System Name"))
       , mFullNameText(ValueText("Full/Marketing Name"))
       , mModelNumberText(ValueText("Model Number (optional)"))
