@@ -73,7 +73,7 @@ namespace Components
             return;
 
         const auto &spec = hardwareSpec->second;
-        mFullNameText.setContents(spec.marketingName);
+        mFullNameText.setContents(MUIX_B + spec.marketingName);
         if (spec.modelNumber.has_value())
             mModelNumberText.setContents(spec.modelNumber.value());
         mTimelineText.setContents(std::to_string(spec.introductionYear)

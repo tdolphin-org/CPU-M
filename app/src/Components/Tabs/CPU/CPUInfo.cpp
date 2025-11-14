@@ -40,8 +40,8 @@ namespace Components
           return std::string("Unknown");
       }()))
       , mCPUVendorText(ValueText("Vendor of CPU", mCPUSpec.vendor))
-      , mCPUFamilyText(ValueText("Family of CPU", cpuInfo.family))
-      , mCPUNameText(ValueText("Model name of CPU", cpuInfo.name))
+      , mCPUFamilyText(ValueText("Family of CPU", MUIX_B + cpuInfo.family))
+      , mCPUNameText(ValueText("Model name of CPU", MUIX_B + cpuInfo.name))
       , mCPUVersionText(ValueText("Version of CPU", std::to_string(cpuInfo.version)))
       , mCPURevisionText(ValueText("Revision of CPU", std::to_string(cpuInfo.revision)))
       , mCPUTDPText(ValueText("Maximal Thermal Design Power", mCPUSpec.tdp))
