@@ -24,7 +24,8 @@ namespace DataInfo
         AGP_2x,
         AGP_4x,
         AGP_8x,
-        PCIe_x16,
+        PCIe_x16, // 1.0 x16
+        PCIe_2_x16, // 2.0 x16
     };
 
     struct TheoreticalPerformance

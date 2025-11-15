@@ -80,7 +80,9 @@ namespace DataInfo
         ATI_RV360, // RV360
         ATI_RV380_XT, // RV380 XT
         ATI_RV570, // RV570
+        ATI_RV620_LE, // RV620 LE
         ATI_RV670_Pro, // RV670 Pro
+        ATI_RV730_XT, // RV730 XT
         ATI_M10, // Mobility M10
         ATI_M11, // Mobility M11
         ATI_M12, // Mobility M12
