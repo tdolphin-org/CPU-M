@@ -16,7 +16,8 @@
 
 namespace DataInfo
 {
-    enum class GfxBoardInterface
+    // board or gpu interface types
+    enum class BoardInterface
     {
         PCI,
         AGP_1x,
@@ -41,7 +42,7 @@ namespace DataInfo
         ManufacturerID manufacturer; // manufacturer/vendor id
         GPUID gpu; // GPU id
         unsigned int premiere; // year
-        std::vector<GfxBoardInterface> interfaces; // board interface like PCI, AGP, PCIe
+        std::vector<BoardInterface> interfaces; // supported board interfaces like PCI, AGP, PCIe
         std::optional<unsigned int> TDP; // thermal design power in watts
         std::optional<TheoreticalPerformance> theoreticalPerformance;
     };
@@ -57,5 +58,5 @@ namespace DataInfo
 
 namespace std
 {
-    std::string to_string(const DataInfo::GfxBoardInterface &interface);
+    std::string to_string(const DataInfo::BoardInterface &interface);
 }
