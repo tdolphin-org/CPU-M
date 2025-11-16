@@ -7,6 +7,7 @@
 #pragma once
 
 #include "GPUTypes.hpp"
+#include "TechnologyTypes.hpp"
 
 #include <map>
 #include <optional>
@@ -28,7 +29,7 @@ namespace DataInfo
         ManufacturerID manufacturer; // manufacturer/vendor
         unsigned int premiere; // year
         std::optional<ArchitectureID> architecture; // architecture/generation
-        std::string technology;
+        TechnologyID technology;
         RenderConfig renderConfig;
         std::optional<unsigned int> maxTDP; // in watts
     };

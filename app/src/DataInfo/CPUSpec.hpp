@@ -6,6 +6,8 @@
 
 #pragma once
 
+#include "TechnologyTypes.hpp"
+
 #include <map>
 #include <string>
 
@@ -17,7 +19,7 @@ namespace DataInfo
         std::string modelName;
         std::string codeName;
         std::string coreVoltage;
-        std::string technology;
+        TechnologySpec technology;
         std::string premiere;
         std::string tdp;
     };

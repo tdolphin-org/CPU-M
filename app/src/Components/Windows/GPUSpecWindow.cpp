@@ -88,7 +88,7 @@ namespace Components
             mModelName.setContents(std::to_string(gpuId));
             mPremiere.setContents(std::to_string(gpuSpec->second.premiere));
             mArchitecture.setContents(gpuSpec->second.architecture ? std::to_string(gpuSpec->second.architecture.value()) : "N/A");
-            mTechnology.setContents(gpuSpec->second.technology);
+            mTechnology.setContents(std::to_string(gpuSpec->second.technology));
             mMaxTDP.setContents(gpuSpec->second.maxTDP ? std::to_string(gpuSpec->second.maxTDP.value()) + " W" : "N/A");
 
             mChipSpecGroup.Remove(mRenderConfig);

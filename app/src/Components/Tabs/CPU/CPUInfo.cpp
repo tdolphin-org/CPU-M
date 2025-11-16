@@ -46,7 +46,7 @@ namespace Components
       , mCPURevisionText(ValueText("Revision of CPU", std::to_string(cpuInfo.revision)))
       , mCPUTDPText(ValueText("Maximal Thermal Design Power", mCPUSpec.tdp))
       , mCPUCoreVoltageText(ValueText("CPU/Core Voltage", mCPUSpec.coreVoltage))
-      , mCPUTechnologyText(ValueText("Production Technology", mCPUSpec.technology))
+      , mCPUTechnologyText(ValueText("Production Technology", std::to_string(mCPUSpec.technology)))
       , mCPUPremiereYearText(ValueText("Year of Premiere", mCPUSpec.premiere))
       , mAdditionalUnits(ValueText("Additional/Integrated Units like FPU, Altivec, ...", "--", true))
       , mCPUImage(MUI::ImageBuilder()
