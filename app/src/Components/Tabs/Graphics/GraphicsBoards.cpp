@@ -14,6 +14,7 @@
 #include "DataInfo/HardwareSystemSpec.hpp"
 #include "DataInfo/PCI2IDSpec.hpp"
 #include "MUI/Core/MakeObject.hpp"
+#include "MUI/Core/NullObject.hpp"
 #include "MUI/Scrollgroup.hpp"
 #include "MUI/Virtgroup.hpp"
 
@@ -159,6 +160,7 @@ namespace Components
 
                             mGPUNameComponents.push_back(new GPUName(gfxBoard2spec->second.gpu));
 
+                            auto hasGpuVariant = gfxBoard2spec->second.gpuVariant.has_value();
                             mainSpecGroup.AddMember(
                                 MUI::GroupBuilder()
                                     .vertical()
@@ -167,6 +169,10 @@ namespace Components
                                     .tagChild(ValueText("Graphics card premiere", std::to_string(gfxBoard2spec->second.premiere)))
                                     .tagChild(LabelText(MUIX_R "GPU:"))
                                     .tagChild(*mGPUNameComponents.back())
+                                    .tagChild(LabelText(MUIX_R "GPU Variant:"), hasGpuVariant)
+                                    .tagChild(ValueText("GPU variant name",
+                                                        hasGpuVariant ? std::to_string(gfxBoard2spec->second.gpuVariant.value()) : ""),
+                                              hasGpuVariant)
                                     .object());
 
                             boardsGroup.AddMember(mainSpecGroup);
