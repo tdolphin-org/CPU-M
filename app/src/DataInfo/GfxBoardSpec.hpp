@@ -42,6 +42,7 @@ namespace DataInfo
         std::string name;
         ManufacturerID manufacturer; // manufacturer/vendor id
         GPUID gpu; // GPU id
+        std::optional<GPUVariantID> gpuVariant; // GPU variant id
         unsigned int premiere; // year
         std::vector<BoardInterface> interfaces; // supported board interfaces like PCI, AGP, PCIe
         std::optional<unsigned int> TDP; // thermal design power in watts

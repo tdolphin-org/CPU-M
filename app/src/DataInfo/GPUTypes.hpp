@@ -70,19 +70,18 @@ namespace DataInfo
         XGI_XG41,
         XGI_XG42,
 
-        // ATI/AMD Rage series
+        // ATI/AMD series
         ATI_Rage_128_Pro, // Rage 128 Pro
         ATI_RV200, // RV200
-        ATI_RV200_500,
         ATI_RV280, // RV280
         ATI_RV350, // RV350
         ATI_R350, // R350
         ATI_RV360, // RV360
-        ATI_RV380_XT, // RV380 XT
+        ATI_RV380, // RV380
         ATI_RV570, // RV570
-        ATI_RV620_LE, // RV620 LE
-        ATI_RV670_Pro, // RV670 Pro
-        ATI_RV730_XT, // RV730 XT
+        ATI_RV620, // RV620
+        ATI_RV670, // RV670
+        ATI_RV730, // RV730
         ATI_M10, // Mobility M10
         ATI_M11, // Mobility M11
         ATI_M12, // Mobility M12
@@ -90,6 +89,11 @@ namespace DataInfo
 
     enum class GPUVariantID
     {
+        ATI_RV200_500, // RV200 500 (variant of RV200) used by Radeon 7500
+        ATI_RV380_XT, // RV380 XT (variant of RV380)
+        ATI_RV620_LE, // RV620 LE (variant of RV620)
+        ATI_RV670_Pro, // RV670 Pro (variant of RV670)
+        ATI_RV730_XT, // RV730 XT (variant of RV730)
     };
 }
 
@@ -98,4 +102,5 @@ namespace std
     std::string to_string(const DataInfo::ManufacturerID &manufacturer, const bool fullName = false);
     std::string to_string(const DataInfo::ArchitectureID &architecture);
     std::string to_string(const DataInfo::GPUID &gpuID);
+    std::string to_string(const DataInfo::GPUVariantID &gpuVariantID);
 }
