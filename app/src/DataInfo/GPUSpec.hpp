@@ -26,7 +26,6 @@ namespace DataInfo
     struct GPUSpec
     {
         ManufacturerID manufacturer; // manufacturer/vendor
-        std::string name; // gpu name
         unsigned int premiere; // year
         std::optional<ArchitectureID> architecture; // architecture/generation
         std::string technology;

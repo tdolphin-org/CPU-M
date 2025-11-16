@@ -85,7 +85,7 @@ namespace Components
             }
 
             mManufacturer.setContents(std::to_string(gpuSpec->second.manufacturer));
-            mModelName.setContents(gpuSpec->second.name);
+            mModelName.setContents(std::to_string(gpuId));
             mPremiere.setContents(std::to_string(gpuSpec->second.premiere));
             mArchitecture.setContents(gpuSpec->second.architecture ? std::to_string(gpuSpec->second.architecture.value()) : "N/A");
             mTechnology.setContents(gpuSpec->second.technology);
