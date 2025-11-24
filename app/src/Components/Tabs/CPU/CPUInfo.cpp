@@ -21,6 +21,7 @@ static std::map<std::string, std::string> ppc_family2image = {
     { "G3", CPUImageFile::ppcG3 },
     { "G4", CPUImageFile::ppcG4 },
     { "G5", CPUImageFile::ppcG5 },
+    { "e5500", CPUImageFile::ppcE5500 },
 };
 
 static std::string GetImageForCPU(const std::string &cpuFamily)

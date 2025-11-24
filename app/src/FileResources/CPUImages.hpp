@@ -13,4 +13,5 @@ namespace CPUImageFile
     extern const char *ppcG3;
     extern const char *ppcG4;
     extern const char *ppcG5;
+    extern const char *ppcE5500;
 }
