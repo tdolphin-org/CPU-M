@@ -315,6 +315,17 @@ namespace DataInfo
               { { 1'000'000, 125'000, 1'000'000 } } },
         },
         {
+            GfxBoardID::ATI_Radeon_X1950_XTX,
+            { "Radeon X1950 XTX",
+              ManufacturerID::ATI,
+              GPUID::ATI_R580_PLUS,
+              GPUVariantID::ATI_R580_PLUS_XT,
+              2006,
+              { BoardInterface::PCIe_x16 },
+              125,
+              { { 10'400'000, 1'300'000, 10'400'000 } } },
+        },
+        {
             GfxBoardID::ATI_Radeon_X1950_Pro,
             { "Radeon X1950 Pro",
               ManufacturerID::ATI,

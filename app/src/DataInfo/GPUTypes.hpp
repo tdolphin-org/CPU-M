@@ -79,6 +79,7 @@ namespace DataInfo
         ATI_RV360, // RV360
         ATI_RV380, // RV380
         ATI_RV570, // RV570
+        ATI_R580_PLUS, // R580+
         ATI_RV620, // RV620
         ATI_RV670, // RV670
         ATI_RV730, // RV730
@@ -91,6 +92,7 @@ namespace DataInfo
     {
         ATI_RV200_500, // RV200 500 (variant of RV200) used by Radeon 7500
         ATI_RV380_XT, // RV380 XT (variant of RV380)
+        ATI_R580_PLUS_XT, // R580+ XT (variant of R580+)
         ATI_RV620_LE, // RV620 LE (variant of RV620)
         ATI_RV670_Pro, // RV670 Pro (variant of RV670)
         ATI_RV730_XT, // RV730 XT (variant of RV730)

@@ -78,6 +78,7 @@ namespace DataInfo
         ATI_Radeon_X1900_XT,
         ATI_Radeon_X1900_Pro,
         ATI_Radeon_X1950_XT,
+        ATI_Radeon_X1950_XTX,
         ATI_Radeon_X1950_Pro,
         ATI_FireGL_X3,
 

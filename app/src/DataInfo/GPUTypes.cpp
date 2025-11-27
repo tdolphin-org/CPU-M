@@ -120,6 +120,8 @@ namespace std
                 return "RV380";
             case GPUID::ATI_RV570:
                 return "RV570";
+            case GPUID::ATI_R580_PLUS:
+                return "R580+";
             case GPUID::ATI_RV620:
                 return "RV620";
             case GPUID::ATI_RV670:
@@ -147,6 +149,8 @@ namespace std
                 return "RV200 500";
             case GPUVariantID::ATI_RV380_XT:
                 return "RV380 XT";
+            case GPUVariantID::ATI_R580_PLUS_XT:
+                return "R580+ XT";
             case GPUVariantID::ATI_RV620_LE:
                 return "RV620 LE";
             case GPUVariantID::ATI_RV670_Pro:
