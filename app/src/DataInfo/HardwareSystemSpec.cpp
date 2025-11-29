@@ -141,7 +141,7 @@ namespace DataInfo
                 { "SATA", "NVMe", "MicroSD" },
                 "U-Boot",
                 std::nullopt,
-                { { MemoryType::PC3L_12800, ModuleForm::SO_DIMM, 8192, 1 } },
+                { { MemoryType::PC3L_12800, ModuleForm::SO_DIMM, 64 * 1024, 1 } }, // theoretically support is 64 GB max
                 { { "USB 2.0", 6 },
                   { "USB 3.2", 3 },
                   { "Ethernet 10/100/1000 Mbps", 1 },
