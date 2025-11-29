@@ -25,6 +25,7 @@ namespace Components
                        .tagWindow(mAppWindow)
                        .tagWindows(WindowManager::instance().getAllWindows())
                        .tagDiskObject(*mAppIcon.diskObject())
+                       .tagMenustrip(mMainMenu)
                        .object())
     {
     }

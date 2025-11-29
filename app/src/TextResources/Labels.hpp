@@ -19,5 +19,11 @@ namespace Label
     extern const std::string &BenchTab;
     extern const std::string &AboutTab;
 
+    extern const std::string &MenuCPUM;
+    extern const std::string &MenuAbout;
+    extern const std::string &MenuQuit;
+    extern const std::string &MenuSettings;
+    extern const std::string &MenuMUISettings;
+
     extern const std::string &AboutContent;
 }
