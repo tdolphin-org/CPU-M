@@ -32,6 +32,8 @@ namespace Components
       public:
         Content();
 
+        void RegisterEvents();
+
       protected:
         MUI::Group &muiRoot() const
         {

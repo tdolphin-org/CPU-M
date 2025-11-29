@@ -47,8 +47,9 @@ namespace Components
 
     void AppWindow::RegisterEvents()
     {
-        auto app = MUI::ApplicationContext::instance().getApplication();
+        mContent.RegisterEvents();
 
+        auto app = MUI::ApplicationContext::instance().getApplication();
         MUI::Notifier::from(MUI::Area(mExitButton)).onPressed(false).notifyObject(app).returnIDQuit();
     }
 }

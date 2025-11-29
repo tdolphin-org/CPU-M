@@ -6,6 +6,7 @@
 
 #include "Application.hpp"
 
+#include "Events/AppEventType.hpp"
 #include "MUI/Notifier/Notifier.hpp"
 #include "ProgDefines.hpp"
 #include "Version.hpp"
@@ -33,6 +34,10 @@ namespace Components
     void Application::RegisterEvents()
     {
         MUI::Notifier::from(mAppWindow).onCloseRequest(true).notifyObject(mComponent).returnIDQuit();
+        MUI::Notifier::from(mAppWindow)
+            .onMenuAction(static_cast<unsigned long>(AppEventType::OnMenuMUISettings))
+            .notifyObject(mComponent)
+            .openConfigWindow();
 
         mAppWindow.RegisterEvents();
     }
