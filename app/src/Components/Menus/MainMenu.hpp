@@ -23,7 +23,7 @@ namespace Components
       public:
         MainMenu();
 
-      public:
+      protected:
         MUI::Menustrip &muiRoot() const
         {
             return (MUI::Menustrip &)mComponent;

@@ -11,7 +11,7 @@
 #include "TextResources/Labels.hpp"
 
 //
-// CPU-M (File/Project)
+// CPU-M
 // +-- About...
 // +======
 // +-- Quit

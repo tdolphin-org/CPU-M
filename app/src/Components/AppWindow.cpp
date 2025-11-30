@@ -40,6 +40,7 @@ namespace Components
                                                         .tagChild(mExitButton)
                                                         .object())
                                           .object())
+                       .tagMenustrip(mMainMenu)
                        .object())
     {
         mExitButton.setCycleChain();

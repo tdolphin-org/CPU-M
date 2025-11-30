@@ -9,7 +9,6 @@
 #include "AOS/Icon/DiskObjectScope.hpp"
 #include "AppWindow.hpp"
 #include "Components/Core/Root.hpp"
-#include "Components/Menus/MainMenu.hpp"
 #include "MUI/Application.hpp"
 
 namespace Components
@@ -18,7 +17,6 @@ namespace Components
     {
         AOS::Icon::DiskObjectScope mAppIcon;
         AppWindow mAppWindow;
-        MainMenu mMainMenu;
 
         MUI::Application mComponent;
 

@@ -9,6 +9,7 @@
 #include "Components/Core/Root.hpp"
 #include "Content.hpp"
 #include "MUI/Window.hpp"
+#include "Menus/MainMenu.hpp"
 
 namespace Components
 {
@@ -16,6 +17,8 @@ namespace Components
     {
         Content mContent;
         MUI::Area mExitButton;
+        MainMenu mMainMenu;
+
         MUI::Window mComponent;
 
       public:
