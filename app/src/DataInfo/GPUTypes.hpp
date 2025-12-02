@@ -42,6 +42,13 @@ namespace DataInfo
         ATI_Ultra_Threaded_SE,
         ATI_TeraScale,
         ATI_TeraScale_2,
+        ATI_TeraScale_3,
+        AMD_GCN_1_0,
+        AMD_GCN_2_0,
+        AMD_GCN_3_0,
+        AMD_GCN_4_0,
+        AMD_GCN_5_0,
+        AMD_GCN_5_1,
         AMD_RDNA_1,
         AMD_RDNA_2,
         AMD_RDNA_3,
@@ -83,7 +90,8 @@ namespace DataInfo
         ATI_RV620, // RV620
         ATI_RV670, // RV670
         ATI_RV730, // RV730
-        ATI_BARTS, // Barts
+        AMD_BARTS, // Barts
+        AMD_BAFFIN, // Baffin
         ATI_M10, // Mobility M10
         ATI_M11, // Mobility M11
         ATI_M12, // Mobility M12
@@ -97,7 +105,8 @@ namespace DataInfo
         ATI_RV620_LE, // RV620 LE (variant of RV620)
         ATI_RV670_Pro, // RV670 Pro (variant of RV670)
         ATI_RV730_XT, // RV730 XT (variant of RV730)
-        ATI_BARTS_XT // Barts XT (variant of Barts)
+        AMD_BARTS_XT, // Barts XT (variant of Barts)
+        AMD_BAFFIN_PRO, // Baffin Pro (variant of Baffin)
     };
 }
 

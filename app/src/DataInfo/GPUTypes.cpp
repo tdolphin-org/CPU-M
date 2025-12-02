@@ -65,6 +65,20 @@ namespace std
                 return "TeraScale";
             case DataInfo::ArchitectureID::ATI_TeraScale_2:
                 return "TeraScale 2";
+            case DataInfo::ArchitectureID::ATI_TeraScale_3:
+                return "TeraScale 3";
+            case DataInfo::ArchitectureID::AMD_GCN_1_0:
+                return "GNC 1.0";
+            case DataInfo::ArchitectureID::AMD_GCN_2_0:
+                return "GNC 2.0";
+            case DataInfo::ArchitectureID::AMD_GCN_3_0:
+                return "GNC 3.0";
+            case DataInfo::ArchitectureID::AMD_GCN_4_0:
+                return "GNC 4.0";
+            case DataInfo::ArchitectureID::AMD_GCN_5_0:
+                return "GNC 5.0";
+            case DataInfo::ArchitectureID::AMD_GCN_5_1:
+                return "GNC 5.1";
             case DataInfo::ArchitectureID::AMD_RDNA_1:
                 return "RDNA 1";
             case DataInfo::ArchitectureID::AMD_RDNA_2:
@@ -128,8 +142,10 @@ namespace std
                 return "RV670";
             case GPUID::ATI_RV730:
                 return "RV730";
-            case GPUID::ATI_BARTS:
+            case GPUID::AMD_BARTS:
                 return "Barts";
+            case GPUID::AMD_BAFFIN:
+                return "Baffin";
             case GPUID::ATI_M10:
                 return "M10";
             case GPUID::ATI_M11:
@@ -159,8 +175,10 @@ namespace std
                 return "RV670 Pro";
             case GPUVariantID::ATI_RV730_XT:
                 return "RV730 XT";
-            case GPUVariantID::ATI_BARTS_XT:
+            case GPUVariantID::AMD_BARTS_XT:
                 return "Barts XT";
+            case GPUVariantID::AMD_BAFFIN_PRO:
+                return "Baffin Pro";
             default:
                 return "Unknown GPU Variant ID";
         }
