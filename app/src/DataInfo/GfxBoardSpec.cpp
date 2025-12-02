@@ -369,6 +369,17 @@ namespace DataInfo
               59,
               { { 6'000'000, std::nullopt, 24'000'000, 480'000'000, std::nullopt } } },
         },
+        {
+            GfxBoardID::AMD_Radeon_HD_6870,
+            { "Radeon HD 6870",
+              ManufacturerID::AMD,
+              GPUID::ATI_BARTS,
+              GPUVariantID::ATI_BARTS_XT,
+              2010,
+              { BoardInterface::PCIe_2_x16 },
+              151,
+              { { 28'800'000, std::nullopt, 50'400'000, 2'016'000'000, std::nullopt } } },
+        },
     };
 
     std::string PerformancePixelRateToString(const unsigned long long rate)

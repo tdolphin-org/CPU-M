@@ -83,6 +83,7 @@ namespace DataInfo
         ATI_RV620, // RV620
         ATI_RV670, // RV670
         ATI_RV730, // RV730
+        ATI_BARTS, // Barts
         ATI_M10, // Mobility M10
         ATI_M11, // Mobility M11
         ATI_M12, // Mobility M12
@@ -96,6 +97,7 @@ namespace DataInfo
         ATI_RV620_LE, // RV620 LE (variant of RV620)
         ATI_RV670_Pro, // RV670 Pro (variant of RV670)
         ATI_RV730_XT, // RV730 XT (variant of RV730)
+        ATI_BARTS_XT // Barts XT (variant of Barts)
     };
 }
 

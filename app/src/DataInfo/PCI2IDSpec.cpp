@@ -19,9 +19,11 @@ namespace DataInfo
           { { GfxBoardID::ATI_Radeon_9600_Mobile }, { GfxBoardID::ATI_Radeon_9700_Mobile } } }, // ATI Radeon 9600/9700 Mobile
         { PCIDeviceKey(0x1002, 0x5046), { { GfxBoardID::ATI_Rage_128_Pro } } }, // ATI Rage 128 Pro
         { PCIDeviceKey(0x1002, 0x5962), { { GfxBoardID::ATI_Radeon_9200 } } }, // ATI Radeon 9200
+        { PCIDeviceKey(0x1002, 0x6738), { { GfxBoardID::AMD_Radeon_HD_6870 } } }, // Radeon HD 6870
         { PCIDeviceKey(0x1002, 0x68F9),
           { { GfxBoardID::AMD_Radeon_HD_7350 }, { GfxBoardID::AMD_Radeon_HD_8350 } } }, // ATI Radeon HD 5000/6000/7350/8350
         { PCIDeviceKey(0x1002, 0x7240), { { GfxBoardID::ATI_Radeon_X1950_XT } } }, // ATI Radeon X1950 XT
+        { PCIDeviceKey(0x1002, 0x7244), { { GfxBoardID::ATI_Radeon_X1950_XT } } }, // ATI Radeon X1950 XT
         { PCIDeviceKey(0x1002, 0x7280), { { GfxBoardID::ATI_Radeon_X1950_Pro } } }, // ATI Radeon X1950 Pro
         { PCIDeviceKey(0x1002, 0x9490), { { GfxBoardID::AMD_Radeon_HD_4670 } } }, // AMD Radeon HD 4670
         { PCIDeviceKey(0x1002, 0x9515), { { GfxBoardID::AMD_Radeon_HD_3850 } } }, // ATI Radeon HD 3850
