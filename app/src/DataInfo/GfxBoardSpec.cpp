@@ -373,13 +373,24 @@ namespace DataInfo
             GfxBoardID::AMD_Radeon_HD_6870,
             { "Radeon HD 6870",
               ManufacturerID::AMD,
-              GPUID::ATI_BARTS,
-              GPUVariantID::ATI_BARTS_XT,
+              GPUID::AMD_BARTS,
+              GPUVariantID::AMD_BARTS_XT,
               2010,
               { BoardInterface::PCIe_2_x16 },
               151,
               { { 28'800'000, std::nullopt, 50'400'000, 2'016'000'000, std::nullopt } } },
         },
+        {
+            GfxBoardID::AMD_Radeon_RX_460,
+            { "Radeon RX 460",
+              ManufacturerID::AMD,
+              GPUID::AMD_BAFFIN,
+              GPUVariantID::AMD_BAFFIN_PRO,
+              2016,
+              { BoardInterface::PCIe_3_x8 },
+              75,
+              { { 19'200'000, std::nullopt, 67'200'000, 2'150'000'000, 134'400'000 } } },
+        }
     };
 
     std::string PerformancePixelRateToString(const unsigned long long rate)
@@ -426,6 +437,10 @@ namespace std
                 return "AGP 8x";
             case DataInfo::BoardInterface::PCIe_x16:
                 return "PCIe x16";
+            case DataInfo::BoardInterface::PCIe_2_x16:
+                return "PCIe 2.0 x16";
+            case DataInfo::BoardInterface::PCIe_3_x8:
+                return "PCIe 3.0 x8";
             default:
                 return "Unknown Interface";
         }

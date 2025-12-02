@@ -20,6 +20,14 @@ namespace DataInfo
         { PCIDeviceKey(0x1002, 0x5046), { { GfxBoardID::ATI_Rage_128_Pro } } }, // ATI Rage 128 Pro
         { PCIDeviceKey(0x1002, 0x5962), { { GfxBoardID::ATI_Radeon_9200 } } }, // ATI Radeon 9200
         { PCIDeviceKey(0x1002, 0x6738), { { GfxBoardID::AMD_Radeon_HD_6870 } } }, // Radeon HD 6870
+        { PCIDeviceKey(0x1002, 0x67EF),
+          { { GfxBoardID::AMD_Radeon_RX_460 },
+            { GfxBoardID::AMD_Radeon_RX_560 },
+            { GfxBoardID::AMD_Radeon_RX_560X } } }, // Radeon RX 460/560/560X
+        { PCIDeviceKey(0x1002, 0x67FF),
+          { { GfxBoardID::AMD_Radeon_RX_550 },
+            { GfxBoardID::AMD_Radeon_RX_560 },
+            { GfxBoardID::AMD_Radeon_RX_560X } } }, // Radeon RX 550/560/560X
         { PCIDeviceKey(0x1002, 0x68F9),
           { { GfxBoardID::AMD_Radeon_HD_7350 }, { GfxBoardID::AMD_Radeon_HD_8350 } } }, // ATI Radeon HD 5000/6000/7350/8350
         { PCIDeviceKey(0x1002, 0x7240), { { GfxBoardID::ATI_Radeon_X1950_XT } } }, // ATI Radeon X1950 XT

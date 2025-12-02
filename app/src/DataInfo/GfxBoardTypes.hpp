@@ -170,5 +170,11 @@ namespace DataInfo
         // AMD FirePro series
         AMD_FirePro_V3800,
         AMD_FirePro_V4800,
+
+        // AMD Radeon RX series
+        AMD_Radeon_RX_460,
+        AMD_Radeon_RX_550,
+        AMD_Radeon_RX_560,
+        AMD_Radeon_RX_560X,
     };
 }
