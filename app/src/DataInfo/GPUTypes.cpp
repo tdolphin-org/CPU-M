@@ -128,6 +128,8 @@ namespace std
                 return "RV670";
             case GPUID::ATI_RV730:
                 return "RV730";
+            case GPUID::ATI_BARTS:
+                return "Barts";
             case GPUID::ATI_M10:
                 return "M10";
             case GPUID::ATI_M11:
@@ -157,6 +159,8 @@ namespace std
                 return "RV670 Pro";
             case GPUVariantID::ATI_RV730_XT:
                 return "RV730 XT";
+            case GPUVariantID::ATI_BARTS_XT:
+                return "Barts XT";
             default:
                 return "Unknown GPU Variant ID";
         }
