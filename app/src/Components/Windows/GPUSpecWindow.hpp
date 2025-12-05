@@ -10,7 +10,6 @@
 #include "MUI/Group.hpp"
 #include "MUI/Text.hpp"
 #include "MUI/Window.hpp"
-#include "MUI/Floattext.hpp"
 
 namespace Components
 {
@@ -25,7 +24,8 @@ namespace Components
         MUI::Text mArchitecture;
         MUI::Text mTechnology;
         MUI::Text mMaxTDP;
-        MUI::Floattext mWarningsFloattext;
+        MUI::Text mWarningsText;
+        MUI::Group mWithLogoGroup;
         MUI::Group mChipSpecGroup;
 
         MUI::Window mComponent;

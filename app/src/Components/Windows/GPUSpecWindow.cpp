@@ -33,44 +33,37 @@ namespace Components
       , mArchitecture(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
       , mTechnology(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
       , mMaxTDP(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
-      , mWarningsFloattext(
-            MUI::FloattextBuilder()
+      , mWarningsText(
+            MUI::TextBuilder()
                 .tagFrame(MUI::Frame::String)
-                .tagText(MUIX_B
-                         "Warning:" MUIX_N
-                         " The reported render configuration corresponds to the GPU's full reference specs. Some graphics cards may "
-                         "feature cut-down hardware (e.g., fewer active shaders, TMUs, or ROPs) or lowered core/memory clock frequencies.")
+                .tagContents(MUIX_B
+                             "Note:" MUIX_N " The listed GPU configuration reflects the full capabilities of the GPU model.\n"
+                             "The actual hardware on this graphics card may have reduced units (e.g., disabled shaders, TMUs, or ROPs).")
                 .object())
-      , mChipSpecGroup(
-            MUI::GroupBuilder()
-                .horizontal()
-                .tagChild(
-                    MUI::GroupBuilder()
-                        .vertical()
-                        .tagChild(
-                            MUI::GroupBuilder()
-                                .horizontal()
-                                .tagChild(mLogoImage = MUI::MakeObject::VCenter(MUI::MakeObject::CLabel("logo placeholder")))
-                                .tagChild(MUI::GroupBuilder()
-                                              .tagColumns(3)
-                                              .tagChild(MUI::TextBuilder().tagFont(MUI::Font::Tiny).tagContents("Manufacturer:").object())
-                                              .tagChild(MUI::TextBuilder().tagFont(MUI::Font::Tiny).tagContents("Name:").object())
-                                              .tagChild(MUI::TextBuilder().tagFont(MUI::Font::Tiny).tagContents("Premiere:").object())
-                                              .tagChild(mManufacturer)
-                                              .tagChild(mModelName)
-                                              .tagChild(mPremiere)
-                                              .tagChild(MUI::TextBuilder().tagFont(MUI::Font::Tiny).tagContents("Architecture:").object())
-                                              .tagChild(MUI::TextBuilder().tagFont(MUI::Font::Tiny).tagContents("Technology:").object())
-                                              .tagChild(MUI::TextBuilder().tagFont(MUI::Font::Tiny).tagContents("Max TDP:").object())
-                                              .tagChild(mArchitecture)
-                                              .tagChild(mTechnology)
-                                              .tagChild(mMaxTDP)
-                                              .object())
-                                .object())
-                        .tagChild(mWarningsFloattext)
-                        .object())
-                .tagChild(mRenderConfig = MUI::MakeObject::CLabel("render config placeholder"))
-                .object())
+      , mWithLogoGroup(MUI::GroupBuilder()
+                           .horizontal()
+                           .tagChild(mLogoImage = MUI::MakeObject::VCenter(MUI::MakeObject::CLabel("logo placeholder")))
+                           .tagChild(MUI::GroupBuilder()
+                                         .tagColumns(3)
+                                         .tagChild(MUI::TextBuilder().tagFont(MUI::Font::Tiny).tagContents("Manufacturer:").object())
+                                         .tagChild(MUI::TextBuilder().tagFont(MUI::Font::Tiny).tagContents("Name:").object())
+                                         .tagChild(MUI::TextBuilder().tagFont(MUI::Font::Tiny).tagContents("Premiere:").object())
+                                         .tagChild(mManufacturer)
+                                         .tagChild(mModelName)
+                                         .tagChild(mPremiere)
+                                         .tagChild(MUI::TextBuilder().tagFont(MUI::Font::Tiny).tagContents("Architecture:").object())
+                                         .tagChild(MUI::TextBuilder().tagFont(MUI::Font::Tiny).tagContents("Technology:").object())
+                                         .tagChild(MUI::TextBuilder().tagFont(MUI::Font::Tiny).tagContents("Max TDP:").object())
+                                         .tagChild(mArchitecture)
+                                         .tagChild(mTechnology)
+                                         .tagChild(mMaxTDP)
+                                         .object())
+                           .object())
+      , mChipSpecGroup(MUI::GroupBuilder()
+                           .horizontal()
+                           .tagChild(MUI::GroupBuilder().vertical().tagChild(mWithLogoGroup).tagChild(mWarningsText).object())
+                           .tagChild(mRenderConfig = MUI::MakeObject::CLabel("render config placeholder"))
+                           .object())
       , mComponent(MUI::WindowBuilder()
                        .tagTitle("GPU Specification")
                        .tagScreenTitle(SCREEN_TITLE)
@@ -94,12 +87,12 @@ namespace Components
             auto imageIt = manufacturer2image.find(gpuSpec->second.manufacturer);
             if (imageIt != manufacturer2image.end())
             {
-                mChipSpecGroup.InitChange();
+                mWithLogoGroup.InitChange();
                 if (mLogoImage)
-                    mChipSpecGroup.Remove(mLogoImage);
+                    mWithLogoGroup.Remove(mLogoImage);
                 mLogoImage = CreateImage(gpuSpec->second.manufacturer);
-                mChipSpecGroup.AddHead(MUI::MakeObject::VCenter(mLogoImage ? mLogoImage : MUI::MakeObject::CLabel("logo placeholder")));
-                mChipSpecGroup.ExitChange();
+                mWithLogoGroup.AddHead(MUI::MakeObject::VCenter(mLogoImage ? mLogoImage : MUI::MakeObject::CLabel("logo placeholder")));
+                mWithLogoGroup.ExitChange();
             }
 
             mManufacturer.setContents(std::to_string(gpuSpec->second.manufacturer));
