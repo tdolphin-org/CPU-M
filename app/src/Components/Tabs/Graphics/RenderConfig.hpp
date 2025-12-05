@@ -16,6 +16,7 @@ namespace Components
 {
     class RenderConfig : public Root<MUI::Group>, public TabBase
     {
+        MUI::Group mUnitsGroup;
         MUI::Group mComponent;
 
       public:
