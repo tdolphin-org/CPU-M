@@ -7,17 +7,17 @@
 #pragma once
 
 #include "AOS/Exec/Library.hpp"
+#include "Components/Base.hpp"
 #include "Components/Core/Root.hpp"
 #include "Components/MCC/ActionCycle.hpp"
 #include "Components/Tabs/CPU/CPUInfo.hpp"
-#include "Components/Tabs/TabBase.hpp"
 #include "MUI/Cycle.hpp"
 #include "MUI/Group.hpp"
 #include "MUI/Text.hpp"
 
 namespace Components
 {
-    class CPUTab : public Root<MUI::Group>, public TabBase, public MCC::ActionCycleDispatcher
+    class CPUTab : public Root<MUI::Group>, public Base, public MCC::ActionCycleDispatcher
     {
         std::vector<AOS::Exec::CPUInfo> mCPUInfos;
 

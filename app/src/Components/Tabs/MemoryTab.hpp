@@ -6,8 +6,8 @@
 
 #pragma once
 
+#include "Components/Base.hpp"
 #include "Components/Core/Root.hpp"
-#include "TabBase.hpp"
 
 #include "MUI/Group.hpp"
 #include "MUI/Text.hpp"
@@ -16,7 +16,7 @@ namespace Components
 {
     class MemorySlotsInfo; // forward declaration
 
-    class MemoryTab : public Root<MUI::Group>, public TabBase
+    class MemoryTab : public Root<MUI::Group>, public Base
     {
         std::vector<MemorySlotsInfo *> mMemorySlotsInfos;
 

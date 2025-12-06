@@ -4,16 +4,16 @@
 //  (c) 2025 TDolphin
 //
 
-#include "TabBase.hpp"
+#include "Components/Base.hpp"
 
 namespace Components
 {
-    MUI::Text TabBase::LabelText(const std::string &label, const short weight)
+    MUI::Text Base::LabelText(const std::string &label, const short weight)
     {
         return MUI::TextBuilder().tagContents(label).tagFrame(MUI::Frame::String).tagFramePhantomHoriz(true).tagWeight(weight).object();
     }
 
-    MUI::Text TabBase::ValueText(const std::string &help, const std::string &defaultValue, const bool shorten, const short weight)
+    MUI::Text Base::ValueText(const std::string &help, const std::string &defaultValue, const bool shorten, const short weight)
     {
         return MUI::TextBuilder()
             .tagFrame(MUI::Frame::String)

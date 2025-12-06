@@ -6,8 +6,8 @@
 
 #pragma once
 
+#include "Components/Base.hpp"
 #include "Components/Core/Root.hpp"
-#include "Components/Tabs/TabBase.hpp"
 #include "DataInfo/CPUSpec.hpp"
 
 #include "AOS/Exec/Library.hpp"
@@ -17,7 +17,7 @@
 
 namespace Components
 {
-    class CPUInfo : public Root<MUI::Group>, public TabBase
+    class CPUInfo : public Root<MUI::Group>, public Base
     {
         DataInfo::CPUSpec mCPUSpec;
 

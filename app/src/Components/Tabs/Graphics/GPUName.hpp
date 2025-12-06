@@ -6,15 +6,15 @@
 
 #pragma once
 
+#include "Components/Base.hpp"
 #include "Components/Buttons/GPUSpecButton.hpp"
-#include "Components/Tabs/TabBase.hpp"
 #include "DataInfo/GPUSpec.hpp"
 #include "MUI/Group.hpp"
 #include "MUI/Text.hpp"
 
 namespace Components
 {
-    class GPUName : public Root<MUI::Group>, public TabBase
+    class GPUName : public Root<MUI::Group>, public Base
     {
         MUI::Text mGpuNameText;
         GPUSpecButton mGPUSpecButton;

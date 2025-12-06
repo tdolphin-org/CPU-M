@@ -6,15 +6,15 @@
 
 #pragma once
 
+#include "Components/Base.hpp"
 #include "Components/Core/Root.hpp"
 #include "Components/Tabs/Graphics/GraphicsBoards.hpp"
-#include "TabBase.hpp"
 
 #include "MUI/Group.hpp"
 
 namespace Components
 {
-    class GraphicsTab : public Root<MUI::Group>, public TabBase
+    class GraphicsTab : public Root<MUI::Group>, public Base
     {
         MUI::Text mGfxSystemText;
         GraphicsBoards mGraphicsBoards;

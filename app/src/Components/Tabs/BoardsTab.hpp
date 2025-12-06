@@ -6,15 +6,15 @@
 
 #pragma once
 
-#include "Components/Core/Root.hpp"
 #include "Boards/BoardsList.hpp"
-#include "TabBase.hpp"
+#include "Components/Base.hpp"
+#include "Components/Core/Root.hpp"
 
 #include "MUI/Group.hpp"
 
 namespace Components
 {
-    class BoardsTab : public Root<MUI::Group>, public TabBase
+    class BoardsTab : public Root<MUI::Group>, public Base
     {
         BoardsList mBoardsList;
 

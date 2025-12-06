@@ -10,7 +10,7 @@
 
 namespace Components
 {
-    class GraphicsBoards : public Root<MUI::Group>, public TabBase
+    class GraphicsBoards : public Root<MUI::Group>, public Base
     {
         std::vector<GPUName *> mGPUNameComponents;
 

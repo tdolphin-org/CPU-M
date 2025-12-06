@@ -7,7 +7,7 @@
 #pragma once
 
 #include "Components/Core/Root.hpp"
-#include "Components/Tabs/TabBase.hpp"
+#include "Components/Base.hpp"
 #include "DataInfo/HardwareSystemSpec.hpp"
 
 #include "MUI/Group.hpp"
@@ -15,7 +15,7 @@
 
 namespace Components
 {
-    class SolderedMemoryInfo : public Root<MUI::Group>, public TabBase
+    class SolderedMemoryInfo : public Root<MUI::Group>, public Base
     {
         MUI::Text mRAMTypeText;
         MUI::Text mRAMClockText;

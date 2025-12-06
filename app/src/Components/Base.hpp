@@ -10,7 +10,7 @@
 
 namespace Components
 {
-    class TabBase
+    class Base
     {
       public:
         MUI::Text LabelText(const std::string &label, const short weight = 0);

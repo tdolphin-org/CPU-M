@@ -6,9 +6,9 @@
 
 #pragma once
 
+#include "Components/Base.hpp"
 #include "Components/Core/Root.hpp"
 #include "Components/Tabs/TabsContainer.hpp"
-#include "TabBase.hpp"
 
 #include "MUI/Group.hpp"
 #include "MUI/List.hpp"
@@ -16,7 +16,7 @@
 
 namespace Components
 {
-    class OSTab : public Root<MUI::Group>, public TabBase
+    class OSTab : public Root<MUI::Group>, public Base
     {
         MUI::Text mFullOSNameText;
         MUI::Text mKickstartVersionText;

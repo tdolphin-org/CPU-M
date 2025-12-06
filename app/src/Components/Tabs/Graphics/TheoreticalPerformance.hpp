@@ -6,8 +6,8 @@
 
 #pragma once
 
+#include "Components/Base.hpp"
 #include "Components/Core/Root.hpp"
-#include "Components/Tabs/TabBase.hpp"
 #include "DataInfo/GfxBoardSpec.hpp"
 
 #include "MUI/Group.hpp"
@@ -16,7 +16,7 @@
 
 namespace Components
 {
-    class TheoreticalPerformance : public Root<MUI::Group>, public TabBase
+    class TheoreticalPerformance : public Root<MUI::Group>, public Base
     {
         MUI::Group mComponent;
 

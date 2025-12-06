@@ -7,7 +7,7 @@
 #pragma once
 
 #include "Components/Core/Root.hpp"
-#include "TabBase.hpp"
+#include "Components/Base.hpp"
 
 #include "MUI/Floattext.hpp"
 #include "MUI/Group.hpp"
@@ -15,7 +15,7 @@
 
 namespace Components
 {
-    class MainboardTab : public Root<MUI::Group>, public TabBase
+    class MainboardTab : public Root<MUI::Group>, public Base
     {
         MUI::Text mVendorText;
         MUI::Text mSystemText;

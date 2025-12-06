@@ -6,9 +6,9 @@
 
 #pragma once
 
+#include "Components/Base.hpp"
 #include "Components/Buttons/MemoryModuleSpecButton.hpp"
 #include "Components/Core/Root.hpp"
-#include "Components/Tabs/TabBase.hpp"
 #include "DataInfo/HardwareSystemSpec.hpp"
 
 #include "MUI/Group.hpp"
@@ -16,7 +16,7 @@
 
 namespace Components
 {
-    class MemorySlotsInfo : public Root<MUI::Group>, public TabBase
+    class MemorySlotsInfo : public Root<MUI::Group>, public Base
     {
         MUI::Text mRAMTypeText;
         MemoryModuleSpecButton mMemoryModuleSpecButton;

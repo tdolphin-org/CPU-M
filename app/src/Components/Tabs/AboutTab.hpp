@@ -6,15 +6,15 @@
 
 #pragma once
 
+#include "Components/Base.hpp"
 #include "Components/Buttons/GoUrlButton.hpp"
 #include "Components/Core/Root.hpp"
-#include "TabBase.hpp"
 
 #include "MUI/Group.hpp"
 
 namespace Components
 {
-    class AboutTab : public Root<MUI::Group>, public TabBase
+    class AboutTab : public Root<MUI::Group>, public Base
     {
         GoUrlButton mGoHomePageButton;
         GoUrlButton mMailToButton;
