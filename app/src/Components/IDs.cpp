@@ -11,4 +11,5 @@ namespace WindowID
     const AOS::Identifier AppWindow = "Main";
     const AOS::Identifier GPUSpecWindow = "GPUS";
     const AOS::Identifier MemoryModuleSpecWindow = "MemM";
+    const AOS::Identifier BusInterfacesSpecWindow = "BusI";
 }

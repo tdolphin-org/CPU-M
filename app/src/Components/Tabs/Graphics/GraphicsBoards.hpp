@@ -6,13 +6,15 @@
 
 #pragma once
 
-#include "Components/Tabs/Graphics/GPUName.hpp"
+#include "BusInterfaceNames.hpp"
+#include "GPUName.hpp"
 
 namespace Components
 {
     class GraphicsBoards : public Root<MUI::Group>, public Base
     {
         std::vector<GPUName *> mGPUNameComponents;
+        std::vector<BusInterfaceNames *> mBusInterfaceNamesComponents;
 
         MUI::Group mComponent;
 

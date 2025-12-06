@@ -6,6 +6,7 @@
 
 #pragma once
 
+#include "Components/Windows/BusInterfacesSpecWindow.hpp"
 #include "Components/Windows/GPUSpecWindow.hpp"
 #include "Components/Windows/MemoryModuleSpecWindow.hpp"
 #include "Core/Singleton.hpp"
@@ -20,6 +21,7 @@ class WindowManagerCore
 
     Components::GPUSpecWindow mGPUSpecWindow;
     Components::MemoryModuleSpecWindow mMemoryModuleSpecWindow;
+    Components::BusInterfacesSpecWindow mBusInterfacesSpecWindow;
 
     std::vector<MUI::Window> mAllWindows;
 
@@ -37,6 +39,11 @@ class WindowManagerCore
     Components::MemoryModuleSpecWindow &getMemoryModuleSpecWindow()
     {
         return mMemoryModuleSpecWindow;
+    }
+
+    Components::BusInterfacesSpecWindow &getBusInterfacesSpecWindow()
+    {
+        return mBusInterfacesSpecWindow;
     }
 };
 

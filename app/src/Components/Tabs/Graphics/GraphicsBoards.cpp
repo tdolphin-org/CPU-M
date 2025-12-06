@@ -9,7 +9,6 @@
 #include "AOS/Exec/Library.hpp"
 #include "AOS/Intuition/Library.hpp"
 #include "AOS/PCIIDS/Library.hpp"
-#include "Components/Tabs/Graphics/TheoreticalPerformance.hpp"
 #include "DataInfo/GfxBoardSpec.hpp"
 #include "DataInfo/HardwareSystemSpec.hpp"
 #include "DataInfo/PCI2IDSpec.hpp"
@@ -17,6 +16,7 @@
 #include "MUI/Core/NullObject.hpp"
 #include "MUI/Scrollgroup.hpp"
 #include "MUI/Virtgroup.hpp"
+#include "TheoreticalPerformance.hpp"
 
 #include <algorithm>
 #include <iomanip>
@@ -130,32 +130,32 @@ namespace Components
                                                         .tagChild(LabelText(MUIX_R "Interface(s):"))
                                                         .object());
 
+                            mBusInterfaceNamesComponents.push_back(new BusInterfaceNames(
+                                boardValue.interface.has_value() ? std::to_string(boardValue.interface.value())
+                                                                 : ToString::Concatenate(
+                                                                       [&]() -> std::vector<std::string> {
+                                                                           std::vector<std::string> interfaceStrings;
+                                                                           for (const auto &interface : gfxBoard2spec->second.interfaces)
+                                                                               interfaceStrings.push_back(std::to_string(interface));
+                                                                           return interfaceStrings;
+                                                                       }(),
+                                                                       ", ")));
+
                             mainSpecGroup.AddMember(
                                 MUI::GroupBuilder()
                                     .vertical()
                                     .tagChild(ValueText(
                                         "Normalized graphics card name",
                                         std::to_string(gfxBoard2spec->second.manufacturer) + " " + gfxBoard2spec->second.name, true))
-                                    .tagChild(
-                                        MUI::GroupBuilder()
-                                            .horizontal()
-                                            .tagChild(ValueText("Graphics board interface(s)",
-                                                                boardValue.interface.has_value()
-                                                                    ? std::to_string(boardValue.interface.value())
-                                                                    : ToString::Concatenate(
-                                                                          [&]() -> std::vector<std::string> {
-                                                                              std::vector<std::string> interfaceStrings;
-                                                                              for (const auto &interface : gfxBoard2spec->second.interfaces)
-                                                                                  interfaceStrings.push_back(std::to_string(interface));
-                                                                              return interfaceStrings;
-                                                                          }(),
-                                                                          ", ")))
-                                            .tagChild(LabelText(MUIX_R "TDP:"))
-                                            .tagChild(ValueText("Thermal Design Power in watts",
-                                                                gfxBoard2spec->second.TDP
-                                                                    ? std::to_string(gfxBoard2spec->second.TDP.value()) + " W"
-                                                                    : "N/A"))
-                                            .object())
+                                    .tagChild(MUI::GroupBuilder()
+                                                  .horizontal()
+                                                  .tagChild(*mBusInterfaceNamesComponents.back())
+                                                  .tagChild(LabelText(MUIX_R "TDP:"))
+                                                  .tagChild(ValueText("Thermal Design Power in watts",
+                                                                      gfxBoard2spec->second.TDP
+                                                                          ? std::to_string(gfxBoard2spec->second.TDP.value()) + " W"
+                                                                          : "N/A"))
+                                                  .object())
                                     .object());
 
                             mGPUNameComponents.push_back(new GPUName(gfxBoard2spec->second.gpu));
