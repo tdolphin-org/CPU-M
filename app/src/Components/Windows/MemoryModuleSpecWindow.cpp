@@ -95,7 +95,7 @@ namespace Components
 
     void MemoryModuleSpecWindow::Open(const std::pair<MemoryType, ModuleForm> &memoryTypeAndForm)
     {
-        if (MUI::Window(*this).isOpen())
+        if (mComponent.isOpen())
             return;
 
         auto memorySpec = DataInfo::memorySpecs.find(memoryTypeAndForm.first);
@@ -151,12 +151,12 @@ namespace Components
             mIntroductionYearText.setContents("--");
         }
 
-        MUI::Window(*this).Open();
+        mComponent.Open();
     }
 
     void MemoryModuleSpecWindow::Close()
     {
-        MUI::Window(*this).Close();
+        mComponent.Close();
     }
 
     Object *MemoryModuleSpecWindow::CreateImage(const MemoryGeneration memoryGeneration, const ModuleForm memoryTypeAndForm)

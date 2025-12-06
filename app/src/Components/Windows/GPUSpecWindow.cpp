@@ -106,12 +106,12 @@ namespace Components
             mChipSpecGroup.AddTail(mRenderConfig = RenderConfig(gpuSpec->second.renderConfig).muiObject());
         }
 
-        MUI::Window(*this).Open();
+        mComponent.Open();
     }
 
     void GPUSpecWindow::Close()
     {
-        MUI::Window(*this).Close();
+        mComponent.Close();
     }
 
     Object *GPUSpecWindow::CreateImage(const DataInfo::ManufacturerID manufacturerId)
