@@ -39,12 +39,15 @@ namespace Components
         auto hardwareSpec = DataInfo::hardwareSystem2spec.find(systemKey);
         if (hardwareSpec == DataInfo::hardwareSystem2spec.end())
             return;
+
         const auto &spec = hardwareSpec->second;
+        std::vector<std::string> totalPossibleRAM;
 
         if (spec.solderedRAM.has_value())
         {
             mRAMSpecGroup.AddTail(SolderedMemoryInfo(spec.solderedRAM.value()).muiObject());
             mRAMSpecGroup.AddTail(MUI::MakeObject::HBar(0));
+            totalPossibleRAM.push_back(std::to_string(spec.solderedRAM->size));
         }
 
         if (!spec.RAM.empty()) // any RAM slots
@@ -56,7 +59,6 @@ namespace Components
         }
 
         bool first = true;
-        std::vector<std::string> totalPossibleRAM;
         for (const auto &ramType : spec.RAM)
         {
             if (!first)

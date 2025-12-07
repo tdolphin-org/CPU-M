@@ -59,7 +59,7 @@ namespace DataInfo
         { "970FX", { "IBM", "970FX", "", "0.9-1.35 V", TechnologyID::nm_90, "2005", "~13-95 W" } }, // apple G5 dual core
         { "970MP",
           { "IBM", "970MP", "Antares", "0.9-1.35 V", TechnologyID::nm_90, "2005", "~10-125 W" } }, // apple G5 dual core (quad up to 275W)
-        { "MPC5200B", { "Freescale", "MPC5200B", "", "1.8 V", TechnologyID::um_0_18, "2005", "~1-2 W" } }, // efika
+        { "5200LE", { "Freescale", "MPC5200B", "", "1.8 V", TechnologyID::um_0_18, "2005", "~1-2 W" } }, // efika
         { "460EX", { "AMCC", "460ex", "", "1.0 V", TechnologyID::nm_90, "2007", "~4-5 W" } }, // sam460
         { "P3041", { "Freescale/NXP", "QorIQ P3041", "", "1.0 V", TechnologyID::nm_45, "2010", "~12 W" } }, // amigaone x5000
         { "P5020", { "Freescale/NXP", "QorIQ P5020", "", "1.0-1.1 V", TechnologyID::nm_45, "2011", "~13-16 W" } }, // amigaone x5000

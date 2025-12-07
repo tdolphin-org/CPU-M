@@ -17,6 +17,9 @@ namespace DataInfo
         { PCIDeviceKey(0x1002, 0x4E50),
           { { GfxCardID::ATI_Radeon_9600_Mobile }, { GfxCardID::ATI_Radeon_9700_Mobile } } }, // ATI Radeon 9600/9700 Mobile
         { PCIDeviceKey(0x1002, 0x5046), { { GfxCardID::ATI_Rage_128_Pro } } }, // ATI Rage 128 Pro
+        { PCIDeviceKey(0x1002, 0x5960),
+          { { GfxCardID::ATI_Radeon_9200_Pro }, { GfxCardID::ATI_Radeon_9250 } } }, // ATI Radeon 9200 PRO / 9250
+        { PCIDeviceKey(0x1002, 0x5960, 0x1FD3, 0x5961), { { GfxCardID::ATI_Radeon_9250 } } }, // ATI Radeon 9250
         { PCIDeviceKey(0x1002, 0x5962), { { GfxCardID::ATI_Radeon_9200 } } }, // ATI Radeon 9200
         { PCIDeviceKey(0x1002, 0x6738), { { GfxCardID::AMD_Radeon_HD_6870 } } }, // Radeon HD 6870
         { PCIDeviceKey(0x1002, 0x67EF),

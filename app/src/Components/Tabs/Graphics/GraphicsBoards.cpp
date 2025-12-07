@@ -9,6 +9,7 @@
 #include "AOS/Exec/Library.hpp"
 #include "AOS/Intuition/Library.hpp"
 #include "AOS/PCIIDS/Library.hpp"
+#include "AOS/PCIX/Library.hpp"
 #include "DataInfo/GfxCardSpec.hpp"
 #include "DataInfo/HardwareSystemSpec.hpp"
 #include "DataInfo/PCI2IDSpec.hpp"
@@ -76,7 +77,34 @@ namespace Components
                         .object());
 
                 // try to find full spec
-                auto boardId = DataInfo::vendorAndDevice2gfxBoardId.find(DataInfo::PCIDeviceKey(monitor.manufacturerId, monitor.productId));
+
+                // first find with subsystem ID, due to possible multiple graphics cards with same vendor/device ID
+                // get subsystemVendorId and subsystemProductId
+                std::optional<unsigned long> subsystemVendorId;
+                std::optional<unsigned long> subsystemProductId;
+                auto displayBoards = AOS::PCIX::Library::GetBoards({ AOS::PCIX::BaseClass::Display });
+                for (const auto &board : displayBoards)
+                {
+                    if (board.vendorId == monitor.manufacturerId && board.deviceId == monitor.productId)
+                    {
+                        if (board.subsystemVendorId.has_value() && board.subsystemId.has_value())
+                        {
+                            subsystemVendorId = board.subsystemVendorId.value();
+                            subsystemProductId = board.subsystemId.value();
+                            break;
+                        }
+                    }
+                }
+
+                auto boardId = DataInfo::vendorAndDevice2gfxBoardId.end();
+
+                if (subsystemVendorId.has_value() && subsystemProductId.has_value())
+                    boardId = DataInfo::vendorAndDevice2gfxBoardId.find(DataInfo::PCIDeviceKey(
+                        monitor.manufacturerId, monitor.productId, subsystemVendorId.value(), subsystemProductId.value()));
+
+                if (boardId == DataInfo::vendorAndDevice2gfxBoardId.end())
+                    boardId = DataInfo::vendorAndDevice2gfxBoardId.find(DataInfo::PCIDeviceKey(monitor.manufacturerId, monitor.productId));
+
                 if (boardId != DataInfo::vendorAndDevice2gfxBoardId.end())
                 {
                     auto boardIds = boardId->second;

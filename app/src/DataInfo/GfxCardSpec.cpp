@@ -227,6 +227,17 @@ namespace DataInfo
               { { 1'000'000, 62'500, 1'000'000 } } },
         },
         {
+            GfxCardID::ATI_Radeon_9200_Pro,
+            { "Radeon 9200 Pro",
+              ManufacturerID::ATI,
+              GPUID::ATI_RV280,
+              std::nullopt,
+              2003,
+              { BoardInterface::AGP_8x },
+              28,
+              { { 960'000, 60'000, 960'000 } } },
+        },
+        {
             GfxCardID::ATI_Radeon_9250,
             { "Radeon 9250",
               ManufacturerID::ATI,
@@ -390,7 +401,7 @@ namespace DataInfo
               { BoardInterface::PCIe_3_x8 },
               75,
               { { 19'200'000, std::nullopt, 67'200'000, 2'150'000'000, 134'400'000 } } },
-        }
+        },
     };
 
     std::string PerformancePixelRateToString(const unsigned long long rate)
