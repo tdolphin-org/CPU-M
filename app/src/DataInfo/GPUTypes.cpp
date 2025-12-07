@@ -163,8 +163,10 @@ namespace std
 
         switch (gpuVariantID)
         {
-            case GPUVariantID::ATI_RV200_500:
-                return "RV200 500";
+            case GPUVariantID::ATI_RV200_7500:
+                return "RV200 7500";
+            case GPUVariantID::ATI_RV200_7500_LE:
+                return "RV200 7500 LE";
             case GPUVariantID::ATI_RV380_XT:
                 return "RV380 XT";
             case GPUVariantID::ATI_R580_PLUS_XT:

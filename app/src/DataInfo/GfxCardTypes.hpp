@@ -42,6 +42,7 @@ namespace DataInfo
         ATI_Radeon_7000, // rebranded Radeon VE
         ATI_Radeon_7200,
         ATI_Radeon_7500,
+        ATI_Radeon_7500_LE,
 
         // ATI/AMD Radeon R200 series (8xxx-9xxx)
         ATI_Radeon_8500_LE,
