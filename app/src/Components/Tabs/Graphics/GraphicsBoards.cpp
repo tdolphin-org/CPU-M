@@ -85,10 +85,25 @@ namespace Components
                 auto displayBoards = AOS::PCIX::Library::GetBoards({ AOS::PCIX::BaseClass::Display });
                 for (const auto &board : displayBoards)
                 {
+#ifdef TRACE
+                    std::cout << "Checking board VID:PID " << std::hex << std::setfill('0') << std::setw(4) << board.vendorId << ":"
+                              << std::hex << std::setfill('0') << std::setw(4) << board.deviceId << std::dec << std::endl;
+#endif
+
                     if (board.vendorId == monitor.manufacturerId && board.deviceId == monitor.productId)
                     {
+#ifdef TRACE
+                        std::cout << " Found matching board VID:PID" << std::endl;
+#endif
+
                         if (board.subsystemVendorId.has_value() && board.subsystemId.has_value())
                         {
+#ifdef TRACE
+                            std::cout << "  Found matching board with subsystem VID:PID " << std::hex << std::setfill('0') << std::setw(4)
+                                      << board.subsystemVendorId.value() << ":" << std::hex << std::setfill('0') << std::setw(4)
+                                      << board.subsystemId.value() << std::dec << std::endl;
+#endif
+
                             subsystemVendorId = board.subsystemVendorId.value();
                             subsystemProductId = board.subsystemId.value();
                             break;
@@ -103,7 +118,16 @@ namespace Components
                         monitor.manufacturerId, monitor.productId, subsystemVendorId.value(), subsystemProductId.value()));
 
                 if (boardId == DataInfo::vendorAndDevice2gfxBoardId.end())
+                {
+#ifdef TRACE
+                    std::cout << " No matching board found with subsystem VID:PID, trying without it" << std::endl;
+#endif
                     boardId = DataInfo::vendorAndDevice2gfxBoardId.find(DataInfo::PCIDeviceKey(monitor.manufacturerId, monitor.productId));
+                }
+#ifdef TRACE
+                else
+                    std::cout << " Using subsystem VID:PID to find exact graphics card model" << std::endl;
+#endif
 
                 if (boardId != DataInfo::vendorAndDevice2gfxBoardId.end())
                 {
