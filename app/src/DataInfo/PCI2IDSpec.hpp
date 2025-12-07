@@ -4,7 +4,7 @@
 //  (c) 2025 TDolphin
 //
 
-#include "GfxBoardSpec.hpp"
+#include "GfxCardSpec.hpp"
 
 #include <cstdint>
 #include <map>
@@ -39,10 +39,10 @@ namespace DataInfo
 
     struct PCIDeviceValue
     {
-        GfxBoardID gfxBoardId;
+        GfxCardID gfxCardId;
         std::optional<BoardInterface> interface; // optional interface if known (and different than supported)
     };
 
-    // map PCIDeviceKey to GfxBoardID
+    // map PCIDeviceKey to GfxCardID
     extern const std::map<PCIDeviceKey, std::vector<PCIDeviceValue>> vendorAndDevice2gfxBoardId;
 }

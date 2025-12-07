@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include "GfxBoardTypes.hpp"
+#include "GfxCardTypes.hpp"
 #include "MemoryTypes.hpp"
 
 #include <optional>
@@ -49,8 +49,8 @@ namespace DataInfo
         std::vector<PortSpec> ports;
         std::optional<std::string> ramNotes; // additional notes regarding mainboard RAM
         std::optional<std::string> notes; // additional notes about system
-        std::optional<GfxBoardID>
-            integratedGraphicsBoard; // if any integrated graphics present (not required, used to determine supported graphics if pciid is ambiguous)
+        std::optional<GfxCardID> integratedGraphicsBoard; // if any integrated graphics present (not required, used to determine supported
+                                                          // graphics if pciid is ambiguous)
     };
 
     extern const std::unordered_map<std::string, HardwareSystemSpec> hardwareSystem2spec;

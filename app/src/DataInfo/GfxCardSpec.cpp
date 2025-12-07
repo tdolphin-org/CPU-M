@@ -4,7 +4,7 @@
 //  (c) 2025 TDolphin
 //
 
-#include "GfxBoardSpec.hpp"
+#include "GfxCardSpec.hpp"
 
 #include "Core/ToString.hpp"
 
@@ -16,9 +16,9 @@
 
 namespace DataInfo
 {
-    const std::map<GfxBoardID, GfxBoardSpec> gfxBoard2spec {
+    const std::map<GfxCardID, GfxCardSpec> gfxCard2spec {
         {
-            GfxBoardID::_3dfx_Voodoo3_2000,
+            GfxCardID::_3dfx_Voodoo3_2000,
             { "Voodoo3 2000",
               ManufacturerID::_3DFX,
               GPUID::_3dfx_Avenger,
@@ -29,7 +29,7 @@ namespace DataInfo
               { { 143'000, std::nullopt, 286'000 } } },
         },
         {
-            GfxBoardID::_3dfx_Voodoo3_3000,
+            GfxCardID::_3dfx_Voodoo3_3000,
             { "Voodoo3 2000",
               ManufacturerID::_3DFX,
               GPUID::_3dfx_Avenger,
@@ -40,7 +40,7 @@ namespace DataInfo
               { { 166'000, std::nullopt, 332'000 } } },
         },
         {
-            GfxBoardID::_3dfx_Voodoo3_3500,
+            GfxCardID::_3dfx_Voodoo3_3500,
             { "Voodoo3 3500",
               ManufacturerID::_3DFX,
               GPUID::_3dfx_Avenger,
@@ -51,7 +51,7 @@ namespace DataInfo
               { { 183'000, std::nullopt, 366'000 } } },
         },
         {
-            GfxBoardID::_3dfx_Voodoo4_4500,
+            GfxCardID::_3dfx_Voodoo4_4500,
             { "Voodoo4 4500",
               ManufacturerID::_3DFX,
               GPUID::_3dfx_VSA_100,
@@ -62,7 +62,7 @@ namespace DataInfo
               { { 332'000, std::nullopt, 332'000 } } },
         },
         {
-            GfxBoardID::_3dfx_Voodoo5_5500,
+            GfxCardID::_3dfx_Voodoo5_5500,
             { "Voodoo5 5500",
               ManufacturerID::_3DFX,
               GPUID::_3dfx_VSA_100,
@@ -73,7 +73,7 @@ namespace DataInfo
               { { 332'000, std::nullopt, 332'000 } } },
         },
         {
-            GfxBoardID::_3DLabs_Permedia_2,
+            GfxCardID::_3DLabs_Permedia_2,
             { "Permedia 2",
               ManufacturerID::_3DLABS,
               GPUID::_3DLabs_Permedia_2,
@@ -84,7 +84,7 @@ namespace DataInfo
               { { 83'000, std::nullopt, 83'000 } } },
         },
         {
-            GfxBoardID::_3DLabs_Permedia_2V,
+            GfxCardID::_3DLabs_Permedia_2V,
             { "Permedia 2V",
               ManufacturerID::_3DLABS,
               GPUID::_3DLabs_Permedia_2V,
@@ -95,7 +95,7 @@ namespace DataInfo
               { { 83'000, std::nullopt, 83'000 } } },
         },
         {
-            GfxBoardID::SiS_6326,
+            GfxCardID::SiS_6326,
             { "6326",
               ManufacturerID::SIS,
               GPUID::SiS_6326,
@@ -106,7 +106,7 @@ namespace DataInfo
               { { 90'000, std::nullopt, 90'000 } } },
         },
         {
-            GfxBoardID::SiS_300,
+            GfxCardID::SiS_300,
             { "300",
               ManufacturerID::SIS,
               GPUID::SiS_300,
@@ -117,7 +117,7 @@ namespace DataInfo
               { { 125'000, std::nullopt, 125'000 } } },
         },
         {
-            GfxBoardID::SiS_305,
+            GfxCardID::SiS_305,
             { "305",
               ManufacturerID::SIS,
               GPUID::SiS_305,
@@ -128,7 +128,7 @@ namespace DataInfo
               { { 125'000, std::nullopt, 125'000 } } },
         },
         {
-            GfxBoardID::SiS_315,
+            GfxCardID::SiS_315,
             { "Mirage 315",
               ManufacturerID::SIS,
               GPUID::SiS_Mirage_315,
@@ -139,7 +139,7 @@ namespace DataInfo
               { { 332'000, std::nullopt, 664'000 } } },
         },
         {
-            GfxBoardID::XGI_Volari_V3XT,
+            GfxCardID::XGI_Volari_V3XT,
             { "Volari V3XT",
               ManufacturerID::XGI,
               GPUID::XGI_XG42,
@@ -150,7 +150,7 @@ namespace DataInfo
               { { 500'000, 62'500, 1'000'000 } } },
         },
         {
-            GfxBoardID::XGI_Volari_V5,
+            GfxCardID::XGI_Volari_V5,
             { "Volari V5",
               ManufacturerID::XGI,
               GPUID::XGI_XG41,
@@ -161,7 +161,7 @@ namespace DataInfo
               { { 625'000, 162'500, 1'300'000 } } },
         },
         {
-            GfxBoardID::XGI_Volari_V8,
+            GfxCardID::XGI_Volari_V8,
             { "Volari V8",
               ManufacturerID::XGI,
               GPUID::XGI_XG40,
@@ -172,7 +172,7 @@ namespace DataInfo
               { { 1'250'000, 156'250, 2'500'000 } } },
         },
         {
-            GfxBoardID::XGI_Volari_V8_Ultra,
+            GfxCardID::XGI_Volari_V8_Ultra,
             { "Volari V8 Ultra",
               ManufacturerID::XGI,
               GPUID::XGI_XG40,
@@ -183,7 +183,7 @@ namespace DataInfo
               { { 1'400'000, 175'000, 2'800'000 } } },
         },
         {
-            GfxBoardID::ATI_Rage_128_Pro,
+            GfxCardID::ATI_Rage_128_Pro,
             { "Rage 128 Pro",
               ManufacturerID::ATI,
               GPUID::ATI_Rage_128_Pro,
@@ -194,7 +194,7 @@ namespace DataInfo
               { { 260'000, 8'000, 260'000 } } },
         },
         {
-            GfxBoardID::ATI_Radeon_7500,
+            GfxCardID::ATI_Radeon_7500,
             { "Radeon 7500",
               ManufacturerID::ATI,
               GPUID::ATI_RV200,
@@ -205,7 +205,7 @@ namespace DataInfo
               { { 580'000, 72'500, 1'740'000 } } },
         },
         {
-            GfxBoardID::ATI_Radeon_9550_Mobile,
+            GfxCardID::ATI_Radeon_9550_Mobile,
             { "Mobility Radeon 9550",
               ManufacturerID::ATI,
               GPUID::ATI_M12,
@@ -216,7 +216,7 @@ namespace DataInfo
               { { 1'000'000, 125'000, 1'000'000 } } },
         },
         {
-            GfxBoardID::ATI_Radeon_9200,
+            GfxCardID::ATI_Radeon_9200,
             { "Radeon 9200",
               ManufacturerID::ATI,
               GPUID::ATI_RV280,
@@ -227,7 +227,7 @@ namespace DataInfo
               { { 1'000'000, 62'500, 1'000'000 } } },
         },
         {
-            GfxBoardID::ATI_Radeon_9250,
+            GfxCardID::ATI_Radeon_9250,
             { "Radeon 9250",
               ManufacturerID::ATI,
               GPUID::ATI_RV280,
@@ -238,7 +238,7 @@ namespace DataInfo
               { { 960'000, 60'000, 960'000 } } },
         },
         {
-            GfxBoardID::ATI_Radeon_9600_Pro,
+            GfxCardID::ATI_Radeon_9600_Pro,
             { "Radeon 9600 Pro",
               ManufacturerID::ATI,
               GPUID::ATI_RV350,
@@ -249,7 +249,7 @@ namespace DataInfo
               { { 1'600'000, 200'000, 1'600'000 } } },
         },
         {
-            GfxBoardID::ATI_Radeon_9600_Mobile,
+            GfxCardID::ATI_Radeon_9600_Mobile,
             { "Mobility Radeon 9600",
               ManufacturerID::ATI,
               GPUID::ATI_M10,
@@ -260,7 +260,7 @@ namespace DataInfo
               { { 1'200'000, 150'000, 1'200'000 } } },
         },
         {
-            GfxBoardID::ATI_Radeon_9600_XT,
+            GfxCardID::ATI_Radeon_9600_XT,
             { "Radeon 9600 XT",
               ManufacturerID::ATI,
               GPUID::ATI_RV360,
@@ -271,7 +271,7 @@ namespace DataInfo
               { { 2'000'000, 250'000, 2'000'000 } } },
         },
         {
-            GfxBoardID::ATI_Radeon_9700_Mobile,
+            GfxCardID::ATI_Radeon_9700_Mobile,
             { "Mobility Radeon 9700",
               ManufacturerID::ATI,
               GPUID::ATI_M11,
@@ -282,7 +282,7 @@ namespace DataInfo
               { { 1'800'000, 225'000, 1'800'000 } } },
         },
         {
-            GfxBoardID::ATI_Radeon_9800,
+            GfxCardID::ATI_Radeon_9800,
             { "Radeon 9800",
               ManufacturerID::ATI,
               GPUID::ATI_R350,
@@ -293,7 +293,7 @@ namespace DataInfo
               { { 2'600'000, 325'000, 2'600'000 } } },
         },
         {
-            GfxBoardID::ATI_Radeon_X600_XT,
+            GfxCardID::ATI_Radeon_X600_XT,
             { "Radeon X600 XT",
               ManufacturerID::ATI,
               GPUID::ATI_RV380,
@@ -304,7 +304,7 @@ namespace DataInfo
               { { 2'000'000, 250'000, 2'000'000 } } },
         },
         {
-            GfxBoardID::ATI_Radeon_X1050,
+            GfxCardID::ATI_Radeon_X1050,
             { "Radeon X1050",
               ManufacturerID::ATI,
               GPUID::ATI_RV360,
@@ -315,7 +315,7 @@ namespace DataInfo
               { { 1'000'000, 125'000, 1'000'000 } } },
         },
         {
-            GfxBoardID::ATI_Radeon_X1950_XTX,
+            GfxCardID::ATI_Radeon_X1950_XTX,
             { "Radeon X1950 XTX",
               ManufacturerID::ATI,
               GPUID::ATI_R580_PLUS,
@@ -326,7 +326,7 @@ namespace DataInfo
               { { 10'400'000, 1'300'000, 10'400'000 } } },
         },
         {
-            GfxBoardID::ATI_Radeon_X1950_Pro,
+            GfxCardID::ATI_Radeon_X1950_Pro,
             { "Radeon X1950 Pro",
               ManufacturerID::ATI,
               GPUID::ATI_RV570,
@@ -337,7 +337,7 @@ namespace DataInfo
               { { 6'900'000, 1'150'000, 6'900'000 } } },
         },
         {
-            GfxBoardID::AMD_Radeon_HD_3450,
+            GfxCardID::AMD_Radeon_HD_3450,
             { "Radeon HD 3450",
               ManufacturerID::AMD,
               GPUID::ATI_RV620,
@@ -348,7 +348,7 @@ namespace DataInfo
               { { 2'400'000, std::nullopt, 2'400'000, 48'000'000, std::nullopt } } },
         },
         {
-            GfxBoardID::AMD_Radeon_HD_3850,
+            GfxCardID::AMD_Radeon_HD_3850,
             { "Radeon HD 3850",
               ManufacturerID::AMD,
               GPUID::ATI_RV670,
@@ -359,7 +359,7 @@ namespace DataInfo
               { { 10'690'000, std::nullopt, 10'690'000, 427'500'000, 85'500'0000 } } },
         },
         {
-            GfxBoardID::AMD_Radeon_HD_4670,
+            GfxCardID::AMD_Radeon_HD_4670,
             { "Radeon HD 4670",
               ManufacturerID::AMD,
               GPUID::ATI_RV730,
@@ -370,7 +370,7 @@ namespace DataInfo
               { { 6'000'000, std::nullopt, 24'000'000, 480'000'000, std::nullopt } } },
         },
         {
-            GfxBoardID::AMD_Radeon_HD_6870,
+            GfxCardID::AMD_Radeon_HD_6870,
             { "Radeon HD 6870",
               ManufacturerID::AMD,
               GPUID::AMD_BARTS,
@@ -381,7 +381,7 @@ namespace DataInfo
               { { 28'800'000, std::nullopt, 50'400'000, 2'016'000'000, std::nullopt } } },
         },
         {
-            GfxBoardID::AMD_Radeon_RX_460,
+            GfxCardID::AMD_Radeon_RX_460,
             { "Radeon RX 460",
               ManufacturerID::AMD,
               GPUID::AMD_BAFFIN,

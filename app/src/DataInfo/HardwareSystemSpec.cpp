@@ -240,7 +240,7 @@ namespace DataInfo
                 },
                 std::nullopt,
                 std::nullopt,
-                { GfxBoardID::ATI_Radeon_9600_Mobile },
+                { GfxCardID::ATI_Radeon_9600_Mobile },
             },
         },
         {
@@ -269,7 +269,7 @@ namespace DataInfo
                 },
                 std::nullopt,
                 std::nullopt,
-                { GfxBoardID::ATI_Radeon_9700_Mobile },
+                { GfxCardID::ATI_Radeon_9700_Mobile },
             },
         },
         {
@@ -298,7 +298,7 @@ namespace DataInfo
                 },
                 std::nullopt,
                 std::nullopt,
-                { GfxBoardID::ATI_Radeon_9700_Mobile },
+                { GfxCardID::ATI_Radeon_9700_Mobile },
             },
         },
         {
@@ -327,7 +327,7 @@ namespace DataInfo
                 },
                 std::nullopt,
                 std::nullopt,
-                { GfxBoardID::ATI_Radeon_9700_Mobile },
+                { GfxCardID::ATI_Radeon_9700_Mobile },
             },
         },
         {
@@ -356,7 +356,7 @@ namespace DataInfo
                 },
                 std::nullopt,
                 std::nullopt,
-                { GfxBoardID::ATI_Radeon_9700_Mobile },
+                { GfxCardID::ATI_Radeon_9700_Mobile },
             },
         },
         {
@@ -385,7 +385,7 @@ namespace DataInfo
                 },
                 std::nullopt,
                 std::nullopt,
-                { GfxBoardID::ATI_Radeon_9700_Mobile },
+                { GfxCardID::ATI_Radeon_9700_Mobile },
             },
         },
         {
@@ -414,7 +414,7 @@ namespace DataInfo
                 },
                 std::nullopt,
                 std::nullopt,
-                { GfxBoardID::ATI_Radeon_9700_Mobile },
+                { GfxCardID::ATI_Radeon_9700_Mobile },
             },
         },
         {

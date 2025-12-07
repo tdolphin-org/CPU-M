@@ -16,6 +16,8 @@ OUT_APP_PATH = $(OUT_PATH)/$(APP_DRAWER_NAME)
 
 include app/appversion.txt
 
+help: all
+
 all:
 	@echo "make mos_ppc - MorphOS PowerPC build"
 	@echo "make cross_mos_ppc - MorphOS PowerPC build (cross compilation on linux)"

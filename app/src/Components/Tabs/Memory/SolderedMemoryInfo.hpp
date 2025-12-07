@@ -6,8 +6,8 @@
 
 #pragma once
 
-#include "Components/Core/Root.hpp"
 #include "Components/Base.hpp"
+#include "Components/Core/Root.hpp"
 #include "DataInfo/HardwareSystemSpec.hpp"
 
 #include "MUI/Group.hpp"

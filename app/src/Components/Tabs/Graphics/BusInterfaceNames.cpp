@@ -9,7 +9,7 @@
 namespace Components
 {
     BusInterfaceNames::BusInterfaceNames(const std::string &interfaces)
-      : mBusInterfaceNamesText(MUI::TextBuilder().tagShortHelp("Graphics board interface(s)").tagContents(interfaces).object())
+      : mBusInterfaceNamesText(MUI::TextBuilder().tagShortHelp("Graphics card interface(s)").tagContents(interfaces).object())
       , mBusInterfaceSpecButton()
       , mComponent(MUI::GroupBuilder()
                        .horizontal()

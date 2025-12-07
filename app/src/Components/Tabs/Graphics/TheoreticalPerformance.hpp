@@ -8,7 +8,7 @@
 
 #include "Components/Base.hpp"
 #include "Components/Core/Root.hpp"
-#include "DataInfo/GfxBoardSpec.hpp"
+#include "DataInfo/GfxCardSpec.hpp"
 
 #include "MUI/Group.hpp"
 

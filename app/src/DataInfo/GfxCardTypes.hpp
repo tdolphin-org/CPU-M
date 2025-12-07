@@ -8,9 +8,9 @@
 
 namespace DataInfo
 {
-    /// @brief Graphics Boards Identifiers supported by CPU-M and MorphOS
+    /// @brief Graphics Cards Identifiers supported by CPU-M and MorphOS
     /// source: https://www.morphos-team.net/hardware
-    enum class GfxBoardID
+    enum class GfxCardID
     {
         // 3dfx Voodoo series (limited support)
         _3dfx_Voodoo3_2000,

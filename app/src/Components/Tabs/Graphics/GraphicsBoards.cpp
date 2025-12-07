@@ -9,7 +9,7 @@
 #include "AOS/Exec/Library.hpp"
 #include "AOS/Intuition/Library.hpp"
 #include "AOS/PCIIDS/Library.hpp"
-#include "DataInfo/GfxBoardSpec.hpp"
+#include "DataInfo/GfxCardSpec.hpp"
 #include "DataInfo/HardwareSystemSpec.hpp"
 #include "DataInfo/PCI2IDSpec.hpp"
 #include "MUI/Core/MakeObject.hpp"
@@ -25,11 +25,8 @@
 namespace Components
 {
     GraphicsBoards::GraphicsBoards()
-      : mComponent(MUI::GroupBuilder()
-                       .vertical()
-                       .tagFrame(MUI::Frame::Group)
-                       .tagFrameTitle("Mounted Devs Monitor(s) / Graphics Boards(s)")
-                       .object())
+      : mComponent(
+            MUI::GroupBuilder().vertical().tagFrame(MUI::Frame::Group).tagFrameTitle("Mounted Devs Monitor(s) / Graphics Card(s)").object())
     {
         auto monitors = AOS::Intuition::Library::libGetMonitorList();
         if (monitors.empty())
@@ -47,8 +44,8 @@ namespace Components
                     MUI::GroupBuilder()
                         .horizontal()
                         .tagChild(LabelText(MUIX_R "Manufacturer:"))
-                        .tagChild(ValueText("Manufacturer of this graphics board",
-                                            AOS::PCIIDS::Library::libGetVendorName(monitor.manufacturerId)))
+                        .tagChild(
+                            ValueText("Manufacturer of this graphics card", AOS::PCIIDS::Library::libGetVendorName(monitor.manufacturerId)))
                         .tagChild(LabelText(MUIX_R "Product name:"))
                         .tagChild(ValueText("Full product name",
                                             MUIX_B + AOS::PCIIDS::Library::libGetDeviceName(monitor.manufacturerId, monitor.productId)))
@@ -94,7 +91,7 @@ namespace Components
                             // check if this board is among possible boards for given PCI ID
                             auto found = std::find_if(boardIds.begin(), boardIds.end(),
                                                       [&integratedGraphicsBoard](const DataInfo::PCIDeviceValue &value) {
-                                                          return value.gfxBoardId == integratedGraphicsBoard.value();
+                                                          return value.gfxCardId == integratedGraphicsBoard.value();
                                                       });
                             if (found != boardIds.end())
                                 boardIds = { *found };
@@ -116,9 +113,9 @@ namespace Components
                     size_t boardIdIndex = 0;
                     for (auto boardValue : boardIds)
                     {
-                        auto gfxBoardId = boardValue.gfxBoardId;
-                        auto gfxBoard2spec = DataInfo::gfxBoard2spec.find(gfxBoardId);
-                        if (gfxBoard2spec != DataInfo::gfxBoard2spec.end())
+                        auto gfxCardId = boardValue.gfxCardId;
+                        auto gfxCard2spec = DataInfo::gfxCard2spec.find(gfxCardId);
+                        if (gfxCard2spec != DataInfo::gfxCard2spec.end())
                         {
                             MUI::Group boardsGroup = MUI::GroupBuilder().horizontal().object();
                             MUI::Group mainSpecGroup
@@ -135,7 +132,7 @@ namespace Components
                                                                  : ToString::Concatenate(
                                                                        [&]() -> std::vector<std::string> {
                                                                            std::vector<std::string> interfaceStrings;
-                                                                           for (const auto &interface : gfxBoard2spec->second.interfaces)
+                                                                           for (const auto &interface : gfxCard2spec->second.interfaces)
                                                                                interfaceStrings.push_back(std::to_string(interface));
                                                                            return interfaceStrings;
                                                                        }(),
@@ -144,47 +141,47 @@ namespace Components
                             mainSpecGroup.AddMember(
                                 MUI::GroupBuilder()
                                     .vertical()
-                                    .tagChild(ValueText(
-                                        "Normalized graphics card name",
-                                        std::to_string(gfxBoard2spec->second.manufacturer) + " " + gfxBoard2spec->second.name, true))
+                                    .tagChild(ValueText("Normalized graphics card name",
+                                                        std::to_string(gfxCard2spec->second.manufacturer) + " " + gfxCard2spec->second.name,
+                                                        true))
                                     .tagChild(MUI::GroupBuilder()
                                                   .horizontal()
                                                   .tagChild(*mBusInterfaceNamesComponents.back())
                                                   .tagChild(LabelText(MUIX_R "TDP:"))
                                                   .tagChild(ValueText("Thermal Design Power in watts",
-                                                                      gfxBoard2spec->second.TDP
-                                                                          ? std::to_string(gfxBoard2spec->second.TDP.value()) + " W"
+                                                                      gfxCard2spec->second.TDP
+                                                                          ? std::to_string(gfxCard2spec->second.TDP.value()) + " W"
                                                                           : "N/A"))
                                                   .object())
                                     .object());
 
-                            mGPUNameComponents.push_back(new GPUName(gfxBoard2spec->second.gpu));
+                            mGPUNameComponents.push_back(new GPUName(gfxCard2spec->second.gpu));
 
-                            auto hasGpuVariant = gfxBoard2spec->second.gpuVariant.has_value();
+                            auto hasGpuVariant = gfxCard2spec->second.gpuVariant.has_value();
                             mainSpecGroup.AddMember(
                                 MUI::GroupBuilder()
                                     .vertical()
                                     .tagColumns(2)
                                     .tagChild(LabelText(MUIX_R "Premiere:"))
-                                    .tagChild(ValueText("Graphics card premiere", std::to_string(gfxBoard2spec->second.premiere)))
+                                    .tagChild(ValueText("Graphics card premiere", std::to_string(gfxCard2spec->second.premiere)))
                                     .tagChild(LabelText(MUIX_R "GPU:"))
                                     .tagChild(*mGPUNameComponents.back())
                                     .tagChild(LabelText(MUIX_R "GPU Variant:"), hasGpuVariant)
                                     .tagChild(ValueText("GPU variant name",
-                                                        hasGpuVariant ? std::to_string(gfxBoard2spec->second.gpuVariant.value()) : ""),
+                                                        hasGpuVariant ? std::to_string(gfxCard2spec->second.gpuVariant.value()) : ""),
                                               hasGpuVariant)
                                     .object());
 
                             boardsGroup.AddMember(mainSpecGroup);
-                            boardsGroup.AddMember(TheoreticalPerformance(gfxBoard2spec->second.theoreticalPerformance));
+                            boardsGroup.AddMember(TheoreticalPerformance(gfxCard2spec->second.theoreticalPerformance));
 
                             allBoardsVirtgroup.AddMember(boardsGroup);
                         }
                         else
                         {
                             allBoardsVirtgroup.AddMember(MUI::MakeObject::HCenter(
-                                MUI::MakeObject::FreeLabel("No detailed specification found for this graphics board (GfxBoardID: "
-                                                           + std::to_string((unsigned long)gfxBoardId) + ")")));
+                                MUI::MakeObject::FreeLabel("No detailed specification found for this graphics card (GfxCardID: "
+                                                           + std::to_string((unsigned long)gfxCardId) + ")")));
                         }
 
                         boardIdIndex++;

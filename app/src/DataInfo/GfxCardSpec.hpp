@@ -6,9 +6,8 @@
 
 #pragma once
 
-#include "AOS/Common/ValueTypes/BoardID.hpp"
 #include "GPUSpec.hpp"
-#include "GfxBoardTypes.hpp"
+#include "GfxCardTypes.hpp"
 
 #include <map>
 #include <string>
@@ -38,7 +37,7 @@ namespace DataInfo
         std::optional<unsigned long long> FP64 = std::nullopt; // FP64 (double) in kFLOPS
     };
 
-    struct GfxBoardSpec
+    struct GfxCardSpec
     {
         std::string name;
         ManufacturerID manufacturer; // manufacturer/vendor id
@@ -56,7 +55,7 @@ namespace DataInfo
     std::string PerformanceFP32RateToString(const unsigned long long rate);
     std::string PerformanceFP64RateToString(const unsigned long long rate);
 
-    extern const std::map<GfxBoardID, GfxBoardSpec> gfxBoard2spec;
+    extern const std::map<GfxCardID, GfxCardSpec> gfxCard2spec;
 }
 
 namespace std
