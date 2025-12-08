@@ -106,6 +106,12 @@ namespace Components
             mChipSpecGroup.AddTail(mRenderConfig = RenderConfig(gpuSpec->second.renderConfig).muiObject());
         }
 
+        if (mComponent.isOpen())
+        {
+            mComponent.ToFront();
+            return;
+        }
+
         mComponent.Open();
     }
 

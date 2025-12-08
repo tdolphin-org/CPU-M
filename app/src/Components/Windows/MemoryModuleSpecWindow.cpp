@@ -96,7 +96,10 @@ namespace Components
     void MemoryModuleSpecWindow::Open(const std::pair<MemoryType, ModuleForm> &memoryTypeAndForm)
     {
         if (mComponent.isOpen())
+        {
+            mComponent.ToFront();
             return;
+        }
 
         auto memorySpec = DataInfo::memorySpecs.find(memoryTypeAndForm.first);
         if (memorySpec != DataInfo::memorySpecs.end())

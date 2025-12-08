@@ -90,7 +90,11 @@ namespace Components
     void BusInterfacesSpecWindow::Open()
     {
         if (mComponent.isOpen())
+        {
+            mComponent.ToFront();
             return;
+        }
+
         mComponent.Open();
     }
 
