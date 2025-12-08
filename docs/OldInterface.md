@@ -1,4 +1,9 @@
-# CPU-M old (wip) interface
+# CPU-M old interface
+
+v0.1.8
+
+![CPU-M v0.1.8](/docs/assets/CPU-M.0.1.8.cpu.png)
+![CPU-M v0.1.8](/docs/assets/CPU-M.0.1.8.mainboard.png)
 
 v0.1.6 (wip)
 
