@@ -76,12 +76,13 @@ namespace Components
                        .object())
     {
         for (const auto &[name, speed] : pci2transfer)
-            mPciInterfacesGroup.AddTail(LabelText(MUIX_R + name, 50)).AddTail(ValueText(name, std::to_string(speed) + " MB/s"));
+            mPciInterfacesGroup.AddTail(LabelText(MUIX_R + name + ":", 50)).AddTail(ValueText(name, std::to_string(speed) + " MB/s"));
 
         for (const auto &[name, speed] : agp2transfer)
-            mAgpInterfacesGroup.AddTail(LabelText(MUIX_R + name, 50)).AddTail(ValueText(name, std::to_string(speed) + " MB/s"));
+            mAgpInterfacesGroup.AddTail(LabelText(MUIX_R + name + ":", 50)).AddTail(ValueText(name, std::to_string(speed) + " MB/s"));
         for (const auto &[name, speed] : pcie2transfer)
-            mPcieInterfacesGroup.AddTail(LabelText(MUIX_R + name, 50)).AddTail(ValueText(name, "~" + std::to_string(speed) + " MB/s"));
+            mPcieInterfacesGroup.AddTail(LabelText(MUIX_R + name + ":", 50))
+                .AddTail(ValueText(name, "~" + std::to_string(speed) + " MB/s"));
 
         // window "X" button => close window
         MUI::Notifier::from(mComponent).onCloseRequest(true).notifySelf().setOpen(false);
