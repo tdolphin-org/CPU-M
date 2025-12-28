@@ -167,6 +167,8 @@ namespace std
                 return "RV200 7500";
             case GPUVariantID::ATI_RV200_7500_LE:
                 return "RV200 7500 LE";
+            case GPUVariantID::ATI_RV280_9200_SE:
+                return "RV280 9200 SE";
             case GPUVariantID::ATI_RV380_XT:
                 return "RV380 XT";
             case GPUVariantID::ATI_R580_PLUS_XT:

@@ -238,6 +238,17 @@ namespace DataInfo
               { { 1'000'000, 62'500, 1'000'000 } } },
         },
         {
+            GfxCardID::ATI_Radeon_9200_SE,
+            { "Radeon 9200 SE",
+              ManufacturerID::ATI,
+              GPUID::ATI_RV280,
+              GPUVariantID::ATI_RV280_9200_SE,
+              2003,
+              { BoardInterface::AGP_8x },
+              28,
+              { { 800'000, 50'000, 800'000 } } },
+        },
+        {
             GfxCardID::ATI_Radeon_9200_Pro,
             { "Radeon 9200 Pro",
               ManufacturerID::ATI,

@@ -24,6 +24,7 @@ namespace DataInfo
         { PCIDeviceKey(0x1002, 0x5960, 0x1FD3, 0x5960), { { GfxCardID::ATI_Radeon_9250 } } }, // (Palit) ATI Radeon 9250
         { PCIDeviceKey(0x1002, 0x5960, 0x1458, 0x4054), { { GfxCardID::ATI_Radeon_9250 } } }, // (Gigabyte) ATI Radeon 9250
         { PCIDeviceKey(0x1002, 0x5962), { { GfxCardID::ATI_Radeon_9200 } } }, // ATI Radeon 9200
+        { PCIDeviceKey(0x1002, 0x5964), { { GfxCardID::ATI_Radeon_9200_SE } } }, // ATI Radeon 9200 SE
         { PCIDeviceKey(0x1002, 0x6738), { { GfxCardID::AMD_Radeon_HD_6870 } } }, // Radeon HD 6870
         { PCIDeviceKey(0x1002, 0x67EF),
           { { GfxCardID::AMD_Radeon_RX_460 },
