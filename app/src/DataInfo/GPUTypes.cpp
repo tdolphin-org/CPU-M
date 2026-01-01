@@ -61,11 +61,11 @@ namespace std
                 return "R400";
             case DataInfo::ArchitectureID::ATI_Ultra_Threaded_SE:
                 return "Ultra Threaded SE";
-            case DataInfo::ArchitectureID::ATI_TeraScale:
+            case DataInfo::ArchitectureID::AMD_TeraScale:
                 return "TeraScale";
-            case DataInfo::ArchitectureID::ATI_TeraScale_2:
+            case DataInfo::ArchitectureID::AMD_TeraScale_2:
                 return "TeraScale 2";
-            case DataInfo::ArchitectureID::ATI_TeraScale_3:
+            case DataInfo::ArchitectureID::AMD_TeraScale_3:
                 return "TeraScale 3";
             case DataInfo::ArchitectureID::AMD_GCN_1_0:
                 return "GNC 1.0";
@@ -144,6 +144,8 @@ namespace std
                 return "RV730";
             case GPUID::AMD_BARTS:
                 return "Barts";
+            case GPUID::AMD_CAICOS:
+                return "Caicos";
             case GPUID::AMD_BAFFIN:
                 return "Baffin";
             case GPUID::ATI_M10:
@@ -181,6 +183,8 @@ namespace std
                 return "RV730 XT";
             case GPUVariantID::AMD_BARTS_XT:
                 return "Barts XT";
+            case GPUVariantID::AMD_CAICOS_PRO:
+                return "Caicos Pro";
             case GPUVariantID::AMD_BAFFIN_PRO:
                 return "Baffin Pro";
             default:

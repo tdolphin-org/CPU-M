@@ -414,6 +414,17 @@ namespace DataInfo
               { { 28'800'000, std::nullopt, 50'400'000, 2'016'000'000, std::nullopt } } },
         },
         {
+            GfxCardID::AMD_Radeon_R5_230,
+            { "Radeon R5 230",
+              ManufacturerID::AMD,
+              GPUID::AMD_CAICOS,
+              GPUVariantID::AMD_CAICOS_PRO,
+              2014,
+              { BoardInterface::PCIe_2_x16 },
+              19,
+              { { 2'500'000, std::nullopt, 5'000'000, 200'000'000, std::nullopt } } },
+        },
+        {
             GfxCardID::AMD_Radeon_RX_460,
             { "Radeon RX 460",
               ManufacturerID::AMD,

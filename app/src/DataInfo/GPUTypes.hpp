@@ -40,9 +40,9 @@ namespace DataInfo
         ATI_R300,
         ATI_R400,
         ATI_Ultra_Threaded_SE,
-        ATI_TeraScale,
-        ATI_TeraScale_2,
-        ATI_TeraScale_3,
+        AMD_TeraScale, // ATI/AMD TeraScale
+        AMD_TeraScale_2,
+        AMD_TeraScale_3,
         AMD_GCN_1_0,
         AMD_GCN_2_0,
         AMD_GCN_3_0,
@@ -91,6 +91,7 @@ namespace DataInfo
         ATI_RV670, // RV670
         ATI_RV730, // RV730
         AMD_BARTS, // Barts
+        AMD_CAICOS, // Caicos
         AMD_BAFFIN, // Baffin
         ATI_M10, // Mobility M10
         ATI_M11, // Mobility M11
@@ -108,6 +109,7 @@ namespace DataInfo
         ATI_RV670_Pro, // RV670 Pro (variant of RV670)
         ATI_RV730_XT, // RV730 XT (variant of RV730)
         AMD_BARTS_XT, // Barts XT (variant of Barts)
+        AMD_CAICOS_PRO, // Caicos Pro (variant of Caicos)
         AMD_BAFFIN_PRO, // Baffin Pro (variant of Baffin)
     };
 }
