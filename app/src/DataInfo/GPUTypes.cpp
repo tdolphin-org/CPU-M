@@ -183,6 +183,10 @@ namespace std
                 return "RV730 XT";
             case GPUVariantID::AMD_BARTS_XT:
                 return "Barts XT";
+            case GPUVariantID::AMD_KHALIDSTER:
+                return "Khalidster";
+            case GPUVariantID::AMD_CAICOS_XT:
+                return "Caicos XT";
             case GPUVariantID::AMD_CAICOS_PRO:
                 return "Caicos Pro";
             case GPUVariantID::AMD_BAFFIN_PRO:

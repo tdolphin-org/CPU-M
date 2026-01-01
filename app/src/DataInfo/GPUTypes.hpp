@@ -109,6 +109,8 @@ namespace DataInfo
         ATI_RV670_Pro, // RV670 Pro (variant of RV670)
         ATI_RV730_XT, // RV730 XT (variant of RV730)
         AMD_BARTS_XT, // Barts XT (variant of Barts)
+        AMD_KHALIDSTER, // Khalidster (variant of Caicos)
+        AMD_CAICOS_XT, // Caicos XT (variant of Caicos)
         AMD_CAICOS_PRO, // Caicos Pro (variant of Caicos)
         AMD_BAFFIN_PRO, // Baffin Pro (variant of Baffin)
     };

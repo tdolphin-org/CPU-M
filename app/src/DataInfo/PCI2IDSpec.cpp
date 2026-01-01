@@ -26,7 +26,11 @@ namespace DataInfo
         { PCIDeviceKey(0x1002, 0x5962), { { GfxCardID::ATI_Radeon_9200 } } }, // ATI Radeon 9200
         { PCIDeviceKey(0x1002, 0x5964), { { GfxCardID::ATI_Radeon_9200_SE } } }, // ATI Radeon 9200 SE
         { PCIDeviceKey(0x1002, 0x6738), { { GfxCardID::AMD_Radeon_HD_6870 } } }, // ATI Radeon HD 6870
+        { PCIDeviceKey(0x1002, 0x6778, 0x1019, 0x0024), { { GfxCardID::AMD_Radeon_HD_7470 } } }, // AMD Radeon HD 7470
+        { PCIDeviceKey(0x1002, 0x6778, 0x1019, 0x0027), { { GfxCardID::AMD_Radeon_HD_8470 } } }, // AMD Radeon HD 8470
         { PCIDeviceKey(0x1002, 0x6779, 0x174B, 0xA004), { { GfxCardID::AMD_Radeon_R5_230 } } }, // (Saphire) AMD Radeon R5 230
+        { PCIDeviceKey(0x1002, 0x6779, 0x1019, 0x0016), { { GfxCardID::AMD_Radeon_HD_6450 } } }, // AMD Radeon HD 6450
+        { PCIDeviceKey(0x1002, 0x6779, 0x1019, 0x2120), { { GfxCardID::AMD_Radeon_HD_6450 } } }, // AMD Radeon HD 6450
         { PCIDeviceKey(0x1002, 0x67EF),
           { { GfxCardID::AMD_Radeon_RX_460 },
             { GfxCardID::AMD_Radeon_RX_560 },
