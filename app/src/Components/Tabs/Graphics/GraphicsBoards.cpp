@@ -136,10 +136,10 @@ namespace Components
                     {
                         // check if we have some info about graphics card for given hardware system
                         auto systemName = AOS::Exec::Library::libNewGetSystemAttrsAsString(AOS::Exec::SYSTEMINFOTYPE::SYSTEM);
-                        auto hardwareSpec = DataInfo::hardwareSystem2spec.find(systemName);
-                        if (hardwareSpec != DataInfo::hardwareSystem2spec.end() && hardwareSpec->second.integratedGraphicsBoard.has_value())
+                        auto hardwareSpec = DataInfo::FindHardwareSystemSpecByID(systemName);
+                        if (hardwareSpec.has_value() && hardwareSpec->integratedGraphicsBoard.has_value())
                         {
-                            auto integratedGraphicsBoard = hardwareSpec->second.integratedGraphicsBoard;
+                            auto integratedGraphicsBoard = hardwareSpec->integratedGraphicsBoard;
                             // check if this board is among possible boards for given PCI ID
                             auto found = std::find_if(boardIds.begin(), boardIds.end(),
                                                       [&integratedGraphicsBoard](const DataInfo::PCIDeviceValue &value) {

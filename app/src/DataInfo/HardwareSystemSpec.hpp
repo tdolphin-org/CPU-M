@@ -53,5 +53,8 @@ namespace DataInfo
                                                           // graphics if pciid is ambiguous)
     };
 
-    extern const std::unordered_map<std::string, HardwareSystemSpec> hardwareSystem2spec;
+    /// @brief find HardwareSystemSpec by hardware system ID
+    /// @param id hardware system ID string
+    /// @return optionally HardwareSystemSpec if found
+    std::optional<HardwareSystemSpec> FindHardwareSystemSpecByID(const std::string &id);
 }

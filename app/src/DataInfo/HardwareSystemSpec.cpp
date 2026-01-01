@@ -6,12 +6,15 @@
 
 #include "HardwareSystemSpec.hpp"
 
+#include <regex>
+
 // sources:
 // Pegasos book, Efika book, wikipedia, https://support.apple.com, https://morphos.pl/morphos-i-sprzet/
 // product datasheets from manufacturers
 
 namespace DataInfo
 {
+    // identity string (regexp) to HardwareSystemSpec map
     const std::unordered_map<std::string, HardwareSystemSpec> hardwareSystem2spec {
         {
             "bplan,Pegasos",
@@ -131,7 +134,7 @@ namespace DataInfo
             },
         },
         {
-            "Mirari",
+            "Mirari.*",
             {
                 std::nullopt,
                 "Harald's Mirari",
@@ -528,4 +531,22 @@ namespace DataInfo
             },
         },
     };
+    
+    std::optional<HardwareSystemSpec> FindHardwareSystemSpecByID(const std::string &id)
+    {
+        // first try direct lookup
+        auto hardwareSpec = DataInfo::hardwareSystem2spec.find(id);
+        if (hardwareSpec != DataInfo::hardwareSystem2spec.end())
+            return hardwareSpec->second;
+
+        // then try regexp match
+        for (const auto& [regexpStr, spec] : hardwareSystem2spec)
+        {
+            std::regex re(regexpStr);
+            if (std::regex_match(id, re))
+                return spec;
+        }
+
+        return std::nullopt;
+    }
 }

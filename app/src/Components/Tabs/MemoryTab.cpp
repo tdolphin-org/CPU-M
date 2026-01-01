@@ -36,11 +36,11 @@ namespace Components
             AOS::Exec::Library::libAvailMem(AOS::Exec::MEMF_Type::ANY, AOS::Exec::MEMF_Avail::TOTAL), MemorySizeUnit::MegaBytes));
 
         auto systemKey = AOS::Exec::Library::libNewGetSystemAttrsAsString(AOS::Exec::SYSTEMINFOTYPE::SYSTEM);
-        auto hardwareSpec = DataInfo::hardwareSystem2spec.find(systemKey);
-        if (hardwareSpec == DataInfo::hardwareSystem2spec.end())
+        auto hardwareSpec = DataInfo::FindHardwareSystemSpecByID(systemKey);
+        if (!hardwareSpec.has_value())
             return;
 
-        const auto &spec = hardwareSpec->second;
+        const auto &spec = hardwareSpec.value();
         std::vector<std::string> totalPossibleRAM;
 
         if (spec.solderedRAM.has_value())

@@ -74,11 +74,11 @@ namespace Components
         mVendorText.setContents(AOS::Exec::Library::libNewGetSystemAttrsAsString(AOS::Exec::SYSTEMINFOTYPE::VENDOR));
         mSystemText.setContents(AOS::Exec::Library::libNewGetSystemAttrsAsString(AOS::Exec::SYSTEMINFOTYPE::SYSTEM));
 
-        auto hardwareSpec = DataInfo::hardwareSystem2spec.find(mSystemText.getContents());
-        if (hardwareSpec == DataInfo::hardwareSystem2spec.end())
+        auto hardwareSpec = DataInfo::FindHardwareSystemSpecByID(mSystemText.getContents());
+        if (!hardwareSpec.has_value())
             return;
 
-        const auto &spec = hardwareSpec->second;
+        const auto &spec = hardwareSpec.value();
         mFullNameText.setContents(MUIX_B + spec.marketingName);
         if (spec.modelNumber.has_value())
             mModelNumberText.setContents(spec.modelNumber.value());
