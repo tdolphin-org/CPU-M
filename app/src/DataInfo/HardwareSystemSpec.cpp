@@ -136,8 +136,8 @@ namespace DataInfo
         {
             "Mirari.*",
             {
-                std::nullopt,
-                "Harald's Mirari",
+                "031UATXPPCEX500",
+                "Mirari T1042",
                 2025,
                 std::nullopt,
                 "Soldered",
