@@ -6,6 +6,9 @@
 
 #pragma once
 
+#include <optional>
+#include <string>
+
 namespace DataInfo
 {
     /// @brief Graphics Cards Identifiers supported by CPU-M and MorphOS
@@ -179,4 +182,6 @@ namespace DataInfo
         AMD_Radeon_RX_560,
         AMD_Radeon_RX_560X,
     };
+
+    std::optional<GfxCardID> StringToGfxCardID(const std::string &str);
 }
