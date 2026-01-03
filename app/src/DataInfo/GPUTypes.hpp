@@ -104,6 +104,7 @@ namespace DataInfo
         ATI_RV200_7500_LE, // RV200 7500 LE (variant of RV200) used by Radeon 7500 LE
         ATI_RV280_9200_SE, // RV280 9200 SE (variant of RV280) used by Radeon 9200 SE
         ATI_RV380_XT, // RV380 XT (variant of RV380)
+        ATI_RV570_XL, // RV570 XL (variant of RV570)
         ATI_R580_PLUS_XT, // R580+ XT (variant of R580+)
         ATI_RV620_LE, // RV620 LE (variant of RV620)
         ATI_RV670_Pro, // RV670 Pro (variant of RV670)

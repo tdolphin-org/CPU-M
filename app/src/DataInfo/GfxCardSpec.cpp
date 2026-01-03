@@ -370,6 +370,17 @@ namespace DataInfo
               { { 6'900'000, 1'150'000, 6'900'000 } } },
         },
         {
+            GfxCardID::ATI_Radeon_X1950_GT,
+            { "Radeon X1950 GT",
+              ManufacturerID::ATI,
+              GPUID::ATI_RV570,
+              GPUVariantID::ATI_RV570_XL,
+              2007,
+              { BoardInterface::PCIe_x16 },
+              57,
+              { { 6'000'000, 1'000'000, 6'000'000 } } },
+        },
+        {
             GfxCardID::AMD_Radeon_HD_3450,
             { "Radeon HD 3450",
               ManufacturerID::AMD,

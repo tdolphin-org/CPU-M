@@ -81,6 +81,7 @@ namespace DataInfo
         ATI_Radeon_X1950_XT,
         ATI_Radeon_X1950_XTX,
         ATI_Radeon_X1950_Pro,
+        ATI_Radeon_X1950_GT,
         ATI_FireGL_X3,
 
         // AMD Radeon HD 2xxx series

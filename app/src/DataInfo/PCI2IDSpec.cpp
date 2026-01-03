@@ -44,6 +44,7 @@ namespace DataInfo
         { PCIDeviceKey(0x1002, 0x7240), { { GfxCardID::ATI_Radeon_X1950_XT } } }, // ATI Radeon X1950 XT
         { PCIDeviceKey(0x1002, 0x7244), { { GfxCardID::ATI_Radeon_X1950_XT } } }, // ATI Radeon X1950 XT
         { PCIDeviceKey(0x1002, 0x7280), { { GfxCardID::ATI_Radeon_X1950_Pro } } }, // ATI Radeon X1950 Pro
+        { PCIDeviceKey(0x1002, 0x7288), { { GfxCardID::ATI_Radeon_X1950_GT } } }, // ATI Radeon X1950 GT
         { PCIDeviceKey(0x1002, 0x9490), { { GfxCardID::AMD_Radeon_HD_4670 } } }, // AMD Radeon HD 4670
         { PCIDeviceKey(0x1002, 0x9515), { { GfxCardID::AMD_Radeon_HD_3850 } } }, // ATI Radeon HD 3850
         { PCIDeviceKey(0x1002, 0x95C6), { { GfxCardID::AMD_Radeon_HD_3450, BoardInterface::AGP_8x } } }, // ATI Radeon HD 3450 AGP
