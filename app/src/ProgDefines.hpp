@@ -13,7 +13,7 @@
 #define CMD_NAME "CPU-M"
 #define APP_NAME "CPU-M"
 #define APP_DESCRIPTION "System Information Tool"
-#define APP_TDOLPHIN_COPYRIGHTS "(c) 2025 TDolphin"
+#define APP_TDOLPHIN_COPYRIGHTS "(c) 2025-2026 TDolphin"
 
 #define TDOLPHIN_WEBPAGE "https://www.tdolphin.org"
 #define TDOLPHIN_EMAIL "info@tdolphin.org"
