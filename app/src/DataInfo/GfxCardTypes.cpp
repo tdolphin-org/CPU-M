@@ -1,18 +1,19 @@
 //
 //  CPU-M
 //
-//  (c) 2025 TDolphin
+//  (c) 2025-2026 TDolphin
 //
 
 #include "GfxCardTypes.hpp"
 
 #include <algorithm>
 #include <cctype>
+#include <iostream>
 #include <map>
 
 namespace DataInfo
 {
-    std::optional<GfxCardID> DataInfo::StringToGfxCardID(const std::string &str)
+    std::optional<GfxCardID> StringToGfxCardID(const std::string &str)
     {
         static std::map<std::string, GfxCardID> map = {
             // 3dfx Voodoo series
@@ -189,6 +190,8 @@ namespace DataInfo
         auto it = map.find(lowerStr);
         if (it != map.end())
             return it->second;
+
+        std::cerr << __PRETTY_FUNCTION__ << ": Unknown graphics card string: " << str << std::endl;
 
         return std::nullopt;
     }

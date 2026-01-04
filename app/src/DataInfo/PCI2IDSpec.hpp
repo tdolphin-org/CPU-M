@@ -1,10 +1,12 @@
 //
 //  CPU-M
 //
-//  (c) 2025 TDolphin
+//  (c) 2025-2026 TDolphin
 //
 
 #include "GfxCardSpec.hpp"
+
+#include "Core/Singleton.hpp"
 
 #include <cstdint>
 #include <map>
@@ -43,6 +45,17 @@ namespace DataInfo
         std::optional<BoardInterface> interface; // optional interface if known (and different than supported)
     };
 
-    // map PCIDeviceKey to GfxCardID
-    extern const std::map<PCIDeviceKey, std::vector<PCIDeviceValue>> vendorAndDevice2gfxBoardId;
+    class PCI2IDSpecCore
+    {
+        friend class td::Singleton<PCI2IDSpecCore>;
+
+        std::map<PCIDeviceKey, std::vector<PCIDeviceValue>> vendorAndDevice2gfxBoardId;
+
+        PCI2IDSpecCore();
+
+      public:
+        std::optional<std::vector<PCIDeviceValue>> Find(PCIDeviceKey pciKey);
+    };
+
+    typedef class td::Singleton<PCI2IDSpecCore> PCI2IDSpec;
 }

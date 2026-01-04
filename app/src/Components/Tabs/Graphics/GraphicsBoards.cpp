@@ -1,7 +1,7 @@
 //
 //  CPU-M
 //
-//  (c) 2025 TDolphin
+//  (c) 2025-2026 TDolphin
 //
 
 #include "GraphicsBoards.hpp"
@@ -111,27 +111,27 @@ namespace Components
                     }
                 }
 
-                auto boardId = DataInfo::vendorAndDevice2gfxBoardId.end();
+                std::optional<std::vector<DataInfo::PCIDeviceValue>> boardId = std::nullopt;
 
                 if (subsystemVendorId.has_value() && subsystemProductId.has_value())
-                    boardId = DataInfo::vendorAndDevice2gfxBoardId.find(DataInfo::PCIDeviceKey(
+                    boardId = DataInfo::PCI2IDSpec::instance().Find(DataInfo::PCIDeviceKey(
                         monitor.manufacturerId, monitor.productId, subsystemVendorId.value(), subsystemProductId.value()));
 
-                if (boardId == DataInfo::vendorAndDevice2gfxBoardId.end())
+                if (!boardId.has_value())
                 {
 #ifdef TRACE
                     std::cout << " No matching board found with subsystem VID:PID, trying without it" << std::endl;
 #endif
-                    boardId = DataInfo::vendorAndDevice2gfxBoardId.find(DataInfo::PCIDeviceKey(monitor.manufacturerId, monitor.productId));
+                    boardId = DataInfo::PCI2IDSpec::instance().Find(DataInfo::PCIDeviceKey(monitor.manufacturerId, monitor.productId));
                 }
 #ifdef TRACE
                 else
                     std::cout << " Using subsystem VID:PID to find exact graphics card model" << std::endl;
 #endif
 
-                if (boardId != DataInfo::vendorAndDevice2gfxBoardId.end())
+                if (boardId.has_value())
                 {
-                    auto boardIds = boardId->second;
+                    auto boardIds = boardId.value();
                     if (boardIds.size() > 1)
                     {
                         // check if we have some info about graphics card for given hardware system

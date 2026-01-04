@@ -1,7 +1,7 @@
 #
 #  Makefile for CPU-M project
 #
-#  (c) 2025 TDolphin
+#  (c) 2025-2026 TDolphin
 #
 
 #
@@ -51,6 +51,8 @@ build_out:
 	done
 	mkdir -p $(OUT_APP_PATH)/images
 	cp -r data/images/* $(OUT_APP_PATH)/images
+	mkdir -p $(OUT_APP_PATH)/specs
+	cp -r data/specs/*.csv $(OUT_APP_PATH)/specs
 	cp docs/header.readme $(OUT_APP_PATH)/CPU-M.readme
 	sed -i "s/%VERSION%/$(APP_VERSION)/g" $(OUT_APP_PATH)/CPU-M.readme
 	fold -w78 -s docs/CPU-M.readme >> $(OUT_APP_PATH)/CPU-M.readme
