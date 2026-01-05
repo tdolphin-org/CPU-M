@@ -29,7 +29,7 @@ namespace Components
       : mComponent(
             MUI::GroupBuilder().vertical().tagFrame(MUI::Frame::Group).tagFrameTitle("Mounted Devs Monitor(s) / Graphics Card(s)").object())
     {
-        auto monitors = AOS::Intuition::Library::libGetMonitorList();
+        auto monitors = AOS::Intuition::Library::libGetMonitorList(true);
         if (monitors.empty())
             mComponent.AddMember(MUI::MakeObject::HCenter(MUI::MakeObject::FreeLabel("none")));
         else
