@@ -1,7 +1,7 @@
 //
 //  CPU-M
 //
-//  (c) 2025 TDolphin
+//  (c) 2025-2026 TDolphin
 //
 
 #include "GfxCardSpec.hpp"
