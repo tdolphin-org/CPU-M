@@ -1,7 +1,7 @@
 //
 //  CPU-M
 //
-//  (c) 2025 TDolphin
+//  (c) 2025-2026 TDolphin
 //
 
 #include "MemoryTab.hpp"
@@ -80,8 +80,8 @@ namespace Components
         {
             mRAMSpecGroup.AddTail(MUI::MakeObject::HBar(0));
             mRAMSpecGroup.AddTail(MUI::TextBuilder()
-                                      .tagFrame(MUI::Frame::String)
-                                      .tagHelpNode("Add Notes regarding Mainboard RAM")
+                                      .tagFrame(MUI::Frame::Text)
+                                      .tagHelpNode("Additional Notes regarding Mainboard RAM")
                                       .tagContents(spec.ramNotes.value())
                                       .object());
         }

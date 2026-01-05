@@ -1,7 +1,7 @@
 //
 //  CPU-M
 //
-//  (c) 2025 TDolphin
+//  (c) 2025-2026 TDolphin
 //
 
 #include "Components/Base.hpp"
@@ -10,13 +10,13 @@ namespace Components
 {
     MUI::Text Base::LabelText(const std::string &label, const short weight)
     {
-        return MUI::TextBuilder().tagContents(label).tagFrame(MUI::Frame::String).tagFramePhantomHoriz(true).tagWeight(weight).object();
+        return MUI::TextBuilder().tagContents(label).tagFrame(MUI::Frame::Text).tagFramePhantomHoriz(true).tagWeight(weight).object();
     }
 
     MUI::Text Base::ValueText(const std::string &help, const std::string &defaultValue, const bool shorten, const short weight)
     {
         return MUI::TextBuilder()
-            .tagFrame(MUI::Frame::String)
+            .tagFrame(MUI::Frame::Text)
             .tagContents(defaultValue)
             .tagShortHelp(help)
             .tagShorten(shorten ? MUI::Text_Shorten::Cutoff : MUI::Text_Shorten::Nothing)

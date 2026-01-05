@@ -1,7 +1,7 @@
 //
 //  CPU-M
 //
-//  (c) 2025 TDolphin
+//  (c) 2025-2026 TDolphin
 //
 
 #include "MemorySlotsInfo.hpp"
@@ -18,7 +18,7 @@ namespace Components
       , mComponent(MUI::GroupBuilder()
                        .tagColumns(6)
                        .tagChild(LabelText(MUIX_R "Type:"))
-                       .tagChild(MUI::GroupBuilder().horizontal().tagFrame(MUI::Frame::String).tagChild(mRAMTypeText).tagChild(mMemoryModuleSpecButton).object())
+                       .tagChild(MUI::GroupBuilder().horizontal().tagFrame(MUI::Frame::Text).tagChild(mRAMTypeText).tagChild(mMemoryModuleSpecButton).object())
                        .tagChild(LabelText(MUIX_R "Slots:"))
                        .tagChild(mSlotsCountText)
                        .tagChild(LabelText(MUIX_R "Max Size:"))

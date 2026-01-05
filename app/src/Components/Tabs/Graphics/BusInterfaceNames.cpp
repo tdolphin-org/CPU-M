@@ -1,7 +1,7 @@
 //
 //  CPU-M
 //
-//  (c) 2025 TDolphin
+//  (c) 2025-2026 TDolphin
 //
 
 #include "BusInterfaceNames.hpp"
@@ -13,7 +13,7 @@ namespace Components
       , mBusInterfaceSpecButton()
       , mComponent(MUI::GroupBuilder()
                        .horizontal()
-                       .tagFrame(MUI::Frame::String)
+                       .tagFrame(MUI::Frame::Text)
                        .tagChild(mBusInterfaceNamesText)
                        .tagChild(mBusInterfaceSpecButton)
                        .object())

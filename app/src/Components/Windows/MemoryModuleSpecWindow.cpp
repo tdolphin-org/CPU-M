@@ -1,7 +1,7 @@
 //
 //  CPU-M
 //
-//  (c) 2025 TDolphin
+//  (c) 2025-2026 TDolphin
 //
 
 #include "MemoryModuleSpecWindow.hpp"
@@ -28,17 +28,17 @@ static std::map<std::pair<MemoryGeneration, ModuleForm>, std::string> memoryModu
 namespace Components
 {
     MemoryModuleSpecWindow::MemoryModuleSpecWindow()
-      : mTypeText(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
-      , mModuleFormText(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
-      , mGenerationText(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
-      , mIntroductionYearText(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
-      , mDataTransferMTsText(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
-      , mBandwidthMBsText(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
-      , mClockText(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
-      , mWidthText(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
-      , mPinsCountText(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
-      , mVoltageText(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
-      , mNotesText(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
+      : mTypeText(MUI::TextBuilder().tagFrame(MUI::Frame::Text).object())
+      , mModuleFormText(MUI::TextBuilder().tagFrame(MUI::Frame::Text).object())
+      , mGenerationText(MUI::TextBuilder().tagFrame(MUI::Frame::Text).object())
+      , mIntroductionYearText(MUI::TextBuilder().tagFrame(MUI::Frame::Text).object())
+      , mDataTransferMTsText(MUI::TextBuilder().tagFrame(MUI::Frame::Text).object())
+      , mBandwidthMBsText(MUI::TextBuilder().tagFrame(MUI::Frame::Text).object())
+      , mClockText(MUI::TextBuilder().tagFrame(MUI::Frame::Text).object())
+      , mWidthText(MUI::TextBuilder().tagFrame(MUI::Frame::Text).object())
+      , mPinsCountText(MUI::TextBuilder().tagFrame(MUI::Frame::Text).object())
+      , mVoltageText(MUI::TextBuilder().tagFrame(MUI::Frame::Text).object())
+      , mNotesText(MUI::TextBuilder().tagFrame(MUI::Frame::Text).object())
       , mModuleSpecGroup(
             MUI::GroupBuilder()
                 .vertical()

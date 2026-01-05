@@ -1,7 +1,7 @@
 //
 //  CPU-M
 //
-//  (c) 2025 TDolphin
+//  (c) 2025-2026 TDolphin
 //
 
 #include "TheoreticalPerformance.hpp"
@@ -18,27 +18,27 @@ namespace Components
             mComponent.setColumns(2);
             mComponent.AddMember(LabelText(MUIX_R "Pixel Fillrate:"))
                 .AddMember(MUI::TextBuilder()
-                               .tagFrame(MUI::Frame::String)
+                               .tagFrame(MUI::Frame::Text)
                                .tagContents(DataInfo::PerformancePixelRateToString(theoreticalPerformance.value().pixelRate))
                                .object());
             if (theoreticalPerformance.value().vertexRate.has_value())
             {
                 mComponent.AddMember(LabelText(MUIX_R "Vertex Fillrate:"))
                     .AddMember(MUI::TextBuilder()
-                                   .tagFrame(MUI::Frame::String)
+                                   .tagFrame(MUI::Frame::Text)
                                    .tagContents(DataInfo::PerformanceVertexRateToString(theoreticalPerformance.value().vertexRate.value()))
                                    .object());
             }
             mComponent.AddMember(LabelText(MUIX_R "Texture Fillrate:"))
                 .AddMember(MUI::TextBuilder()
-                               .tagFrame(MUI::Frame::String)
+                               .tagFrame(MUI::Frame::Text)
                                .tagContents(DataInfo::PerformanceTextureRateToString(theoreticalPerformance.value().textureRate))
                                .object());
             if (theoreticalPerformance.value().FP32.has_value())
             {
                 mComponent.AddMember(LabelText(MUIX_R "FP32 (float):"))
                     .AddMember(MUI::TextBuilder()
-                                   .tagFrame(MUI::Frame::String)
+                                   .tagFrame(MUI::Frame::Text)
                                    .tagContents(DataInfo::PerformanceFP32RateToString(theoreticalPerformance.value().FP32.value()))
                                    .object());
             }
@@ -46,7 +46,7 @@ namespace Components
             {
                 mComponent.AddMember(LabelText(MUIX_R "FP64 (double):"))
                     .AddMember(MUI::TextBuilder()
-                                   .tagFrame(MUI::Frame::String)
+                                   .tagFrame(MUI::Frame::Text)
                                    .tagContents(DataInfo::PerformanceFP64RateToString(theoreticalPerformance.value().FP64.value()))
                                    .object());
             }

@@ -1,7 +1,7 @@
 //
 //  CPU-M
 //
-//  (c) 2025 TDolphin
+//  (c) 2025-2026 TDolphin
 //
 
 #include "GPUSpecWindow.hpp"
@@ -27,15 +27,15 @@ static std::map<DataInfo::ManufacturerID, std::pair<std::string, std::pair<unsig
 namespace Components
 {
     GPUSpecWindow::GPUSpecWindow()
-      : mManufacturer(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
-      , mModelName(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
-      , mPremiere(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
-      , mArchitecture(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
-      , mTechnology(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
-      , mMaxTDP(MUI::TextBuilder().tagFrame(MUI::Frame::String).object())
+      : mManufacturer(MUI::TextBuilder().tagFrame(MUI::Frame::Text).object())
+      , mModelName(MUI::TextBuilder().tagFrame(MUI::Frame::Text).object())
+      , mPremiere(MUI::TextBuilder().tagFrame(MUI::Frame::Text).object())
+      , mArchitecture(MUI::TextBuilder().tagFrame(MUI::Frame::Text).object())
+      , mTechnology(MUI::TextBuilder().tagFrame(MUI::Frame::Text).object())
+      , mMaxTDP(MUI::TextBuilder().tagFrame(MUI::Frame::Text).object())
       , mWarningsText(
             MUI::TextBuilder()
-                .tagFrame(MUI::Frame::String)
+                .tagFrame(MUI::Frame::Text)
                 .tagContents(MUIX_B
                              "Note:" MUIX_N " The listed GPU configuration reflects the full capabilities of the GPU model.\n"
                              "The actual hardware on this graphics card may have reduced units (e.g., disabled shaders, TMUs, or ROPs).")

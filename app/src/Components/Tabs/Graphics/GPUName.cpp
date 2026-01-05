@@ -1,7 +1,7 @@
 //
 //  CPU-M
 //
-//  (c) 2025 TDolphin
+//  (c) 2025-2026 TDolphin
 //
 
 #include "GPUName.hpp"
@@ -11,7 +11,7 @@ namespace Components
     GPUName::GPUName(const DataInfo::GPUID &gpuId)
       : mGpuNameText(MUI::TextBuilder().tagShortHelp("Graphics Processing Unit name").tagContents(std::to_string(gpuId)).object())
       , mGPUSpecButton(gpuId)
-      , mComponent(MUI::GroupBuilder().horizontal().tagFrame(MUI::Frame::String).tagChild(mGpuNameText).tagChild(mGPUSpecButton).object())
+      , mComponent(MUI::GroupBuilder().horizontal().tagFrame(MUI::Frame::Text).tagChild(mGpuNameText).tagChild(mGPUSpecButton).object())
     {
         bool gpuSpecExists = DataInfo::gpu2spec.find(gpuId) != DataInfo::gpu2spec.end();
         if (gpuSpecExists)
