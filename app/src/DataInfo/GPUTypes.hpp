@@ -86,6 +86,7 @@ namespace DataInfo
         ATI_R350, // R350
         ATI_RV360, // RV360
         ATI_RV380, // RV380
+        ATI_RV535, // RV535
         ATI_RV570, // RV570
         ATI_R580_PLUS, // R580+
         ATI_RV620, // RV620
@@ -105,8 +106,10 @@ namespace DataInfo
         ATI_RV200_7500_LE, // RV200 7500 LE (variant of RV200) used by Radeon 7500 LE
         ATI_RV280_9200_SE, // RV280 9200 SE (variant of RV280) used by Radeon 9200 SE
         ATI_RV350_LX, // RV350 LX (variant of RV350) used by Radeon 9550
+        ATI_RV350_LE, // RV350 LE (variant of RV350) used by Radeon 9600
         ATI_RV350_SE, // RV350 SE (variant of RV350) used by Radeon 9600 SE
         ATI_RV380_XT, // RV380 XT (variant of RV380)
+        ATI_RV535_XT, // RV535 XT (variant of RV535) used by Radeon X1650 Pro
         ATI_RV570_XL, // RV570 XL (variant of RV570)
         ATI_R580_PLUS_XT, // R580+ XT (variant of R580+)
         ATI_RV620_LE, // RV620 LE (variant of RV620)

@@ -61,6 +61,8 @@ namespace DataInfo
           { ManufacturerID::ATI, 2003, ArchitectureID::ATI_R300, TechnologyID::nm_130, { std::nullopt, 4, 2, 4, 4 }, 24 } },
         { GPUID::ATI_RV380,
           { ManufacturerID::ATI, 2004, ArchitectureID::ATI_R300, TechnologyID::nm_130, { std::nullopt, 4, 2, 4, 4 }, 46 } },
+        { GPUID::ATI_RV535,
+          { ManufacturerID::ATI, 2006, ArchitectureID::ATI_Ultra_Threaded_SE, TechnologyID::nm_80, { std::nullopt, 12, 5, 4, 4 }, 44 } },
         { GPUID::ATI_RV570,
           { ManufacturerID::ATI, 2006, ArchitectureID::ATI_Ultra_Threaded_SE, TechnologyID::nm_80, { std::nullopt, 36, 8, 12, 12 }, 130 } },
         { GPUID::ATI_R580_PLUS,
