@@ -170,6 +170,7 @@ namespace DataInfo
             { "amd_radeon_hd_8450", GfxCardID::AMD_Radeon_HD_8450 },
             { "amd_radeon_hd_8470", GfxCardID::AMD_Radeon_HD_8470 },
             { "amd_radeon_hd_8490", GfxCardID::AMD_Radeon_HD_8490 },
+            { "amd_radeon_hd_8550", GfxCardID::AMD_Radeon_HD_8550 },
 
             // AMD Radeon R5 series
             { "amd_radeon_r5_210", GfxCardID::AMD_Radeon_R5_210 },
