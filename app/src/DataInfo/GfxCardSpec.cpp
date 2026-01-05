@@ -480,6 +480,17 @@ namespace DataInfo
               { { 2'500'000, std::nullopt, 5'000'000, 200'000'000, std::nullopt } } },
         },
         {
+            GfxCardID::AMD_Radeon_HD_6570,
+            { "Radeon HD 6570",
+              ManufacturerID::AMD,
+              GPUID::AMD_TURKS,
+              GPUVariantID::AMD_TURKS_PRO,
+              2011,
+              { BoardInterface::PCIe_2_x16 },
+              60,
+              { { 5'200'000, std::nullopt, 15'600'000, 624'000'000, std::nullopt } } },
+        },
+        {
             GfxCardID::AMD_Radeon_HD_6870,
             { "Radeon HD 6870",
               ManufacturerID::AMD,
@@ -502,6 +513,17 @@ namespace DataInfo
               { { 3'000'000, std::nullopt, 6'000'000, 240'000'000, std::nullopt } } },
         },
         {
+            GfxCardID::AMD_Radeon_HD_7570, // Rebranded HD 6570
+            { "Radeon HD 7570",
+              ManufacturerID::AMD,
+              GPUID::AMD_TURKS,
+              GPUVariantID::AMD_TURKS_PRO_L,
+              2012,
+              { BoardInterface::PCIe_2_x16 },
+              60,
+              { { 5'200'000, std::nullopt, 15'600'000, 624'000'000, std::nullopt } } },
+        },
+        {
             GfxCardID::AMD_Radeon_HD_8470,
             { "Radeon HD 8470",
               ManufacturerID::AMD,
@@ -511,6 +533,17 @@ namespace DataInfo
               { BoardInterface::PCIe_2_x16 },
               35,
               { { 3'100'000, std::nullopt, 6'200'000, 248'000'000, std::nullopt } } },
+        },
+        {
+            GfxCardID::AMD_Radeon_HD_8550, // Rebranded HD 7570
+            { "Radeon HD 8550",
+              ManufacturerID::AMD,
+              GPUID::AMD_TURKS,
+              GPUVariantID::AMD_TURKS_PRO,
+              2013,
+              { BoardInterface::PCIe_2_x16 },
+              60,
+              { { 5'200'000, std::nullopt, 15'600'000, 624'000'000, std::nullopt } } },
         },
         {
             GfxCardID::AMD_Radeon_R5_230,

@@ -169,6 +169,7 @@ namespace DataInfo
         AMD_Radeon_HD_8450,
         AMD_Radeon_HD_8470,
         AMD_Radeon_HD_8490,
+        AMD_Radeon_HD_8550,
 
         // AMD Radeon R5 series
         AMD_Radeon_R5_210,

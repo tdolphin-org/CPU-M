@@ -150,6 +150,8 @@ namespace std
                 return "Barts";
             case GPUID::AMD_CAICOS:
                 return "Caicos";
+            case GPUID::AMD_TURKS:
+                return "Turks";
             case GPUID::AMD_BAFFIN:
                 return "Baffin";
             case GPUID::ATI_M10:
@@ -201,6 +203,10 @@ namespace std
                 return "Caicos XT";
             case GPUVariantID::AMD_CAICOS_PRO:
                 return "Caicos Pro";
+            case GPUVariantID::AMD_TURKS_PRO:
+                return "Turks Pro";
+            case GPUVariantID::AMD_TURKS_PRO_L:
+                return "Turks PRO-L";
             case GPUVariantID::AMD_BAFFIN_PRO:
                 return "Baffin Pro";
             default:
