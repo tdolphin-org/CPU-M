@@ -120,6 +120,8 @@ namespace std
                 return "XG42";
             case GPUID::ATI_Rage_128_Pro:
                 return "Rage 128 Pro";
+            case GPUID::ATI_R200:
+                return "R200";
             case GPUID::ATI_RV200:
                 return "RV200";
             case GPUID::ATI_RV280:
@@ -171,6 +173,10 @@ namespace std
                 return "RV200 7500 LE";
             case GPUVariantID::ATI_RV280_9200_SE:
                 return "RV280 9200 SE";
+            case GPUVariantID::ATI_RV350_LX:
+                return "RV350 LX";
+            case GPUVariantID::ATI_RV350_SE:
+                return "RV350 SE";
             case GPUVariantID::ATI_RV380_XT:
                 return "RV380 XT";
             case GPUVariantID::ATI_RV570_XL:

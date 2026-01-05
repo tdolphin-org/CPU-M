@@ -42,15 +42,16 @@ namespace DataInfo
             // ATI/AMD Rage series
             { "ati_rage_128_pro", GfxCardID::ATI_Rage_128_Pro },
 
-            // ATI/AMD Radeon R100/RV200 series (7xxx)
+            // ATI/AMD Radeon R100 series (7xxx)
             { "ati_radeon_7000", GfxCardID::ATI_Radeon_7000 },
             { "ati_radeon_7200", GfxCardID::ATI_Radeon_7200 },
             { "ati_radeon_7500", GfxCardID::ATI_Radeon_7500 },
             { "ati_radeon_7500_le", GfxCardID::ATI_Radeon_7500_LE },
 
-            // ATI/AMD Radeon R200 series (8xxx-9xxx)
+            // ATI/AMD Radeon R(V)2x0 series (8xxx-9xxx)
             { "ati_radeon_8500_le", GfxCardID::ATI_Radeon_8500_LE },
             { "ati_radeon_8500", GfxCardID::ATI_Radeon_8500 },
+            { "ati_radeon_8500_dv", GfxCardID::ATI_Radeon_8500_DV },
             { "ati_radeon_9000", GfxCardID::ATI_Radeon_9000 },
             { "ati_radeon_9000_pro", GfxCardID::ATI_Radeon_9000_Pro },
             { "ati_radeon_9100", GfxCardID::ATI_Radeon_9100 },
@@ -59,11 +60,13 @@ namespace DataInfo
             { "ati_radeon_9200_se", GfxCardID::ATI_Radeon_9200_SE },
             { "ati_radeon_9200_pro", GfxCardID::ATI_Radeon_9200_Pro },
             { "ati_radeon_9250", GfxCardID::ATI_Radeon_9250 },
+            { "ati_radeon_9550", GfxCardID::ATI_Radeon_9550 },
             { "ati_radeon_9550_mobile", GfxCardID::ATI_Radeon_9550_Mobile },
             { "ati_radeon_9600_mobile", GfxCardID::ATI_Radeon_9600_Mobile },
             { "ati_radeon_9600_pro", GfxCardID::ATI_Radeon_9600_Pro },
             { "ati_radeon_9650", GfxCardID::ATI_Radeon_9650 },
             { "ati_radeon_9600_xt", GfxCardID::ATI_Radeon_9600_XT },
+            { "ati_radeon_9600_se", GfxCardID::ATI_Radeon_9600_SE },
             { "ati_radeon_9700_pro", GfxCardID::ATI_Radeon_9700_Pro },
             { "ati_radeon_9700_mobile", GfxCardID::ATI_Radeon_9700_Mobile },
             { "ati_radeon_9800", GfxCardID::ATI_Radeon_9800 },

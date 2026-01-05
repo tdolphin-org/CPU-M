@@ -113,10 +113,12 @@ namespace Components
 
                 std::optional<std::vector<DataInfo::PCIDeviceValue>> boardId = std::nullopt;
 
+                // first try to find with subsystemVendorId and subsystemProductId
                 if (subsystemVendorId.has_value() && subsystemProductId.has_value())
                     boardId = DataInfo::PCI2IDSpec::instance().Find(DataInfo::PCIDeviceKey(
                         monitor.manufacturerId, monitor.productId, subsystemVendorId.value(), subsystemProductId.value()));
 
+                // if not found, try without subsystem IDs, so only with vendorId and deviceId
                 if (!boardId.has_value())
                 {
 #ifdef TRACE
