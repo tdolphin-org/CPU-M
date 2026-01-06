@@ -3,7 +3,7 @@ vendor_id,device_id,subsystem_vendor_id,subsystem_device_id,card_name
 0x1002,0x4E56,,,ati_radeon_9550_mobile
 0x1002,0x4150,,,ati_radeon_9600_pro
 0x1002,0x4151,0x1043,0xC004,ati_radeon_9600_se
-0x1002,0x4151,0x174b,0x7C37,ati_radeon_9600_se
+0x1002,0x4151,0x174B,0x7C37,ati_radeon_9600_se
 0x1002,0x4152,,,ati_radeon_9600_xt
 0x1002,0x4152,,,ati_radeon_x1050
 0x1002,0x4E48,,,ati_radeon_9800
@@ -60,6 +60,16 @@ vendor_id,device_id,subsystem_vendor_id,subsystem_device_id,card_name
 0x1002,0x6779,0x174B,0xA004,amd_radeon_r5_230
 0x1002,0x6779,0x1019,0x0016,amd_radeon_hd_6450
 0x1002,0x6779,0x1019,0x2120,amd_radeon_hd_6450
+0x1002,0X675D,,,amd_radeon_hd_7570
+0x1002,0X675F,0x148C,0X6510,amd_radeon_hd_6510
+0x1002,0X675F,0x148C,0X6530,amd_radeon_hd_6530
+0x1002,0X675F,0x148C,0X7510,amd_radeon_hd_7510
+0x1002,0X675F,0x1545,0X7570,amd_radeon_hd_7570
+0x1002,0X675F,0x174B,0X6510,amd_radeon_hd_6510
+0x1002,0X675F,0x174B,0X7510,amd_radeon_hd_7510
+0x1002,0X675F,0x174B,0X8510,amd_radeon_hd_8510
+0x1002,0X675F,0x1787,0X2012,amd_radeon_hd_5570
+0x1002,0X675F,0x1787,0X2314,amd_radeon_hd_5570
 0x1002,0x67EF,,,amd_radeon_rx_460
 0x1002,0x67EF,,,amd_radeon_rx_560
 0x1002,0x67EF,,,amd_radeon_rx_560x

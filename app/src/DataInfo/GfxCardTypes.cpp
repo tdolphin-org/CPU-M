@@ -149,6 +149,8 @@ namespace DataInfo
             // AMD Radeon HD 6xxx series
             { "amd_radeon_hd_6350", GfxCardID::AMD_Radeon_HD_6350 },
             { "amd_radeon_hd_6450", GfxCardID::AMD_Radeon_HD_6450 },
+            { "amd_radeon_hd_6510", GfxCardID::AMD_Radeon_HD_6510 },
+            { "amd_radeon_hd_6530", GfxCardID::AMD_Radeon_HD_6530 },
             { "amd_radeon_hd_6570", GfxCardID::AMD_Radeon_HD_6570 },
             { "amd_radeon_hd_6670", GfxCardID::AMD_Radeon_HD_6670 },
             { "amd_radeon_hd_6750", GfxCardID::AMD_Radeon_HD_6750 },
@@ -170,6 +172,7 @@ namespace DataInfo
             { "amd_radeon_hd_8450", GfxCardID::AMD_Radeon_HD_8450 },
             { "amd_radeon_hd_8470", GfxCardID::AMD_Radeon_HD_8470 },
             { "amd_radeon_hd_8490", GfxCardID::AMD_Radeon_HD_8490 },
+            { "amd_radeon_hd_8510", GfxCardID::AMD_Radeon_HD_8510 },
             { "amd_radeon_hd_8550", GfxCardID::AMD_Radeon_HD_8550 },
 
             // AMD Radeon R5 series

@@ -480,6 +480,28 @@ namespace DataInfo
               { { 2'500'000, std::nullopt, 5'000'000, 200'000'000, std::nullopt } } },
         },
         {
+            GfxCardID::AMD_Radeon_HD_6510,
+            { "Radeon HD 6510",
+              ManufacturerID::AMD,
+              GPUID::AMD_REDWOOD,
+              GPUVariantID::AMD_REDWOOD_PRO,
+              2011,
+              { BoardInterface::PCIe_2_x16 },
+              39,
+              { { 5'200'000, std::nullopt, 13'000'000, 520'000'000, std::nullopt } } },
+        },
+        {
+            GfxCardID::AMD_Radeon_HD_6530,
+            { "Radeon HD 6530",
+              ManufacturerID::AMD,
+              GPUID::AMD_REDWOOD,
+              GPUVariantID::AMD_REDWOOD_PRO,
+              2011,
+              { BoardInterface::PCIe_2_x16 },
+              39,
+              { { 5'200'000, std::nullopt, 13'000'000, 520'000'000, std::nullopt } } },
+        },
+        {
             GfxCardID::AMD_Radeon_HD_6570,
             { "Radeon HD 6570",
               ManufacturerID::AMD,
@@ -513,6 +535,17 @@ namespace DataInfo
               { { 3'000'000, std::nullopt, 6'000'000, 240'000'000, std::nullopt } } },
         },
         {
+            GfxCardID::AMD_Radeon_HD_7510, // Rebranded HD 6510
+            { "Radeon HD 7510",
+              ManufacturerID::AMD,
+              GPUID::AMD_TURKS,
+              GPUVariantID::AMD_TURKS_LE,
+              2013,
+              { BoardInterface::PCIe_2_x16 },
+              27,
+              { { 2'600'000, std::nullopt, 10'400'000, 416'000'000, std::nullopt } } },
+        },
+        {
             GfxCardID::AMD_Radeon_HD_7570, // Rebranded HD 6570
             { "Radeon HD 7570",
               ManufacturerID::AMD,
@@ -533,6 +566,17 @@ namespace DataInfo
               { BoardInterface::PCIe_2_x16 },
               35,
               { { 3'100'000, std::nullopt, 6'200'000, 248'000'000, std::nullopt } } },
+        },
+        {
+            GfxCardID::AMD_Radeon_HD_8510, // Rebranded HD 7570
+            { "Radeon HD 8510",
+              ManufacturerID::AMD,
+              GPUID::AMD_TURKS,
+              GPUVariantID::AMD_TURKS_PRO,
+              2013,
+              { BoardInterface::PCIe_2_x16 },
+              60,
+              { { 5'200'000, std::nullopt, 15'600'000, 624'000'000, std::nullopt } } },
         },
         {
             GfxCardID::AMD_Radeon_HD_8550, // Rebranded HD 7570

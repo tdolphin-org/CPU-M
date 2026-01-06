@@ -95,6 +95,7 @@ namespace DataInfo
         AMD_BARTS, // Barts
         AMD_CAICOS, // Caicos
         AMD_TURKS, // Turks
+        AMD_REDWOOD, // Redwood
         AMD_BAFFIN, // Baffin
         ATI_M10, // Mobility M10
         ATI_M11, // Mobility M11
@@ -120,8 +121,10 @@ namespace DataInfo
         AMD_KHALIDSTER, // Khalidster (variant of Caicos)
         AMD_CAICOS_XT, // Caicos XT (variant of Caicos)
         AMD_CAICOS_PRO, // Caicos Pro (variant of Caicos)
+        AMD_TURKS_LE, // Turks LE (variant of Turks)
         AMD_TURKS_PRO, // Turks Pro (variant of Turks)
         AMD_TURKS_PRO_L, // Turks Pro L (variant of Turks)
+        AMD_REDWOOD_PRO, // Redwood Pro (variant of Redwood)
         AMD_BAFFIN_PRO, // Baffin Pro (variant of Baffin)
     };
 }

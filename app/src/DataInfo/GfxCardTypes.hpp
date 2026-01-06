@@ -148,6 +148,8 @@ namespace DataInfo
         // AMD Radeon HD 6xxx series
         AMD_Radeon_HD_6350,
         AMD_Radeon_HD_6450,
+        AMD_Radeon_HD_6510,
+        AMD_Radeon_HD_6530,
         AMD_Radeon_HD_6570,
         AMD_Radeon_HD_6670,
         AMD_Radeon_HD_6750,
@@ -169,6 +171,7 @@ namespace DataInfo
         AMD_Radeon_HD_8450,
         AMD_Radeon_HD_8470,
         AMD_Radeon_HD_8490,
+        AMD_Radeon_HD_8510,
         AMD_Radeon_HD_8550,
 
         // AMD Radeon R5 series
