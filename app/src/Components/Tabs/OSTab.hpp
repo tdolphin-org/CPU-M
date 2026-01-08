@@ -1,7 +1,7 @@
 //
 //  CPU-M
 //
-//  (c) 2025 TDolphin
+//  (c) 2025-2026 TDolphin
 //
 
 #pragma once
@@ -19,11 +19,14 @@ namespace Components
     class OSTab : public Root<MUI::Group>, public Base
     {
         MUI::Text mFullOSNameText;
+        MUI::Text mRegisteredToText;
+        MUI::Text mUserText;
+        MUI::Text mUserLoginText;
+        MUI::Text mUserHomePathText;
         MUI::Text mKickstartVersionText;
         MUI::Text mExecVersionText;
         MUI::Text mAmbientVersionText;
         MUI::Text mWorkbenchVersionText;
-        MUI::Text mUserText;
         MUI::Text mTimeZoneText;
         MUI::Text mCodePageText;
         MUI::Text mLocaleText;

@@ -1,7 +1,7 @@
 //
 //  CPU-M
 //
-//  (c) 2025 TDolphin
+//  (c) 2025-2026 TDolphin
 //
 
 #include "OSTab.hpp"
@@ -20,12 +20,15 @@
 namespace Components
 {
     OSTab::OSTab()
-      : mFullOSNameText(ValueText("Full name of Operating System and version, copyrights etc", "??", true))
+      : mFullOSNameText(ValueText("Full name of Operating System and version, copyrights etc", "--", true))
+      , mRegisteredToText(ValueText("MorphOS license registered to"))
+      , mUserText(ValueText("Current user login (env variable USER)"))
+      , mUserLoginText(ValueText("Current user login (env variable LOGNAME)"))
+      , mUserHomePathText(ValueText("Current user home path (env variable HOME)"))
       , mKickstartVersionText(ValueText("Kickstart Version"))
       , mExecVersionText(ValueText("Exec Version"))
-      , mAmbientVersionText(ValueText("Ambient Version", "??"))
+      , mAmbientVersionText(ValueText("Ambient Version", "--"))
       , mWorkbenchVersionText(ValueText("Workbench Version"))
-      , mUserText(ValueText("Current user name"))
       , mTimeZoneText(ValueText("Current time zone"))
       , mCodePageText(ValueText("Current code page"))
       , mLocaleText(ValueText("Current locale"))
@@ -53,6 +56,14 @@ namespace Components
                                      .tagChild(mFullOSNameText)
                                      .tagChild(MUI::GroupBuilder()
                                                    .tagColumns(8)
+                                                   .tagChild(LabelText(MUIX_R "Registered to:"))
+                                                   .tagChild(mRegisteredToText)
+                                                   .tagChild(LabelText(MUIX_R "User:"))
+                                                   .tagChild(mUserText)
+                                                   .tagChild(LabelText(MUIX_R "Login:"))
+                                                   .tagChild(mUserLoginText)
+                                                   .tagChild(LabelText(MUIX_R "Home path:"))
+                                                   .tagChild(mUserHomePathText)
                                                    .tagChild(LabelText(MUIX_R "Kickstart:"))
                                                    .tagChild(mKickstartVersionText)
                                                    .tagChild(LabelText(MUIX_R "Exec:"))
@@ -61,14 +72,14 @@ namespace Components
                                                    .tagChild(mAmbientVersionText)
                                                    .tagChild(LabelText(MUIX_R "Workbench:"))
                                                    .tagChild(mWorkbenchVersionText)
-                                                   .tagChild(LabelText(MUIX_R "User:"))
-                                                   .tagChild(mUserText)
                                                    .tagChild(LabelText(MUIX_R "Time Zone:"))
                                                    .tagChild(mTimeZoneText)
                                                    .tagChild(LabelText(MUIX_R "Locale:"))
                                                    .tagChild(mLocaleText)
                                                    .tagChild(LabelText(MUIX_R "Code Page:"))
                                                    .tagChild(mCodePageText)
+                                                   .tagChild(MUI::MakeObject::HVSpace())
+                                                   .tagChild(MUI::MakeObject::HVSpace())
                                                    .object())
                                      .object())
                        .tagChild(MUI::MakeObject::CLabel("Loaded Exec Nodes"))
@@ -83,6 +94,17 @@ namespace Components
             osName.replace(pos - 1, 1, "\n");
         mFullOSNameText.setContents(osName);
 
+        // user related
+        auto registeredTo = AOS::Exec::Library::libNewGetSystemAttrsAsString(AOS::Exec::SYSTEMINFOTYPE::REGUSER);
+        mRegisteredToText.setContents(registeredTo);
+        auto user = AOS::Dos::Library::libGetVar("USER");
+        mUserText.setContents(user.has_value() ? user.value() : "--");
+        auto login = AOS::Dos::Library::libGetVar("LOGNAME");
+        mUserLoginText.setContents(login.has_value() ? login.value() : "--");
+        auto home = AOS::Dos::Library::libGetVar("HOME");
+        mUserHomePathText.setContents(home.has_value() ? home.value() : "--");
+
+        // kickstart version and others
         auto kickstart = AOS::Dos::Library::libGetVar("Kickstart");
         mKickstartVersionText.setContents(kickstart.has_value() ? "v" + StringUtils::Split(kickstart.value()).back() : "??");
 
@@ -121,16 +143,14 @@ namespace Components
         }
 
         auto workbench = AOS::Dos::Library::libGetVar("Workbench");
-        mWorkbenchVersionText.setContents(workbench.has_value() ? "v" + StringUtils::Split(workbench.value()).back() : "??");
+        mWorkbenchVersionText.setContents(workbench.has_value() ? "v" + StringUtils::Split(workbench.value()).back() : "--");
 
-        auto user = AOS::Dos::Library::libGetVar("USER");
-        mUserText.setContents(user.has_value() ? user.value() : "??");
         auto timezone = AOS::Dos::Library::libGetVar("TZ");
-        mTimeZoneText.setContents(timezone.has_value() ? timezone.value() : "??");
+        mTimeZoneText.setContents(timezone.has_value() ? timezone.value() : "--");
         auto codepage = AOS::Dos::Library::libGetVar("CODEPAGE");
-        mCodePageText.setContents(codepage.has_value() ? codepage.value() : "??");
+        mCodePageText.setContents(codepage.has_value() ? codepage.value() : "--");
         auto locale = AOS::Dos::Library::libGetVar("Language");
-        mLocaleText.setContents(locale.has_value() ? locale.value() : "??");
+        mLocaleText.setContents(locale.has_value() ? locale.value() : "--");
 
         mExecVersionText.setContents("v" + AOS::Exec::Library::GetVersion());
 
