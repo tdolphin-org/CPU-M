@@ -19,6 +19,7 @@ namespace DataInfo
         {
             "bplan,Pegasos",
             {
+                HardwareManufacturerID::BPLAN,
                 std::nullopt,
                 "Genesi Pegasos",
                 2003,
@@ -43,6 +44,7 @@ namespace DataInfo
         {
             "bplan,Pegasos2",
             {
+                HardwareManufacturerID::BPLAN,
                 std::nullopt,
                 "Genesi Pegasos 2",
                 2003,
@@ -68,6 +70,7 @@ namespace DataInfo
         {
             "bplan,EFIKA5K2",
             {
+                HardwareManufacturerID::BPLAN,
                 std::nullopt,
                 "Genesi Efika 5200B",
                 2006,
@@ -85,6 +88,7 @@ namespace DataInfo
         {
             "Sam460ex",
             {
+                HardwareManufacturerID::ACUBE,
                 std::nullopt,
                 "ACube Sam460ex",
                 2010,
@@ -102,6 +106,7 @@ namespace DataInfo
         {
             "Sam460cr",
             {
+                HardwareManufacturerID::ACUBE,
                 std::nullopt,
                 "ACube Sam460cr",
                 2015,
@@ -119,6 +124,7 @@ namespace DataInfo
         {
             "CyrusPlus",
             {
+                HardwareManufacturerID::A_EON,
                 std::nullopt,
                 "AmigaOne X5000",
                 2016,
@@ -136,6 +142,7 @@ namespace DataInfo
         {
             "Mirari.*",
             {
+                HardwareManufacturerID::MIRARI,
                 "031UATXPPCEX500",
                 "Mirari T1042",
                 2025,
@@ -158,6 +165,7 @@ namespace DataInfo
         {
             "PowerMac3,1",
             {
+                HardwareManufacturerID::APPLE,
                 "M5183",
                 "Apple Power Mac G4",
                 1999,
@@ -175,6 +183,7 @@ namespace DataInfo
         {
             "PowerMac5,1",
             {
+                HardwareManufacturerID::APPLE,
                 "M7886",
                 "Apple Power Macintosh G4 Cube",
                 2000,
@@ -192,6 +201,7 @@ namespace DataInfo
         {
             "PowerBook5,2",
             {
+                HardwareManufacturerID::APPLE,
                 "A1046",
                 "Apple PowerBook G4 (15\")",
                 2003,
@@ -220,6 +230,7 @@ namespace DataInfo
         {
             "PowerBook5,3",
             {
+                HardwareManufacturerID::APPLE,
                 "A1052",
                 "Apple PowerBook G4 (17\")",
                 2003,
@@ -249,6 +260,7 @@ namespace DataInfo
         {
             "PowerBook5,4",
             {
+                HardwareManufacturerID::APPLE,
                 "A1095",
                 "Apple PowerBook G4 (15\")",
                 2004,
@@ -278,6 +290,7 @@ namespace DataInfo
         {
             "PowerBook5,5",
             {
+                HardwareManufacturerID::APPLE,
                 "A1085",
                 "Apple PowerBook G4 (17\")",
                 2004,
@@ -307,6 +320,7 @@ namespace DataInfo
         {
             "PowerBook5,6",
             {
+                HardwareManufacturerID::APPLE,
                 "A1106",
                 "Apple PowerBook G4 (15\")",
                 2005,
@@ -336,6 +350,7 @@ namespace DataInfo
         {
             "PowerBook5,7",
             {
+                HardwareManufacturerID::APPLE,
                 "A1107",
                 "Apple PowerBook G4 (17\")",
                 2005,
@@ -365,6 +380,7 @@ namespace DataInfo
         {
             "PowerBook5,8",
             {
+                HardwareManufacturerID::APPLE,
                 "A1138",
                 "Apple PowerBook G4 (15\")",
                 2005,
@@ -394,6 +410,7 @@ namespace DataInfo
         {
             "PowerBook5,9",
             {
+                HardwareManufacturerID::APPLE,
                 "A1139",
                 "Apple PowerBook G4 (17\")",
                 2005,
@@ -423,6 +440,7 @@ namespace DataInfo
         {
             "PowerBook6,7",
             {
+                HardwareManufacturerID::APPLE,
                 "A1133 (12\") or A1134 (14\")",
                 "Apple iBook G4 (12\" or 14\")",
                 2005,
@@ -447,6 +465,7 @@ namespace DataInfo
         {
             "PowerMac7,3",
             {
+                HardwareManufacturerID::APPLE,
                 "A1047",
                 "Apple Power Macintosch G5",
                 2004,
@@ -465,6 +484,7 @@ namespace DataInfo
         {
             "PowerMac10,1",
             {
+                HardwareManufacturerID::APPLE,
                 "A1103",
                 "Apple Mac mini G4",
                 2005,
@@ -482,6 +502,7 @@ namespace DataInfo
         {
             "PowerMac10,2",
             {
+                HardwareManufacturerID::APPLE,
                 "A1103",
                 "Apple Mac mini G4",
                 2005,
@@ -499,6 +520,7 @@ namespace DataInfo
         {
             "PowerMac11,2",
             {
+                HardwareManufacturerID::APPLE,
                 "A1117 or A1177",
                 "Apple Power Macintosh G5 Dual or Quad Core",
                 2005,
@@ -516,6 +538,7 @@ namespace DataInfo
         {
             "PowerMac12,1",
             {
+                HardwareManufacturerID::APPLE,
                 "A1144 or A1145",
                 "Apple iMac G5 17\" or 20\") (iSight)",
                 2005,
@@ -531,7 +554,7 @@ namespace DataInfo
             },
         },
     };
-    
+
     std::optional<HardwareSystemSpec> FindHardwareSystemSpecByID(const std::string &id)
     {
         // first try direct lookup
@@ -540,7 +563,7 @@ namespace DataInfo
             return hardwareSpec->second;
 
         // then try regexp match
-        for (const auto& [regexpStr, spec] : hardwareSystem2spec)
+        for (const auto &[regexpStr, spec] : hardwareSystem2spec)
         {
             std::regex re(regexpStr);
             if (std::regex_match(id, re))

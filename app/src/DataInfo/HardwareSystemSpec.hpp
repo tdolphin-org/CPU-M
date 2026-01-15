@@ -1,7 +1,7 @@
 //
 //  CPU-M
 //
-//  (c) 2025 TDolphin
+//  (c) 2025-2026 TDolphin
 //
 
 #pragma once
@@ -15,6 +15,15 @@
 
 namespace DataInfo
 {
+    enum class HardwareManufacturerID
+    {
+        BPLAN, // bPlan GmbH
+        APPLE, // Apple Inc.
+        ACUBE, // ACube Systems Srl
+        A_EON, // A-EON Technology Ltd.
+        MIRARI, // Mirari Technologies
+    };
+
     struct SlotRAMSpec
     {
         MemoryType type; // PC2700 DDR SDRAM
@@ -37,6 +46,7 @@ namespace DataInfo
 
     struct HardwareSystemSpec
     {
+        HardwareManufacturerID manufacturer; // APPLE
         std::optional<std::string> modelNumber; // A1103
         std::string marketingName; // Apple Mac mini G4
         unsigned int introductionYear; // 2005
