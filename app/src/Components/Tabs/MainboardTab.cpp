@@ -1,7 +1,7 @@
 //
 //  CPU-M
 //
-//  (c) 2025 TDolphin
+//  (c) 2025-2026 TDolphin
 //
 
 #include "MainboardTab.hpp"
@@ -92,5 +92,7 @@ namespace Components
             mPortsGroup.Append(port.type + " (x" + std::to_string(port.count) + "); ");
         if (spec.notes.has_value())
             mNoteText.setContents(spec.notes.value());
+        else
+            mNoteText.setContents("No additional notes available.");
     }
 }
