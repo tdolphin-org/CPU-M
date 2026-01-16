@@ -49,9 +49,9 @@ namespace DataInfo
         AMD_GCN_4_0,
         AMD_GCN_5_0,
         AMD_GCN_5_1,
-        AMD_RDNA_1,
-        AMD_RDNA_2,
-        AMD_RDNA_3,
+        AMD_RDNA_1_0,
+        AMD_RDNA_2_0,
+        AMD_RDNA_3_0,
         // ... add more architectures as needed
     };
 
