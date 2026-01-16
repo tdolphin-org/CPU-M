@@ -156,6 +156,8 @@ namespace std
                 return "Redwood";
             case GPUID::AMD_BAFFIN:
                 return "Baffin";
+            case GPUID::AMD_NAVI_24:
+                return "Navi 24";
             case GPUID::ATI_M10:
                 return "M10";
             case GPUID::ATI_M11:
@@ -217,6 +219,8 @@ namespace std
                 return "Redwood Pro";
             case GPUVariantID::AMD_BAFFIN_PRO:
                 return "Baffin Pro";
+            case GPUVariantID::AMD_NAVI_24_XL:
+                return "Navi 24 XL";
             default:
                 return "Unknown GPU Variant ID";
         }

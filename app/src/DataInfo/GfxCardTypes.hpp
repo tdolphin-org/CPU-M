@@ -185,11 +185,14 @@ namespace DataInfo
         AMD_FirePro_V3800,
         AMD_FirePro_V4800,
 
-        // AMD Radeon RX series
+        // AMD Radeon RX 000 series
         AMD_Radeon_RX_460,
         AMD_Radeon_RX_550,
         AMD_Radeon_RX_560,
         AMD_Radeon_RX_560X,
+
+        // AMD Radeon RX 6000 series
+        AMD_Radeon_RX_6400
     };
 
     std::optional<GfxCardID> StringToGfxCardID(const std::string &str);

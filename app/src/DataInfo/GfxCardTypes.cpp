@@ -186,11 +186,14 @@ namespace DataInfo
             { "amd_firepro_v3800", GfxCardID::AMD_FirePro_V3800 },
             { "amd_firepro_v4800", GfxCardID::AMD_FirePro_V4800 },
 
-            // AMD Radeon RX series
+            // AMD Radeon RX 000 series
             { "amd_radeon_rx_460", GfxCardID::AMD_Radeon_RX_460 },
             { "amd_radeon_rx_550", GfxCardID::AMD_Radeon_RX_550 },
             { "amd_radeon_rx_560", GfxCardID::AMD_Radeon_RX_560 },
             { "amd_radeon_rx_560x", GfxCardID::AMD_Radeon_RX_560X },
+
+            // AMD Radeon RX 6000 series
+            { "amd_radeon_rx_6400", GfxCardID::AMD_Radeon_RX_6400 },
         };
 
         std::string lowerStr = str;

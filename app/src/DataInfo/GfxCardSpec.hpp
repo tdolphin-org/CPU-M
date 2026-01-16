@@ -1,7 +1,7 @@
 //
 //  CPU-M
 //
-//  (c) 2025 TDolphin
+//  (c) 2025-2026 TDolphin
 //
 
 #pragma once
@@ -26,6 +26,7 @@ namespace DataInfo
         PCIe_x16, // 1.0 x16
         PCIe_2_x16, // 2.0 x16
         PCIe_3_x8, // 3.0 x8
+        PCIe_4_x4, // 4.0 x4
     };
 
     struct TheoreticalPerformance

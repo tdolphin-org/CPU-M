@@ -611,6 +611,17 @@ namespace DataInfo
               75,
               { { 19'200'000, std::nullopt, 67'200'000, 2'150'000'000, 134'400'000 } } },
         },
+        {
+            GfxCardID::AMD_Radeon_RX_6400,
+            { "Radeon RX 6400",
+              ManufacturerID::AMD,
+              GPUID::AMD_NAVI_24,
+              GPUVariantID::AMD_NAVI_24_XL,
+              2022,
+              { BoardInterface::PCIe_4_x4 },
+              53,
+              { { 74'270'000, std::nullopt, 111'400'000, 3'565'000'000, 222'800'000 } } },
+        },
     };
 
     std::string PerformancePixelRateToString(const unsigned long long rate)

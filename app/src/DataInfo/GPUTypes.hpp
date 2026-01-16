@@ -97,6 +97,7 @@ namespace DataInfo
         AMD_TURKS, // Turks
         AMD_REDWOOD, // Redwood
         AMD_BAFFIN, // Baffin
+        AMD_NAVI_24, // Navi 24
         ATI_M10, // Mobility M10
         ATI_M11, // Mobility M11
         ATI_M12, // Mobility M12
@@ -126,6 +127,7 @@ namespace DataInfo
         AMD_TURKS_PRO_L, // Turks Pro L (variant of Turks)
         AMD_REDWOOD_PRO, // Redwood Pro (variant of Redwood)
         AMD_BAFFIN_PRO, // Baffin Pro (variant of Baffin)
+        AMD_NAVI_24_XL, // Navi 24 XL (variant of Navi 24)
     };
 }
 
