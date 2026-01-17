@@ -1,7 +1,7 @@
 //
 //  CPU-M
 //
-//  (c) 2025 TDolphin
+//  (c) 2025-2026 TDolphin
 //
 
 #pragma once
@@ -22,11 +22,12 @@ namespace Components
         MUI::Text mFullNameText; // marketing name
         MUI::Text mModelNumberText; // optional
         MUI::Text mTimelineText; // years range (from intoduction to discontinued)
+        MUI::Group mSystemInfoGroup;
+
         MUI::Text mProcessorSocketText;
         MUI::Text mFirmwareTypeText;
         MUI::Text mStorageInterfacesText;
         MUI::Floattext mPortsGroup;
-        MUI::Text mNoteText;
 
         MUI::Group mComponent;
 
