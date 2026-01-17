@@ -75,7 +75,9 @@ namespace DataInfo
 
             // ATI/AMD Radeon R300-R500 series (X series)
             { "ati_radeon_x600_xt", GfxCardID::ATI_Radeon_X600_XT },
+            { "ati_radeon_x800_xt_agp", GfxCardID::ATI_Radeon_X800_XT_AGP },
             { "ati_radeon_x800_xt", GfxCardID::ATI_Radeon_X800_XT },
+            { "ati_radeon_x1050_agp", GfxCardID::ATI_Radeon_X1050_AGP },
             { "ati_radeon_x1050", GfxCardID::ATI_Radeon_X1050 },
             { "ati_radeon_x1300", GfxCardID::ATI_Radeon_X1300 },
             { "ati_radeon_x1300_pro", GfxCardID::ATI_Radeon_X1300_Pro },
