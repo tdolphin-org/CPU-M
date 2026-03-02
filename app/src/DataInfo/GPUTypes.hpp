@@ -97,9 +97,11 @@ namespace DataInfo
         ATI_R580_PLUS, // R580+
         ATI_RV620, // RV620
         ATI_RV670, // RV670
+        ATI_RV710, // RV710
         ATI_RV730, // RV730
         AMD_BARTS, // Barts
         AMD_CAICOS, // Caicos
+        AMD_CEDAR, // Cedar
         AMD_TURKS, // Turks
         AMD_REDWOOD, // Redwood
         AMD_BAFFIN, // Baffin
@@ -133,6 +135,7 @@ namespace DataInfo
         AMD_KHALIDSTER, // Khalidster (variant of Caicos)
         AMD_CAICOS_XT, // Caicos XT (variant of Caicos)
         AMD_CAICOS_PRO, // Caicos Pro (variant of Caicos)
+        AMD_CEDAR_PRO, // Cedar Pro (variant of Cedar)
         AMD_TURKS_LE, // Turks LE (variant of Turks)
         AMD_TURKS_PRO, // Turks Pro (variant of Turks)
         AMD_TURKS_PRO_L, // Turks Pro L (variant of Turks)
