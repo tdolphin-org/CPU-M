@@ -137,6 +137,7 @@ namespace DataInfo
 
             // AMD Radeon HD 5xxx series
             { "amd_radeon_hd_5450", GfxCardID::AMD_Radeon_HD_5450 },
+            { "amd_radeon_hd_5470", GfxCardID::AMD_Radeon_HD_5470 },
             { "amd_radeon_hd_5550", GfxCardID::AMD_Radeon_HD_5550 },
             { "amd_radeon_hd_5570", GfxCardID::AMD_Radeon_HD_5570 },
             { "amd_radeon_hd_5610", GfxCardID::AMD_Radeon_HD_5610 },
@@ -149,6 +150,9 @@ namespace DataInfo
             { "amd_radeon_hd_5870_eyefinity_edition", GfxCardID::AMD_Radeon_HD_5870_Eyefinity_Edition },
 
             // AMD Radeon HD 6xxx series
+            { "amd_radeon_hd_6230", GfxCardID::AMD_Radeon_HD_6230 },
+            { "amd_radeon_hd_6250", GfxCardID::AMD_Radeon_HD_6250 },
+            { "amd_radeon_hd_6350", GfxCardID::AMD_Radeon_HD_6350 },
             { "amd_radeon_hd_6350", GfxCardID::AMD_Radeon_HD_6350 },
             { "amd_radeon_hd_6450", GfxCardID::AMD_Radeon_HD_6450 },
             { "amd_radeon_hd_6510", GfxCardID::AMD_Radeon_HD_6510 },

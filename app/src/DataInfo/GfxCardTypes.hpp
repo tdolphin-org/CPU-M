@@ -136,6 +136,7 @@ namespace DataInfo
 
         // AMD Radeon HD 5xxx series
         AMD_Radeon_HD_5450,
+        AMD_Radeon_HD_5470,
         AMD_Radeon_HD_5550,
         AMD_Radeon_HD_5570,
         AMD_Radeon_HD_5610,
@@ -148,6 +149,8 @@ namespace DataInfo
         AMD_Radeon_HD_5870_Eyefinity_Edition,
 
         // AMD Radeon HD 6xxx series
+        AMD_Radeon_HD_6230,
+        AMD_Radeon_HD_6250,
         AMD_Radeon_HD_6350,
         AMD_Radeon_HD_6450,
         AMD_Radeon_HD_6510,
