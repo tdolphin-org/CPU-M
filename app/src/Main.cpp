@@ -1,16 +1,17 @@
 //
 //  CPU-M
 //
-//  (c) 2025 TDolphin
+//  (c) 2025-2026 TDolphin
 //
 
 #include "Main.hpp"
 
 #include "App.hpp"
 
-#include <iostream>
+#include "amiga_std_light/iostream.hpp"
 #include <proto/dos.h>
 #include <proto/exec.h>
+#include <stdexcept>
 
 using namespace std;
 

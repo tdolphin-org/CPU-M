@@ -3,7 +3,7 @@ src/Version.cpp: FORCE
 	@echo "generate Version.cpp"
 	@echo "#include \"Version.hpp\"" >> $@
 	@echo "#include \"ProgDefines.hpp\"" >> $@
-	@echo "#include <iostream>" >> $@
+	@echo "#include \"amiga_std_light/iostream.hpp\"" >> $@
 	@echo "#pragma GCC diagnostic push" >> $@
 	@echo "#pragma GCC diagnostic ignored \"-Wunused-variable\"" >> $@
 	@echo "static const char *VERSION = AMIGAOS_VER_PREFIX CMD_NAME \" \" APP_VERSION \" \" APP_DATE \" \" APP_TDOLPHIN_COPYRIGHTS \" [\" APP_BUILD_COMMIT_HASH \"]\\\r\\\n\";" >> $@

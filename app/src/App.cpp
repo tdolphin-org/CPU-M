@@ -1,7 +1,7 @@
 //
 //  CPU-M
 //
-//  (c) 2025 TDolphin
+//  (c) 2025-2026 TDolphin
 //
 
 #include "App.hpp"
@@ -14,7 +14,7 @@
 #include <proto/exec.h>
 
 #ifdef TRACE
-#include <iostream>
+#include "amiga_std_light/iostream.hpp"
 #endif
 
 AppCore::AppCore()

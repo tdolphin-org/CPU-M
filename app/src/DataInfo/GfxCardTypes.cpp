@@ -6,9 +6,9 @@
 
 #include "GfxCardTypes.hpp"
 
+#include "amiga_std_light/iostream.hpp"
 #include <algorithm>
 #include <cctype>
-#include <iostream>
 #include <map>
 
 namespace DataInfo

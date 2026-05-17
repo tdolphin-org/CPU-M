@@ -9,8 +9,8 @@
 #include "FileResources/Specs.hpp"
 #include "GfxCardTypes.hpp"
 
+#include "amiga_std_light/iostream.hpp"
 #include <fstream>
-#include <iostream>
 #include <sstream>
 #include <string>
 
