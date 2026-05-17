@@ -1,7 +1,7 @@
 #
 #  CPU-M
 #
-#  (c) 2025 TDolphin
+#  (c) 2025-2026 TDolphin
 #
 #  generic makefile for gcc
 #
@@ -22,8 +22,10 @@
 DEBUG_FLAGS = #-DTRACE -DTRACE_CUSTOM_COMPONENTS -DTRACE_AMIGAOS
 
 CPP_FLAGS = $(DEBUG_FLAGS) $(MORE_CPP_FLAGS) -Wall -D_GLIBCXX_USE_WCHAR_T=0\
-	-Isrc -I${AOSCPP_PATH}/wrappers/src -I${MUICPP_PATH}/wrappers/src -I${MUICPP_PATH}/components/src
-LFLAGS = -L${MUICPP_PATH}/wrappers/lib/$(SUB_BUILD_PATH) -lMUIcpp $(MORE_LFLAGS)
+	-Isrc -I${AOSCPP_PATH}/wrappers/src -I${MUICPP_PATH}/wrappers/src -I${MUICPP_PATH}/components/src \
+	-fno-rtti -ffunction-sections -fdata-sections -Os
+LFLAGS = -L${MUICPP_PATH}/wrappers/lib/$(SUB_BUILD_PATH) $(MORE_LFLAGS) -lMUIcpp \
+ 	-Wl,--gc-sections
 
 dir_guard = mkdir -p $(@D)
 
