@@ -1,7 +1,7 @@
 //
 //  CPU-M
 //
-//  (c) 2025 TDolphin
+//  (c) 2025-2026 TDolphin
 //
 
 #include "BoardsList.hpp"
@@ -9,7 +9,7 @@
 #include "AOS/PCIIDS/Library.hpp"
 
 #include <iomanip>
-#include <sstream>
+#include "amiga_std_light/sstream.hpp"
 
 namespace Components
 {
@@ -26,7 +26,7 @@ namespace Components
     {
         for (auto &board : boards)
         {
-            std::stringstream vendorIdStream, deviceIdStream, classIdStream, subsystem;
+            amiga_std_light::stringstream vendorIdStream, deviceIdStream, classIdStream, subsystem;
             vendorIdStream << "0x" << std::setfill('0') << std::setw(4) << std::hex << board.vendorId;
             deviceIdStream << "0x" << std::setfill('0') << std::setw(4) << std::hex << board.deviceId;
             classIdStream << "0x" << std::setfill('0') << std::setw(2) << std::hex << board.classId;

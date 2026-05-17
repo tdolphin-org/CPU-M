@@ -10,8 +10,8 @@
 #include "GfxCardTypes.hpp"
 
 #include "amiga_std_light/iostream.hpp"
+#include "amiga_std_light/sstream.hpp"
 #include <fstream>
-#include <sstream>
 #include <string>
 
 namespace DataInfo
@@ -48,7 +48,7 @@ namespace DataInfo
             if (line.empty())
                 continue;
 
-            std::stringstream ss(line);
+            amiga_std_light::stringstream ss(line);
             std::string vendorIdStr, deviceIdStr, subsysVendorIdStr, subsysDeviceIdStr, cardName;
 
             // Parse CSV fields

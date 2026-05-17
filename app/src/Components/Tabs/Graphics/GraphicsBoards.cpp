@@ -19,9 +19,9 @@
 #include "MUI/Virtgroup.hpp"
 #include "TheoreticalPerformance.hpp"
 
+#include "amiga_std_light/sstream.hpp"
 #include <algorithm>
 #include <iomanip>
-#include <sstream>
 
 namespace Components
 {
@@ -37,7 +37,7 @@ namespace Components
             size_t boardIndex = 0;
             for (const auto &monitor : monitors)
             {
-                std::stringstream fullIdStream;
+                amiga_std_light::stringstream fullIdStream;
                 fullIdStream << "0x" << std::setfill('0') << std::setw(4) << std::hex << monitor.manufacturerId << ":0x"
                              << std::setfill('0') << std::setw(4) << std::hex << monitor.productId;
 
