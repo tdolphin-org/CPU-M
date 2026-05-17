@@ -1,12 +1,12 @@
 //
 //  CPU-M
 //
-//  (c) 2025 TDolphin
+//  (c) 2025-2026 TDolphin
 //
 
 #include "MemorySpec.hpp"
 
-#include <iomanip>
+#include "amiga_std_light/sstream.hpp"
 #include <map>
 #include <numeric>
 
@@ -81,7 +81,7 @@ namespace DataInfo
             return std::to_string(mv / 1000) + " V";
         else
         {
-            std::ostringstream stream;
+            amiga_std_light::stringstream stream;
             stream << std::fixed << std::setprecision(1) << mv / 1000.0;
             return stream.str() + " V";
         }

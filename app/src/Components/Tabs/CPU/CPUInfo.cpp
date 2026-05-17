@@ -12,16 +12,13 @@
 #include "FileResources/CPUImages.hpp"
 #include "MUI/Core/MakeObject.hpp"
 
+#include "amiga_std_light/sstream.hpp"
 #include <cmath>
-#include <iomanip>
 #include <numeric>
 
 static std::map<std::string, std::string> ppc_family2image = {
-    { "G2", CPUImageFile::ppcG2 },
-    { "G3", CPUImageFile::ppcG3 },
-    { "G4", CPUImageFile::ppcG4 },
-    { "G5", CPUImageFile::ppcG5 },
-    { "e5500", CPUImageFile::ppcE5500 },
+    { "G2", CPUImageFile::ppcG2 }, { "G3", CPUImageFile::ppcG3 },       { "G4", CPUImageFile::ppcG4 },
+    { "G5", CPUImageFile::ppcG5 }, { "e5500", CPUImageFile::ppcE5500 },
 };
 
 static std::string GetImageForCPU(const std::string &cpuFamily)
@@ -167,7 +164,7 @@ namespace Components
         double multiplier = static_cast<double>(cpuClock) / static_cast<double>(busClock);
         double rounded = std::round(multiplier * 2.0) / 2.0;
 
-        std::ostringstream stream;
+        amiga_std_light::stringstream stream;
         stream << std::fixed << std::setprecision(rounded == std::floor(rounded) ? 0 : 1) << rounded;
 
         return stream.str() + " x";
