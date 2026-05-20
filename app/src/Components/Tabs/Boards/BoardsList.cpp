@@ -8,12 +8,12 @@
 
 #include "AOS/PCIIDS/Library.hpp"
 
-#include <iomanip>
 #include "amiga_std_light/sstream.hpp"
+#include <iomanip>
 
 namespace Components
 {
-    const char *titles[4] = { "[ID] Vendor", "[ID] Device", "Class", "Subsystem ID" };
+    const char *titles[] = { "[ID] Vendor", "[ID] Device", "Class", "Subsystem ID", nullptr };
 
     BoardsList::BoardsList(const std::vector<AOS::PCIX::Board> &boards)
       : mComponent(MUI::ListBuilder()
@@ -31,9 +31,9 @@ namespace Components
             deviceIdStream << "0x" << std::setfill('0') << std::setw(4) << std::hex << board.deviceId;
             classIdStream << "0x" << std::setfill('0') << std::setw(2) << std::hex << board.classId;
 
-            if (board.subsystemId.has_value())
-                subsystem << std::setfill('0') << std::setw(4) << std::hex << board.subsystemVendorId.value();
             if (board.subsystemVendorId.has_value())
+                subsystem << std::setfill('0') << std::setw(4) << std::hex << board.subsystemVendorId.value();
+            if (board.subsystemId.has_value())
                 subsystem << ":" << std::setfill('0') << std::setw(4) << std::hex << board.subsystemId.value();
             if (board.subclassId.has_value())
             {
