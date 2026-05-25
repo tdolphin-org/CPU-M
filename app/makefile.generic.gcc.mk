@@ -24,8 +24,7 @@ DEBUG_FLAGS = #-DTRACE -DTRACE_CUSTOM_COMPONENTS -DTRACE_AMIGAOS
 CPP_FLAGS = $(DEBUG_FLAGS) $(MORE_CPP_FLAGS) -Wall -D_GLIBCXX_USE_WCHAR_T=0\
 	-Isrc -I${AOSCPP_PATH}/wrappers/src -I${MUICPP_PATH}/wrappers/src -I${MUICPP_PATH}/components/src \
 	-fno-rtti -ffunction-sections -fdata-sections -Os
-LFLAGS = -L${MUICPP_PATH}/wrappers/lib/$(SUB_BUILD_PATH) $(MORE_LFLAGS) -lMUIcpp \
- 	-Wl,--gc-sections
+LFLAGS = -L${AOSCPP_PATH}/wrappers/lib/$(SUB_BUILD_PATH) -L${MUICPP_PATH}/wrappers/lib/$(SUB_BUILD_PATH) -lamiga_std_light -lMUIcpp $(MORE_LFLAGS)
 
 dir_guard = mkdir -p $(@D)
 
@@ -34,7 +33,7 @@ BINPATH = out/$(SUB_BUILD_PATH)
 include makefile.gen.version.mk
 
 AOS_WRAPPER_PATH = ${AOSCPP_PATH}/wrappers
-AOS_WRAPPER_MODULES = Core amiga_std_light \
+AOS_WRAPPER_MODULES = Core \
 	AOS/Exec AOS/Exec AOS/AmigaLib AOS/OpenURL AOS/Graphics AOS/Cybergraphics AOS/Dos AOS/Devices/Timer AOS/Icon \
 	AOS/Rexxsyslib AOS/PCIX AOS/PCIIDS AOS/Intuition
 AOS_WRAPPER_SRC_DIRS = $(addprefix $(AOS_WRAPPER_PATH)/src/,$(AOS_WRAPPER_MODULES))

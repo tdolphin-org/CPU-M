@@ -37,7 +37,7 @@ build: out/morphos/ppc
 	MUICPP_PATH=../../AmigaOS.MUI.cpp.wrapper \
 	CPPC=$(CPPC) CC=$(CC) STRIP=$(STRIP) OBJDUMP=$(OBJDUMP) \
 	MORE_CPP_FLAGS="-std=c++17 -noixemul -fno-threadsafe-statics -D_GLIBCXX_HAS_GTHREADS=0" \
-	MORE_LFLAGS="-noixemul" \
+	MORE_LFLAGS="-lauto -noixemul" \
 	all
 
 out/morphos/ppc:
