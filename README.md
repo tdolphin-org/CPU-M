@@ -10,10 +10,9 @@ It serves as a comprehensive example of using [MUI C++ wrapper classes](https://
 
 ## Interface
 
-v0.4.7
+v0.8.2
 
-![CPU-M v0.4.7](/docs/assets/CPU-M.0.4.7.cpu.png)
-![CPU-M v0.4.7](/docs/assets/CPU-M.0.4.7.graphics.png)
+![CPU-M v0.8.2](/docs/assets/CPU-M.0.8.2.mainboard.png)
 
 For information about the old interface, see
 [previous interface](/docs/OldInterface.md)

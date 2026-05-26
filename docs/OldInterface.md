@@ -1,5 +1,10 @@
 # CPU-M old interface
 
+v0.4.7
+
+![CPU-M v0.4.7](/docs/assets/CPU-M.0.4.7.cpu.png)
+![CPU-M v0.4.7](/docs/assets/CPU-M.0.4.7.graphics.png)
+
 v0.1.8
 
 ![CPU-M v0.1.8](/docs/assets/CPU-M.0.1.8.cpu.png)
