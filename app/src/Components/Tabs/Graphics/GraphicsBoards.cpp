@@ -106,8 +106,8 @@ namespace Components
                         {
 #ifdef TRACE
                             std::cout << "  Found matching board with subsystem VID:PID " << std::hex << std::setfill('0') << std::setw(4)
-                                      << board.subsystemVendorId.value() << ":" << std::hex << std::setfill('0') << std::setw(4)
-                                      << board.subsystemId.value() << std::dec << std::endl;
+                                      << board.subsystemVendorId << ":" << std::hex << std::setfill('0') << std::setw(4)
+                                      << board.subsystemId << std::dec << std::endl;
 #endif
 
                             subsystemVendorId = board.subsystemVendorId;
