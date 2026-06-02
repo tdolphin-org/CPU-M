@@ -31,13 +31,13 @@ namespace Components
             deviceIdStream << "0x" << std::setfill('0') << std::setw(4) << std::hex << board.deviceId;
             classIdStream << "0x" << std::setfill('0') << std::setw(2) << std::hex << board.classId;
 
-            if (board.subsystemVendorId.has_value())
-                subsystem << std::setfill('0') << std::setw(4) << std::hex << board.subsystemVendorId.value();
-            if (board.subsystemId.has_value())
-                subsystem << ":" << std::setfill('0') << std::setw(4) << std::hex << board.subsystemId.value();
-            if (board.subclassId.has_value())
+            if (board.subsystemVendorId != 0)
+                subsystem << std::setfill('0') << std::setw(4) << std::hex << board.subsystemVendorId;
+            if (board.subsystemId != 0)
+                subsystem << ":" << std::setfill('0') << std::setw(4) << std::hex << board.subsystemId;
+            if (board.subclassId != 0)
             {
-                std::string clazz { AOS::PCIIDS::Library::libGetClassName(board.subclassId.value()) };
+                std::string clazz { AOS::PCIIDS::Library::libGetClassName(board.subclassId) };
                 classIdStream << " - " << clazz;
             }
 

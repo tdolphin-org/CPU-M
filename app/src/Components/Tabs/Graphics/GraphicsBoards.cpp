@@ -19,6 +19,10 @@
 #include "MUI/Virtgroup.hpp"
 #include "TheoreticalPerformance.hpp"
 
+#ifdef TRACE
+#include "amiga_std_light/iostream.hpp"
+#endif
+
 #include "amiga_std_light/sstream.hpp"
 #include <algorithm>
 #include <iomanip>
@@ -87,7 +91,9 @@ namespace Components
                 {
 #ifdef TRACE
                     std::cout << "Checking board VID:PID " << std::hex << std::setfill('0') << std::setw(4) << board.vendorId << ":"
-                              << std::hex << std::setfill('0') << std::setw(4) << board.deviceId << std::dec << std::endl;
+                              << std::hex << std::setfill('0') << std::setw(4) << board.deviceId << " ROM addr:size " << std::hex
+                              << board.attributes.romAddress << ":" << std::hex << board.attributes.romSize << " bytes" << std::dec
+                              << std::endl;
 #endif
 
                     if (board.vendorId == monitor.manufacturerId && board.deviceId == monitor.productId)
@@ -96,7 +102,7 @@ namespace Components
                         std::cout << " Found matching board VID:PID" << std::endl;
 #endif
 
-                        if (board.subsystemVendorId.has_value() && board.subsystemId.has_value())
+                        if (board.subsystemVendorId != 0 && board.subsystemId != 0)
                         {
 #ifdef TRACE
                             std::cout << "  Found matching board with subsystem VID:PID " << std::hex << std::setfill('0') << std::setw(4)
@@ -104,8 +110,8 @@ namespace Components
                                       << board.subsystemId.value() << std::dec << std::endl;
 #endif
 
-                            subsystemVendorId = board.subsystemVendorId.value();
-                            subsystemProductId = board.subsystemId.value();
+                            subsystemVendorId = board.subsystemVendorId;
+                            subsystemProductId = board.subsystemId;
                             break;
                         }
                     }
@@ -114,7 +120,7 @@ namespace Components
                 std::optional<std::vector<DataInfo::PCIDeviceValue>> boardId = std::nullopt;
 
                 // first try to find with subsystemVendorId and subsystemProductId
-                if (subsystemVendorId.has_value() && subsystemProductId.has_value())
+                if (subsystemVendorId != 0 && subsystemProductId != 0)
                     boardId = DataInfo::PCI2IDSpec::instance().Find(DataInfo::PCIDeviceKey(
                         monitor.manufacturerId, monitor.productId, subsystemVendorId.value(), subsystemProductId.value()));
 
