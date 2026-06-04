@@ -1,7 +1,7 @@
 //
 //  CPU-M
 //
-//  (c) 2025 TDolphin
+//  (c) 2025-2026 TDolphin
 //
 
 #include "AppWindow.hpp"
@@ -48,9 +48,9 @@ namespace Components
 
     void AppWindow::RegisterEvents()
     {
-        mContent.RegisterEvents();
-
         auto app = MUI::ApplicationContext::instance().getApplication();
         MUI::Notifier::from(MUI::Area(mExitButton)).onPressed(false).notifyObject(app).returnIDQuit();
+
+        mContent.RegisterEvents();
     }
 }

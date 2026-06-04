@@ -91,8 +91,7 @@ namespace Components
                 {
 #ifdef TRACE
                     std::cout << "Checking board VID:PID " << std::hex << std::setfill('0') << std::setw(4) << board.vendorId << ":"
-                              << std::hex << std::setfill('0') << std::setw(4) << board.deviceId << " ROM addr:size " << std::hex
-                              << board.attributes.romAddress << ":" << std::hex << board.attributes.romSize << " bytes" << std::dec
+                              << std::hex << std::setfill('0') << std::setw(4) << board.deviceId << " ROM addr:size " << std::dec
                               << std::endl;
 #endif
 
