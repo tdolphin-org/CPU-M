@@ -1,7 +1,7 @@
 //
 //  CPU-M
 //
-//  (c) 2025 TDolphin
+//  (c) 2025-2026 TDolphin
 //
 
 #include "WindowManager.hpp"
@@ -11,7 +11,7 @@
 #endif
 
 WindowManagerCore::WindowManagerCore()
-  : mAllWindows({ mGPUSpecWindow, mMemoryModuleSpecWindow, mBusInterfacesSpecWindow })
+  : mAllWindows({ mGPUSpecWindow, mMemoryModuleSpecWindow, mBusInterfacesSpecWindow, mBoardAttributesWindow })
 {
 #ifdef TRACE_MANAGERS
     std::cout << __PRETTY_FUNCTION__ << std::endl;

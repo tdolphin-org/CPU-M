@@ -1,11 +1,12 @@
 //
 //  CPU-M
 //
-//  (c) 2025 TDolphin
+//  (c) 2025-2026 TDolphin
 //
 
 #pragma once
 
+#include "Components/Windows/BoardAttributesWindow.hpp"
 #include "Components/Windows/BusInterfacesSpecWindow.hpp"
 #include "Components/Windows/GPUSpecWindow.hpp"
 #include "Components/Windows/MemoryModuleSpecWindow.hpp"
@@ -22,6 +23,7 @@ class WindowManagerCore
     Components::GPUSpecWindow mGPUSpecWindow;
     Components::MemoryModuleSpecWindow mMemoryModuleSpecWindow;
     Components::BusInterfacesSpecWindow mBusInterfacesSpecWindow;
+    Components::BoardAttributesWindow mBoardAttributesWindow;
 
     std::vector<MUI::Window> mAllWindows;
 
@@ -44,6 +46,11 @@ class WindowManagerCore
     Components::BusInterfacesSpecWindow &getBusInterfacesSpecWindow()
     {
         return mBusInterfacesSpecWindow;
+    }
+
+    Components::BoardAttributesWindow &getBoardAttributesWindow()
+    {
+        return mBoardAttributesWindow;
     }
 };
 
