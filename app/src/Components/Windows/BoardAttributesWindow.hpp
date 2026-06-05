@@ -20,6 +20,10 @@ namespace Components
 {
     class BoardAttributesWindow : public Root<MUI::Window>, public Base
     {
+        MUI::Text mVendor;
+        MUI::Text mDevice;
+        MUI::Text mClass;
+
         MUI::Text mBusNumber;
         MUI::Text mBridgeName;
         MUI::Text mDeviceNumber;
@@ -39,6 +43,7 @@ namespace Components
         MUI::Text mBaseAddress5;
         MUI::Text mBaseSize5;
 
+        MUI::Group mHeaderGroup;
         MUI::Group mMainAttributesGroup;
         MUI::Group mBaseAttributesGroup;
 
@@ -47,7 +52,8 @@ namespace Components
       public:
         BoardAttributesWindow();
 
-        void Open(const AOS::PCIX::BoardAttributes &attributes);
+        void Open(const std::string &vendor, const std::string &device, const std::string &className,
+                  const AOS::PCIX::BoardAttributes &attributes);
         void Close();
 
         bool isOpen() const

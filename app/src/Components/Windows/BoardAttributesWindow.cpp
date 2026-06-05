@@ -15,7 +15,10 @@
 namespace Components
 {
     BoardAttributesWindow::BoardAttributesWindow()
-      : mBusNumber(ValueText("Bus number where board is located"))
+      : mVendor(ValueText("Vendor name"))
+      , mDevice(ValueText("Device name"))
+      , mClass(ValueText("Class name"))
+      , mBusNumber(ValueText("Bus number where board is located"))
       , mBridgeName(ValueText("Bridge name where board is connected"))
       , mDeviceNumber(ValueText("Device number where board is located"))
       , mFunctionNumber(ValueText("Function number where board is located"))
@@ -33,6 +36,16 @@ namespace Components
       , mBaseSize4(ValueText("Base size 4 of the board"))
       , mBaseAddress5(ValueText("Base address 5 of the board (this is a virtual address is not guranteed to be equal the physical)"))
       , mBaseSize5(ValueText("Base size 5 of the board"))
+      , mHeaderGroup(MUI::GroupBuilder()
+                         .horizontal()
+                         .tagColumns(2)
+                         .tagChild(LabelText(MUIX_R "Vendor:"))
+                         .tagChild(mVendor)
+                         .tagChild(LabelText(MUIX_R "Device:"))
+                         .tagChild(mDevice)
+                         .tagChild(LabelText(MUIX_R "Class:"))
+                         .tagChild(mClass)
+                         .object())
       , mMainAttributesGroup(MUI::GroupBuilder()
                                  .horizontal()
                                  .tagColumns(4)
@@ -89,6 +102,8 @@ namespace Components
                        .tagRootObject(MUI::GroupBuilder()
                                           .vertical()
                                           .tagChild(MUI::MakeObject::HVSpace())
+                                          .tagChild(mHeaderGroup)
+                                          .tagChild(MUI::MakeObject::HBar(0))
                                           .tagChild(mMainAttributesGroup)
                                           .tagChild(mBaseAttributesGroup)
                                           .tagChild(MUI::MakeObject::HVSpace())
@@ -99,8 +114,13 @@ namespace Components
         MUI::Notifier::from(mComponent).onCloseRequest(true).notifySelf().setOpen(false);
     }
 
-    void BoardAttributesWindow::Open(const AOS::PCIX::BoardAttributes &attributes)
+    void BoardAttributesWindow::Open(const std::string &vendor, const std::string &device, const std::string &className,
+                                     const AOS::PCIX::BoardAttributes &attributes)
     {
+        mVendor.setContents(vendor);
+        mDevice.setContents(device);
+        mClass.setContents(className);
+
         mBusNumber.setContents(std::to_string(attributes.busNumber));
         mBridgeName.setContents(attributes.bridgeName);
         mDeviceNumber.setContents(std::to_string(attributes.deviceNumber));

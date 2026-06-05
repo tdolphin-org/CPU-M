@@ -17,8 +17,7 @@ namespace Components
     const char *titles[] = { "[ID] Vendor", "[ID] Device", "Class", "Subsystem ID", nullptr };
 
     BoardsList::BoardsList(const std::vector<AOS::PCIX::Board> &boards)
-      : mBoards(boards)
-      , mComponent(MCC::ActionListBuilder()
+      : mComponent(MCC::ActionListBuilder()
                        .stringArrayHooks(4)
                        .tagFormat("BAR MINWIDTH=0,BAR MINWIDTH=0,BAR MINWIDTH=0,")
                        .tagTitleArray(titles)
@@ -50,6 +49,8 @@ namespace Components
 
             const char *arr[] = { vendor.c_str(), device.c_str(), clazz.c_str(), subsystem.str().c_str(), nullptr };
             mComponent.InsertSingleBottom(arr);
+
+            mBoards.emplace_back(board, BoardInfo { vendor, device, clazz });
         }
     }
 
@@ -74,7 +75,8 @@ namespace Components
         if (activeEntry < 0)
             return 0;
 
-        // when entry is double clicked, than open board attributes window (or bring it to front if already open) and show attributes of the active board
+        // when entry is double clicked, than open board attributes window (or bring it to front if already open) and show attributes of the
+        // active board
         OpenBoardAttributes(activeEntry);
 
         return 0;
@@ -82,8 +84,10 @@ namespace Components
 
     void BoardsList::OpenBoardAttributes(const long activeEntry)
     {
-        auto boardAttributesOpt = AOS::PCIX::Library::GetBoardAttributes(mBoards[activeEntry]);
+        auto boardAttributesOpt = AOS::PCIX::Library::GetBoardAttributes(mBoards[activeEntry].first);
         if (boardAttributesOpt.has_value())
-            WindowManager::instance().getBoardAttributesWindow().Open(boardAttributesOpt.value());
+            WindowManager::instance().getBoardAttributesWindow().Open(mBoards[activeEntry].second.vendor,
+                                                                      mBoards[activeEntry].second.device,
+                                                                      mBoards[activeEntry].second.className, boardAttributesOpt.value());
     }
 }

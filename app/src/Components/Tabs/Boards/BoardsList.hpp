@@ -15,9 +15,16 @@
 
 namespace Components
 {
+    struct BoardInfo
+    {
+        std::string vendor;
+        std::string device;
+        std::string className;
+    };
+
     class BoardsList : public Root<MUI::List>, public MCC::ActionListDispatcher
     {
-        std::vector<AOS::PCIX::Board> mBoards;
+        std::vector<std::pair<AOS::PCIX::Board, BoardInfo>> mBoards;
 
         MUI::List mComponent;
 
