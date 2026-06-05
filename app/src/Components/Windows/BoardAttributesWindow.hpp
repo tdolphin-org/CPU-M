@@ -26,6 +26,18 @@ namespace Components
         MUI::Text mFunctionNumber;
         MUI::Text mRomAddress;
         MUI::Text mRomSize;
+        MUI::Text mBaseAddress0;
+        MUI::Text mBaseSize0;
+        MUI::Text mBaseAddress1;
+        MUI::Text mBaseSize1;
+        MUI::Text mBaseAddress2;
+        MUI::Text mBaseSize2;
+        MUI::Text mBaseAddress3;
+        MUI::Text mBaseSize3;
+        MUI::Text mBaseAddress4;
+        MUI::Text mBaseSize4;
+        MUI::Text mBaseAddress5;
+        MUI::Text mBaseSize5;
 
         MUI::Group mMainAttributesGroup;
         MUI::Group mBaseAttributesGroup;
