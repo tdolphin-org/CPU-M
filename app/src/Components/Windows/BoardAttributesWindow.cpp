@@ -23,7 +23,7 @@ namespace Components
       , mDeviceNumber(ValueText("Device number where board is located"))
       , mFunctionNumber(ValueText("Function number where board is located"))
       , mRomAddress(ValueText("ROM address of the board"))
-      , mRomSize(ValueText("ROM size of the board"))
+      , mRomSize(nullptr, 0)
       , mBaseAddress0(ValueText("Base address 0 of the board (this is a virtual address is not guranteed to be equal the physical)"))
       , mBaseSize0(ValueText("Base size 0 of the board"))
       , mBaseAddress1(ValueText("Base address 1 of the board (this is a virtual address is not guranteed to be equal the physical)"))
@@ -125,7 +125,7 @@ namespace Components
         mDeviceNumber.setContents(std::to_string(attributes.deviceNumber));
         mFunctionNumber.setContents(std::to_string(attributes.functionNumber));
         mRomAddress.setContents(attributes.romAddress != 0 ? ToString::FromDataPointer(attributes.romAddress) : "N/A");
-        mRomSize.setContents(attributes.romSize ? ToString::FromBytesValue(attributes.romSize) : "N/A");
+        mRomSize.SetRomData(attributes.romAddress, attributes.romSize);
 
         mBaseAddress0.setContents(attributes.baseAddress0 != 0 ? ToString::FromHexValue(attributes.baseAddress0) : "N/A");
         mBaseSize0.setContents(attributes.baseSize0 ? ToString::FromBytesValue(attributes.baseSize0) : "N/A");

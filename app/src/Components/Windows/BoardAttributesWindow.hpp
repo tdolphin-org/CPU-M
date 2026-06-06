@@ -7,6 +7,7 @@
 #include "Components/Core/Root.hpp"
 
 #include "Components/Base.hpp"
+#include "Components/Tabs/Boards/BoardRomSize.hpp"
 #include "DataInfo/BoardInfo.hpp"
 #include "MUI/Group.hpp"
 #include "MUI/Window.hpp"
@@ -30,7 +31,7 @@ namespace Components
         MUI::Text mDeviceNumber;
         MUI::Text mFunctionNumber;
         MUI::Text mRomAddress;
-        MUI::Text mRomSize;
+        BoardRomSize mRomSize;
         MUI::Text mBaseAddress0;
         MUI::Text mBaseSize0;
         MUI::Text mBaseAddress1;
