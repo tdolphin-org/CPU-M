@@ -7,6 +7,7 @@
 #include "Components/Core/Root.hpp"
 
 #include "Components/Base.hpp"
+#include "DataInfo/BoardInfo.hpp"
 #include "MUI/Group.hpp"
 #include "MUI/Window.hpp"
 
@@ -52,8 +53,7 @@ namespace Components
       public:
         BoardAttributesWindow();
 
-        void Open(const std::string &vendor, const std::string &device, const std::string &className,
-                  const AOS::PCIX::BoardAttributes &attributes);
+        void Open(const BoardInfo &boardInfo, const AOS::PCIX::BoardAttributes &attributes);
         void Close();
 
         bool isOpen() const

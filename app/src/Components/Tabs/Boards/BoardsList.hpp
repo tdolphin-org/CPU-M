@@ -9,19 +9,13 @@
 #include "AOS/PCIX/Library.hpp"
 #include "Components/Core/Root.hpp"
 #include "Components/MCC/ActionList.hpp"
+#include "DataInfo/BoardInfo.hpp"
 
 #include "MUI/Group.hpp"
 #include "MUI/List.hpp"
 
 namespace Components
 {
-    struct BoardInfo
-    {
-        std::string vendor;
-        std::string device;
-        std::string className;
-    };
-
     class BoardsList : public Root<MUI::List>, public MCC::ActionListDispatcher
     {
         std::vector<std::pair<AOS::PCIX::Board, BoardInfo>> mBoards;

@@ -43,7 +43,7 @@ namespace Components
             }
 
             std::string vendor { MUIX_B "[" + vendorIdStream.str() + "] " MUIX_N + AOS::PCIIDS::Library::libGetVendorName(board.vendorId) };
-            std::string device { MUIX_B " [" + deviceIdStream.str() + "] " MUIX_N
+            std::string device { MUIX_B "[" + deviceIdStream.str() + "] " MUIX_N
                                  + AOS::PCIIDS::Library::libGetDeviceName(board.vendorId, board.deviceId) };
             std::string clazz { AOS::PCIIDS::Library::libGetClassName(board.classId) };
 
@@ -86,8 +86,6 @@ namespace Components
     {
         auto boardAttributesOpt = AOS::PCIX::Library::GetBoardAttributes(mBoards[activeEntry].first);
         if (boardAttributesOpt.has_value())
-            WindowManager::instance().getBoardAttributesWindow().Open(mBoards[activeEntry].second.vendor,
-                                                                      mBoards[activeEntry].second.device,
-                                                                      mBoards[activeEntry].second.className, boardAttributesOpt.value());
+            WindowManager::instance().getBoardAttributesWindow().Open(mBoards[activeEntry].second, boardAttributesOpt.value());
     }
 }

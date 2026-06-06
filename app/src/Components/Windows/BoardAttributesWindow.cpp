@@ -15,9 +15,9 @@
 namespace Components
 {
     BoardAttributesWindow::BoardAttributesWindow()
-      : mVendor(ValueText("Vendor name"))
-      , mDevice(ValueText("Device name"))
-      , mClass(ValueText("Class name"))
+      : mVendor(ValueText("Vendor name", "--", true))
+      , mDevice(ValueText("Device name", "--", true))
+      , mClass(ValueText("Class name", "--", true))
       , mBusNumber(ValueText("Bus number where board is located"))
       , mBridgeName(ValueText("Bridge name where board is connected"))
       , mDeviceNumber(ValueText("Device number where board is located"))
@@ -61,7 +61,6 @@ namespace Components
                                  .tagChild(mRomAddress)
                                  .tagChild(LabelText(MUIX_R "ROM Size:"))
                                  .tagChild(mRomSize)
-                                 .tagChild(MUI::MakeObject::HVSpace())
                                  .object())
       , mBaseAttributesGroup(MUI::GroupBuilder()
                                  .vertical()
@@ -105,6 +104,7 @@ namespace Components
                                           .tagChild(mHeaderGroup)
                                           .tagChild(MUI::MakeObject::HBar(0))
                                           .tagChild(mMainAttributesGroup)
+                                          .tagChild(MUI::MakeObject::HBar(0))
                                           .tagChild(mBaseAttributesGroup)
                                           .tagChild(MUI::MakeObject::HVSpace())
                                           .object())
@@ -114,12 +114,11 @@ namespace Components
         MUI::Notifier::from(mComponent).onCloseRequest(true).notifySelf().setOpen(false);
     }
 
-    void BoardAttributesWindow::Open(const std::string &vendor, const std::string &device, const std::string &className,
-                                     const AOS::PCIX::BoardAttributes &attributes)
+    void BoardAttributesWindow::Open(const BoardInfo &boardInfo, const AOS::PCIX::BoardAttributes &attributes)
     {
-        mVendor.setContents(vendor);
-        mDevice.setContents(device);
-        mClass.setContents(className);
+        mVendor.setContents(boardInfo.vendor);
+        mDevice.setContents(boardInfo.device);
+        mClass.setContents(boardInfo.className);
 
         mBusNumber.setContents(std::to_string(attributes.busNumber));
         mBridgeName.setContents(attributes.bridgeName);
