@@ -6,6 +6,8 @@
 
 #include "RomSizeButton.hpp"
 
+#include "AOS/Exec/Library.hpp"
+
 namespace Components
 {
     RomSizeButton::RomSizeButton(const unsigned char *romAddress, const unsigned long romSize)
@@ -19,7 +21,8 @@ namespace Components
     {
         mRomAddress = const_cast<unsigned char *>(romAddress);
         mRomSize = romSize;
-        if (mRomSize)
+
+        if (mRomSize && AOS::Exec::Library::libTypeOfMem(mRomAddress) != AOS::Exec::MEMF_Type::ANY)
             this->Enable();
         else
             this->Disable();

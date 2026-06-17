@@ -18,7 +18,7 @@ namespace Components
                 .vertical()
                 .tagChild(mBoardsList)
                 .tagChild(
-                    MUI::TextBuilder().tagFont(MUI::Font::Tiny).tagContents(MUIX_L "Double click on list item to view board attributes").object())
+                    MUI::TextBuilder().tagFont(MUI::Font::Tiny).tagContents(MUIX_L "Double click on list item to view board attributes.").object())
                 .object())
     {
     }
