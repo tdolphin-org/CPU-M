@@ -1,11 +1,12 @@
 //
 //  CPU-M
 //
-//  (c) 2025 TDolphin
+//  (c) 2025-2026 TDolphin
 //
 
 #pragma once
 
+#include "AOS/ASL/ASLBaseScope.hpp"
 #include "AOS/Cybergraphics/CybergraphicsBaseScope.hpp"
 #include "AOS/Graphics/GraphicsBaseScope.hpp"
 #include "AOS/Intuition/IntuitionBaseScope.hpp"
@@ -32,6 +33,7 @@ class AppCore
     PCIXBaseScope pcixBaseScope;
     PCIIDSBaseScope pciidsBaseScope;
     IntuitionBaseScope intuitionBaseScope;
+    ASLBaseScope aslBaseScope;
 
     AppCore();
 

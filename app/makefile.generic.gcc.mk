@@ -21,12 +21,15 @@
 # trace/debug flags
 DEBUG_FLAGS = #-DTRACE -DTRACE_CUSTOM_COMPONENTS -DTRACE_AMIGAOS
 
-CPP_FLAGS = $(DEBUG_FLAGS) $(MORE_CPP_FLAGS) -Wall -D_GLIBCXX_USE_WCHAR_T=0\
+CPP_FLAGS = $(DEBUG_FLAGS) $(MORE_CPP_FLAGS) -D_NO_PPCINLINE -Wall -D_GLIBCXX_USE_WCHAR_T=0\
 	-Isrc -I${AOSCPP_PATH}/wrappers/src -I${MUICPP_PATH}/wrappers/src -I${MUICPP_PATH}/components/src \
 	-fno-rtti -ffunction-sections -fdata-sections\
 	-Os -flto
 LFLAGS = -L${AOSCPP_PATH}/wrappers/lib/$(SUB_BUILD_PATH) -L${MUICPP_PATH}/wrappers/lib/$(SUB_BUILD_PATH) -lamiga_std_light -lMUIcpp\
 	$(MORE_LFLAGS) -flto
+#  	-Wl,--gc-sections <-- removes to much, create crashing application
+#   -Wl,-u,__CSTP___initstdio -Wl,-u,__CSTP___initstdfio
+# 	-Wl,--gc-keep-exported
 
 dir_guard = mkdir -p $(@D)
 
@@ -37,7 +40,7 @@ include makefile.gen.version.mk
 AOS_WRAPPER_PATH = ${AOSCPP_PATH}/wrappers
 AOS_WRAPPER_MODULES = Core \
 	AOS/Exec AOS/AmigaLib AOS/OpenURL AOS/Graphics AOS/Cybergraphics AOS/Dos AOS/Icon \
-	AOS/Rexxsyslib AOS/PCIX AOS/PCIIDS AOS/Intuition
+	AOS/Rexxsyslib AOS/PCIX AOS/PCIIDS AOS/Intuition AOS/ASL
 AOS_WRAPPER_SRC_DIRS = $(addprefix $(AOS_WRAPPER_PATH)/src/,$(AOS_WRAPPER_MODULES))
 AOS_WRAPPER_SRCS = $(foreach sdir,$(AOS_WRAPPER_SRC_DIRS),$(wildcard $(sdir)/*.cpp))
 AOS_WRAPPER_CPP_FLAGS = $(CPP_FLAGS) -fno-threadsafe-statics
