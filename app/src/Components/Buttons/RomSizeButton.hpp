@@ -24,5 +24,9 @@ namespace Components
 
       protected:
         unsigned long OnClick();
+
+    private:
+        bool verifyRomData() const;
+        void saveBufferToFile(const std::string &filename, const void *data, size_t len);
     };
 }

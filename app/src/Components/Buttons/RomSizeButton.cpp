@@ -6,6 +6,8 @@
 
 #include "RomSizeButton.hpp"
 
+#include "AOS/ASL/FileRequester.hpp"
+#include "AOS/Dos/FileHandleScope.hpp"
 #include "AOS/Exec/Library.hpp"
 
 namespace Components
@@ -22,7 +24,7 @@ namespace Components
         mRomAddress = const_cast<unsigned char *>(romAddress);
         mRomSize = romSize;
 
-        if (mRomSize && AOS::Exec::Library::libTypeOfMem(mRomAddress) != AOS::Exec::MEMF_Type::ANY)
+        if (verifyRomData())
             this->Enable();
         else
             this->Disable();
@@ -30,10 +32,31 @@ namespace Components
 
     unsigned long RomSizeButton::OnClick()
     {
-        if (!mRomAddress || !mRomSize)
+        if (!verifyRomData())
             return 0;
 
-        // TODO Implement the functionality for the ROM size button click event
+        AOS::ASL::FileRequesterScope fileRequester(AOS::ASL::FileRequesterTagsBuilder().tagInitialFile("romfile.bin").tagDoSaveMode(true));
+
+        if (!fileRequester.request())
+            return 0;
+
+        if (const auto fullPath = fileRequester.FullPath(); fullPath.has_value())
+            saveBufferToFile(fullPath.value(), mRomAddress, mRomSize);
+
         return 0;
+    }
+
+    bool RomSizeButton::verifyRomData() const
+    {
+        return mRomAddress != nullptr && mRomSize > 0 && AOS::Exec::Library::libTypeOfMem(mRomAddress) != AOS::Exec::MEMF_Type::ANY;
+    }
+
+    void RomSizeButton::saveBufferToFile(const std::string &filename, const void *data, size_t len)
+    {
+        AOS::Dos::FileHandleScope file(filename, AOS::Dos::OpenMode::NewFile, false);
+
+        LONG bytesWritten = file.Write((void *)data, len);
+        if (bytesWritten != (LONG)len)
+            MuiWarning("Write failed!");
     }
 }
