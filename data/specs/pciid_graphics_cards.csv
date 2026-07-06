@@ -24,6 +24,7 @@ vendor_id,device_id,subsystem_vendor_id,subsystem_device_id,card_name
 0x1002,0x4153,,,ati_radeon_9550
 0x1002,0x4155,,,ati_radeon_9600
 0x1002,0x4242,,,ati_radeon_8500_dv
+0x1002,0x4966,0x174B,0x7197,ati_radeon_9000
 0x1002,0x4A50,,,ati_radeon_x800_xt_agp
 0x1002,0x4E50,,,ati_radeon_9600_mobile
 0x1002,0x4E50,,,ati_radeon_9700_mobile

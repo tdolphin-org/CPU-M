@@ -81,7 +81,9 @@ namespace DataInfo
         ATI_Rage_128_Pro, // Rage 128 Pro
         ATI_R200, // R200
         ATI_RV200, // RV200
+        ATI_RV250, // RV250
         ATI_RV280, // RV280
+        ATI_R300, // R300
         ATI_RV350, // RV350
         ATI_R350, // R350
         ATI_RV360, // RV360
@@ -115,7 +117,9 @@ namespace DataInfo
     {
         ATI_RV200_7500, // RV200 7500 (variant of RV200) used by Radeon 7500
         ATI_RV200_7500_LE, // RV200 7500 LE (variant of RV200) used by Radeon 7500 LE
+        ATI_RV250_9000, // RV250 9000 (variant of RV250) used by Radeon 9000
         ATI_RV280_9200_SE, // RV280 9200 SE (variant of RV280) used by Radeon 9200 SE
+        ATI_R300_9600_TX, // R300 9600 TX (variant of R300) used by Radeon 9600 TX
         ATI_RV350_LX, // RV350 LX (variant of RV350) used by Radeon 9550
         ATI_RV350_LE, // RV350 LE (variant of RV350) used by Radeon 9600
         ATI_RV350_SE, // RV350 SE (variant of RV350) used by Radeon 9600 SE
