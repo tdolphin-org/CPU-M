@@ -39,6 +39,9 @@ namespace DataInfo
         XGI_Volari_V8_Ultra,
 
         // ATI/AMD Rage series
+        ATI_Rage_128,
+        ATI_Rage_128_GL,
+        ATI_Rage_128_Pro_Ultra_GL,
         ATI_Rage_128_Pro,
         ATI_Rage_128_Pro_Ultra,
 

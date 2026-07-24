@@ -40,6 +40,9 @@ namespace DataInfo
             { "xgi_volari_v8_ultra", GfxCardID::XGI_Volari_V8_Ultra },
 
             // ATI/AMD Rage series
+            { "ati_rage_128", GfxCardID::ATI_Rage_128 },
+            { "ati_rage_128_gl", GfxCardID::ATI_Rage_128_GL },
+            { "ati_rage_128_pro_ultra_gl", GfxCardID::ATI_Rage_128_Pro_Ultra_GL },
             { "ati_rage_128_pro", GfxCardID::ATI_Rage_128_Pro },
             { "ati_rage_128_pro_ultra", GfxCardID::ATI_Rage_128_Pro_Ultra },
 

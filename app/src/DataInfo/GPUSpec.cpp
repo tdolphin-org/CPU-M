@@ -45,6 +45,8 @@ namespace DataInfo
           { ManufacturerID::XGI, 2003, ArchitectureID::XG4, TechnologyID::nm_130, { std::nullopt, 2, 2, 4, 2 }, std::nullopt } },
         { GPUID::XGI_XG42,
           { ManufacturerID::XGI, 2003, ArchitectureID::XG4, TechnologyID::nm_130, { std::nullopt, 2, 1, 4, 2 }, std::nullopt } },
+        { GPUID::ATI_Rage_128,
+          { ManufacturerID::ATI, 1999, ArchitectureID::ATI_RAGE_4, TechnologyID::nm_250, { std::nullopt, 2, 0, 2, 2 }, std::nullopt } },
         { GPUID::ATI_Rage_128_Pro,
           { ManufacturerID::ATI, 1999, ArchitectureID::ATI_RAGE_4, TechnologyID::nm_250, { std::nullopt, 2, 0, 2, 2 }, std::nullopt } },
         { GPUID::ATI_R200,

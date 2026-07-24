@@ -78,6 +78,7 @@ namespace DataInfo
         XGI_XG42,
 
         // ATI/AMD series
+        ATI_Rage_128, // Rage 128
         ATI_Rage_128_Pro, // Rage 128 Pro
         ATI_R200, // R200
         ATI_RV200, // RV200
@@ -115,6 +116,7 @@ namespace DataInfo
 
     enum class GPUVariantID
     {
+        ATI_Rage_128_GL, // Rage 128 GL (variant of Rage 128)
         ATI_RV200_7500, // RV200 7500 (variant of RV200) used by Radeon 7500
         ATI_RV200_7500_LE, // RV200 7500 LE (variant of RV200) used by Radeon 7500 LE
         ATI_RV250_9000, // RV250 9000 (variant of RV250) used by Radeon 9000

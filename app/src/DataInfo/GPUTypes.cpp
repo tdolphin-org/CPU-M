@@ -85,6 +85,7 @@ namespace std
             { GPUID::XGI_XG40, "XG40" },
             { GPUID::XGI_XG41, "XG41" },
             { GPUID::XGI_XG42, "XG42" },
+            { GPUID::ATI_Rage_128, "Rage 128" },
             { GPUID::ATI_Rage_128_Pro, "Rage 128 Pro" },
             { GPUID::ATI_R200, "R200" },
             { GPUID::ATI_RV200, "RV200" },
@@ -132,6 +133,7 @@ namespace std
         using namespace DataInfo;
 
         static const std::map<GPUVariantID, std::string> gpuVariantIDMap = {
+            { GPUVariantID::ATI_Rage_128_GL, "Rage 128 GL" },
             { GPUVariantID::ATI_RV200_7500, "RV200 7500" },
             { GPUVariantID::ATI_RV200_7500_LE, "RV200 7500 LE" },
             { GPUVariantID::ATI_RV250_9000, "RV250 9000" },
