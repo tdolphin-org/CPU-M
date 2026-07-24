@@ -40,6 +40,7 @@ namespace DataInfo
 
         // ATI/AMD Rage series
         ATI_Rage_128_Pro,
+        ATI_Rage_128_Pro_Ultra,
 
         // ATI/AMD Radeon R100/RV200 series (7xxx)
         ATI_Radeon_7000, // rebranded Radeon VE

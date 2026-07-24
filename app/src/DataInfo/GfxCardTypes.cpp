@@ -41,6 +41,7 @@ namespace DataInfo
 
             // ATI/AMD Rage series
             { "ati_rage_128_pro", GfxCardID::ATI_Rage_128_Pro },
+            { "ati_rage_128_pro_ultra", GfxCardID::ATI_Rage_128_Pro_Ultra },
 
             // ATI/AMD Radeon R100 series (7xxx)
             { "ati_radeon_7000", GfxCardID::ATI_Radeon_7000 },
