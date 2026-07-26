@@ -78,7 +78,19 @@ clean: clean.obj
 rebuild_mos_ppc: clean mos_ppc build_out
 rebuild_cross_mos_ppc: clean cross_mos_ppc build_out
 
+AOSCPP_PATH ?= ../AmigaOS.cpp.wrapper
+MUICPP_PATH ?= ../AmigaOS.MUI.cpp.wrapper
+
 check:
-	cppcheck --enable=all --inconclusive .
+	cppcheck --enable=all --inconclusive \
+		--suppress=missingInclude --suppress=missingIncludeSystem \
+		--suppress=*:$(AOSCPP_PATH)/wrappers/* \
+		--suppress=*:$(MUICPP_PATH)/* \
+		-I app/src \
+		-I $(AOSCPP_PATH)/wrappers/src \
+		-I $(MUICPP_PATH)/wrappers/src \
+		-I $(MUICPP_PATH)/components/src \
+		-D_NO_PPCINLINE -D_GLIBCXX_USE_WCHAR_T=0 -D__MORPHOS__ \
+		app/src
 
 .NOTPARALLEL: build_out
