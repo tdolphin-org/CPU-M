@@ -30,7 +30,7 @@ namespace Components
         virtual ~MemorySlotsInfo() = default;
 
       protected:
-        MUI::Group &muiRoot() const
+        MUI::Group &muiRoot() const override
         {
             return const_cast<MUI::Group &>(mComponent);
         }

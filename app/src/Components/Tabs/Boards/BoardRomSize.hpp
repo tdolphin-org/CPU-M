@@ -27,7 +27,7 @@ namespace Components
         void SetRomData(const unsigned char *romAddress, const unsigned long romSize);
 
       protected:
-        MUI::Group &muiRoot() const
+        MUI::Group &muiRoot() const override
         {
             return const_cast<MUI::Group &>(mComponent);
         }

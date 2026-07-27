@@ -23,7 +23,7 @@ namespace Components
         void SetRomData(const unsigned char *romAddress, const unsigned long romSize);
 
       protected:
-        unsigned long OnClick();
+        unsigned long OnClick() override;
 
     private:
         bool verifyRomData() const;

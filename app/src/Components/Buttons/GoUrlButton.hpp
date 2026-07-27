@@ -18,6 +18,6 @@ namespace Components
         GoUrlButton(const std::string &label, const std::string &shortHelp, const std::string &url, const long weight = -1);
 
       protected:
-        unsigned long OnClick();
+        unsigned long OnClick() override;
     };
 }

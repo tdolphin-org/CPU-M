@@ -26,7 +26,7 @@ namespace Components
         void RegisterEvents();
 
       protected:
-        MUI::Application &muiRoot() const
+        MUI::Application &muiRoot() const override
         {
             return (MUI::Application &)mComponent;
         }

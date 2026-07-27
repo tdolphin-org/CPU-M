@@ -17,6 +17,6 @@ namespace Components
         virtual ~BusInterfaceSpecButton() = default;
 
       protected:
-        unsigned long OnClick();
+        unsigned long OnClick() override;
     };
 }

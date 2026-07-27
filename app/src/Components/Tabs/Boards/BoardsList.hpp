@@ -31,7 +31,7 @@ namespace Components
         unsigned long OnDoubleClickEntry() override;
 
       protected:
-        MUI::List &muiRoot() const
+        MUI::List &muiRoot() const override
         {
             return const_cast<MUI::List &>(mComponent);
         }

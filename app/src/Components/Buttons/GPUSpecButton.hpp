@@ -20,6 +20,6 @@ namespace Components
         virtual ~GPUSpecButton() = default;
 
       protected:
-        unsigned long OnClick();
+        unsigned long OnClick() override;
     };
 }

@@ -27,7 +27,7 @@ namespace Components
         AboutTab();
 
       protected:
-        MUI::Group &muiRoot() const
+        MUI::Group &muiRoot() const override
         {
             return const_cast<MUI::Group &>(mComponent);
         }

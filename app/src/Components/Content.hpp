@@ -35,7 +35,7 @@ namespace Components
         void RegisterEvents();
 
       protected:
-        MUI::Group &muiRoot() const
+        MUI::Group &muiRoot() const override
         {
             return mComponent;
         }

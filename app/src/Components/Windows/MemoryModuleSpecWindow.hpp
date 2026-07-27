@@ -40,7 +40,7 @@ namespace Components
         void Close();
 
       protected:
-        MUI::Window &muiRoot() const
+        MUI::Window &muiRoot() const override
         {
             return const_cast<MUI::Window &>(mComponent);
         }

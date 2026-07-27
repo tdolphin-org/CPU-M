@@ -24,7 +24,7 @@ namespace Components
         MainMenu();
 
       protected:
-        MUI::Menustrip &muiRoot() const
+        MUI::Menustrip &muiRoot() const override
         {
             return (MUI::Menustrip &)mComponent;
         }

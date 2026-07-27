@@ -32,10 +32,10 @@ namespace Components
 
       protected:
         // implements pure virtual MCC::ActionCycleDispatcher
-        unsigned long OnCycle();
+        unsigned long OnCycle() override;
 
       protected:
-        MUI::Group &muiRoot() const
+        MUI::Group &muiRoot() const override
         {
             return const_cast<MUI::Group &>(mComponent);
         }

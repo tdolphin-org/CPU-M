@@ -24,7 +24,7 @@ namespace Components
         TheoreticalPerformance(const std::optional<DataInfo::TheoreticalPerformance> &theoreticalPerformance);
 
       protected:
-        MUI::Group &muiRoot() const
+        MUI::Group &muiRoot() const override
         {
             return const_cast<MUI::Group &>(mComponent);
         }

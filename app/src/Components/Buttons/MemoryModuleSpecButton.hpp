@@ -22,6 +22,6 @@ namespace Components
         virtual ~MemoryModuleSpecButton() = default;
 
       protected:
-        unsigned long OnClick();
+        unsigned long OnClick() override;
     };
 }
