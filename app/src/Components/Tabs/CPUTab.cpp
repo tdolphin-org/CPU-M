@@ -51,7 +51,7 @@ namespace Components
                        .tagChild(MUI::MakeObject::HVSpace())
                        .object())
     {
-        for (auto &cpuInfo : mCPUInfos)
+        for (const auto &cpuInfo : mCPUInfos)
             mCPUInfoGroup.AddTail(CPUInfo(cpuInfo));
         mCPUInfoGroup.setActivePage(MUI::Group_ActivePage::First);
     }

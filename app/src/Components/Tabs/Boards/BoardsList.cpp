@@ -82,7 +82,7 @@ namespace Components
         return 0;
     }
 
-    void BoardsList::OpenBoardAttributes(const long activeEntry)
+    void BoardsList::OpenBoardAttributes(const long activeEntry) const
     {
         auto boardAttributesOpt = AOS::PCIX::Library::GetBoardAttributes(mBoards[activeEntry].first);
         if (boardAttributesOpt.has_value())

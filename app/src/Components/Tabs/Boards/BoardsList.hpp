@@ -37,6 +37,6 @@ namespace Components
         }
 
       private:
-        void OpenBoardAttributes(const long activeEntry);
+        void OpenBoardAttributes(const long activeEntry) const;
     };
 }
