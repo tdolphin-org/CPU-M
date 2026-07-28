@@ -123,13 +123,13 @@ namespace Components
                 {
                     if (auto ambientArexxPort = AOS::Exec::Library::libFindPort("AMBIENT"))
                     {
-                        AOS::Exec::Library::libPutMsg(*ambientArexxPort, *((struct Message *)rxmsg));
+                        AOS::Exec::Library::libPutMsg(*ambientArexxPort, *reinterpret_cast<struct Message *>(rxmsg));
                         AOS::Exec::Library::libWaitPort(*replayRexxMsgScope.msgPort());
                         auto result = AOS::Rexxsyslib::Library::GetRexxMsg(replayRexxMsgScope);
                         if (result && result->rm_Result1 == 0 && result->rm_Result2)
                         {
-                            mAmbientVersionText.setContents((const char *)result->rm_Result2);
-                            AOS::Rexxsyslib::Library::libDeleteArgstring((unsigned char *)result->rm_Result2);
+                            mAmbientVersionText.setContents(reinterpret_cast<const char *>(result->rm_Result2));
+                            AOS::Rexxsyslib::Library::libDeleteArgstring(reinterpret_cast<unsigned char *>(result->rm_Result2));
                         }
                     }
 
