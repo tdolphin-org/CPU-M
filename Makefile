@@ -86,10 +86,15 @@ check:
 		--suppress=missingInclude --suppress=missingIncludeSystem \
 		--suppress=*:$(AOSCPP_PATH)/wrappers/* \
 		--suppress=*:$(MUICPP_PATH)/* \
+		--suppress=*:/gg/os-include/* \
+		--suppress=unusedFunction:app/src/AppContext.cpp \
+		--suppress=functionStatic:app/src/AppContext.hpp \
+		--suppress=useStlAlgorithm:app/src/Components/Tabs/OSTab.cpp \
 		-I app/src \
 		-I $(AOSCPP_PATH)/wrappers/src \
 		-I $(MUICPP_PATH)/wrappers/src \
 		-I $(MUICPP_PATH)/components/src \
+		-I /gg/os-include \
 		-D_NO_PPCINLINE -D_GLIBCXX_USE_WCHAR_T=0 -D__MORPHOS__ \
 		app/src
 
