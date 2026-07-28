@@ -22,7 +22,7 @@ namespace Components
         MUI::Group mComponent;
 
       public:
-        GPUName(const DataInfo::GPUID &gpuId);
+        explicit GPUName(const DataInfo::GPUID &gpuId);
         virtual ~GPUName() = default;
 
       protected:

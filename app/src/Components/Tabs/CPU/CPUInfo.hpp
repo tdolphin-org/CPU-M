@@ -45,7 +45,7 @@ namespace Components
         MUI::Group mComponent;
 
       public:
-        CPUInfo(const AOS::Exec::CPUInfo &cpuInfo);
+        explicit CPUInfo(const AOS::Exec::CPUInfo &cpuInfo);
 
       protected:
         MUI::Group &muiRoot() const override

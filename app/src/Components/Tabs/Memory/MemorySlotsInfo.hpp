@@ -26,7 +26,7 @@ namespace Components
         MUI::Group mComponent;
 
       public:
-        MemorySlotsInfo(const DataInfo::SlotRAMSpec &ramSpec);
+        explicit MemorySlotsInfo(const DataInfo::SlotRAMSpec &ramSpec);
         virtual ~MemorySlotsInfo() = default;
 
       protected:

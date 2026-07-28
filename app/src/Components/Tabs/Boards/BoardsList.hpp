@@ -23,7 +23,7 @@ namespace Components
         MUI::List mComponent;
 
       public:
-        BoardsList(const std::vector<AOS::PCIX::Board> &boards);
+        explicit BoardsList(const std::vector<AOS::PCIX::Board> &boards);
 
       protected:
         // implements pure virtual MCC::ActionListDispatcher

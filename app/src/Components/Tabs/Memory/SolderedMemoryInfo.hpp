@@ -25,7 +25,7 @@ namespace Components
         MUI::Group mComponent;
 
       public:
-        SolderedMemoryInfo(const DataInfo::SolderedRAMSpec &ramSpec);
+        explicit SolderedMemoryInfo(const DataInfo::SolderedRAMSpec &ramSpec);
 
       protected:
         MUI::Group &muiRoot() const override

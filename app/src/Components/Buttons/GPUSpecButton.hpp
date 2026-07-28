@@ -16,7 +16,7 @@ namespace Components
         DataInfo::GPUID mGpuId;
 
       public:
-        GPUSpecButton(const DataInfo::GPUID gpuId);
+        explicit GPUSpecButton(const DataInfo::GPUID gpuId);
         virtual ~GPUSpecButton() = default;
 
       protected:

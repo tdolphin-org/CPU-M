@@ -21,7 +21,7 @@ namespace Components
         MUI::Group mComponent;
 
       public:
-        BusInterfaceNames(const std::string &interfaces);
+        explicit BusInterfaceNames(const std::string &interfaces);
         virtual ~BusInterfaceNames() = default;
 
       protected:

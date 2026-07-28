@@ -20,7 +20,7 @@ namespace Components
         MUI::Group mComponent;
 
       public:
-        RenderConfig(const DataInfo::RenderConfig &renderConfig);
+        explicit RenderConfig(const DataInfo::RenderConfig &renderConfig);
 
       protected:
         MUI::Group &muiRoot() const override

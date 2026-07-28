@@ -18,7 +18,7 @@ namespace Components
         std::pair<MemoryType, ModuleForm> mMemoryTypeAndForm;
 
       public:
-        MemoryModuleSpecButton(const std::pair<MemoryType, ModuleForm> &memoryTypeAndForm);
+        explicit MemoryModuleSpecButton(const std::pair<MemoryType, ModuleForm> &memoryTypeAndForm);
         virtual ~MemoryModuleSpecButton() = default;
 
       protected:
