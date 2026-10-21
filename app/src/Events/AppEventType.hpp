@@ -1,7 +1,7 @@
 //
 //  CPU-M
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2025-2026 TDolphin
 //
 
 #pragma once
